@@ -4847,6 +4847,7 @@ class ContentRouter(Transform):
 
         tokens_before = sum(tokenizer.count_text(str(m.get("content", ""))) for m in messages)
         context = kwargs.get("context", "")
+        trajectory_relevance = kwargs.get("trajectory_relevance") is True
         hook_biases: dict[int, float] = kwargs.get("biases") or {}
 
         # Build tool name map for exclusion checking
@@ -5450,11 +5451,34 @@ class ContentRouter(Transform):
             # lightweight regex detector and compress() skips detection entirely.
             route_counts.setdefault("cache_miss", 0)
             route_counts["cache_miss"] += 1
+            # SEARCH-only trajectory relevance.
+            #
+            # The ordinary user context remains unchanged for non-search
+            # messages. For SEARCH-classified targets, derive additional
+            # relevance only from messages strictly before this target.
+            task_context = context
+
+            if trajectory_relevance and not force_kompress and detection is not None:
+                task_strategy = self._strategy_from_detection_type(
+                    detection.content_type
+                )
+
+                if task_strategy is CompressionStrategy.SEARCH:
+                    from headroom.trajectory_relevance import (
+                        build_search_relevance_context,
+                    )
+
+                    task_context = build_search_relevance_context(
+                        messages,
+                        before_index=i,
+                        user_context=context,
+                    )
+
             pending_tasks.append(
                 (
                     i,
                     content,
-                    context,
+                    task_context,
                     msg_bias,
                     content_key,
                     enforce_reversibility,

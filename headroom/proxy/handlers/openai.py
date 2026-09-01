@@ -634,6 +634,26 @@ def _codex_ws_text_shape(text: str) -> str:
     return "plain_text_like"
 
 
+def _responses_trajectory_search_eligible(router: Any, text: str) -> bool:
+    """Return whether a Responses output can use SEARCH trajectory relevance.
+
+    The primary content classifier can label grep-over-source-code output as
+    SOURCE_CODE even though ContentRouter's downstream structural path treats
+    the same ``path:line:content`` payload as SEARCH. Reuse the router's
+    dedicated structural search detector so trajectory enrichment follows the
+    same semantics instead of depending only on the primary classifier.
+    """
+    from headroom.transforms.content_router import _detect_content, _try_detect_search
+
+    detection = _detect_content(text)
+    primary_strategy = router._strategy_from_detection_type(detection.content_type)
+
+    if getattr(primary_strategy, "value", None) == "search":
+        return True
+
+    return _try_detect_search(text) is not None
+
+
 def _json_debug_dumps(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, default=str, separators=(",", ":"))
 
@@ -2025,6 +2045,7 @@ class OpenAIHandlerMixin:
             return payload, False, 0, [], {}, [], 0
         profile_kwargs = proxy_pipeline_kwargs(getattr(self, "config", None))
         unit_target_ratio = profile_kwargs.get("target_ratio")
+        trajectory_relevance = profile_kwargs.get("trajectory_relevance") is True
         if unit_target_ratio is not None:
             unit_target_ratio = float(unit_target_ratio)
 
@@ -2400,6 +2421,29 @@ class OpenAIHandlerMixin:
             item = items[item_idx] if item_idx < len(items) else {}
             item_type = item.get("type", "unknown") if isinstance(item, dict) else "unknown"
             role = str(item.get("role") or "tool") if isinstance(item, dict) else "tool"
+
+            unit_context = ""
+            text_bytes = len(original_text.encode("utf-8", errors="replace"))
+            if (
+                trajectory_relevance
+                and text_bytes >= self.OPENAI_RESPONSES_ROUTER_MIN_BYTES
+            ):
+                # Responses compression routes units independently, so unlike
+                # ContentRouter.apply() it cannot see prior tool outputs unless
+                # the provider adapter supplies trajectory context explicitly.
+                #
+                # Enrich SEARCH only: code/config/log/tabular compressors retain
+                # their historical context behavior.
+                if _responses_trajectory_search_eligible(router, original_text):
+                    from headroom.trajectory_relevance import (
+                        build_responses_search_relevance_context,
+                    )
+
+                    unit_context = build_responses_search_relevance_context(
+                        items,
+                        before_index=item_idx,
+                    )
+
             unit = CompressionUnit(
                 text=original_text,
                 provider="openai",
@@ -2409,6 +2453,7 @@ class OpenAIHandlerMixin:
                 cache_zone="live",
                 mutable=True,
                 min_bytes=self.OPENAI_RESPONSES_ROUTER_MIN_BYTES,
+                context=unit_context,
             )
             routed_units.append(RoutedCompressionUnit(unit=unit, slot=(item_idx, slot_ref)))
             if debug_enabled:

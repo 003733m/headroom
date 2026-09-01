@@ -387,6 +387,20 @@ def proxy_pipeline_kwargs(config: object) -> dict[str, object]:
         except ValueError:
             pass
 
+    # Experimental opt-in for trajectory-aware SEARCH relevance.
+    #
+    # Keep this outside the savings profiles so the baseline and treatment
+    # can use exactly the same profile and differ only in this feature.
+    _trajectory_relevance = os.environ.get(
+        "HEADROOM_TRAJECTORY_RELEVANCE"
+    )
+
+    if _trajectory_relevance is not None:
+        kwargs["trajectory_relevance"] = (
+            _trajectory_relevance.strip().lower()
+            in {"1", "true", "yes", "on"}
+        )
+
     return kwargs
 
 

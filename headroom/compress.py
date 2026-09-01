@@ -115,6 +115,11 @@ class CompressConfig:
     protect_analysis_context: bool = True
     """Detect 'analyze'/'review' intent and protect code from compression."""
 
+    trajectory_relevance: bool = False
+    """Use identifiers discovered in prior tool results to enrich relevance
+    for later SEARCH-classified outputs. Disabled by default for backward
+    compatibility."""
+
     frozen_message_count: int = 0
     """Number of leading messages already anchored in the provider's prompt
     cache. Transforms will not rewrite messages inside this frozen prefix
@@ -263,6 +268,7 @@ def compress(
             target_ratio=cfg.target_ratio,
             protect_recent=cfg.protect_recent,
             protect_analysis_context=cfg.protect_analysis_context,
+            trajectory_relevance=cfg.trajectory_relevance,
             min_tokens_to_compress=cfg.min_tokens_to_compress,
             kompress_model=cfg.kompress_model,
             frozen_message_count=cfg.frozen_message_count,

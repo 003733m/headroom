@@ -1,0 +1,27 @@
+{
+  "status": "frozen_before_held_out_evaluation",
+  "calibration": {
+    "benchmark": "calibrate_bridge_weights_v2.py",
+    "seed": 20260901,
+    "n_cases": 1232,
+    "n_configs_evaluated": 12160
+  },
+  "scoring": {
+    "causal_weight": 4.0,
+    "cross_tool_weight": 2.0,
+    "occurrence_weight": 2.0,
+    "recency_weight": 1.0,
+    "speculation_weight": 2.0,
+    "min_score": 2.0,
+    "max_cross_tool_steps": 2,
+    "max_occurrences": 3
+  },
+  "calibration_metrics": {
+    "macro_accuracy": 1.0,
+    "positive_accuracy": 1.0,
+    "mrr": 1.0,
+    "abstain_accuracy": 1.0,
+    "false_promotion_rate": 0.0
+  },
+  "note": "Weights and threshold were frozen before held-out synthetic and coding-agent evaluation. They must not be retuned using held-out results."
+}

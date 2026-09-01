@@ -1,0 +1,65 @@
+{
+  "best_calibration_config": {
+    "causal": 4.0,
+    "cross_tool": 2.0,
+    "occurrence": 2.0,
+    "recency": 1.0,
+    "speculation": 2.0,
+    "threshold": 2.0
+  },
+  "best_metrics": {
+    "abstain_accuracy": 1.0,
+    "false_promotion_rate": 0.0,
+    "macro_accuracy": 1.0,
+    "mrr": 1.0,
+    "positive_accuracy": 1.0,
+    "scenario_accuracy": {
+      "abstain_single_tool": 1.0,
+      "abstain_speculative": 1.0,
+      "causal_isolated": 1.0,
+      "causal_vs_cross": 1.0,
+      "cross_vs_weak_causal": 1.0,
+      "false_recurring": 1.0,
+      "hypothesis_shift": 1.0,
+      "neutral_bridge_threshold": 1.0,
+      "occurrence_isolated": 1.0,
+      "recency_isolated": 1.0,
+      "speculation_isolated": 1.0
+    }
+  },
+  "development_defaults": {
+    "config": {
+      "causal": 10.0,
+      "cross_tool": 12.0,
+      "occurrence": 3.0,
+      "recency": 2.0,
+      "speculation": 5.0,
+      "threshold": null
+    },
+    "metrics": {
+      "abstain_accuracy": 0.5,
+      "false_promotion_rate": 0.5,
+      "macro_accuracy": 0.8741883116883117,
+      "mrr": 0.9786706349206349,
+      "positive_accuracy": 0.9573412698412699,
+      "scenario_accuracy": {
+        "abstain_single_tool": 1.0,
+        "abstain_speculative": 0.0,
+        "causal_isolated": 1.0,
+        "causal_vs_cross": 1.0,
+        "cross_vs_weak_causal": 1.0,
+        "false_recurring": 1.0,
+        "hypothesis_shift": 0.6160714285714286,
+        "neutral_bridge_threshold": 1.0,
+        "occurrence_isolated": 1.0,
+        "recency_isolated": 1.0,
+        "speculation_isolated": 1.0
+      }
+    }
+  },
+  "n_cases": 1232,
+  "n_configs_evaluated": 12160,
+  "n_perfect_configs": 1064,
+  "seed": 20260901,
+  "top50_csv": "experiments/bridge_relevance/results/bridge_weight_calibration_v2_top50.csv"
+}

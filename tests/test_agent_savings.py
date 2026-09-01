@@ -840,3 +840,41 @@ def test_explicit_min_chars_block_env_overrides_the_profile(
         min_tokens_to_crush = 500
 
     assert proxy_pipeline_kwargs(_Config())["min_chars_for_block_compression"] == 120
+
+
+def test_proxy_pipeline_kwargs_trajectory_relevance_env(monkeypatch):
+    from types import SimpleNamespace
+
+    from headroom.agent_savings import proxy_pipeline_kwargs
+
+    config = SimpleNamespace(
+        savings_profile=None,
+    )
+
+    monkeypatch.delenv(
+        "HEADROOM_TRAJECTORY_RELEVANCE",
+        raising=False,
+    )
+
+    unset = proxy_pipeline_kwargs(config)
+
+    # Unset must preserve the historical proxy behavior.
+    assert "trajectory_relevance" not in unset
+
+    monkeypatch.setenv(
+        "HEADROOM_TRAJECTORY_RELEVANCE",
+        "1",
+    )
+
+    enabled = proxy_pipeline_kwargs(config)
+
+    assert enabled["trajectory_relevance"] is True
+
+    monkeypatch.setenv(
+        "HEADROOM_TRAJECTORY_RELEVANCE",
+        "0",
+    )
+
+    disabled = proxy_pipeline_kwargs(config)
+
+    assert disabled["trajectory_relevance"] is False

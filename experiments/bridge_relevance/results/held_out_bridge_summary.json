@@ -1,0 +1,96 @@
+{
+  "evaluation_status": "held_out_after_weight_freeze",
+  "frozen_calibrated_scoring": {
+    "config": {
+      "causal": 4.0,
+      "cross_tool": 2.0,
+      "occurrence": 2.0,
+      "recency": 1.0,
+      "speculation": 2.0,
+      "threshold": 2.0
+    },
+    "metrics": {
+      "abstain_accuracy": 0.95,
+      "false_promotion_rate": 0.050000000000000044,
+      "kind_accuracy": {
+        "class_name": 0.990909090909091,
+        "config_key": 0.990909090909091,
+        "exception": 0.990909090909091,
+        "file_path": 0.9818181818181818,
+        "function_name": 0.9727272727272728,
+        "request_id": 0.990909090909091,
+        "test_name": 0.9863636363636363
+      },
+      "macro_scenario_accuracy": 0.9863636363636363,
+      "mrr": 1.0,
+      "n_cases": 1540,
+      "negative_cases": 420,
+      "positive_cases": 1120,
+      "positive_top1_accuracy": 1.0,
+      "positive_top3_accuracy": 1.0,
+      "scenario_accuracy": {
+        "ambiguous_competitors": 0.9,
+        "bridge_with_noise": 1.0,
+        "competing_bridges": 1.0,
+        "diagnostic_fork": 1.0,
+        "isolated_observations": 1.0,
+        "late_single_cause": 1.0,
+        "mixed_evidence": 1.0,
+        "speculative_loop": 0.95,
+        "stale_then_confirmed": 1.0,
+        "three_tool_chain": 1.0,
+        "two_hop_join": 1.0
+      }
+    }
+  },
+  "legacy_development_scoring": {
+    "config": {
+      "causal": 10.0,
+      "cross_tool": 12.0,
+      "occurrence": 3.0,
+      "recency": 2.0,
+      "speculation": 5.0,
+      "threshold": null
+    },
+    "metrics": {
+      "abstain_accuracy": 0.3333333333333333,
+      "false_promotion_rate": 0.6666666666666667,
+      "kind_accuracy": {
+        "class_name": 0.8181818181818182,
+        "config_key": 0.8181818181818182,
+        "exception": 0.8181818181818182,
+        "file_path": 0.8181818181818182,
+        "function_name": 0.8181818181818182,
+        "request_id": 0.8181818181818182,
+        "test_name": 0.8181818181818182
+      },
+      "macro_scenario_accuracy": 0.8181818181818182,
+      "mrr": 1.0,
+      "n_cases": 1540,
+      "negative_cases": 420,
+      "positive_cases": 1120,
+      "positive_top1_accuracy": 1.0,
+      "positive_top3_accuracy": 1.0,
+      "scenario_accuracy": {
+        "ambiguous_competitors": 0.0,
+        "bridge_with_noise": 1.0,
+        "competing_bridges": 1.0,
+        "diagnostic_fork": 1.0,
+        "isolated_observations": 1.0,
+        "late_single_cause": 1.0,
+        "mixed_evidence": 1.0,
+        "speculative_loop": 0.0,
+        "stale_then_confirmed": 1.0,
+        "three_tool_chain": 1.0,
+        "two_hop_join": 1.0
+      }
+    }
+  },
+  "n_cases": 1540,
+  "raw_results": {
+    "frozen": "experiments/bridge_relevance/results/held_out_frozen_scoring.csv",
+    "legacy": "experiments/bridge_relevance/results/held_out_legacy_development.csv"
+  },
+  "seed": 771903,
+  "warning": "Do not retune scoring from these held-out results."
+}
