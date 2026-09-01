@@ -2625,14 +2625,26 @@ class ContentRouter(Transform):
         """
         original_tokens = _estimate_tokens(content)
 
-        compressed, compressed_tokens, strategy_chain = self._apply_strategy_to_content(
-            content,
-            strategy,
-            context,
-            question=question,
-            bias=bias,
-            trajectory_search_relevance=trajectory_search_relevance,
-        )
+        # Preserve the historical call signature when trajectory relevance is
+        # disabled. Some downstream subclasses/tests monkeypatch this private
+        # seam with the pre-extension signature.
+        if trajectory_search_relevance:
+            compressed, compressed_tokens, strategy_chain = self._apply_strategy_to_content(
+                content,
+                strategy,
+                context,
+                question=question,
+                bias=bias,
+                trajectory_search_relevance=True,
+            )
+        else:
+            compressed, compressed_tokens, strategy_chain = self._apply_strategy_to_content(
+                content,
+                strategy,
+                context,
+                question=question,
+                bias=bias,
+            )
 
         return RouterCompressionResult(
             compressed=compressed,
