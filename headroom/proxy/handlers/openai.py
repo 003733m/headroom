@@ -2423,6 +2423,7 @@ class OpenAIHandlerMixin:
             role = str(item.get("role") or "tool") if isinstance(item, dict) else "tool"
 
             unit_context = ""
+            unit_metadata: dict[str, str] = {}
             text_bytes = len(original_text.encode("utf-8", errors="replace"))
             if (
                 trajectory_relevance
@@ -2443,6 +2444,8 @@ class OpenAIHandlerMixin:
                         items,
                         before_index=item_idx,
                     )
+                    if unit_context:
+                        unit_metadata["trajectory_search_relevance"] = "true"
 
             unit = CompressionUnit(
                 text=original_text,
@@ -2454,6 +2457,7 @@ class OpenAIHandlerMixin:
                 mutable=True,
                 min_bytes=self.OPENAI_RESPONSES_ROUTER_MIN_BYTES,
                 context=unit_context,
+                metadata=unit_metadata,
             )
             routed_units.append(RoutedCompressionUnit(unit=unit, slot=(item_idx, slot_ref)))
             if debug_enabled:

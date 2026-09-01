@@ -199,6 +199,9 @@ def _compress_marker_free_text(
         context=unit.context,
         question=unit.question,
         bias=unit.bias,
+        trajectory_search_relevance=(
+            unit.metadata.get("trajectory_search_relevance") == "true"
+        ),
     )
     if router_result.compressed == core:
         return text, [], router_result
@@ -315,6 +318,9 @@ def compress_unit_with_router(
             context=unit.context,
             question=unit.question,
             bias=unit.bias,
+            trajectory_search_relevance=(
+                unit.metadata.get("trajectory_search_relevance") == "true"
+            ),
         )
     finally:
         if target_ratio is not None:

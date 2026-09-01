@@ -528,3 +528,108 @@ def test_responses_search_eligibility_accepts_grep_over_source_code():
         CodeAwareRouter(),
         plain_code,
     )
+
+
+def test_structural_search_uses_trajectory_relevance_without_changing_primary_strategy(
+    monkeypatch,
+):
+    from headroom.transforms.content_router import (
+        CompressionStrategy,
+        ContentRouter,
+    )
+
+    router = ContentRouter()
+    router.config.relevance_split = True
+    router._lossless_then_lossy = False
+
+    monkeypatch.setattr(
+        router,
+        "_lossless_first",
+        lambda content, strategy: ("lossless folded", "lossless_search"),
+    )
+
+    calls: list[tuple[str, str]] = []
+
+    def fake_relevance_split(content: str, kind: str, context: str):
+        calls.append((kind, context))
+        return "relevance selected"
+
+    monkeypatch.setattr(
+        router,
+        "_relevance_split_compress",
+        fake_relevance_split,
+    )
+
+    off = router._compress_pure(
+        "original search-like output",
+        CompressionStrategy.CODE_AWARE,
+        "req-0184",
+        trajectory_search_relevance=False,
+    )
+
+    assert off.strategy_used is CompressionStrategy.CODE_AWARE
+    assert off.compressed == "lossless folded"
+    assert calls == []
+
+    on = router._compress_pure(
+        "original search-like output",
+        CompressionStrategy.CODE_AWARE,
+        "req-0184",
+        trajectory_search_relevance=True,
+    )
+
+    assert on.strategy_used is CompressionStrategy.CODE_AWARE
+    assert on.compressed == "relevance selected"
+    assert on.strategy_chain == ["search", "relevance_split"]
+    assert calls == [("search", "req-0184")]
+
+
+def test_compression_unit_forwards_trajectory_search_relevance_metadata():
+    from headroom.transforms.compression_units import (
+        CompressionUnit,
+        compress_unit_with_router,
+    )
+    from headroom.transforms.content_router import (
+        CompressionStrategy,
+        RouterCompressionResult,
+    )
+
+    class Tokenizer:
+        @staticmethod
+        def count_text(text: str) -> int:
+            return len(text.split())
+
+    class CapturingRouter:
+        def __init__(self):
+            self.kwargs = {}
+
+        def compress(self, content: str, **kwargs):
+            self.kwargs = kwargs
+            return RouterCompressionResult(
+                compressed="short result",
+                original=content,
+                strategy_used=CompressionStrategy.SEARCH,
+            )
+
+    router = CapturingRouter()
+
+    unit = CompressionUnit(
+        text=("diagnostic output " * 100),
+        provider="openai",
+        endpoint="responses",
+        role="tool",
+        item_type="function_call_output",
+        min_bytes=1,
+        context="req-0184",
+        metadata={"trajectory_search_relevance": "true"},
+    )
+
+    result = compress_unit_with_router(
+        unit,
+        router=router,  # type: ignore[arg-type]
+        tokenizer=Tokenizer(),
+    )
+
+    assert result.modified
+    assert router.kwargs["context"] == "req-0184"
+    assert router.kwargs["trajectory_search_relevance"] is True

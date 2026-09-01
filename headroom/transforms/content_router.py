@@ -2182,6 +2182,7 @@ class ContentRouter(Transform):
         question: str | None = None,
         bias: float = 1.0,
         precomputed_detection: DetectionResult | None = None,
+        trajectory_search_relevance: bool = False,
     ) -> RouterCompressionResult:
         """Compress content using optimal strategy based on content detection.
 
@@ -2197,6 +2198,9 @@ class ContentRouter(Transform):
                 router's hottest per-message cost. ``apply`` computes detection
                 once per message (for its code-protection checks) and passes it
                 here so a cache-miss message is not detected twice.
+            trajectory_search_relevance: Allow structurally search-like output
+                to use SEARCH relevance semantics when trajectory context is
+                present.
 
         Returns:
             RouterCompressionResult with compressed content and routing metadata.
@@ -2269,7 +2273,14 @@ class ContentRouter(Transform):
             if strategy == CompressionStrategy.MIXED:
                 result = self._compress_mixed(content, context, question, bias=bias)
             else:
-                result = self._compress_pure(content, strategy, context, question, bias=bias)
+                result = self._compress_pure(
+                    content,
+                    strategy,
+                    context,
+                    question,
+                    bias=bias,
+                    trajectory_search_relevance=trajectory_search_relevance,
+                )
 
         # Empty-output guard: compression must NEVER blank out non-empty input.
         # An empty user-message content makes Anthropic reject the whole request
@@ -2598,6 +2609,7 @@ class ContentRouter(Transform):
         context: str,
         question: str | None = None,
         bias: float = 1.0,
+        trajectory_search_relevance: bool = False,
     ) -> RouterCompressionResult:
         """Compress pure (non-mixed) content.
 
@@ -2614,7 +2626,12 @@ class ContentRouter(Transform):
         original_tokens = _estimate_tokens(content)
 
         compressed, compressed_tokens, strategy_chain = self._apply_strategy_to_content(
-            content, strategy, context, question=question, bias=bias
+            content,
+            strategy,
+            context,
+            question=question,
+            bias=bias,
+            trajectory_search_relevance=trajectory_search_relevance,
         )
 
         return RouterCompressionResult(
@@ -3140,6 +3157,7 @@ class ContentRouter(Transform):
         question: str | None = None,
         bias: float = 1.0,
         _allow_embedded: bool = True,
+        trajectory_search_relevance: bool = False,
     ) -> tuple[str, int, list[str]]:
         """Apply a compression strategy to content.
 
@@ -3213,6 +3231,19 @@ class ContentRouter(Transform):
         # and is a strict no-op returning (content, None) when nothing folds.
         _ll_content, _ll_label = self._lossless_first(content, strategy)
 
+        # Grep-over-source-code can be classified as CODE_AWARE by the primary
+        # detector while the structural lossless pass recognizes it as SEARCH.
+        # When trajectory-derived search context is explicitly supplied, let
+        # only the relevance layer follow that structural SEARCH signal. The
+        # primary routing strategy itself remains unchanged.
+        relevance_strategy = strategy
+        if (
+            trajectory_search_relevance
+            and context
+            and _ll_label == "lossless_search"
+        ):
+            relevance_strategy = CompressionStrategy.SEARCH
+
         # ── LOSSLESS-ONLY mode: stop at the byte-exact fold ──────────────────
         # HEADROOM_LOSSLESS=1 is an explicit no-unrecoverable-loss contract (the
         # constructor forces markers off + SmartCrusher lossless-only). So we
@@ -3238,11 +3269,11 @@ class ContentRouter(Transform):
         # block fold, so when it fires it is strictly smaller than the STAGE 0
         # floor; otherwise it returns None and we keep the fold below. DIFF is
         # excluded — Kompressing hunks breaks `git apply`.
-        if self.config.relevance_split and strategy in (
+        if self.config.relevance_split and relevance_strategy in (
             CompressionStrategy.LOG,
             CompressionStrategy.SEARCH,
         ):
-            kind = "log" if strategy is CompressionStrategy.LOG else "search"
+            kind = "log" if relevance_strategy is CompressionStrategy.LOG else "search"
             split = self._relevance_split_compress(content, kind, context)
             if split is not None:
                 return split, _estimate_tokens(split), [kind, "relevance_split"]
