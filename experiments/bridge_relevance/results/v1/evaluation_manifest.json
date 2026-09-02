@@ -1,0 +1,74 @@
+{
+  "evaluation_version": "v1",
+  "tested_implementation_sha": "2fffb401",
+  "implementation_status": "frozen_before_final_real-task_evaluations",
+  "natural_agent_benchmark": {
+    "tasks": 6,
+    "conditions": 12,
+    "on_bridge_activation_tasks": 0,
+    "interpretation": "Reachability/coverage benchmark; treatment did not activate."
+  },
+  "bridge_stress_benchmark": {
+    "tasks": 3,
+    "conditions": 6,
+    "on_bridge_activation_tasks": 2,
+    "interpretation": "Conditional production reachability stress test; not an unbiased downstream efficacy benchmark."
+  },
+  "controlled_evidence_fidelity": {
+    "off_relevant_evidence": "6/20",
+    "on_relevant_evidence": "20/20",
+    "paired_improvements": 14,
+    "paired_degradations": 0,
+    "off_mean_reduction_percent": 25.46,
+    "on_mean_reduction_percent": 19.13,
+    "mean_compression_cost_percentage_points": 6.34
+  },
+  "files": {
+    "experiments/bridge_relevance/results/v1/natural_agent_benchmark_summary.csv": {
+      "bytes": 2444,
+      "sha256": "43d92cf05b0855f093e17cc749b413f7f1fb8f75164ca5d8e3af5b2ca3c5d7ff"
+    },
+    "experiments/bridge_relevance/results/v1/natural_agent_benchmark_summary.md": {
+      "bytes": 1684,
+      "sha256": "8e2b41760f72ffb3b113a21d125d6158073167fc1d9a8b7cfd4e2b8e1f705f5a"
+    },
+    "experiments/bridge_relevance/results/v1/bridge_stress_summary.csv": {
+      "bytes": 1425,
+      "sha256": "6a1f175febb54cd7c9b2da4513b5a7b2913b136fcf66868c482f0cb5ea2e9530"
+    },
+    "experiments/bridge_relevance/results/v1/bridge_stress_summary.md": {
+      "bytes": 1011,
+      "sha256": "c0c3515a8efaa4bf270f218d1b084be34f463507e0ecb7824509de4204dae214"
+    },
+    "experiments/bridge_relevance/results/v1/t5_recorded_trajectory_replay.json": {
+      "bytes": 2865,
+      "sha256": "b551cdcd7e2a0de795aed6907e5d018d56eee1421c765aec48183881b1e700ac"
+    },
+    "experiments/bridge_relevance/results/frozen_bridge_scoring.json": {
+      "bytes": 762,
+      "sha256": "c6b6402292add8e372ad8c89f8fd68439581ceb92b8d5777c815f5bd0badfb5f"
+    }
+  },
+  "natural_prompt_hashes": {
+    "T1-off": "72f63f98690c725e9a496ff94723d1a36498780431ea10a649a25c14089cf284",
+    "T1-on": "72f63f98690c725e9a496ff94723d1a36498780431ea10a649a25c14089cf284",
+    "T2-off": "2b6d00b5e066ceec0a05120a78a1d749f1cda77bf0d4476f185bdfc2a4bfe11f",
+    "T2-on": "2b6d00b5e066ceec0a05120a78a1d749f1cda77bf0d4476f185bdfc2a4bfe11f",
+    "T3-off": "ba02454757341ab5e323f0b668d555f71adf3fb7b5b45120c44d9d6301ebfa25",
+    "T3-on": "ba02454757341ab5e323f0b668d555f71adf3fb7b5b45120c44d9d6301ebfa25",
+    "T4-off": "a4c12af008a384e759e39b07a6d51baa94c597ca50af4a36e5e68a9ab18ba9ab",
+    "T4-on": "a4c12af008a384e759e39b07a6d51baa94c597ca50af4a36e5e68a9ab18ba9ab",
+    "T5-off": "8b70b3ea6f79c02714deab35d288f66458a690d26bf0826197d6204a8b39ba76",
+    "T5-on": "8b70b3ea6f79c02714deab35d288f66458a690d26bf0826197d6204a8b39ba76",
+    "T6-off": "79f284301b957addb116bc29bc790b5e5b75b6fdaebae772408577224a96ae3f",
+    "T6-on": "79f284301b957addb116bc29bc790b5e5b75b6fdaebae772408577224a96ae3f"
+  },
+  "stress_prompt_hashes": {
+    "T1-off": "664bee5798c8bd8cb40310be4dc09901ecf44ef74ad7ce7f759b7375231c2741",
+    "T1-on": "664bee5798c8bd8cb40310be4dc09901ecf44ef74ad7ce7f759b7375231c2741",
+    "T5-off": "0df880ece8b5ae443bdb5f0b25b3b9d191ca4a9d4f87fcce1194cd3c5ec0ea49",
+    "T5-on": "0df880ece8b5ae443bdb5f0b25b3b9d191ca4a9d4f87fcce1194cd3c5ec0ea49",
+    "T6-off": "dd1ee619131c8dad8232dd5712cbd05c2f7cca52ba2c850816d18c8827e86ae2",
+    "T6-on": "dd1ee619131c8dad8232dd5712cbd05c2f7cca52ba2c850816d18c8827e86ae2"
+  }
+}

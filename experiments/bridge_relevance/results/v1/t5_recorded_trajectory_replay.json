@@ -1,0 +1,105 @@
+{
+  "evaluation_version": "v1",
+  "implementation_sha": "2fffb401",
+  "case": "T5 recorded OpenCode trajectory offline reconstruction",
+  "purpose": "Failure analysis / production reachability evidence. Not used as evidence of downstream task-success improvement.",
+  "target_search": {
+    "bytes": 20410,
+    "raw_lines": 215,
+    "command": "rg -nH 'anthropic_api_url|openai_api_url|configured.*target|target.*copilot|Copilot.*target' headroom tests"
+  },
+  "bridge_candidates": [
+    {
+      "token": "tests/e2e_real_compression.py",
+      "kind": "file_path",
+      "score": 4.8,
+      "distinct_tools": 1,
+      "occurrences": 33,
+      "positive_evidence": 7,
+      "negative_evidence": 0,
+      "recency": 0.0
+    },
+    {
+      "token": "tests/test_memory_handler_concurrent_init.py",
+      "kind": "file_path",
+      "score": 4.8,
+      "distinct_tools": 1,
+      "occurrences": 57,
+      "positive_evidence": 7,
+      "negative_evidence": 0,
+      "recency": 0.0
+    },
+    {
+      "token": "tests/test_verbosity_learn.py",
+      "kind": "file_path",
+      "score": 4.8,
+      "distinct_tools": 1,
+      "occurrences": 77,
+      "positive_evidence": 7,
+      "negative_evidence": 0,
+      "recency": 0.0
+    },
+    {
+      "token": "OpenAI",
+      "kind": "class_name",
+      "score": 4.571428571428571,
+      "distinct_tools": 3,
+      "occurrences": 3,
+      "positive_evidence": 0,
+      "negative_evidence": 0,
+      "recency": 0.5714285714285714
+    },
+    {
+      "token": "str",
+      "kind": "function_name",
+      "score": 4.361904761904762,
+      "distinct_tools": 2,
+      "occurrences": 2,
+      "positive_evidence": 4,
+      "negative_evidence": 0,
+      "recency": 0.42857142857142855
+    },
+    {
+      "token": "RuntimeError",
+      "kind": "exception",
+      "score": 4.133333333333333,
+      "distinct_tools": 1,
+      "occurrences": 2,
+      "positive_evidence": 7,
+      "negative_evidence": 0,
+      "recency": 0.0
+    }
+  ],
+  "compression_replay": {
+    "off_retained_matches": 30,
+    "on_retained_matches": 30,
+    "off_output_chars": 3748,
+    "on_output_chars": 3761
+  },
+  "fix_related_line_retention": {
+    "raw": 184,
+    "both": 23,
+    "on_only": 1,
+    "off_only": 1,
+    "dropped_both": 159
+  },
+  "critical_evidence": {
+    "test_copilot_openai_target_routes_anthropic_to_copilot": {
+      "off": true,
+      "on": true
+    },
+    "targets_openai_assertion": {
+      "off": true,
+      "on": true
+    },
+    "targets_anthropic_assertion": {
+      "off": true,
+      "on": true
+    },
+    "provider_registry_source_lines": {
+      "off": false,
+      "on": false
+    }
+  },
+  "interpretation": "The bridge activated in production, but the recorded-trajectory replay showed no meaningful evidence-fidelity advantage on T5. The selected identifiers were mostly noisy after the artificial broad-search stress protocol."
+}
