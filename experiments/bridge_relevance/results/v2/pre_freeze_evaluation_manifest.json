@@ -1,0 +1,42 @@
+{
+  "status": "v2_pre_freeze",
+  "methodology": {
+    "scoring": "frozen V1 trajectory score multiplied by normalized target-local IDF",
+    "v1_weights_retuned_for_v2": false,
+    "target_self_discovery_allowed": false,
+    "development_case_used_for_error_analysis": "T5 Copilot provider routing stress task",
+    "t5_is_held_out": false,
+    "t5_is_prospective": false
+  },
+  "controlled_evidence_fidelity": {
+    "seed": 20260901,
+    "cases": 20,
+    "bridge_context_correct": 20,
+    "off_exact_evidence": 6,
+    "on_exact_evidence": 20,
+    "paired_improvements": 14,
+    "paired_degradations": 0,
+    "off_mean_reduction_percent": 25.46,
+    "on_mean_reduction_percent": 19.13,
+    "mean_compression_cost_percentage_points": 6.34
+  },
+  "t5_recorded_trajectory_replay": {
+    "full_v1_eligible_pool": 36,
+    "archived_v1_top6_parity": true,
+    "final_v2_selected_count": 0,
+    "final_behavior": "abstain"
+  },
+  "selector_microbenchmark_ms": {
+    "notes": "Local engineering sanity check using the recorded T5 36-candidate pool; not a task-quality benchmark.",
+    "target_20000_bytes_median": 4.064,
+    "target_500000_bytes_median": 82.704,
+    "target_2000000_bytes_median": 328.881,
+    "target_8000000_bytes_median": 1309.179
+  },
+  "known_limitations": [
+    "The controlled fidelity benchmark is synthetic and demonstrates mechanism efficacy, not downstream coding-agent success.",
+    "T5 is a development/error-analysis case and must not be presented as held-out evidence.",
+    "Selector latency remains approximately linear in target size; the 8 MB sanity check was about 1.31 seconds.",
+    "Natural coding-agent trajectories previously reached the feature in 0 of 6 tasks because dedicated Grep outputs are intentionally lossless."
+  ]
+}

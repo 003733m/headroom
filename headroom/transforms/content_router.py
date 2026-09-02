@@ -5515,6 +5515,7 @@ class ContentRouter(Transform):
                         messages,
                         before_index=i,
                         user_context=context,
+                        target_content=content,
                     )
 
             pending_tasks.append(

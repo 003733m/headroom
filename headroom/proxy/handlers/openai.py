@@ -2443,6 +2443,7 @@ class OpenAIHandlerMixin:
                     unit_context = build_responses_search_relevance_context(
                         items,
                         before_index=item_idx,
+                        target_content=original_text,
                     )
                     if unit_context:
                         unit_metadata["trajectory_search_relevance"] = "true"

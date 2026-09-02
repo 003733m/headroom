@@ -13,6 +13,8 @@ Important invariants:
 
 from __future__ import annotations
 
+import bisect
+import math
 import re
 from collections import Counter, defaultdict
 from dataclasses import dataclass
@@ -320,7 +322,7 @@ def _context_evidence(
 def rank_bridge_candidates(
     tool_outputs: list[str],
     *,
-    top_k: int = DEFAULT_TOP_K,
+    top_k: int | None = DEFAULT_TOP_K,
     scoring: BridgeScoringConfig | None = None,
 ) -> list[BridgeCandidate]:
     """Rank identifiers using bounded hybrid trajectory evidence.
@@ -342,7 +344,10 @@ def rank_bridge_candidates(
 
     scoring = scoring or BridgeScoringConfig()
 
-    if not tool_outputs or top_k <= 0:
+    if not tool_outputs:
+        return []
+
+    if top_k is not None and top_k <= 0:
         return []
 
     occurrence_count: Counter[str] = Counter()
@@ -479,7 +484,481 @@ def rank_bridge_candidates(
         )
     )
 
+    if top_k is None:
+        return ranked
+
     return ranked[:top_k]
+
+
+
+@dataclass(frozen=True)
+class TargetBridgeCandidate:
+    """A frozen V1 candidate conditioned on the current SEARCH target."""
+
+    candidate: BridgeCandidate
+    score: float
+    target_specificity: float
+
+    @property
+    def token(self) -> str:
+        return self.candidate.token
+
+    @property
+    def kind(self) -> str:
+        return self.candidate.kind
+
+
+# Deliberately narrow. This is not a general software-engineering stopword
+# list; it only suppresses obvious builtin/type extraction artifacts.
+_GENERIC_BRIDGE_IDENTIFIERS = frozenset(
+    {
+        "bool",
+        "bytes",
+        "dict",
+        "float",
+        "frozenset",
+        "int",
+        "list",
+        "object",
+        "set",
+        "str",
+        "tuple",
+        "type",
+    }
+)
+
+
+def _normalized_candidate_text(text: str, kind: str) -> str:
+    """Normalize representation details needed for exact lexical matching."""
+    if kind == "file_path":
+        return text.replace("\\", "/")
+    return text
+
+
+def _candidate_match_pattern(
+    token: str,
+    *,
+    kind: str,
+) -> re.Pattern[str]:
+    """Build a conservative exact lexical matcher."""
+    normalized = _normalized_candidate_text(token, kind)
+    escaped = re.escape(normalized)
+
+    # Paths may contain dots and dashes as part of components.
+    if kind == "file_path":
+        boundary = r"A-Za-z0-9_.-"
+    else:
+        # Keep identifiers exact while still allowing request IDs such as
+        # req-0184 to be matched as a whole lexical unit.
+        boundary = r"A-Za-z0-9_"
+
+    return re.compile(
+        rf"(?<![{boundary}]){escaped}(?![{boundary}])",
+        re.IGNORECASE,
+    )
+
+
+def _contains_candidate(
+    text: str,
+    token: str,
+    *,
+    kind: str,
+) -> bool:
+    """Check whether an existing trajectory identifier occurs lexically."""
+    normalized = _normalized_candidate_text(text, kind)
+
+    return (
+        _candidate_match_pattern(
+            token,
+            kind=kind,
+        ).search(normalized)
+        is not None
+    )
+
+
+def _is_generic_bridge_identifier(
+    candidate: BridgeCandidate,
+) -> bool:
+    """Reject only obvious builtin/type extraction artifacts."""
+    if candidate.kind not in {"function_name", "class_name"}:
+        return False
+
+    return candidate.token.casefold() in _GENERIC_BRIDGE_IDENTIFIERS
+
+
+def _is_weak_unstructured_bridge_identifier(
+    candidate: BridgeCandidate,
+) -> bool:
+    """Reject low-specificity symbol shapes unless trajectory evidence is causal.
+
+    V1 intentionally extracts broadly. V2 is more conservative about lexical
+    forms that commonly arise from ordinary source/prose rather than stable
+    join keys.
+
+    Explicit positive evidence always rescues the candidate.
+    """
+
+    if candidate.positive_evidence > 0:
+        return False
+
+    if candidate.kind == "function_name":
+        # A plain single-word call such as get(...) or startswith(...)
+        # is highly reusable across unrelated code. Compound snake_case
+        # names carry substantially more lexical identity.
+        return "_" not in candidate.token
+
+    if candidate.kind == "config_key":
+        # The V1 config-key regex also captures short prose acronyms such
+        # as API. Preserve longer constants such as PORT/HOST/DEBUG and
+        # structured keys such as OPENAI_TARGET_API_URL.
+        return (
+            "_" not in candidate.token
+            and len(candidate.token) <= 3
+        )
+
+    return False
+
+
+def _target_document_frequencies(
+    candidates: list[BridgeCandidate],
+    target_content: str,
+) -> tuple[int, dict[BridgeCandidate, int]]:
+    """Count candidate-bearing target lines with batched exact matching.
+
+    This preserves the lexical boundary semantics used by
+    ``target_specificity`` while avoiding a full target scan per candidate.
+
+    Candidate strings that can overlap are conservatively evaluated with
+    the historical scalar matcher so regex alternation cannot hide a
+    legitimate nested match.
+    """
+
+    frequencies = dict.fromkeys(candidates, 0)
+
+    raw_lines = target_content.splitlines(keepends=True)
+
+    n_nonempty = sum(
+        1
+        for line in raw_lines
+        if line.strip()
+    )
+
+    if not candidates or not raw_lines:
+        return n_nonempty, frequencies
+
+    line_starts: list[int] = []
+    offset = 0
+
+    for line in raw_lines:
+        line_starts.append(offset)
+        offset += len(line)
+
+    normalized_tokens = [
+        _normalized_candidate_text(
+            candidate.token,
+            candidate.kind,
+        )
+        for candidate in candidates
+    ]
+
+    folded_tokens = [
+        token.casefold()
+        for token in normalized_tokens
+    ]
+
+    # Alternation consumes a match. If two candidate strings can overlap,
+    # evaluating them together could hide the shorter candidate. Preserve
+    # exact historical behavior for those candidates with scalar matching.
+    ambiguous: set[int] = set()
+
+    for left in range(len(candidates)):
+        for right in range(left + 1, len(candidates)):
+            a = folded_tokens[left]
+            b = folded_tokens[right]
+
+            if a in b or b in a:
+                ambiguous.add(left)
+                ambiguous.add(right)
+
+    normalized_line_cache: dict[str, list[str]] = {}
+
+    for index in ambiguous:
+        candidate = candidates[index]
+
+        cache_key = (
+            "file"
+            if candidate.kind == "file_path"
+            else "identifier"
+        )
+
+        lines = normalized_line_cache.get(cache_key)
+
+        if lines is None:
+            lines = [
+                _normalized_candidate_text(
+                    line,
+                    candidate.kind,
+                )
+                for line in target_content.splitlines()
+                if line.strip()
+            ]
+            normalized_line_cache[cache_key] = lines
+
+        pattern = _candidate_match_pattern(
+            candidate.token,
+            kind=candidate.kind,
+        )
+
+        frequencies[candidate] = sum(
+            1
+            for line in lines
+            if pattern.search(line) is not None
+        )
+
+    groups: dict[str, list[int]] = {
+        "file": [],
+        "identifier": [],
+    }
+
+    for index, candidate in enumerate(candidates):
+        if index in ambiguous:
+            continue
+
+        group = (
+            "file"
+            if candidate.kind == "file_path"
+            else "identifier"
+        )
+
+        groups[group].append(index)
+
+    for group, indexes in groups.items():
+        if not indexes:
+            continue
+
+        if group == "file":
+            boundary = r"A-Za-z0-9_.-"
+            haystack = target_content.replace("\\", "/")
+        else:
+            boundary = r"A-Za-z0-9_"
+            haystack = target_content
+
+        token_to_index = {
+            normalized_tokens[index].casefold(): index
+            for index in indexes
+        }
+
+        alternatives = sorted(
+            (
+                re.escape(normalized_tokens[index])
+                for index in indexes
+            ),
+            key=len,
+            reverse=True,
+        )
+
+        pattern = re.compile(
+            rf"(?<![{boundary}])"
+            rf"(?:{'|'.join(alternatives)})"
+            rf"(?![{boundary}])",
+            re.IGNORECASE,
+        )
+
+        seen_lines: dict[int, set[int]] = {
+            index: set()
+            for index in indexes
+        }
+
+        for match in pattern.finditer(haystack):
+            index = token_to_index.get(
+                match.group(0).casefold()
+            )
+
+            if index is None:
+                continue
+
+            line_index = (
+                bisect.bisect_right(
+                    line_starts,
+                    match.start(),
+                )
+                - 1
+            )
+
+            seen_lines[index].add(line_index)
+
+        for index, lines in seen_lines.items():
+            frequencies[candidates[index]] = len(lines)
+
+    return n_nonempty, frequencies
+
+
+def _target_specificity_from_frequency(
+    *,
+    n_lines: int,
+    document_frequency: int,
+) -> float:
+    """Compute the frozen normalized local-IDF from a precomputed DF."""
+
+    if n_lines <= 0 or document_frequency <= 0:
+        return 0.0
+
+    denominator = math.log(n_lines + 1)
+
+    if denominator <= 0.0:
+        return 0.0
+
+    value = (
+        math.log(
+            (n_lines + 1)
+            / (document_frequency + 1)
+        )
+        / denominator
+    )
+
+    return min(1.0, max(0.0, value))
+
+
+def target_specificity(
+    token: str,
+    target_content: str,
+    *,
+    kind: str,
+) -> float:
+    """Return normalized local-IDF specificity within the current target.
+
+    The identifier itself must have been discovered from PRIOR tool outputs.
+    The target is inspected only for applicability and discriminativeness.
+
+        S(c) = log((N + 1) / (df(c) + 1)) / log(N + 1)
+
+    N:
+        number of non-empty target lines
+
+    df(c):
+        number of target lines containing candidate c
+
+    Values are bounded to [0, 1].
+    """
+    lines = [
+        _normalized_candidate_text(line, kind)
+        for line in target_content.splitlines()
+        if line.strip()
+    ]
+
+    if not lines:
+        return 0.0
+
+    pattern = _candidate_match_pattern(
+        token,
+        kind=kind,
+    )
+
+    document_frequency = sum(
+        1
+        for line in lines
+        if pattern.search(line) is not None
+    )
+
+    # Candidate absent from this target.
+    if document_frequency == 0:
+        return 0.0
+
+    return _target_specificity_from_frequency(
+        n_lines=len(lines),
+        document_frequency=document_frequency,
+    )
+
+
+def select_target_bridge_candidates(
+    candidates: list[BridgeCandidate],
+    *,
+    target_content: str,
+    user_context: str,
+    top_k: int = DEFAULT_TOP_K,
+) -> list[TargetBridgeCandidate]:
+    """Condition frozen V1 candidates on the current SEARCH result.
+
+    No V1 scoring weights are changed.
+
+    Hard admissibility checks:
+    1. candidate is not an obvious builtin/type extraction artifact;
+    2. candidate is not a weak unstructured symbol without causal evidence;
+    3. candidate occurs in the current target;
+    4. candidate is not an exact lexical duplicate of user context.
+
+    Remaining candidates are ranked by:
+
+        V2 score = frozen V1 score * target specificity
+    """
+    if not candidates or not target_content or top_k <= 0:
+        return []
+
+    admissible: list[BridgeCandidate] = []
+
+    # Apply target-independent gates first so the target matcher processes
+    # only candidates that could actually survive V2 selection.
+    for candidate in candidates:
+        if _is_generic_bridge_identifier(candidate):
+            continue
+
+        if _is_weak_unstructured_bridge_identifier(candidate):
+            continue
+
+        if user_context and _contains_candidate(
+            user_context,
+            candidate.token,
+            kind=candidate.kind,
+        ):
+            continue
+
+        admissible.append(candidate)
+
+    if not admissible:
+        return []
+
+    n_lines, document_frequencies = _target_document_frequencies(
+        admissible,
+        target_content,
+    )
+
+    if n_lines <= 0:
+        return []
+
+    selected: list[TargetBridgeCandidate] = []
+
+    for candidate in admissible:
+        specificity = _target_specificity_from_frequency(
+            n_lines=n_lines,
+            document_frequency=document_frequencies[candidate],
+        )
+
+        adjusted_score = candidate.score * specificity
+
+        # Absent candidates and identifiers present in effectively every
+        # target line both have no selective value.
+        if adjusted_score <= 0.0:
+            continue
+
+        selected.append(
+            TargetBridgeCandidate(
+                candidate=candidate,
+                score=adjusted_score,
+                target_specificity=specificity,
+            )
+        )
+
+    selected.sort(
+        key=lambda item: (
+            -item.score,
+            -item.candidate.score,
+            -item.candidate.distinct_tools,
+            -item.candidate.recency,
+            item.token,
+        )
+    )
+
+    return selected[:top_k]
 
 
 def build_search_relevance_context(
@@ -487,11 +966,18 @@ def build_search_relevance_context(
     *,
     before_index: int,
     user_context: str,
+    target_content: str | None = None,
+    novelty_context: str | None = None,
     top_k: int = DEFAULT_TOP_K,
     max_tool_outputs: int = DEFAULT_MAX_TOOL_OUTPUTS,
     scoring: BridgeScoringConfig | None = None,
 ) -> str:
-    """Build bounded search-only relevance context from prior trajectory."""
+    """Build bounded search-only relevance context from prior trajectory.
+
+    When ``target_content`` is omitted, preserve the frozen V1 behavior.
+    When supplied, condition V1 candidates on the current SEARCH result
+    using the V2 target-aware selection layer.
+    """
 
     outputs = extract_prior_tool_outputs(
         messages,
@@ -501,17 +987,39 @@ def build_search_relevance_context(
 
     ranked = rank_bridge_candidates(
         outputs,
-        top_k=top_k,
+        top_k=None if target_content is not None else top_k,
         scoring=scoring,
     )
 
-    if not ranked:
-        return user_context
+    if target_content is not None:
+        target_ranked = select_target_bridge_candidates(
+            ranked,
+            target_content=target_content,
+            user_context=(
+                user_context
+                if novelty_context is None
+                else novelty_context
+            ),
+            top_k=top_k,
+        )
 
-    tokens = " ".join(
-        candidate.token
-        for candidate in ranked
-    )
+        if not target_ranked:
+            return user_context
+
+        tokens = " ".join(
+            candidate.token
+            for candidate in target_ranked
+        )
+    else:
+        # Backward compatibility: callers that do not supply the current
+        # target retain the frozen V1 semantics exactly.
+        if not ranked:
+            return user_context
+
+        tokens = " ".join(
+            candidate.token
+            for candidate in ranked
+        )
 
     if user_context:
         return (
@@ -592,11 +1100,27 @@ def responses_items_to_bridge_messages(
     return messages
 
 
+
+def _latest_bridge_user_context(
+    messages: list[dict[str, Any]],
+) -> str:
+    """Return latest prior user text for lexical deduplication only."""
+    for message in reversed(messages):
+        if message.get("role") != "user":
+            continue
+
+        content = message.get("content")
+        if isinstance(content, str) and content:
+            return content
+
+    return ""
+
 def build_responses_search_relevance_context(
     items: list[Any],
     *,
     before_index: int,
     user_context: str = "",
+    target_content: str | None = None,
     scoring: BridgeScoringConfig | None = None,
 ) -> str:
     """Build SEARCH relevance context from prior OpenAI Responses trajectory."""
@@ -616,5 +1140,7 @@ def build_responses_search_relevance_context(
         messages,
         before_index=len(messages),
         user_context=user_context,
+        target_content=target_content,
+        novelty_context=_latest_bridge_user_context(messages),
         scoring=scoring,
     )

@@ -1,0 +1,97 @@
+{
+  "status": "final_v2_development_error_analysis",
+  "evaluation_role": "development/error-analysis only; not held-out and not prospective",
+  "case": "T5 Copilot provider routing stress task",
+  "recorded_session_title": "Fix Copilot routing for Claude requests",
+  "prior_tool_window_size": 8,
+  "prior_tool_window": [
+    {
+      "tool": "bash",
+      "chars": 51314,
+      "lines": 574
+    },
+    {
+      "tool": "read",
+      "chars": 7835,
+      "lines": 195
+    },
+    {
+      "tool": "read",
+      "chars": 10997,
+      "lines": 291
+    },
+    {
+      "tool": "read",
+      "chars": 4785,
+      "lines": 115
+    },
+    {
+      "tool": "read",
+      "chars": 10371,
+      "lines": 206
+    },
+    {
+      "tool": "todowrite",
+      "chars": 512,
+      "lines": 22
+    },
+    {
+      "tool": "glob",
+      "chars": 1872,
+      "lines": 20
+    },
+    {
+      "tool": "glob",
+      "chars": 427,
+      "lines": 5
+    }
+  ],
+  "target": {
+    "bytes": 20410,
+    "chars": 20406,
+    "lines": 215,
+    "sha256": "5558ea709f3750f513c70aeb35536005354dd6c8f39b3118c70a9195b47ba448"
+  },
+  "full_v1_eligible_pool": 36,
+  "archived_v1_top6_parity": true,
+  "archived_v1_top6_parity_rows": [
+    {
+      "rank": 1,
+      "archived_token": "tests/e2e_real_compression.py",
+      "reconstructed_token": "tests/e2e_real_compression.py",
+      "match": true
+    },
+    {
+      "rank": 2,
+      "archived_token": "tests/test_memory_handler_concurrent_init.py",
+      "reconstructed_token": "tests/test_memory_handler_concurrent_init.py",
+      "match": true
+    },
+    {
+      "rank": 3,
+      "archived_token": "tests/test_verbosity_learn.py",
+      "reconstructed_token": "tests/test_verbosity_learn.py",
+      "match": true
+    },
+    {
+      "rank": 4,
+      "archived_token": "OpenAI",
+      "reconstructed_token": "OpenAI",
+      "match": true
+    },
+    {
+      "rank": 5,
+      "archived_token": "str",
+      "reconstructed_token": "str",
+      "match": true
+    },
+    {
+      "rank": 6,
+      "archived_token": "RuntimeError",
+      "reconstructed_token": "RuntimeError",
+      "match": true
+    }
+  ],
+  "final_v2_selected_count": 0,
+  "final_v2_selected": []
+}
