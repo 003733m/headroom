@@ -1,0 +1,57 @@
+{
+  "name": "Frozen-V3 exhaustive historical critical-rescue discovery scan",
+  "status": "declared_before_exhaustive_result inspection",
+  "evaluation_class": "post-hoc exploratory exhaustive scan",
+  "algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "purpose": "Determine whether real historical Headroom regressions exist in which baseline relevance drops already-retrieved historical-fix-critical production evidence and frozen V3 trajectory relevance retains it.",
+  "relationship_to_prior_evaluations": {
+    "n5_n8": "unchanged primary prospective evaluation",
+    "h1_h4": "unchanged predeclared bridge-hard challenge",
+    "this_scan": "separate exploratory exhaustive historical scan",
+    "must_not_merge_denominators": true
+  },
+  "candidate_universe": {
+    "history": "all non-merge commits before the V3 algorithm freeze",
+    "subject": "fix-like commits",
+    "requires": [
+      "at least one Python production file under headroom/",
+      "at least one Python test file under tests/",
+      "at most three production files",
+      "at most two test files",
+      "does not touch V3 treatment files",
+      "historical production patch reverses cleanly on V3 freeze",
+      "changed tests pass on pristine V3 freeze",
+      "reversed production patch yields pytest rc=1",
+      "exactly one or two failing tests",
+      "at least one failing test-name bridge absent from the user prompt"
+    ]
+  },
+  "prompt": "same deterministic test-file-only challenge prompt family used by the locked bridge-hard benchmark",
+  "target_construction": {
+    "mode": "retrieval controlled",
+    "critical_records": "non-empty buggy production lines within +/-5 lines of historical production diff hunks",
+    "bridge_anchors": "real changed-test-file lines containing failing test-name bridges",
+    "distractors": 600,
+    "seed_family": "headroom-v3-retrieval-controlled-v1",
+    "distractor_key": "SHA256(seed|source_commit|path|line|text)",
+    "format": "path:line:text"
+  },
+  "outcomes": {
+    "opportunity_task": "baseline drops at least one critical record",
+    "rescue_task": "at least one critical record changes baseline DROP to V3 KEEP",
+    "regression_task": "at least one critical record changes baseline KEEP to V3 DROP"
+  },
+  "stopping_rule": "scan the entire eligible candidate universe; do not stop after finding a positive result",
+  "constraints": [
+    "no V3 code changes",
+    "no threshold tuning",
+    "no alternative distractor count",
+    "no alternative distractor seed after results",
+    "no coding agent",
+    "no external LLM",
+    "report denominator and all evaluable tasks",
+    "report both DROP-to-KEEP and KEEP-to-DROP outcomes",
+    "previously evaluated commits are flagged rather than silently removed",
+    "fresh/unseen positives are reported separately"
+  ]
+}
