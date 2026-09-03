@@ -1,0 +1,38 @@
+{
+  "name": "V3 retrieval-controlled bridge-hard mechanism challenge",
+  "status": "declared_before_result_inspection",
+  "algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "task_manifest_commit": "c0df5b70",
+  "tasks": ["H1", "H2", "H3", "H4"],
+  "purpose": "Isolate relevance/retention from retrieval by guaranteeing that historical-fix-adjacent production evidence and a safe trajectory bridge anchor are present in the same search-shaped target.",
+  "interpretation": {
+    "scope": "conditional on retrieval",
+    "does_test": "whether trajectory-derived context changes retention of already-retrieved task-critical evidence",
+    "does_not_test": "whether the coding agent would naturally retrieve that evidence",
+    "primary_positive": "historical-fix-adjacent production record is DROP with baseline user context and KEEP with frozen V3 trajectory context",
+    "negative_results": "all tasks remain reported and no task is replaced"
+  },
+  "target_construction": {
+    "buggy_state": "V3 freeze with historical production fix reversed",
+    "critical_records": "all non-empty production lines within +/-5 lines of historical production diff hunks",
+    "bridge_anchor_records": "real changed-test-file lines containing the predeclared failing test-name bridge",
+    "distractors": 600,
+    "distractor_source": "non-empty Python source lines under headroom/",
+    "distractor_selection": "ascending SHA256(seed|task_id|path|line|text)",
+    "seed": "headroom-v3-retrieval-controlled-v1",
+    "final_order": "lexicographic path then line",
+    "format": "path:line:text"
+  },
+  "frozen_constraints": [
+    "same H1-H4 selected before V3 inspection",
+    "same frozen V3 algorithm",
+    "no coding-agent execution",
+    "no external LLM calls",
+    "no task replacement",
+    "no threshold tuning",
+    "no alternative distractor seeds",
+    "no alternative target sizes after results",
+    "all H1-H4 outcomes reported",
+    "stop after this challenge regardless of outcome"
+  ]
+}
