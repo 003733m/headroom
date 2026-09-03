@@ -214,7 +214,7 @@ prepare_runtime() {
 
     (
         cd "$RUNTIME" || exit 99
-        uv sync --extra dev --extra proxy --frozen
+        uv sync --python 3.12 --extra dev --extra proxy --frozen
     ) > "$ROOT/runtime-uv-sync.txt" 2>&1 \
         || die "uv sync failed for frozen V3 runtime."
 
@@ -827,6 +827,23 @@ run_next() {
     git clone -q --no-hardlinks "$snapshot" "$run" \
         || die "Could not clone locked $task snapshot."
 
+    # uv.lock exists in the sanitized snapshot and is hash-locked in the
+    # prospective manifest, but it is Git-ignored and therefore is not copied
+    # by `git clone`. Restore that exact locked file explicitly.
+    if [ -f "$snapshot/uv.lock" ]; then
+        cp "$snapshot/uv.lock" "$run/uv.lock" \
+            || die "Could not restore locked uv.lock for $task $cond."
+
+        local expected_run_lock got_run_lock
+        expected_run_lock="$(task_snapshot_scalar "$task" uv_lock_sha256)"
+        got_run_lock="$(sha256sum "$run/uv.lock" | awk '{print $1}')"
+
+        [ "$got_run_lock" = "$expected_run_lock" ] \
+            || die "$task $cond restored uv.lock hash mismatch."
+    else
+        die "$task locked snapshot unexpectedly has no uv.lock."
+    fi
+
     local start_head
     start_head="$(git -C "$run" rev-parse HEAD)"
 
@@ -847,7 +864,7 @@ run_next() {
 
     (
         cd "$run" || exit 99
-        uv sync --extra dev --extra proxy --frozen
+        uv sync --python 3.12 --extra dev --extra proxy --frozen
     ) > "$out/uv-sync.txt" 2>&1 \
         || die "uv sync failed for $task $cond."
 
