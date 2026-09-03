@@ -1,0 +1,192 @@
+{
+  "status": "selection_complete",
+  "v3_algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "selection_protocol": "/home/memoli3322/projects/headroom/experiments/bridge_relevance/bridge_hard/selection_protocol.json",
+  "selection_did_not_evaluate_v3": true,
+  "selection_did_not_run_agent": true,
+  "stop_rule": "first 4 eligible tasks",
+  "selected_count": 4,
+  "selected": [
+    {
+      "task_id": "H1",
+      "source_commit": "5e53b8aa0a720b5e6c4974b4b77b734da90ecde7",
+      "subject": "fix(opencode): keep Claude models off OpenAI provider",
+      "production_files": [
+        "headroom/providers/opencode/config.py"
+      ],
+      "test_files": [
+        "tests/test_providers_opencode_config.py"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_providers_opencode_config.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "efbf958dd9f4d421bc077cbba5a9c516e0e66a294838b9a7940ed95f41fee28b",
+      "buggy_oracle": {
+        "exit_code": 1,
+        "failing_nodeids": [
+          "tests/test_providers_opencode_config.py::test_build_opencode_config_content_without_mcp",
+          "tests/test_providers_opencode_config.py::test_inject_provider_config_creates_file"
+        ],
+        "failure_count": 2
+      },
+      "safe_bridge_candidates_predeclared": [
+        {
+          "kind": "test_name",
+          "token": "test_build_opencode_config_content_without_mcp"
+        },
+        {
+          "kind": "test_name",
+          "token": "test_inject_provider_config_creates_file"
+        }
+      ],
+      "selection_rationale": "Historical regression with deterministic 1-2 test failures; safe bridge identifier becomes available only after running the relevant tests and is absent from the user prompt."
+    },
+    {
+      "task_id": "H2",
+      "source_commit": "c49be269a18446779cd8a048caaa7f0ba3a3b48b",
+      "subject": "fix(wrap): stop the launch cwd from shadowing the installed package in the proxy subprocess (#2843)",
+      "production_files": [
+        "headroom/cli/wrap.py"
+      ],
+      "test_files": [
+        "tests/test_cli/test_wrap_claude_vertex_proxy_env.py"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_cli/test_wrap_claude_vertex_proxy_env.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "42e03d2341ac827dc7b39c43e4f7eacec61f16bcc4dd6c90e0938ed82c34096a",
+      "buggy_oracle": {
+        "exit_code": 1,
+        "failing_nodeids": [
+          "tests/test_cli/test_wrap_claude_vertex_proxy_env.py::test_start_proxy_sets_pythonsafepath_to_avoid_cwd_shadow"
+        ],
+        "failure_count": 1
+      },
+      "safe_bridge_candidates_predeclared": [
+        {
+          "kind": "test_name",
+          "token": "test_start_proxy_sets_pythonsafepath_to_avoid_cwd_shadow"
+        },
+        {
+          "kind": "exception",
+          "token": "KeyError"
+        }
+      ],
+      "selection_rationale": "Historical regression with deterministic 1-2 test failures; safe bridge identifier becomes available only after running the relevant tests and is absent from the user prompt."
+    },
+    {
+      "task_id": "H3",
+      "source_commit": "3488f8d4b5fae4eab157e0c4031ccf712bcbcc0d",
+      "subject": "fix(install): use --userns=keep-id under Podman so bind-mount writes don't fail (#2846)",
+      "production_files": [
+        "headroom/install/runtime.py"
+      ],
+      "test_files": [
+        "tests/test_install/test_runtime.py"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_install/test_runtime.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "bba60012c865a41797ce28d651ef14b13cf17d446d4ef4dbe3c536fd7108f278",
+      "buggy_oracle": {
+        "exit_code": 1,
+        "failing_nodeids": [
+          "tests/test_install/test_runtime.py::test_build_runtime_command_podman_uses_keep_id_not_user"
+        ],
+        "failure_count": 1
+      },
+      "safe_bridge_candidates_predeclared": [
+        {
+          "kind": "test_name",
+          "token": "test_build_runtime_command_podman_uses_keep_id_not_user"
+        }
+      ],
+      "selection_rationale": "Historical regression with deterministic 1-2 test failures; safe bridge identifier becomes available only after running the relevant tests and is absent from the user prompt."
+    },
+    {
+      "task_id": "H4",
+      "source_commit": "14c4c9d5b78c6122e1a217ff193bee95055d023b",
+      "subject": "fix(install): stop baking the host memory DB path into a container deployment (#2845)",
+      "production_files": [
+        "headroom/install/planner.py"
+      ],
+      "test_files": [
+        "tests/test_install/test_planner.py"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_install/test_planner.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "750a405eca1bec3c67a6c9c2066eeb1b6090d9a0aeb0aa22351539892d6fee95",
+      "buggy_oracle": {
+        "exit_code": 1,
+        "failing_nodeids": [
+          "tests/test_install/test_planner.py::test_build_manifest_for_persistent_docker_sets_expected_defaults"
+        ],
+        "failure_count": 1
+      },
+      "safe_bridge_candidates_predeclared": [
+        {
+          "kind": "test_name",
+          "token": "test_build_manifest_for_persistent_docker_sets_expected_defaults"
+        }
+      ],
+      "selection_rationale": "Historical regression with deterministic 1-2 test failures; safe bridge identifier becomes available only after running the relevant tests and is absent from the user prompt."
+    }
+  ],
+  "rejection_counts": {
+    "buggy_failure_count_not_1_or_2": 2,
+    "buggy_oracle_rc_2": 2,
+    "freeze_baseline_tests_not_pass": 1,
+    "missing_prod_or_test": 1,
+    "not_fix_subject": 15,
+    "previously_used_or_screened": 229,
+    "reverse_patch_not_clean": 7,
+    "touches_v3_treatment": 1
+  },
+  "selected_debug": [
+    {
+      "source_commit": "5e53b8aa0a720b5e6c4974b4b77b734da90ecde7",
+      "subject": "fix(opencode): keep Claude models off OpenAI provider",
+      "production_files": [
+        "headroom/providers/opencode/config.py"
+      ],
+      "test_files": [
+        "tests/test_providers_opencode_config.py"
+      ],
+      "selected": true,
+      "task_id": "H1",
+      "buggy_oracle_tail": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.3, pluggy-1.6.0\nrootdir: /tmp/headroom-bridge-hard-zlrw7pr3/repo\nconfigfile: pyproject.toml\nplugins: cov-7.0.0, asyncio-1.3.0, anyio-4.12.1, respx-0.23.1, langsmith-0.9.3\nasyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 41 items\n\ntests/test_providers_opencode_config.py .............F.................. [ 78%]\n..F......                                                                [100%]\n\n=================================== FAILURES ===================================\n___________________ test_inject_provider_config_creates_file ___________________\ntests/test_providers_opencode_config.py:202: in test_inject_provider_config_creates_file\n    assert set(models) == {\"gpt-4o\", \"gpt-4.1\"}\nE   AssertionError: assert {'claude-haik....1', 'gpt-4o'} == {'gpt-4.1', 'gpt-4o'}\nE     \nE     Extra items in the left set:\nE     'claude-opus-4-6'\nE     'claude-sonnet-4-6'\nE     'claude-haiku-4-5-20251001'\nE     Use -v to get more diff\n________________ test_build_opencode_config_content_without_mcp ________________\ntests/test_providers_opencode_config.py:466: in test_build_opencode_config_content_without_mcp\n    assert set(models) == {\"gpt-4o\", \"gpt-4.1\"}\nE   AssertionError: assert {'claude-haik....1', 'gpt-4o'} == {'gpt-4.1', 'gpt-4o'}\nE     \nE     Extra items in the left set:\nE     'claude-opus-4-6'\nE     'claude-sonnet-4-6'\nE     'claude-haiku-4-5-20251001'\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED tests/test_providers_opencode_config.py::test_inject_provider_config_creates_file\nFAILED tests/test_providers_opencode_config.py::test_build_opencode_config_content_without_mcp\n========================= 2 failed, 39 passed in 0.45s ========================="
+    },
+    {
+      "source_commit": "c49be269a18446779cd8a048caaa7f0ba3a3b48b",
+      "subject": "fix(wrap): stop the launch cwd from shadowing the installed package in the proxy subprocess (#2843)",
+      "production_files": [
+        "headroom/cli/wrap.py"
+      ],
+      "test_files": [
+        "tests/test_cli/test_wrap_claude_vertex_proxy_env.py"
+      ],
+      "selected": true,
+      "task_id": "H2",
+      "buggy_oracle_tail": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.3, pluggy-1.6.0\nrootdir: /tmp/headroom-bridge-hard-2uvps2on/repo\nconfigfile: pyproject.toml\nplugins: cov-7.0.0, asyncio-1.3.0, anyio-4.12.1, respx-0.23.1, langsmith-0.9.3\nasyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 24 items\n\ntests/test_cli/test_wrap_claude_vertex_proxy_env.py .................... [ 83%]\n.F..                                                                     [100%]\n\n=================================== FAILURES ===================================\n___________ test_start_proxy_sets_pythonsafepath_to_avoid_cwd_shadow ___________\ntests/test_cli/test_wrap_claude_vertex_proxy_env.py:514: in test_start_proxy_sets_pythonsafepath_to_avoid_cwd_shadow\n    assert captured[\"kwargs\"][\"env\"][\"PYTHONSAFEPATH\"] == \"1\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   KeyError: 'PYTHONSAFEPATH'\n----------------------------- Captured stdout call -----------------------------\n  Logs: /tmp/pytest-of-memoli3322/pytest-292/test_start_proxy_sets_pythonsa0/proxy.log\n=========================== short test summary info ============================\nFAILED tests/test_cli/test_wrap_claude_vertex_proxy_env.py::test_start_proxy_sets_pythonsafepath_to_avoid_cwd_shadow\n========================= 1 failed, 23 passed in 0.61s ========================="
+    },
+    {
+      "source_commit": "3488f8d4b5fae4eab157e0c4031ccf712bcbcc0d",
+      "subject": "fix(install): use --userns=keep-id under Podman so bind-mount writes don't fail (#2846)",
+      "production_files": [
+        "headroom/install/runtime.py"
+      ],
+      "test_files": [
+        "tests/test_install/test_runtime.py"
+      ],
+      "selected": true,
+      "task_id": "H3",
+      "buggy_oracle_tail": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.3, pluggy-1.6.0\nrootdir: /tmp/headroom-bridge-hard-lyjayn_s/repo\nconfigfile: pyproject.toml\nplugins: cov-7.0.0, asyncio-1.3.0, anyio-4.12.1, respx-0.23.1, langsmith-0.9.3\nasyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 26 items\n\ntests/test_install/test_runtime.py .........F................            [100%]\n\n=================================== FAILURES ===================================\n___________ test_build_runtime_command_podman_uses_keep_id_not_user ____________\ntests/test_install/test_runtime.py:333: in test_build_runtime_command_podman_uses_keep_id_not_user\n    assert \"--userns=keep-id\" in command\nE   AssertionError: assert '--userns=keep-id' in ['docker', 'run', '--rm', '--name', 'headroom-persistent', '-p', ...]\n=========================== short test summary info ============================\nFAILED tests/test_install/test_runtime.py::test_build_runtime_command_podman_uses_keep_id_not_user\n========================= 1 failed, 25 passed in 0.65s ========================="
+    },
+    {
+      "source_commit": "14c4c9d5b78c6122e1a217ff193bee95055d023b",
+      "subject": "fix(install): stop baking the host memory DB path into a container deployment (#2845)",
+      "production_files": [
+        "headroom/install/planner.py"
+      ],
+      "test_files": [
+        "tests/test_install/test_planner.py"
+      ],
+      "selected": true,
+      "task_id": "H4",
+      "buggy_oracle_tail": "============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.3, pluggy-1.6.0\nrootdir: /tmp/headroom-bridge-hard-tizy9aqr/repo\nconfigfile: pyproject.toml\nplugins: cov-7.0.0, asyncio-1.3.0, anyio-4.12.1, respx-0.23.1, langsmith-0.9.3\nasyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 24 items\n\ntests/test_install/test_planner.py .F......................              [100%]\n\n=================================== FAILURES ===================================\n_______ test_build_manifest_for_persistent_docker_sets_expected_defaults _______\ntests/test_install/test_planner.py:52: in test_build_manifest_for_persistent_docker_sets_expected_defaults\n    assert \"--memory-db-path\" not in manifest.proxy_args\nE   AssertionError: assert '--memory-db-path' not in ['--host', '127.0.0.1', '--port', '8787', '--mode', 'token', ...]\nE    +  where ['--host', '127.0.0.1', '--port', '8787', '--mode', 'token', ...] = DeploymentManifest(profile='default', preset='persistent-docker', runtime_kind='docker', supervisor_kind='none', scope...y.db'], mutations=[], artifacts=[], created_at='2026-09-03T07:51:08.115428Z', updated_at='2026-09-03T07:51:08.115447Z').proxy_args\n=========================== short test summary info ============================\nFAILED tests/test_install/test_planner.py::test_build_manifest_for_persistent_docker_sets_expected_defaults\n========================= 1 failed, 23 passed in 0.43s ========================="
+    }
+  ]
+}
