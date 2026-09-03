@@ -1,0 +1,2379 @@
+{
+  "status": "four_tasks_selected",
+  "freeze_sha": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "base_sha": "7b3d226598fec88b5766bcf171cdd7f2a5d1cd3b",
+  "selection_order": "git_log_date_order_newest_to_oldest",
+  "stop_after_valid_tasks": 4,
+  "rules": {
+    "fix_subject_only": true,
+    "max_production_files": 3,
+    "max_test_files": 3,
+    "exclude_v3_treatment_files": [
+      "headroom/proxy/handlers/openai.py",
+      "headroom/trajectory_relevance.py",
+      "headroom/transforms/content_router.py"
+    ],
+    "exclude_prior_task_production_files": [
+      "headroom/memory/inline_extractor.py",
+      "headroom/providers/anthropic.py",
+      "headroom/proxy/handlers/openai.py",
+      "headroom/proxy/semantic_cache_key.py",
+      "headroom/proxy/semantic_cache_key_policy.py"
+    ],
+    "no_production_file_overlap_between_selected_tasks": true,
+    "baseline_pytest_rc": 0,
+    "reverse_patch_must_apply_cleanly": true,
+    "buggy_pytest_rc": 1,
+    "buggy_failure_count": [
+      1,
+      2
+    ],
+    "provenance_leak_check": [
+      "full source SHA",
+      "8-character source SHA",
+      "exact source subject",
+      "exact source subject without trailing PR number"
+    ],
+    "trajectory_relevance_disabled_during_screening": true,
+    "no_agent_runs_during_screening": true
+  },
+  "excluded_source_commits": [
+    "08466f3cae4dbb2647dc6f249fe42c4e840600c5",
+    "2cae0f8eaf627f6b743deb215f7c19c499c26bcd",
+    "536c949a692f4855719d71d612abc4968040286b",
+    "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+    "a06a51eca63f88271dfa77f2ee6bf3c8da6b24e4",
+    "e00c6ff81ce2003e04042b8f2d1bd6aa3c6e885c"
+  ],
+  "selected_tasks": [
+    {
+      "id": "N5",
+      "source_commit": "36cc800162eae83aceffce705cc4ecba05f6ec02",
+      "date": "2026-08-25T21:37:12-05:00",
+      "subject": "fix(copilot): honor corporate TLS for token refresh (#3246)",
+      "production_files": [
+        "headroom/copilot_auth.py",
+        "headroom/proxy/ssl_context.py"
+      ],
+      "oracle_tests": [
+        "tests/test_copilot_auth.py",
+        "tests/test_integrations/agno/test_model.py"
+      ],
+      "expected_buggy_failures": [
+        "tests/test_copilot_auth.py::test_exchange_token_sync_uses_configured_corporate_tls_context"
+      ],
+      "order": [
+        "OFF",
+        "ON"
+      ],
+      "baseline_rc": 0,
+      "buggy_rc": 1,
+      "baseline_seconds": 2.892,
+      "buggy_seconds": 2.733
+    },
+    {
+      "id": "N6",
+      "source_commit": "9ca5a16bde81f515454f9bc6ad022caa15e118b8",
+      "date": "2026-08-18T08:51:09+05:30",
+      "subject": "fix(proxy/anthropic): coerce present-null usage counters on the buffered backend path (#3084)",
+      "production_files": [
+        "headroom/proxy/handlers/anthropic.py"
+      ],
+      "oracle_tests": [
+        "tests/test_backend_nonstreaming_cache_metrics.py"
+      ],
+      "expected_buggy_failures": [
+        "tests/test_backend_nonstreaming_cache_metrics.py::test_anthropic_backend_nonstreaming_present_null_cache_counters_do_not_crash"
+      ],
+      "order": [
+        "ON",
+        "OFF"
+      ],
+      "baseline_rc": 0,
+      "buggy_rc": 1,
+      "baseline_seconds": 11.664,
+      "buggy_seconds": 11.499
+    },
+    {
+      "id": "N7",
+      "source_commit": "7e83b8da3cdefd5c0820017ff60e48eb489044fd",
+      "date": "2026-08-12T10:07:37+05:30",
+      "subject": "fix(learn/gemini): detect the project path for JSONL sessions (#2229)",
+      "production_files": [
+        "headroom/learn/plugins/gemini.py"
+      ],
+      "oracle_tests": [
+        "tests/test_learn/test_gemini_scanner.py"
+      ],
+      "expected_buggy_failures": [
+        "tests/test_learn/test_gemini_scanner.py::TestProjectDiscovery::test_detects_project_path_from_jsonl_cwd"
+      ],
+      "order": [
+        "OFF",
+        "ON"
+      ],
+      "baseline_rc": 0,
+      "buggy_rc": 1,
+      "baseline_seconds": 2.106,
+      "buggy_seconds": 2.084
+    },
+    {
+      "id": "N8",
+      "source_commit": "07d89a751d603f5cf73b8fd7af0c766a08e65da8",
+      "date": "2026-08-11T22:43:10+05:30",
+      "subject": "fix(litellm): close shared cloud client",
+      "production_files": [
+        "headroom/integrations/litellm_callback.py"
+      ],
+      "oracle_tests": [
+        "tests/test_integrations/test_litellm_callback.py"
+      ],
+      "expected_buggy_failures": [
+        "tests/test_integrations/test_litellm_callback.py::TestHeadroomCallbackClientLifecycle::test_aclose_closes_and_clears_initialized_client",
+        "tests/test_integrations/test_litellm_callback.py::TestHeadroomCallbackClientLifecycle::test_aclose_without_initialized_client_is_a_noop"
+      ],
+      "order": [
+        "ON",
+        "OFF"
+      ],
+      "baseline_rc": 0,
+      "buggy_rc": 1,
+      "baseline_seconds": 5.868,
+      "buggy_seconds": 5.879
+    }
+  ],
+  "rejection_reason_counts": {
+    "missing_prod_or_test": 24,
+    "not_fix_subject": 59,
+    "touches_v3_treatment": 18,
+    "reverse_patch_not_clean": 1,
+    "buggy_failure_count_not_1_or_2": 2,
+    "too_broad": 29,
+    "tracked_provenance_leak": 74,
+    "production_file_overlap": 11,
+    "buggy_oracle_rc_not_1": 1,
+    "previously_used_or_screened": 5
+  },
+  "decisions": [
+    {
+      "commit": "7b3d226598fec88b5766bcf171cdd7f2a5d1cd3b",
+      "subject": "fix(perf): a bad savings row must not take down the whole report",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "56f809ce39879205a0b936ececa470956e3ab3d9",
+      "subject": "perf: render the savings each source actually reported",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "954a5ffbb04b1bc2a4adf5b8397c80873398a712",
+      "subject": "test: unstale the example name in the wrapped-exclusion sanity check",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "e23e73943bb636e89d8b9884286db4b17dea4ce4",
+      "subject": "fix: protect Cursor's read_file in the core, not only in the plugin",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "d02e7df5889b3f2dcd229ddfb6ca397ab3987b84",
+      "subject": "fix: hold Cursor's read_file byte-exact too",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "7155e68658c95efb478937016bf6a7525e132940",
+      "subject": "docs: state the read-gate contract on _lossless_compact_excluded",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "59499f73ac49b45b7bbe75da018f2eea50e14d5a",
+      "subject": "fix: keep file-read tool output byte-exact through the lossless fold",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/proxy/handlers/openai.py",
+        "headroom/transforms/content_router.py"
+      ]
+    },
+    {
+      "commit": "a811984ffb62a866274dda2928f78922101c824b",
+      "subject": "feat(dashboard): show routing savings for this session and all time (#3362)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "65477f933a775bd519d4b037d31d93b3e255e297",
+      "subject": "test: let the cache-price stub absorb the long_context tier selector (#3359)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "bfe3c7873f93d281ca55316d42faa2262d946a2c",
+      "subject": "fix(dashboard): report Headroom-attributable cost savings, not the provider cache discount (#3356)",
+      "status": "rejected",
+      "reason": "reverse_patch_not_clean",
+      "output_tail": "error: patch failed: headroom/proxy/cost.py:689\nerror: headroom/proxy/cost.py: patch does not apply"
+    },
+    {
+      "commit": "17b041235480654ee69d775e38f2f09ffe468e1d",
+      "subject": "feat(dashboard): Cost Saved headline card; label per-row savings as message-only (#3353)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "b8fa3ad9bdf77061fe808578fba302941ab4e51e",
+      "subject": "feat(proxy): full-savings cost card, cache-aware tool-schema pricing, routing-stats seam (#3351)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "edcdf660a7d33e019779a248448fa41fb6f69f7e",
+      "subject": "perf(compression/router): reuse apply()'s detection in compress(), not re-detect (#3343)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "213b37158fb9fa7287d7d5884c7df43800821995",
+      "subject": "fix: keep dashboard route boundaries out of upstream passthrough (#3324)",
+      "status": "rejected",
+      "reason": "buggy_failure_count_not_1_or_2",
+      "buggy_rc": 1,
+      "failures": [
+        "tests/test_dashboard_static_assets.py::test_dashboard_trailing_slash_is_served_locally",
+        "tests/test_dashboard_static_assets.py::test_static_directory_boundaries_are_not_forwarded[/dashboard/static]",
+        "tests/test_dashboard_static_assets.py::test_static_directory_boundaries_are_not_forwarded[/dashboard/static/]"
+      ],
+      "output_tail": "warning: `VIRTUAL_ENV=/home/memoli3322/projects/headroom/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\nUninstalled 1 package in 0.85ms\nInstalled 1 package in 6ms\n============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.3, pluggy-1.6.0\nrootdir: /tmp/headroom-v3-screen\nconfigfile: pyproject.toml\nplugins: cov-7.0.0, asyncio-1.3.0, anyio-4.12.1, respx-0.23.1, langsmith-0.9.3\nasyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 10 items\n\ntests/test_dashboard_static_assets.py .....FFF..                         [100%]\n\n=============================== warnings summary ===============================\n../../home/memoli3322/projects/headroom/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1\n  /home/memoli3322/projects/headroom/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.\n    from starlette.testclient import TestClient as TestClient  # noqa\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED tests/test_dashboard_static_assets.py::test_dashboard_trailing_slash_is_served_locally\nFAILED tests/test_dashboard_static_assets.py::test_static_directory_boundaries_are_not_forwarded[/dashboard/static]\nFAILED tests/test_dashboard_static_assets.py::test_static_directory_boundaries_are_not_forwarded[/dashboard/static/]\n==================== 3 failed, 7 passed, 1 warning in 8.76s ===================="
+    },
+    {
+      "commit": "9128ebdca8aa8152d5c8e7506730b149739159c3",
+      "subject": "fix(proxy): stop the WS->HTTP fallback from ignoring the timeout config (#3334)",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/proxy/handlers/openai.py"
+      ]
+    },
+    {
+      "commit": "a507249b9270987b48c87863f243a3b9ff4ed29d",
+      "subject": "fix(proxy): give the upstream write phase its own timeout (#3327)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "25a4e71b295f4bc7e50a7fd87379c1e25436c980",
+      "subject": "fix(proxy): bound decompressed request bodies to close a zip-bomb DoS (#3325)",
+      "status": "rejected",
+      "reason": "buggy_failure_count_not_1_or_2",
+      "buggy_rc": 1,
+      "failures": [
+        "tests/test_request_body_decompression_limits.py::test_decompressed_ceiling_matches_the_plain_body_ceiling",
+        "tests/test_request_body_decompression_limits.py::test_too_large_is_a_value_error",
+        "tests/test_request_body_decompression_limits.py::test_gzip_round_trips",
+        "tests/test_request_body_decompression_limits.py::test_deflate_round_trips",
+        "tests/test_request_body_decompression_limits.py::test_zstd_round_trips",
+        "tests/test_request_body_decompression_limits.py::test_multi_member_gzip_is_still_concatenated",
+        "tests/test_request_body_decompression_limits.py::test_gzip_trailing_nul_padding_is_tolerated",
+        "tests/test_request_body_decompression_limits.py::test_gzip_padding_between_members_is_skipped",
+        "tests/test_request_body_decompression_limits.py::test_empty_gzip_body_matches_the_one_shot_call",
+        "tests/test_request_body_decompression_limits.py::test_gzip_body_of_only_padding_is_still_rejected",
+        "tests/test_request_body_decompression_limits.py::test_truncated_gzip_still_errors"
+      ],
+      "output_tail": "warning: `VIRTUAL_ENV=/home/memoli3322/projects/headroom/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\nUninstalled 1 package in 0.90ms\nInstalled 1 package in 6ms\n============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.3, pluggy-1.6.0\nrootdir: /tmp/headroom-v3-screen\nconfigfile: pyproject.toml\nplugins: cov-7.0.0, asyncio-1.3.0, anyio-4.12.1, respx-0.23.1, langsmith-0.9.3\nasyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 22 items\n\ntests/test_request_body_decompression_limits.py FFEEEEEEFFFsFFFFFFEEE.   [100%]\n\n=========================== short test summary info ============================\nFAILED tests/test_request_body_decompression_limits.py::test_decompressed_ceiling_matches_the_plain_body_ceiling\nFAILED tests/test_request_body_decompression_limits.py::test_too_large_is_a_value_error\nFAILED tests/test_request_body_decompression_limits.py::test_gzip_round_trips\nFAILED tests/test_request_body_decompression_limits.py::test_deflate_round_trips\nFAILED tests/test_request_body_decompression_limits.py::test_zstd_round_trips\nFAILED tests/test_request_body_decompression_limits.py::test_multi_member_gzip_is_still_concatenated\nFAILED tests/test_request_body_decompression_limits.py::test_gzip_trailing_nul_padding_is_tolerated\nFAILED tests/test_request_body_decompression_limits.py::test_gzip_padding_between_members_is_skipped\nFAILED tests/test_request_body_decompression_limits.py::test_empty_gzip_body_matches_the_one_shot_call\nFAILED tests/test_request_body_decompression_limits.py::test_gzip_body_of_only_padding_is_still_rejected\nFAILED tests/test_request_body_decompression_limits.py::test_truncated_gzip_still_errors\nERROR tests/test_request_body_decompression_limits.py::test_gzip_bomb_is_refused\nERROR tests/test_request_body_decompression_limits.py::test_deflate_bomb_is_refused\nERROR tests/test_request_body_decompression_limits.py::test_zstd_bomb_is_refused\nERROR tests/test_request_body_decompression_limits.py::test_brotli_bomb_is_refused\nERROR tests/test_request_body_decompression_limits.py::test_bomb_never_materializes[_gzip_bomb-<lambda>]\nERROR tests/test_request_body_decompression_limits.py::test_bomb_never_materializes[_deflate_bomb-<lambda>]\nERROR tests/test_request_body_decompression_limits.py::test_reader_refuses_a_bomb\nERROR tests/test_request_body_decompression_limits.py::test_reader_passes_an_ordinary_compressed_body\nERROR tests/test_request_body_decompression_limits.py::test_reader_leaves_uncompressed_bodies_alone\n============== 11 failed, 1 passed, 1 skipped, 9 errors in 1.36s ==============="
+    },
+    {
+      "commit": "32d7ca4577d599b8a5f811ada74cf31504302c9d",
+      "subject": "chore: release 0.37.0 (#3228)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "91d4fc8bbdd637a4d53c1c667bdc2502766be686",
+      "subject": "fix(windows): terminate native proxy process tree (#3313)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "91af73fc04e9b39f7f6c74af088efeeff991fc7d",
+      "subject": "test(copilot): validate authenticated Windows CLI and VS Code E2E (#3311)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "d30e3e052d8b01347acbc9e48bf0ce84c8830d32",
+      "subject": "ci: bump actions/setup-node from 6 to 7 (#3302)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "c3297d9eca64eaaac93e47f94ab931bb1c7115bf",
+      "subject": "ci: bump actions/stale from 10 to 11 (#3301)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "920a93bc2a7cef42b9071b569dd6a5f6e126f100",
+      "subject": "ci: bump actions/setup-python from 5 to 7 (#3300)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "27b4e2d147c566a4e5509634f6ab56696abc7b97",
+      "subject": "fix(proxy): enforce HEADROOM_PROXY_TOKEN on WebSocket handshakes (#3305)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "27b4e2d147c566a4e5509634f6ab56696abc7b97",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:305:* **proxy:** enforce HEADROOM_PROXY_TOKEN on WebSocket handshakes ([#3305](https://github.com/headroomlabs-ai/headroom/issues/3305)) ([27b4e2d](https://github.com/headroomlabs-ai/headroom/commit/27b4e2d147c566a4e5509634f6ab56696abc7b97))"
+        },
+        {
+          "pattern": "27b4e2d1",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:305:* **proxy:** enforce HEADROOM_PROXY_TOKEN on WebSocket handshakes ([#3305](https://github.com/headroomlabs-ai/headroom/issues/3305)) ([27b4e2d](https://github.com/headroomlabs-ai/headroom/commit/27b4e2d147c566a4e5509634f6ab56696abc7b97))"
+        }
+      ]
+    },
+    {
+      "commit": "7c0b886004abf232130cd0cb6127ad7143e2ca9a",
+      "subject": "fix(vertex): validate location region to close a path-parameter SSRF (#3304)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "7c0b886004abf232130cd0cb6127ad7143e2ca9a",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:310:* **vertex:** validate location region to close a path-parameter SSRF ([#3304](https://github.com/headroomlabs-ai/headroom/issues/3304)) ([7c0b886](https://github.com/headroomlabs-ai/headroom/commit/7c0b886004abf232130cd0cb6127ad7143e2ca9a))"
+        },
+        {
+          "pattern": "7c0b8860",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:310:* **vertex:** validate location region to close a path-parameter SSRF ([#3304](https://github.com/headroomlabs-ai/headroom/issues/3304)) ([7c0b886](https://github.com/headroomlabs-ai/headroom/commit/7c0b886004abf232130cd0cb6127ad7143e2ca9a))\n7c4fe80c19b3a9537f395f515a64432e41ee1d43:experiments/bridge_relevance/agent_benchmarks/v1/run_bridge_stress.sh:80:FIX[T4]=\"7c0b8860\"\n7c4fe80c19b3a9537f395f515a64432e41ee1d43:experiments/bridge_relevance/agent_benchmarks/v1/run_natural_benchmark.sh:59:FIX[T4]=\"7c0b8860\""
+        }
+      ]
+    },
+    {
+      "commit": "8884d8737802e61b1c9d8dfe6351f0c435eb42ae",
+      "subject": "fix(transforms): stop compression garbling mixed subagent output (#3286)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "4f2e70a75cd2870c23b1905dcb8c7f8d13aea6b0",
+      "subject": "fix(proxy/anthropic): authenticate and attribute buffered Copilot turns (#3277)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "4f2e70a75cd2870c23b1905dcb8c7f8d13aea6b0",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:304:* **proxy/anthropic:** authenticate and attribute buffered Copilot turns ([#3277](https://github.com/headroomlabs-ai/headroom/issues/3277)) ([4f2e70a](https://github.com/headroomlabs-ai/headroom/commit/4f2e70a75cd2870c23b1905dcb8c7f8d13aea6b0))"
+        },
+        {
+          "pattern": "4f2e70a7",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:304:* **proxy/anthropic:** authenticate and attribute buffered Copilot turns ([#3277](https://github.com/headroomlabs-ai/headroom/issues/3277)) ([4f2e70a](https://github.com/headroomlabs-ai/headroom/commit/4f2e70a75cd2870c23b1905dcb8c7f8d13aea6b0))"
+        }
+      ]
+    },
+    {
+      "commit": "1e448b55039b6968caedb8afb810ba70a3abe0c1",
+      "subject": "fix(providers): route Claude requests to Copilot when the OpenAI target is a Copilot host (#3258)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "1e448b55",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:experiments/bridge_relevance/agent_benchmarks/v1/run_bridge_stress.sh:88:FIX[T5]=\"1e448b55\"\n7c4fe80c19b3a9537f395f515a64432e41ee1d43:experiments/bridge_relevance/agent_benchmarks/v1/run_natural_benchmark.sh:67:FIX[T5]=\"1e448b55\""
+        }
+      ]
+    },
+    {
+      "commit": "d12ea501222b92f371b5427595c14ec2466a3f39",
+      "subject": "feat(proxy): unify proxy and sidecar compression on one session engine (#3271)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "4fa88026d9ff64092feaa750789a28be3ed0ace8",
+      "subject": "feat(compress): session-aware /v1/compress (sidecar mode) + /v1/usage relay (#3270)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "826b600c9b5ac80dae5930e1b7aa376a463d28d6",
+      "subject": "feat(proxy): self-limiting session state for the compression-cache registry (#3261)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "f4119c3bc047c0fc6077f273f266fdc8a2c9750f",
+      "subject": "test(agno): drop dead module-level Metrics import (#3269)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "997a47992c490e7a13db34ef39eccf3dfb006488",
+      "subject": "fix(copilot): preserve native enterprise model routing (#2998)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "997a47992c490e7a13db34ef39eccf3dfb006488",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:300:* **copilot:** preserve native enterprise model routing ([#2998](https://github.com/headroomlabs-ai/headroom/issues/2998)) ([997a479](https://github.com/headroomlabs-ai/headroom/commit/997a47992c490e7a13db34ef39eccf3dfb006488))"
+        },
+        {
+          "pattern": "997a4799",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:300:* **copilot:** preserve native enterprise model routing ([#2998](https://github.com/headroomlabs-ai/headroom/issues/2998)) ([997a479](https://github.com/headroomlabs-ai/headroom/commit/997a47992c490e7a13db34ef39eccf3dfb006488))"
+        }
+      ]
+    },
+    {
+      "commit": "632cb81dbe7400cf77a20d0d395d4cfb0ea245e7",
+      "subject": "fix(learn): surface Codex analysis failures (#3016)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "632cb81dbe7400cf77a20d0d395d4cfb0ea245e7",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:302:* **learn:** surface Codex analysis failures ([#3016](https://github.com/headroomlabs-ai/headroom/issues/3016)) ([632cb81](https://github.com/headroomlabs-ai/headroom/commit/632cb81dbe7400cf77a20d0d395d4cfb0ea245e7))"
+        },
+        {
+          "pattern": "632cb81d",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:302:* **learn:** surface Codex analysis failures ([#3016](https://github.com/headroomlabs-ai/headroom/issues/3016)) ([632cb81](https://github.com/headroomlabs-ai/headroom/commit/632cb81dbe7400cf77a20d0d395d4cfb0ea245e7))"
+        }
+      ]
+    },
+    {
+      "commit": "36cc800162eae83aceffce705cc4ecba05f6ec02",
+      "subject": "fix(copilot): honor corporate TLS for token refresh (#3246)",
+      "status": "selected",
+      "task_id": "N5"
+    },
+    {
+      "commit": "c2fbb4eed0c47973f8baaa88e45be0e51e38e2e2",
+      "subject": "test(agno): follow the metrics dataclass move in agno 3.0.0 (#3260)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "6262c28a4834f07bac14143e3347d7b2cdc43937",
+      "subject": "fix(memory/graph): skip a corrupt row instead of aborting a whole graph scan (#3239)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "6262c28a",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:experiments/bridge_relevance/agent_benchmarks/v1/run_bridge_stress.sh:72:FIX[T3]=\"6262c28a\"\n7c4fe80c19b3a9537f395f515a64432e41ee1d43:experiments/bridge_relevance/agent_benchmarks/v1/run_natural_benchmark.sh:51:FIX[T3]=\"6262c28a\""
+        }
+      ]
+    },
+    {
+      "commit": "4408e881064741a5113be69d631f336ce92631f5",
+      "subject": "fix(proxy): protect file reads from lossy compression on the Responses API path (Copilot view + HEADROOM_PROTECT_READS) (#3238)",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/proxy/handlers/openai.py",
+        "headroom/transforms/content_router.py"
+      ]
+    },
+    {
+      "commit": "b9d7dcc3da3ec67a968d0ac1e35bffba9b7cf1c2",
+      "subject": "fix(proxy): make output-savings flush atomic and keep it off the event loop (#3231)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "b9d7dcc3da3ec67a968d0ac1e35bffba9b7cf1c2",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:306:* **proxy:** make output-savings flush atomic and keep it off the event loop ([#3231](https://github.com/headroomlabs-ai/headroom/issues/3231)) ([b9d7dcc](https://github.com/headroomlabs-ai/headroom/commit/b9d7dcc3da3ec67a968d0ac1e35bffba9b7cf1c2))"
+        },
+        {
+          "pattern": "b9d7dcc3",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:306:* **proxy:** make output-savings flush atomic and keep it off the event loop ([#3231](https://github.com/headroomlabs-ai/headroom/issues/3231)) ([b9d7dcc](https://github.com/headroomlabs-ai/headroom/commit/b9d7dcc3da3ec67a968d0ac1e35bffba9b7cf1c2))"
+        }
+      ]
+    },
+    {
+      "commit": "f27f235032d8aef522efbcb4daf548787692c7e4",
+      "subject": "fix(wrap): stop concurrent wrap sessions clobbering settings.local.json (#3232)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "f27f235032d8aef522efbcb4daf548787692c7e4",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:312:* **wrap:** stop concurrent wrap sessions clobbering settings.local.json ([#3232](https://github.com/headroomlabs-ai/headroom/issues/3232)) ([f27f235](https://github.com/headroomlabs-ai/headroom/commit/f27f235032d8aef522efbcb4daf548787692c7e4))"
+        },
+        {
+          "pattern": "f27f2350",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:312:* **wrap:** stop concurrent wrap sessions clobbering settings.local.json ([#3232](https://github.com/headroomlabs-ai/headroom/issues/3232)) ([f27f235](https://github.com/headroomlabs-ai/headroom/commit/f27f235032d8aef522efbcb4daf548787692c7e4))"
+        }
+      ]
+    },
+    {
+      "commit": "701e4616d92d6d4b110bf5356675b6db409802e8",
+      "subject": "fix(kimi): route managed Kimi Code through the proxy (#3223)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "701e4616d92d6d4b110bf5356675b6db409802e8",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:301:* **kimi:** route managed Kimi Code through the proxy ([#3223](https://github.com/headroomlabs-ai/headroom/issues/3223)) ([701e461](https://github.com/headroomlabs-ai/headroom/commit/701e4616d92d6d4b110bf5356675b6db409802e8))"
+        },
+        {
+          "pattern": "701e4616",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:301:* **kimi:** route managed Kimi Code through the proxy ([#3223](https://github.com/headroomlabs-ai/headroom/issues/3223)) ([701e461](https://github.com/headroomlabs-ai/headroom/commit/701e4616d92d6d4b110bf5356675b6db409802e8))"
+        }
+      ]
+    },
+    {
+      "commit": "7784bb184614bdcd7ba1afd93a23e8d1458ecc96",
+      "subject": "fix(transforms): stop folding datetime-prefixed user messages as search results (#3221)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "7784bb184614bdcd7ba1afd93a23e8d1458ecc96",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:309:* **transforms:** stop folding datetime-prefixed user messages as search results ([#3221](https://github.com/headroomlabs-ai/headroom/issues/3221)) ([7784bb1](https://github.com/headroomlabs-ai/headroom/commit/7784bb184614bdcd7ba1afd93a23e8d1458ecc96))"
+        },
+        {
+          "pattern": "7784bb18",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:309:* **transforms:** stop folding datetime-prefixed user messages as search results ([#3221](https://github.com/headroomlabs-ai/headroom/issues/3221)) ([7784bb1](https://github.com/headroomlabs-ai/headroom/commit/7784bb184614bdcd7ba1afd93a23e8d1458ecc96))\n7c4fe80c19b3a9537f395f515a64432e41ee1d43:experiments/bridge_relevance/agent_benchmarks/v1/run_bridge_stress.sh:35:FIX[T1]=\"7784bb18\"\n7c4fe80c19b3a9537f395f515a64432e41ee1d43:experiments/bridge_relevance/agent_benchmarks/v1/run_natural_benchmark.sh:35:FIX[T1]=\"7784bb18\""
+        }
+      ]
+    },
+    {
+      "commit": "7550efb68fde6acf0674244b03eb268b976ffced",
+      "subject": "fix(mcp): add explicit Serena reconciliation (#3222)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "455f4f263ce2638ff387c52d42601760f5cf0784",
+      "subject": "fix(cache/semantic): don't semantic-match an empty query across contexts (#3226)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "455f4f263ce2638ff387c52d42601760f5cf0784",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:299:* **cache/semantic:** don't semantic-match an empty query across contexts ([#3226](https://github.com/headroomlabs-ai/headroom/issues/3226)) ([455f4f2](https://github.com/headroomlabs-ai/headroom/commit/455f4f263ce2638ff387c52d42601760f5cf0784))"
+        },
+        {
+          "pattern": "455f4f26",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:299:* **cache/semantic:** don't semantic-match an empty query across contexts ([#3226](https://github.com/headroomlabs-ai/headroom/issues/3226)) ([455f4f2](https://github.com/headroomlabs-ai/headroom/commit/455f4f263ce2638ff387c52d42601760f5cf0784))\n7c4fe80c19b3a9537f395f515a64432e41ee1d43:experiments/bridge_relevance/agent_benchmarks/v1/run_bridge_stress.sh:64:FIX[T2]=\"455f4f26\"\n7c4fe80c19b3a9537f395f515a64432e41ee1d43:experiments/bridge_relevance/agent_benchmarks/v1/run_natural_benchmark.sh:43:FIX[T2]=\"455f4f26\""
+        }
+      ]
+    },
+    {
+      "commit": "cc484864b2f86a5cd1fcc83ac08d2f560e05e1ca",
+      "subject": "docs(troubleshooting): note server-managed settings skip custom ANTHROPIC_BASE_URL (#3118)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "34a551756222b24ea4bc064f4250b8e7d169daf1",
+      "subject": "chore: release 0.36.5 (#3214)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "2f81fa5931ddf233b908103f25c614b5a6b7e33b",
+      "subject": "fix(codex): detect ChatGPT auth from id_token claims so wrap/init emit requires_openai_auth (#3212)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "2f81fa5931ddf233b908103f25c614b5a6b7e33b",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:319:* **codex:** detect ChatGPT auth from id_token claims so wrap/init emit requires_openai_auth ([#3212](https://github.com/headroomlabs-ai/headroom/issues/3212)) ([2f81fa5](https://github.com/headroomlabs-ai/headroom/commit/2f81fa5931ddf233b908103f25c614b5a6b7e33b))"
+        },
+        {
+          "pattern": "2f81fa59",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:319:* **codex:** detect ChatGPT auth from id_token claims so wrap/init emit requires_openai_auth ([#3212](https://github.com/headroomlabs-ai/headroom/issues/3212)) ([2f81fa5](https://github.com/headroomlabs-ai/headroom/commit/2f81fa5931ddf233b908103f25c614b5a6b7e33b))"
+        }
+      ]
+    },
+    {
+      "commit": "8f3e33a00ea377403497b600841c03344d0c1cd8",
+      "subject": "fix(doctor): report project-scoped Claude routing instead of a false negative (#3213)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "8f3e33a00ea377403497b600841c03344d0c1cd8",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:320:* **doctor:** report project-scoped Claude routing instead of a false negative ([#3213](https://github.com/headroomlabs-ai/headroom/issues/3213)) ([8f3e33a](https://github.com/headroomlabs-ai/headroom/commit/8f3e33a00ea377403497b600841c03344d0c1cd8))"
+        },
+        {
+          "pattern": "8f3e33a0",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:320:* **doctor:** report project-scoped Claude routing instead of a false negative ([#3213](https://github.com/headroomlabs-ai/headroom/issues/3213)) ([8f3e33a](https://github.com/headroomlabs-ai/headroom/commit/8f3e33a00ea377403497b600841c03344d0c1cd8))"
+        }
+      ]
+    },
+    {
+      "commit": "91186b40d886c78e4b126d15837a51bea0a871e3",
+      "subject": "chore: release 0.36.4 (#3189)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "5d25abd356a8872d5ac3c941c61ebbd853c35b4d",
+      "subject": "test: repair three suite failures that are red on main (#3196)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "3e3c409436792129259cfae3d95179a94321f9ce",
+      "subject": "fix(security): validate caller-supplied upstreams on every resolution path (#3195)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "1617f839a197ed1f17ca2083fbd288ffa2af7820",
+      "subject": "fix(proxy/responses): keep the Codex additional_tools carrier on the wire (#3194)",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/proxy/handlers/openai.py"
+      ]
+    },
+    {
+      "commit": "b4857685ffca656f8f4f17111b88e80637511f52",
+      "subject": "fix(dashboard): pin MIME types for the vendored static assets (#3193)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "b4857685ffca656f8f4f17111b88e80637511f52",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:327:* **dashboard:** pin MIME types for the vendored static assets ([#3193](https://github.com/headroomlabs-ai/headroom/issues/3193)) ([b485768](https://github.com/headroomlabs-ai/headroom/commit/b4857685ffca656f8f4f17111b88e80637511f52))"
+        },
+        {
+          "pattern": "b4857685",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:327:* **dashboard:** pin MIME types for the vendored static assets ([#3193](https://github.com/headroomlabs-ai/headroom/issues/3193)) ([b485768](https://github.com/headroomlabs-ai/headroom/commit/b4857685ffca656f8f4f17111b88e80637511f52))"
+        }
+      ]
+    },
+    {
+      "commit": "9c30b629624a42495d82f79fb7df9f21cdac7865",
+      "subject": "fix: skip cross-turn dedup pointers on OpenAI chat streaming (#3191)",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/proxy/handlers/openai.py",
+        "headroom/transforms/content_router.py"
+      ]
+    },
+    {
+      "commit": "202c1895e1c2617121f3513054e4a1306d9c573f",
+      "subject": "fix(wrap): make the Serena pre-index stall budget configurable (#3183)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "202c1895e1c2617121f3513054e4a1306d9c573f",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:331:* **wrap:** make the Serena pre-index stall budget configurable ([#3183](https://github.com/headroomlabs-ai/headroom/issues/3183)) ([202c189](https://github.com/headroomlabs-ai/headroom/commit/202c1895e1c2617121f3513054e4a1306d9c573f))"
+        },
+        {
+          "pattern": "202c1895",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:331:* **wrap:** make the Serena pre-index stall budget configurable ([#3183](https://github.com/headroomlabs-ai/headroom/issues/3183)) ([202c189](https://github.com/headroomlabs-ai/headroom/commit/202c1895e1c2617121f3513054e4a1306d9c573f))"
+        }
+      ]
+    },
+    {
+      "commit": "87e71dd10057ff3cbe826bde617682971339e4f8",
+      "subject": "chore: release 0.36.3 (#3188)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "25ca580825b6d1eef385042fd9524e2da2b2baee",
+      "subject": "fix(proxy/responses): lift Codex >= 0.149.0 additional_tools into top-level tools (#3186)",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/proxy/handlers/openai.py"
+      ]
+    },
+    {
+      "commit": "5e0ce242e99bd4da94a11237846cc5fe5edbc9f6",
+      "subject": "chore: release 0.36.2 (#3157)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "4006964a037817b22437abcaf2c55b13085b4021",
+      "subject": "fix(proxy): count output tokens from the stream's text, not its wire size (#3163)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "4006964a037817b22437abcaf2c55b13085b4021",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:347:* **proxy:** count output tokens from the stream's text, not its wire size ([#3163](https://github.com/headroomlabs-ai/headroom/issues/3163)) ([4006964](https://github.com/headroomlabs-ai/headroom/commit/4006964a037817b22437abcaf2c55b13085b4021))"
+        },
+        {
+          "pattern": "4006964a",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:347:* **proxy:** count output tokens from the stream's text, not its wire size ([#3163](https://github.com/headroomlabs-ai/headroom/issues/3163)) ([4006964](https://github.com/headroomlabs-ai/headroom/commit/4006964a037817b22437abcaf2c55b13085b4021))"
+        }
+      ]
+    },
+    {
+      "commit": "397803a9424cf184f597a2d18af82632e7b0ac70",
+      "subject": "fix(copilot): bind the minted token to the integration ID we forward (#3164)",
+      "status": "rejected",
+      "reason": "production_file_overlap",
+      "overlap": [
+        "headroom/copilot_auth.py"
+      ]
+    },
+    {
+      "commit": "45cb1b9c4824a3a609772d8828a119bdc1c31ad0",
+      "subject": "fix(kompress): accept ccr_original on the remote compressor (#3162)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "45cb1b9c4824a3a609772d8828a119bdc1c31ad0",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:346:* **kompress:** accept ccr_original on the remote compressor ([#3162](https://github.com/headroomlabs-ai/headroom/issues/3162)) ([45cb1b9](https://github.com/headroomlabs-ai/headroom/commit/45cb1b9c4824a3a609772d8828a119bdc1c31ad0))"
+        },
+        {
+          "pattern": "45cb1b9c",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:346:* **kompress:** accept ccr_original on the remote compressor ([#3162](https://github.com/headroomlabs-ai/headroom/issues/3162)) ([45cb1b9](https://github.com/headroomlabs-ai/headroom/commit/45cb1b9c4824a3a609772d8828a119bdc1c31ad0))"
+        }
+      ]
+    },
+    {
+      "commit": "1bea0ea31a1cf22f4a77b5efe690d7c4651dd762",
+      "subject": "test: track active LiteLLM DeepSeek pricing (#3161)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "a382137844428820f49d9b43100fed8e492c2db2",
+      "subject": "deps: bump typescript from 5.9.3 to 7.0.2 in /plugins/opencode (#2280)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "85774fcb70b46ae44bcd3533a214d64189908622",
+      "subject": "deps: bump typescript from 5.9.3 to 7.0.2 in /plugins/openclaw (#2279)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "f7e5d37f526907b2b8a22d5e7332ed3fddfa071c",
+      "subject": "deps: bump ai from 6.0.149 to 7.0.59 in /docs (#2277)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "c6dd82338434f964cd73ed2f742ad0c733bff79f",
+      "subject": "deps: bump md-5 from 0.10.6 to 0.11.0 (#3146)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "c8db13d5ad78d9d1bcf5c43dcaeba69070f26e1f",
+      "subject": "deps: bump ruff from 0.16.2 to 0.16.3 in the pip-minor-patch group (#3143)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "08910624fbe4877da0789038957308dbe9be9451",
+      "subject": "deps: bump ai from 6.0.138 to 7.0.59 in /sdk/typescript (#2281)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "6928d1932c1136fd1c6bd724ee88d12815ecd2d6",
+      "subject": "deps: update mcp requirement from <2.0.0,>=1.28.1 to >=1.28.1,<3.0.0 (#3144)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "9c14e3aa9598a01c3cc208c8f483b5dd6398ea1f",
+      "subject": "deps: bump the cargo-minor-patch group with 8 updates (#3145)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "a307c11109de21b0d5d9648be69b0f08a40d3a4d",
+      "subject": "deps: bump tiktoken-rs from 0.11.0 to 0.12.0 (#3147)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "6e2e10f67a737d3b2d844975c1384e02637dbcc3",
+      "subject": "deps: bump tokenizers from 0.22.2 to 0.23.1 (#3149)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "37faf2f24724370483b1819b0921c899791bedc7",
+      "subject": "chore: release 0.36.1 (#3152)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "81fe9d534579d4dcac197ba901f65d6f19986d32",
+      "subject": "fix(metrics): attribute tool-schema savings per model, not just compression (#3155)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "bf651c3dc1b8c43cca84d085b57528fa9c7de5cd",
+      "subject": "fix(docker): give :latest exactly one writer (#3154)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "1f96dabc19130947770353cd6e814db4fd96e6a0",
+      "subject": "fix(security): address u9up assessment findings (WEB-01–07) (#2207)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "a3d9424de98c54cb5656d29a33de6fe673691aca",
+      "subject": "fix(proxy): return 502, not 200, when upstream connect retries are exhausted (#3083)",
+      "status": "rejected",
+      "reason": "buggy_oracle_rc_not_1",
+      "buggy_rc": 2,
+      "failures": [],
+      "output_tail": "warning: `VIRTUAL_ENV=/home/memoli3322/projects/headroom/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead\nUninstalled 1 package in 0.91ms\nInstalled 1 package in 6ms\n============================= test session starts ==============================\nplatform linux -- Python 3.12.3, pytest-9.0.3, pluggy-1.6.0\nrootdir: /tmp/headroom-v3-screen\nconfigfile: pyproject.toml\nplugins: cov-7.0.0, asyncio-1.3.0, anyio-4.12.1, respx-0.23.1, langsmith-0.9.3\nasyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 17 items / 1 error\n\n=========================== short test summary info ============================\nERROR tests/test_uvicorn_log_level_env.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 1.81s ==============================="
+    },
+    {
+      "commit": "b88b9078d8eda7b91e1543b33fa44d793869afa6",
+      "subject": "chore: release 0.36.0 (#3067)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "0e26fb80de600795e96435473486c4a7c79c6eaa",
+      "subject": "fix(proxy/anthropic): stop answering a non-streaming turn with an event stream (#3142)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "0e26fb80de600795e96435473486c4a7c79c6eaa",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:421:* **proxy/anthropic:** stop answering a non-streaming turn with an event stream ([#3142](https://github.com/headroomlabs-ai/headroom/issues/3142)) ([0e26fb8](https://github.com/headroomlabs-ai/headroom/commit/0e26fb80de600795e96435473486c4a7c79c6eaa))"
+        },
+        {
+          "pattern": "0e26fb80",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:421:* **proxy/anthropic:** stop answering a non-streaming turn with an event stream ([#3142](https://github.com/headroomlabs-ai/headroom/issues/3142)) ([0e26fb8](https://github.com/headroomlabs-ai/headroom/commit/0e26fb80de600795e96435473486c4a7c79c6eaa))"
+        }
+      ]
+    },
+    {
+      "commit": "93c474e84b2eeee147c274f3d75f48e5ea42d0d5",
+      "subject": "fix(deps): clear the two Rust advisories and make cargo audit blocking (#3121)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "709d74cd78880ce29c827d7db29092fecce23dde",
+      "subject": "test(proxy): pin down what Anthropic's thinking signature actually covers (#3135)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "284ff31947ec9eac1de0e2dc1cf5de4933c29a50",
+      "subject": "fix(proxy): stop a lone surrogate turning a thinking body into a 500 (#3134)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "284ff31947ec9eac1de0e2dc1cf5de4933c29a50",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:434:* **proxy:** stop a lone surrogate turning a thinking body into a 500 ([#3134](https://github.com/headroomlabs-ai/headroom/issues/3134)) ([284ff31](https://github.com/headroomlabs-ai/headroom/commit/284ff31947ec9eac1de0e2dc1cf5de4933c29a50))"
+        },
+        {
+          "pattern": "284ff319",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:434:* **proxy:** stop a lone surrogate turning a thinking body into a 500 ([#3134](https://github.com/headroomlabs-ai/headroom/issues/3134)) ([284ff31](https://github.com/headroomlabs-ai/headroom/commit/284ff31947ec9eac1de0e2dc1cf5de4933c29a50))\n7c4fe80c19b3a9537f395f515a64432e41ee1d43:experiments/bridge_relevance/agent_benchmarks/v1/run_bridge_stress.sh:117:FIX[T6]=\"284ff319\"\n7c4fe80c19b3a9537f395f515a64432e41ee1d43:experiments/bridge_relevance/agent_benchmarks/v1/run_natural_benchmark.sh:75:FIX[T6]=\"284ff319\""
+        }
+      ]
+    },
+    {
+      "commit": "df6ff6bd5b47837c1247cf4eb8ac151ebd799aa5",
+      "subject": "fix(deps): bump datasets past PYSEC-2026-3716 (#3136)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "17522fb0a1013c012e8123b1e713dbb2f3e770d9",
+      "subject": "fix(proxy): scope the signed-thinking lock to blocks that actually changed (#3124)",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/transforms/content_router.py"
+      ]
+    },
+    {
+      "commit": "250ede2f7f4752c0ab08831013fad3f753f4a578",
+      "subject": "fix(reporting): show net vs gross savings, real skip thresholds, and the effective profile (#3123)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "05f5ef47cbc8b31a60458553d6bf240896a47e16",
+      "subject": "fix(proxy): stop operator secrets following a client-chosen upstream (#3122)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "8156d4dc3a376476513ef6f78104ff81d08967ac",
+      "subject": "fix(deps): raise the GitPython floor to 3.1.58 to clear 9 open advisories (#3120)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "b77d61291399976985f12adcd6014aba2f0275cf",
+      "subject": "fix(copilot): send VS Code inline completions to the host that serves them (#3112)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "139c7cbdde6a68ae3ade24341a79e5ba659c2cf3",
+      "subject": "fix(ccr): send Accept: application/json on a buffered stream:false turn (#3102)",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/proxy/handlers/openai.py"
+      ]
+    },
+    {
+      "commit": "131b119c053e66fe825dabb3c242f6dc5c6049d7",
+      "subject": "fix(ccr): make --no-ccr disable server-side response handling too (#3101)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "131b119c053e66fe825dabb3c242f6dc5c6049d7",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:386:* **ccr:** make --no-ccr disable server-side response handling too ([#3101](https://github.com/headroomlabs-ai/headroom/issues/3101)) ([131b119](https://github.com/headroomlabs-ai/headroom/commit/131b119c053e66fe825dabb3c242f6dc5c6049d7)), closes [#3082](https://github.com/headroomlabs-ai/headroom/issues/3082)"
+        },
+        {
+          "pattern": "131b119c",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:386:* **ccr:** make --no-ccr disable server-side response handling too ([#3101](https://github.com/headroomlabs-ai/headroom/issues/3101)) ([131b119](https://github.com/headroomlabs-ai/headroom/commit/131b119c053e66fe825dabb3c242f6dc5c6049d7)), closes [#3082](https://github.com/headroomlabs-ai/headroom/issues/3082)"
+        }
+      ]
+    },
+    {
+      "commit": "7ef736fb1a8852a3dee52a362043c47084628a2a",
+      "subject": "fix(ccr): make StreamingCCRHandler work on OpenAI streams (#3069)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "7ef736fb1a8852a3dee52a362043c47084628a2a",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:387:* **ccr:** make StreamingCCRHandler work on OpenAI streams ([#3069](https://github.com/headroomlabs-ai/headroom/issues/3069)) ([7ef736f](https://github.com/headroomlabs-ai/headroom/commit/7ef736fb1a8852a3dee52a362043c47084628a2a))"
+        },
+        {
+          "pattern": "7ef736fb",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:387:* **ccr:** make StreamingCCRHandler work on OpenAI streams ([#3069](https://github.com/headroomlabs-ai/headroom/issues/3069)) ([7ef736f](https://github.com/headroomlabs-ai/headroom/commit/7ef736fb1a8852a3dee52a362043c47084628a2a))"
+        }
+      ]
+    },
+    {
+      "commit": "eeb038bc0c28fc8078986db0849bfcff6743c158",
+      "subject": "fix(opencode): send x-headroom-project header on all proxied requests (#2868)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "2cae0f8eaf627f6b743deb215f7c19c499c26bcd",
+      "subject": "fix(proxy/cache): strip cache_control from messages in the semantic cache key (#3086)",
+      "status": "rejected",
+      "reason": "previously_used_or_screened"
+    },
+    {
+      "commit": "9ca5a16bde81f515454f9bc6ad022caa15e118b8",
+      "subject": "fix(proxy/anthropic): coerce present-null usage counters on the buffered backend path (#3084)",
+      "status": "selected",
+      "task_id": "N6"
+    },
+    {
+      "commit": "c3c921f2f7a1256131033c29ae8a4733f7217e7d",
+      "subject": "test(install/windows): verify the PATH guard against the real HKCU registry (#3068)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "6c9f41e08c47f2bfc440c5a4c6ac8a357ad5ada0",
+      "subject": "perf(perf): skip rotated logs outside the requested window (#3081)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "c5563d3a7dd8b7f88767cf503f1b1696917e36ee",
+      "subject": "fix(learn): include stdout in CLI failure messages, not just stderr (#3080)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "c5563d3a7dd8b7f88767cf503f1b1696917e36ee",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:410:* **learn:** include stdout in CLI failure messages, not just stderr ([#3080](https://github.com/headroomlabs-ai/headroom/issues/3080)) ([c5563d3](https://github.com/headroomlabs-ai/headroom/commit/c5563d3a7dd8b7f88767cf503f1b1696917e36ee))"
+        },
+        {
+          "pattern": "c5563d3a",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:410:* **learn:** include stdout in CLI failure messages, not just stderr ([#3080](https://github.com/headroomlabs-ai/headroom/issues/3080)) ([c5563d3](https://github.com/headroomlabs-ai/headroom/commit/c5563d3a7dd8b7f88767cf503f1b1696917e36ee))"
+        }
+      ]
+    },
+    {
+      "commit": "58f28dc7a6b6ce5bbf0f88524bd78cbe3f3ffa4b",
+      "subject": "fix(install): honor HEADROOM_PORT in install apply and deploy (#3085)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "58f28dc7a6b6ce5bbf0f88524bd78cbe3f3ffa4b",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:408:* **install:** honor HEADROOM_PORT in install apply and deploy ([#3085](https://github.com/headroomlabs-ai/headroom/issues/3085)) ([58f28dc](https://github.com/headroomlabs-ai/headroom/commit/58f28dc7a6b6ce5bbf0f88524bd78cbe3f3ffa4b))"
+        },
+        {
+          "pattern": "58f28dc7",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:408:* **install:** honor HEADROOM_PORT in install apply and deploy ([#3085](https://github.com/headroomlabs-ai/headroom/issues/3085)) ([58f28dc](https://github.com/headroomlabs-ai/headroom/commit/58f28dc7a6b6ce5bbf0f88524bd78cbe3f3ffa4b))"
+        }
+      ]
+    },
+    {
+      "commit": "3ed8f7601935cb08eebfd34007e97675903180a5",
+      "subject": "fix(providers): don't crash on a non-object HEADROOM_MODEL_LIMITS / models.json (#3089)",
+      "status": "rejected",
+      "reason": "production_file_overlap",
+      "overlap": [
+        "headroom/providers/anthropic.py"
+      ]
+    },
+    {
+      "commit": "0ec73faa2805502a5c13eab7e4f086f8ae2e175e",
+      "subject": "fix(ccr): relay a successful upstream turn when post-processing fails (#3094)",
+      "status": "rejected",
+      "reason": "production_file_overlap",
+      "overlap": [
+        "headroom/proxy/handlers/anthropic.py"
+      ]
+    },
+    {
+      "commit": "c16be9bbbec4aec6d4b35e482c166daef8afa72c",
+      "subject": "fix(proxy/anthropic): don't replay recorded prefix over live history (#3026) (#3052)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "c502087db702e9b6aa1d1736086cf4a69a7775e6",
+      "subject": "fix(ccr): only buffer a stream when a marker is actually redeemable (#3092)",
+      "status": "rejected",
+      "reason": "production_file_overlap",
+      "overlap": [
+        "headroom/proxy/handlers/anthropic.py"
+      ]
+    },
+    {
+      "commit": "a29d2015e5eaf72730a4155f0307cbfac1ea1c9b",
+      "subject": "fix(proxy): restore the buffered-CCR heartbeat behind a grace window (#3091)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "204e751d2f01b0e987e9c05edec21664bb2df279",
+      "subject": "fix(copilot): route VS Code inline completions to Copilot, not OpenAI (#3077)",
+      "status": "rejected",
+      "reason": "production_file_overlap",
+      "overlap": [
+        "headroom/copilot_auth.py"
+      ]
+    },
+    {
+      "commit": "6d2254dfb5eb97f92249e0ee7aa04b2697adfa69",
+      "subject": "fix(anthropic): honor the [1m] 1M-context tier, and price it correctly (#3073)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "b3f443636d279d4bad845a8ef2bddb7ca50e9bc6",
+      "subject": "fix(proxy): align signed-thinking wire accounting (#3015)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "942af56f11cbd8466e25ae189c65ba56a9ddd602",
+      "subject": "fix(ccr): re-inject headroom_retrieve when history references it on the sessionless path",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "1b0b0b89a4bf751c8bd592890aef9c3b339e8e37",
+      "subject": "feat(proxy): unify savings attribution across stats, perf, metrics, and dashboard",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "cbb950a441b0f4adff52965be80d3ed32664280d",
+      "subject": "ci(governance): require a Conventional Commit PR title (#3063)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "ac8646aa3c6323c3c0b7051e09831f779859af6f",
+      "subject": "fix(ci): scope the release credential and stop persisting it to disk (#3062)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "481e0b83d5393419b27b17d95767104c7c1bda26",
+      "subject": "fix(docker): publish compose ports on loopback only (#3061)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "a6ab359a5d8d67a85f734131b55dbcef768a821a",
+      "subject": "fix(proxy): guard feedback endpoints and add CSRF checks to loopback writes (#3060)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "a6ab359a5d8d67a85f734131b55dbcef768a821a",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:428:* **proxy:** guard feedback endpoints and add CSRF checks to loopback writes ([#3060](https://github.com/headroomlabs-ai/headroom/issues/3060)) ([a6ab359](https://github.com/headroomlabs-ai/headroom/commit/a6ab359a5d8d67a85f734131b55dbcef768a821a))"
+        },
+        {
+          "pattern": "a6ab359a",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:428:* **proxy:** guard feedback endpoints and add CSRF checks to loopback writes ([#3060](https://github.com/headroomlabs-ai/headroom/issues/3060)) ([a6ab359](https://github.com/headroomlabs-ai/headroom/commit/a6ab359a5d8d67a85f734131b55dbcef768a821a))"
+        }
+      ]
+    },
+    {
+      "commit": "96c25f518154536cf15f4e0b2d3fed80de6e67f6",
+      "subject": "fix(cli): stop the macOS malloc re-exec replacing an embedder's process (#3064)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "96c25f518154536cf15f4e0b2d3fed80de6e67f6",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:398:* **cli:** stop the macOS malloc re-exec replacing an embedder's process ([#3064](https://github.com/headroomlabs-ai/headroom/issues/3064)) ([96c25f5](https://github.com/headroomlabs-ai/headroom/commit/96c25f518154536cf15f4e0b2d3fed80de6e67f6))"
+        },
+        {
+          "pattern": "96c25f51",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:398:* **cli:** stop the macOS malloc re-exec replacing an embedder's process ([#3064](https://github.com/headroomlabs-ai/headroom/issues/3064)) ([96c25f5](https://github.com/headroomlabs-ai/headroom/commit/96c25f518154536cf15f4e0b2d3fed80de6e67f6))"
+        }
+      ]
+    },
+    {
+      "commit": "ef7e07e0f5d6510ab96b5abb1698b1b681b5f9bf",
+      "subject": "fix(policy): price net-cost mutations with the 1h cache-write tier (#2780)",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/transforms/content_router.py"
+      ]
+    },
+    {
+      "commit": "2a8472525d3a027c95dc38a10c4b6707b482cabc",
+      "subject": "feat(wrap/claude): make the --1m fallback model configurable via HEADROOM_1M_MODEL (#2983)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "ddd9f76729d5662201b84bd0a51281cd3ac64ad3",
+      "subject": "fix(install): stop the PowerShell installer leaking temp dirs into the real user PATH (#2985)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "c8310819a4221b0d120436786fc499a24c8e55f1",
+      "subject": "fix(wrap): set xAI upstream for grok-build proxy (#2772)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "c8310819a4221b0d120436786fc499a24c8e55f1",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:441:* **wrap:** set xAI upstream for grok-build proxy ([#2772](https://github.com/headroomlabs-ai/headroom/issues/2772)) ([c831081](https://github.com/headroomlabs-ai/headroom/commit/c8310819a4221b0d120436786fc499a24c8e55f1))"
+        },
+        {
+          "pattern": "c8310819",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:441:* **wrap:** set xAI upstream for grok-build proxy ([#2772](https://github.com/headroomlabs-ai/headroom/issues/2772)) ([c831081](https://github.com/headroomlabs-ai/headroom/commit/c8310819a4221b0d120436786fc499a24c8e55f1))"
+        }
+      ]
+    },
+    {
+      "commit": "6d87825f62e47bc65eeae05fbb8a131d545fe5a2",
+      "subject": "fix(proxy): tune macOS libmalloc and trim allocator pages so long-lived RSS stays bounded (#2879)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "be5b26d807be81d83594c9144a8520f6f0f1b273",
+      "subject": "fix(doctor): surface that Claude Desktop agent sessions bypass the proxy (#2987)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "be5b26d807be81d83594c9144a8520f6f0f1b273",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:406:* **doctor:** surface that Claude Desktop agent sessions bypass the proxy ([#2987](https://github.com/headroomlabs-ai/headroom/issues/2987)) ([be5b26d](https://github.com/headroomlabs-ai/headroom/commit/be5b26d807be81d83594c9144a8520f6f0f1b273))"
+        },
+        {
+          "pattern": "be5b26d8",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:406:* **doctor:** surface that Claude Desktop agent sessions bypass the proxy ([#2987](https://github.com/headroomlabs-ai/headroom/issues/2987)) ([be5b26d](https://github.com/headroomlabs-ai/headroom/commit/be5b26d807be81d83594c9144a8520f6f0f1b273))"
+        }
+      ]
+    },
+    {
+      "commit": "536c949a692f4855719d71d612abc4968040286b",
+      "subject": "fix(proxy/openai): propagate provider usage on the Responses WS->HTTP fallback (#2988)",
+      "status": "rejected",
+      "reason": "previously_used_or_screened"
+    },
+    {
+      "commit": "a06a51eca63f88271dfa77f2ee6bf3c8da6b24e4",
+      "subject": "fix(proxy): preserve Codex WebSocket model attribution (#3029)",
+      "status": "rejected",
+      "reason": "previously_used_or_screened"
+    },
+    {
+      "commit": "a01897c791f4bb6471defafd560d29d491eb2df8",
+      "subject": "fix(proxy/gemini): guard CCR continuation usage against present-null counts (#3035)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "a01897c791f4bb6471defafd560d29d491eb2df8",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:423:* **proxy/gemini:** guard CCR continuation usage against present-null counts ([#3035](https://github.com/headroomlabs-ai/headroom/issues/3035)) ([a01897c](https://github.com/headroomlabs-ai/headroom/commit/a01897c791f4bb6471defafd560d29d491eb2df8))"
+        },
+        {
+          "pattern": "a01897c7",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:423:* **proxy/gemini:** guard CCR continuation usage against present-null counts ([#3035](https://github.com/headroomlabs-ai/headroom/issues/3035)) ([a01897c](https://github.com/headroomlabs-ai/headroom/commit/a01897c791f4bb6471defafd560d29d491eb2df8))"
+        }
+      ]
+    },
+    {
+      "commit": "9d370592b022d01e6bc44a88649a611507794776",
+      "subject": "fix(proxy): stop cached responses replaying the producing turn's wire framing (#3024)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "f9807fd69e220f43068ec168515ae886dd36166f",
+      "subject": "feat(proxy): let extensions report cost savings and their own latency (#3051)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "2f4d001c9ffd7f856c8dab3e31a8240a1c676f04",
+      "subject": "fix(proxy): keep prefixed core tools resident (#3046)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "2f4d001c9ffd7f856c8dab3e31a8240a1c676f04",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:429:* **proxy:** keep prefixed core tools resident ([#3046](https://github.com/headroomlabs-ai/headroom/issues/3046)) ([2f4d001](https://github.com/headroomlabs-ai/headroom/commit/2f4d001c9ffd7f856c8dab3e31a8240a1c676f04))"
+        },
+        {
+          "pattern": "2f4d001c",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:429:* **proxy:** keep prefixed core tools resident ([#3046](https://github.com/headroomlabs-ai/headroom/issues/3046)) ([2f4d001](https://github.com/headroomlabs-ai/headroom/commit/2f4d001c9ffd7f856c8dab3e31a8240a1c676f04))"
+        },
+        {
+          "pattern": "fix(proxy): keep prefixed core tools resident",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:scripts/tests/test_pr_governance.py:270:        \"fix(proxy): keep prefixed core tools resident\","
+        }
+      ]
+    },
+    {
+      "commit": "322425c43bffde1ed0b64fecf3cf5951565dd82b",
+      "subject": "deps: bump sha2 from 0.10.9 to 0.11.0 (#2288)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "5731be7e68f57292aed40d76e770657a88f78c13",
+      "subject": "deps: bump axum from 0.7.9 to 0.8.9 (#2966)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "ff17961cd76a7cea1cff0a9dcfb7338929f37c5a",
+      "subject": "deps: bump ruff from 0.15.22 to 0.16.2 in the pip-minor-patch group across 1 directory (#2962)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "bbe901319d49a3d70caf7b37da2c29f7d7996e07",
+      "subject": "deps: bump tokio-tungstenite from 0.24.0 to 0.30.0 (#2967)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "888a9f4e147cf1f87244977fac81d5e9613352d7",
+      "subject": "deps: bump the cargo-minor-patch group across 1 directory with 4 updates (#2964)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "2d88e31a404e2be6c1c428deb2a387599eb820ba",
+      "subject": "fix(claude): reject conflicting auth before proxy startup (#2993)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "aa811fa91f3a9db3f9d42d7e4f76b5cf114fcc7a",
+      "subject": "ci: allow generated dependency commit bodies (#3012)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "7e3128057cae574537793cc79301eb4d3d3aa58a",
+      "subject": "ci: allow Dependabot deps commits (#3009)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "8ea87e7804abfbb55beaf869e50dcb66deab975a",
+      "subject": "fix: tool_search_tool_regex deferred and falsely resolved on direct-Anthropic path (#2971)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "8ea87e7804abfbb55beaf869e50dcb66deab975a",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:439:* tool_search_tool_regex deferred and falsely resolved on direct-Anthropic path ([#2971](https://github.com/headroomlabs-ai/headroom/issues/2971)) ([8ea87e7](https://github.com/headroomlabs-ai/headroom/commit/8ea87e7804abfbb55beaf869e50dcb66deab975a))"
+        },
+        {
+          "pattern": "8ea87e78",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:439:* tool_search_tool_regex deferred and falsely resolved on direct-Anthropic path ([#2971](https://github.com/headroomlabs-ai/headroom/issues/2971)) ([8ea87e7](https://github.com/headroomlabs-ai/headroom/commit/8ea87e7804abfbb55beaf869e50dcb66deab975a))"
+        }
+      ]
+    },
+    {
+      "commit": "8a1d38bc5da87b49a530df22090c3a156d2d0cd6",
+      "subject": "fix(proxy): complete stateless Responses and buffered CCR lifecycle (#2997)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "a708c0571eecfb53eaab6b787b7a6ace9b21c162",
+      "subject": "fix(ci): prevent native detector from hanging test shards (#2996)",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/transforms/content_router.py"
+      ]
+    },
+    {
+      "commit": "314524264512c9bc489ac17d5f45034af4fd7675",
+      "subject": "Unify savings attribution across stats, perf, metrics, and dashboard (#2976)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "1aa701adaa1ff792dd0e701f498d8d0326655670",
+      "subject": "fix(vscode): persist compatible Claude modes and route Copilot CAPI (#2986)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "eafdf11a2cea44aabc51ce59bbc031e0aaee9640",
+      "subject": "fix(docker): ship Bedrock auth and current registry (#2982)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "ddd2a259ecce4e57202a68a74a2c1adcb879679b",
+      "subject": "fix(install): consolidate Windows fallback and cleanup safety (#2980)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "a3fe5cb65bed625e2a6cb415821bd0798754ce08",
+      "subject": "fix(onnx): enforce Rust API-24 runtime compatibility (#2979)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "7de35739c61bed385dd078aee1b36865938c486d",
+      "subject": "fix(proxy/anthropic): repair headroom_retrieve history references the tools array cannot support (#2876)",
+      "status": "rejected",
+      "reason": "production_file_overlap",
+      "overlap": [
+        "headroom/proxy/handlers/anthropic.py"
+      ]
+    },
+    {
+      "commit": "6077e5a149ee6548edaff033f2cdffffce6ea0cf",
+      "subject": "fix(mcp): restore SDK v1 compatibility cap (#2978)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "b7f342c153a3e6e43a9d3df006bcd4dd69842d00",
+      "subject": "fix(wrap): verify proxy deps before mutating Codex config (#1628)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "9fde12753416a6102535235b822e44afebf76e9e",
+      "subject": "fix(proxy): relocate stray system-role messages to the top-level system param (#765) (#1357)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "6576ef639cbb7be8bc5e6c25134956803d18f8d8",
+      "subject": "fix(openclaw-plugin): circuit breaker + per-request timeout for proxy resilience (#639)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "82526191a103a8d0e079d170e47631b3c2bcb0d9",
+      "subject": "fix(cli/install): resolve the deployment profile instead of dead-ending on default (#2832)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "82526191a103a8d0e079d170e47631b3c2bcb0d9",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:397:* **cli/install:** resolve the deployment profile instead of dead-ending on default ([#2832](https://github.com/headroomlabs-ai/headroom/issues/2832)) ([8252619](https://github.com/headroomlabs-ai/headroom/commit/82526191a103a8d0e079d170e47631b3c2bcb0d9))"
+        },
+        {
+          "pattern": "82526191",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:397:* **cli/install:** resolve the deployment profile instead of dead-ending on default ([#2832](https://github.com/headroomlabs-ai/headroom/issues/2832)) ([8252619](https://github.com/headroomlabs-ai/headroom/commit/82526191a103a8d0e079d170e47631b3c2bcb0d9))"
+        }
+      ]
+    },
+    {
+      "commit": "f1c34d336cf35db341153c1c65e8c15219398340",
+      "subject": "fix(proxy/anthropic): don't buffer a CCR stream when passthrough discards the stream flip (#2953)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "2d1e96b85c61cc7aab821750f549f24d54cbb6f5",
+      "subject": "fix(memory): sanitize entity_refs to prevent dict-shaped entries crashing search (#2951)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "6147883d5e3a92cc7b890e6c05dce4391090c7e4",
+      "subject": "fix(wrap): stop the Serena pre-index stalling the launch path for 300s (#2945)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "6147883d5e3a92cc7b890e6c05dce4391090c7e4",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:442:* **wrap:** stop the Serena pre-index stalling the launch path for 300s ([#2945](https://github.com/headroomlabs-ai/headroom/issues/2945)) ([6147883](https://github.com/headroomlabs-ai/headroom/commit/6147883d5e3a92cc7b890e6c05dce4391090c7e4))"
+        },
+        {
+          "pattern": "6147883d",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:442:* **wrap:** stop the Serena pre-index stalling the launch path for 300s ([#2945](https://github.com/headroomlabs-ai/headroom/issues/2945)) ([6147883](https://github.com/headroomlabs-ai/headroom/commit/6147883d5e3a92cc7b890e6c05dce4391090c7e4))"
+        }
+      ]
+    },
+    {
+      "commit": "41dab2d09925658b96fed492d534346ce1930f4c",
+      "subject": "fix(ccr): verify a scanned marker's hash before advertising it (#2908)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "d76fce04a39b3f206e38a02e012d50b2c728f7ca",
+      "subject": "fix(proxy): adapt 200 SSE upstream replies on buffered /v1/responses instead of 502 (#2622)",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/proxy/handlers/openai.py"
+      ]
+    },
+    {
+      "commit": "d6d121e399938edffce5258697ad5046c84eade3",
+      "subject": "fix(ccr): re-inject headroom_retrieve when history references it on the sessionless path (#2440) (#2533)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "b30f339d694abcd8dada76a34a1d69e30390bfc2",
+      "subject": "deps: bump criterion from 0.5.1 to 0.8.2 (#2965)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "d6fb5365f67b9b7f90c7c55caead16ca6b41c586",
+      "subject": "deps: update mcp requirement from <2.0.0,>=1.28.1 to >=1.28.1,<3.0.0 (#2963)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "e269afb935f298a833a189acfb8573e908b3b60b",
+      "subject": "fix(ci): unjam release and Docker publishing (#2958)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "3077ac81e8ef3ddefebbe308ea37a4e9bb2100e6",
+      "subject": "feat: add deterministic runtime rollout controls (#1490)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "93f2d7a2da4d3b6c88f31bad164ae299cf042104",
+      "subject": "chore: release main (#2792)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "148d8605e2087f3c8d6a3fa4b8d248ad2da5858f",
+      "subject": "deps: bump the cargo-minor-patch group across 1 directory with 22 updates (#2916)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "3752458022f736c779f7b5a6c2d6d2ef0bc89f72",
+      "subject": "fix(cache): enforce Anthropic's 1h-before-5m cache_control ordering before forwarding (#2941)",
+      "status": "rejected",
+      "reason": "production_file_overlap",
+      "overlap": [
+        "headroom/proxy/handlers/anthropic.py"
+      ]
+    },
+    {
+      "commit": "e540d64febf27f2e7997d3a1a1d89478cc1ef658",
+      "subject": "fix(wrap): serialize shared proxy startup (#2946)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "e540d64febf27f2e7997d3a1a1d89478cc1ef658",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:567:* **wrap:** serialize shared proxy startup ([#2946](https://github.com/headroomlabs-ai/headroom/issues/2946)) ([e540d64](https://github.com/headroomlabs-ai/headroom/commit/e540d64febf27f2e7997d3a1a1d89478cc1ef658))"
+        },
+        {
+          "pattern": "e540d64f",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:567:* **wrap:** serialize shared proxy startup ([#2946](https://github.com/headroomlabs-ai/headroom/issues/2946)) ([e540d64](https://github.com/headroomlabs-ai/headroom/commit/e540d64febf27f2e7997d3a1a1d89478cc1ef658))"
+        }
+      ]
+    },
+    {
+      "commit": "039cd2431aaec7d59fefaf7e97aeda1fd7ab3afa",
+      "subject": "fix(proxy): preserve merged session and quarantine contracts (#2943)",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/proxy/handlers/openai.py"
+      ]
+    },
+    {
+      "commit": "941c25d31e6c6e0b436c307cbe212771ff76b45f",
+      "subject": "fix(observability): aggregate tool savings in OTEL (#2936)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "941c25d31e6c6e0b436c307cbe212771ff76b45f",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:518:* **observability:** aggregate tool savings in OTEL ([#2936](https://github.com/headroomlabs-ai/headroom/issues/2936)) ([941c25d](https://github.com/headroomlabs-ai/headroom/commit/941c25d31e6c6e0b436c307cbe212771ff76b45f))"
+        },
+        {
+          "pattern": "941c25d3",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:518:* **observability:** aggregate tool savings in OTEL ([#2936](https://github.com/headroomlabs-ai/headroom/issues/2936)) ([941c25d](https://github.com/headroomlabs-ai/headroom/commit/941c25d31e6c6e0b436c307cbe212771ff76b45f))"
+        }
+      ]
+    },
+    {
+      "commit": "d7cf981093cf505192a3736dadd0254a120830a1",
+      "subject": "fix(image): decouple routing types from trained_router so importing the compressor doesn't import torch (#2513) (#2537)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "a540eb2c61b1a47e5ab8b07ea4a80fee780b6514",
+      "subject": "fix(codex): route alpha search through the Codex backend (#2538)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "a540eb2c61b1a47e5ab8b07ea4a80fee780b6514",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:491:* **codex:** route alpha search through the Codex backend ([#2538](https://github.com/headroomlabs-ai/headroom/issues/2538)) ([a540eb2](https://github.com/headroomlabs-ai/headroom/commit/a540eb2c61b1a47e5ab8b07ea4a80fee780b6514))"
+        },
+        {
+          "pattern": "a540eb2c",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:491:* **codex:** route alpha search through the Codex backend ([#2538](https://github.com/headroomlabs-ai/headroom/issues/2538)) ([a540eb2](https://github.com/headroomlabs-ai/headroom/commit/a540eb2c61b1a47e5ab8b07ea4a80fee780b6514))"
+        }
+      ]
+    },
+    {
+      "commit": "4e5a67a342be4be659b62c7863a9e72422605788",
+      "subject": "fix(memory): skip <system-reminder> blocks when building the retrieval query (#2195) (#2541)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "4e5a67a342be4be659b62c7863a9e72422605788",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:515:* **memory:** skip &lt;system-reminder&gt; blocks when building the retrieval query ([#2195](https://github.com/headroomlabs-ai/headroom/issues/2195)) ([#2541](https://github.com/headroomlabs-ai/headroom/issues/2541)) ([4e5a67a](https://github.com/headroomlabs-ai/headroom/commit/4e5a67a342be4be659b62c7863a9e72422605788))"
+        },
+        {
+          "pattern": "4e5a67a3",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:515:* **memory:** skip &lt;system-reminder&gt; blocks when building the retrieval query ([#2195](https://github.com/headroomlabs-ai/headroom/issues/2195)) ([#2541](https://github.com/headroomlabs-ai/headroom/issues/2541)) ([4e5a67a](https://github.com/headroomlabs-ai/headroom/commit/4e5a67a342be4be659b62c7863a9e72422605788))"
+        }
+      ]
+    },
+    {
+      "commit": "0805e8e410543d75c7ddd3b83dde5eda3bc13144",
+      "subject": "fix(providers/openai): bound tiktoken vocab loads with the guarded loader (#2554)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "0805e8e410543d75c7ddd3b83dde5eda3bc13144",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:523:* **providers/openai:** bound tiktoken vocab loads with the guarded loader ([#2554](https://github.com/headroomlabs-ai/headroom/issues/2554)) ([0805e8e](https://github.com/headroomlabs-ai/headroom/commit/0805e8e410543d75c7ddd3b83dde5eda3bc13144))"
+        },
+        {
+          "pattern": "0805e8e4",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:523:* **providers/openai:** bound tiktoken vocab loads with the guarded loader ([#2554](https://github.com/headroomlabs-ai/headroom/issues/2554)) ([0805e8e](https://github.com/headroomlabs-ai/headroom/commit/0805e8e410543d75c7ddd3b83dde5eda3bc13144))"
+        }
+      ]
+    },
+    {
+      "commit": "7f24d695eea00b9bb3265fbaa6629acf0c2ff181",
+      "subject": "fix(doctor): flag `ollama launch claude` proxy bypass instead of misdirecting (#2566)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "7f24d695eea00b9bb3265fbaa6629acf0c2ff181",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:495:* **doctor:** flag `ollama launch claude` proxy bypass instead of misdirecting ([#2566](https://github.com/headroomlabs-ai/headroom/issues/2566)) ([7f24d69](https://github.com/headroomlabs-ai/headroom/commit/7f24d695eea00b9bb3265fbaa6629acf0c2ff181))"
+        },
+        {
+          "pattern": "7f24d695",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:495:* **doctor:** flag `ollama launch claude` proxy bypass instead of misdirecting ([#2566](https://github.com/headroomlabs-ai/headroom/issues/2566)) ([7f24d69](https://github.com/headroomlabs-ai/headroom/commit/7f24d695eea00b9bb3265fbaa6629acf0c2ff181))"
+        }
+      ]
+    },
+    {
+      "commit": "ce8ce8313f8cebf060392a62f9adaab18c0df386",
+      "subject": "fix(ccr): resolve <<ccr:...>> markers inline when no retrieve-tool path exists (#2512)",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "f326fe26c561d666dfdd82819d0f17b96e36e9fe",
+      "subject": "docs(transforms): correct stale unit-result-cache placeholder comments (#2506)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "565c6076efcc0fe380c4cd674c0f2caebd44e448",
+      "subject": "docs: add guide for using Headroom with OpenCode + DeepSeek (#2497)",
+      "status": "rejected",
+      "reason": "not_fix_subject"
+    },
+    {
+      "commit": "e24a7e66b95fa908c4ea6fd079809ece7692e6b2",
+      "subject": "fix(proxy/metrics): cap client-supplied model label cardinality (#2480)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "e24a7e66b95fa908c4ea6fd079809ece7692e6b2",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:530:* **proxy/metrics:** cap client-supplied model label cardinality ([#2480](https://github.com/headroomlabs-ai/headroom/issues/2480)) ([e24a7e6](https://github.com/headroomlabs-ai/headroom/commit/e24a7e66b95fa908c4ea6fd079809ece7692e6b2))"
+        },
+        {
+          "pattern": "e24a7e66",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:530:* **proxy/metrics:** cap client-supplied model label cardinality ([#2480](https://github.com/headroomlabs-ai/headroom/issues/2480)) ([e24a7e6](https://github.com/headroomlabs-ai/headroom/commit/e24a7e66b95fa908c4ea6fd079809ece7692e6b2))"
+        }
+      ]
+    },
+    {
+      "commit": "798139608c0fb5118eb3a7a183b8b2abe92341f1",
+      "subject": "fix(claude): stop forcing tool search on Foundry (#2477)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "798139608c0fb5118eb3a7a183b8b2abe92341f1",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:489:* **claude:** stop forcing tool search on Foundry ([#2477](https://github.com/headroomlabs-ai/headroom/issues/2477)) ([7981396](https://github.com/headroomlabs-ai/headroom/commit/798139608c0fb5118eb3a7a183b8b2abe92341f1))"
+        },
+        {
+          "pattern": "79813960",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:489:* **claude:** stop forcing tool search on Foundry ([#2477](https://github.com/headroomlabs-ai/headroom/issues/2477)) ([7981396](https://github.com/headroomlabs-ai/headroom/commit/798139608c0fb5118eb3a7a183b8b2abe92341f1))"
+        }
+      ]
+    },
+    {
+      "commit": "08466f3cae4dbb2647dc6f249fe42c4e840600c5",
+      "subject": "fix(providers/anthropic): don't crash token estimation on null tool_calls (#2472)",
+      "status": "rejected",
+      "reason": "previously_used_or_screened"
+    },
+    {
+      "commit": "e00c6ff81ce2003e04042b8f2d1bd6aa3c6e885c",
+      "subject": "fix(memory): don't crash inline memory extraction on a non-object <memory> block (#2470)",
+      "status": "rejected",
+      "reason": "previously_used_or_screened"
+    },
+    {
+      "commit": "fc5c4e239ce32f2b90a6777772a01bdf49c66cb6",
+      "subject": "fix(install): don't crash the PowerShell installer when $PROFILE is unset (#2469)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "e583e082d8dee942229ac6211c742f9c9448a905",
+      "subject": "fix(ccr): tolerate null/malformed OpenAI data in response handling (#2467)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "e583e082d8dee942229ac6211c742f9c9448a905",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:487:* **ccr:** tolerate null/malformed OpenAI data in response handling ([#2467](https://github.com/headroomlabs-ai/headroom/issues/2467)) ([e583e08](https://github.com/headroomlabs-ai/headroom/commit/e583e082d8dee942229ac6211c742f9c9448a905))"
+        },
+        {
+          "pattern": "e583e082",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:487:* **ccr:** tolerate null/malformed OpenAI data in response handling ([#2467](https://github.com/headroomlabs-ai/headroom/issues/2467)) ([e583e08](https://github.com/headroomlabs-ai/headroom/commit/e583e082d8dee942229ac6211c742f9c9448a905))"
+        }
+      ]
+    },
+    {
+      "commit": "6a53861063c3839e698bbec7194517bdfd851c38",
+      "subject": "fix(proxy/metrics): escape label values in the Prometheus export (#2463)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "6a53861063c3839e698bbec7194517bdfd851c38",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:531:* **proxy/metrics:** escape label values in the Prometheus export ([#2463](https://github.com/headroomlabs-ai/headroom/issues/2463)) ([6a53861](https://github.com/headroomlabs-ai/headroom/commit/6a53861063c3839e698bbec7194517bdfd851c38))"
+        },
+        {
+          "pattern": "6a538610",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:531:* **proxy/metrics:** escape label values in the Prometheus export ([#2463](https://github.com/headroomlabs-ai/headroom/issues/2463)) ([6a53861](https://github.com/headroomlabs-ai/headroom/commit/6a53861063c3839e698bbec7194517bdfd851c38))"
+        }
+      ]
+    },
+    {
+      "commit": "1edaeb8b76f6b872a6c810d404c944caf1a594b2",
+      "subject": "fix(install/windows): register persistent-task from S4U hidden XML (#2453) (#2459)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "1edaeb8b76f6b872a6c810d404c944caf1a594b2",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:500:* **install/windows:** register persistent-task from S4U hidden XML ([#2453](https://github.com/headroomlabs-ai/headroom/issues/2453)) ([#2459](https://github.com/headroomlabs-ai/headroom/issues/2459)) ([1edaeb8](https://github.com/headroomlabs-ai/headroom/commit/1edaeb8b76f6b872a6c810d404c944caf1a594b2))"
+        },
+        {
+          "pattern": "1edaeb8b",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:500:* **install/windows:** register persistent-task from S4U hidden XML ([#2453](https://github.com/headroomlabs-ai/headroom/issues/2453)) ([#2459](https://github.com/headroomlabs-ai/headroom/issues/2459)) ([1edaeb8](https://github.com/headroomlabs-ai/headroom/commit/1edaeb8b76f6b872a6c810d404c944caf1a594b2))"
+        }
+      ]
+    },
+    {
+      "commit": "2b5ee7cde809ca37f6998d9679b1eb2133ab50ca",
+      "subject": "fix(proxy/anthropic): None-guard usage token counts on the direct buffered path (#2434)",
+      "status": "rejected",
+      "reason": "production_file_overlap",
+      "overlap": [
+        "headroom/proxy/handlers/anthropic.py"
+      ]
+    },
+    {
+      "commit": "c5a08d22e05a7dd2b929f3cca76ee3fb42f122db",
+      "subject": "fix(proxy): time-cap the compression timeout-debt quarantine (#2360) (#2412)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "c5a08d22e05a7dd2b929f3cca76ee3fb42f122db",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:552:* **proxy:** time-cap the compression timeout-debt quarantine ([#2360](https://github.com/headroomlabs-ai/headroom/issues/2360)) ([#2412](https://github.com/headroomlabs-ai/headroom/issues/2412)) ([c5a08d2](https://github.com/headroomlabs-ai/headroom/commit/c5a08d22e05a7dd2b929f3cca76ee3fb42f122db))"
+        },
+        {
+          "pattern": "c5a08d22",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:552:* **proxy:** time-cap the compression timeout-debt quarantine ([#2360](https://github.com/headroomlabs-ai/headroom/issues/2360)) ([#2412](https://github.com/headroomlabs-ai/headroom/issues/2412)) ([c5a08d2](https://github.com/headroomlabs-ai/headroom/commit/c5a08d22e05a7dd2b929f3cca76ee3fb42f122db))"
+        }
+      ]
+    },
+    {
+      "commit": "74275b7c3e2b39be5198f9efa35057a5e026e665",
+      "subject": "fix(subscription): dedup transcript usage by message id (#2340 token inflation) (#2408)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "74275b7c3e2b39be5198f9efa35057a5e026e665",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:556:* **subscription:** dedup transcript usage by message id ([#2340](https://github.com/headroomlabs-ai/headroom/issues/2340) token inflation) ([#2408](https://github.com/headroomlabs-ai/headroom/issues/2408)) ([74275b7](https://github.com/headroomlabs-ai/headroom/commit/74275b7c3e2b39be5198f9efa35057a5e026e665))"
+        },
+        {
+          "pattern": "74275b7c",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:556:* **subscription:** dedup transcript usage by message id ([#2340](https://github.com/headroomlabs-ai/headroom/issues/2340) token inflation) ([#2408](https://github.com/headroomlabs-ai/headroom/issues/2408)) ([74275b7](https://github.com/headroomlabs-ai/headroom/commit/74275b7c3e2b39be5198f9efa35057a5e026e665))"
+        }
+      ]
+    },
+    {
+      "commit": "1db6d88ab4ea25654b8277358902b7df700db6b4",
+      "subject": "fix(wrap): honor Copilot OAuth wire-api override and model default (#2387)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "1db6d88ab4ea25654b8277358902b7df700db6b4",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:566:* **wrap:** honor Copilot OAuth wire-api override and model default ([#2387](https://github.com/headroomlabs-ai/headroom/issues/2387)) ([1db6d88](https://github.com/headroomlabs-ai/headroom/commit/1db6d88ab4ea25654b8277358902b7df700db6b4))"
+        },
+        {
+          "pattern": "1db6d88a",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:566:* **wrap:** honor Copilot OAuth wire-api override and model default ([#2387](https://github.com/headroomlabs-ai/headroom/issues/2387)) ([1db6d88](https://github.com/headroomlabs-ai/headroom/commit/1db6d88ab4ea25654b8277358902b7df700db6b4))"
+        }
+      ]
+    },
+    {
+      "commit": "f6398a64768a095b722a5fb0b2445c7953dee1c6",
+      "subject": "fix(proxy): port session-sticky beta headers to the Rust proxy (#2381)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "78591545ceb8303fdf9b93cd5ff02b626df97d2b",
+      "subject": "fix: publish headroom-opencode in release workflow (#2372)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "aaeba0a319f12b98cad3bfcf1cf991b694b946bf",
+      "subject": "fix(proxy): compress cache-mode cold starts and tag prefix-mismatch passthrough (#2365)",
+      "status": "rejected",
+      "reason": "production_file_overlap",
+      "overlap": [
+        "headroom/proxy/handlers/anthropic.py"
+      ]
+    },
+    {
+      "commit": "f6691497692869b7067438597421ff12aace6bf4",
+      "subject": "fix(proxy/openai): feed Codex WS traffic into the traffic learner (#2334)",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/proxy/handlers/openai.py"
+      ]
+    },
+    {
+      "commit": "64cb46e24bf7b223ea71b14b6f5e86e78fa7ac45",
+      "subject": "fix(proxy): pass through cross-region prefixed Bedrock model IDs directly (#2330)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "64cb46e24bf7b223ea71b14b6f5e86e78fa7ac45",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:547:* **proxy:** pass through cross-region prefixed Bedrock model IDs directly ([#2330](https://github.com/headroomlabs-ai/headroom/issues/2330)) ([64cb46e](https://github.com/headroomlabs-ai/headroom/commit/64cb46e24bf7b223ea71b14b6f5e86e78fa7ac45))"
+        },
+        {
+          "pattern": "64cb46e2",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:547:* **proxy:** pass through cross-region prefixed Bedrock model IDs directly ([#2330](https://github.com/headroomlabs-ai/headroom/issues/2330)) ([64cb46e](https://github.com/headroomlabs-ai/headroom/commit/64cb46e24bf7b223ea71b14b6f5e86e78fa7ac45))"
+        }
+      ]
+    },
+    {
+      "commit": "dc163bcd1cba4cd8898f23286eb1365fcf6e0356",
+      "subject": "fix(proxy): preserve signed Anthropic thinking blocks on outbound re-serialize (#2254)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "dc163bcd1cba4cd8898f23286eb1365fcf6e0356",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:550:* **proxy:** preserve signed Anthropic thinking blocks on outbound re-serialize ([#2254](https://github.com/headroomlabs-ai/headroom/issues/2254)) ([dc163bc](https://github.com/headroomlabs-ai/headroom/commit/dc163bcd1cba4cd8898f23286eb1365fcf6e0356))"
+        },
+        {
+          "pattern": "dc163bcd",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:550:* **proxy:** preserve signed Anthropic thinking blocks on outbound re-serialize ([#2254](https://github.com/headroomlabs-ai/headroom/issues/2254)) ([dc163bc](https://github.com/headroomlabs-ai/headroom/commit/dc163bcd1cba4cd8898f23286eb1365fcf6e0356))"
+        }
+      ]
+    },
+    {
+      "commit": "12f9f58cb3dcfc67af1238424d404d8dd9bad1dd",
+      "subject": "fix(backends/litellm): None-guard core token counts in OpenAI usage block (#2324)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "12f9f58cb3dcfc67af1238424d404d8dd9bad1dd",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:476:* **backends/litellm:** None-guard core token counts in OpenAI usage block ([#2324](https://github.com/headroomlabs-ai/headroom/issues/2324)) ([12f9f58](https://github.com/headroomlabs-ai/headroom/commit/12f9f58cb3dcfc67af1238424d404d8dd9bad1dd))"
+        },
+        {
+          "pattern": "12f9f58c",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:476:* **backends/litellm:** None-guard core token counts in OpenAI usage block ([#2324](https://github.com/headroomlabs-ai/headroom/issues/2324)) ([12f9f58](https://github.com/headroomlabs-ai/headroom/commit/12f9f58cb3dcfc67af1238424d404d8dd9bad1dd))"
+        }
+      ]
+    },
+    {
+      "commit": "8a905232091d993fac9e19a59bc449f201d4cdf3",
+      "subject": "fix(transforms/adaptive-sizer): honor max_k on small-input fast path (#2319)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "8a905232091d993fac9e19a59bc449f201d4cdf3",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:560:* **transforms/adaptive-sizer:** honor max_k on small-input fast path ([#2319](https://github.com/headroomlabs-ai/headroom/issues/2319)) ([8a90523](https://github.com/headroomlabs-ai/headroom/commit/8a905232091d993fac9e19a59bc449f201d4cdf3))"
+        },
+        {
+          "pattern": "8a905232",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:560:* **transforms/adaptive-sizer:** honor max_k on small-input fast path ([#2319](https://github.com/headroomlabs-ai/headroom/issues/2319)) ([8a90523](https://github.com/headroomlabs-ai/headroom/commit/8a905232091d993fac9e19a59bc449f201d4cdf3))"
+        }
+      ]
+    },
+    {
+      "commit": "c19e412b3356d80dece001887d4ff48b6fd5150b",
+      "subject": "fix(proxy/bedrock): report uncached input tokens from backend usage, not the live-zone count (#2318)",
+      "status": "rejected",
+      "reason": "production_file_overlap",
+      "overlap": [
+        "headroom/proxy/handlers/anthropic.py"
+      ]
+    },
+    {
+      "commit": "1f2c681c0b48150a569277d3ebd5e95709dc7c39",
+      "subject": "fix(proxy/batch): don't crash an OpenAI batch on a valid-JSON non-object line (#2316)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "1f2c681c0b48150a569277d3ebd5e95709dc7c39",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:527:* **proxy/batch:** don't crash an OpenAI batch on a valid-JSON non-object line ([#2316](https://github.com/headroomlabs-ai/headroom/issues/2316)) ([1f2c681](https://github.com/headroomlabs-ai/headroom/commit/1f2c681c0b48150a569277d3ebd5e95709dc7c39))"
+        },
+        {
+          "pattern": "1f2c681c",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:527:* **proxy/batch:** don't crash an OpenAI batch on a valid-JSON non-object line ([#2316](https://github.com/headroomlabs-ai/headroom/issues/2316)) ([1f2c681](https://github.com/headroomlabs-ai/headroom/commit/1f2c681c0b48150a569277d3ebd5e95709dc7c39))"
+        }
+      ]
+    },
+    {
+      "commit": "c471800e8ee22986c308464b02a85da5575f34cc",
+      "subject": "fix(memory): keep vector metadata in sync (#2295)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "c471800e8ee22986c308464b02a85da5575f34cc",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:513:* **memory:** keep vector metadata in sync ([#2295](https://github.com/headroomlabs-ai/headroom/issues/2295)) ([c471800](https://github.com/headroomlabs-ai/headroom/commit/c471800e8ee22986c308464b02a85da5575f34cc))"
+        },
+        {
+          "pattern": "c471800e",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:513:* **memory:** keep vector metadata in sync ([#2295](https://github.com/headroomlabs-ai/headroom/issues/2295)) ([c471800](https://github.com/headroomlabs-ai/headroom/commit/c471800e8ee22986c308464b02a85da5575f34cc))"
+        }
+      ]
+    },
+    {
+      "commit": "a24fe7dcbfe5ab30d0cef631c936e2245c12d123",
+      "subject": "fix(learn): stop classifying a successful exit code 0 as an error (#2289)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "a24fe7dcbfe5ab30d0cef631c936e2245c12d123",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:506:* **learn:** stop classifying a successful exit code 0 as an error ([#2289](https://github.com/headroomlabs-ai/headroom/issues/2289)) ([a24fe7d](https://github.com/headroomlabs-ai/headroom/commit/a24fe7dcbfe5ab30d0cef631c936e2245c12d123))"
+        },
+        {
+          "pattern": "a24fe7dc",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:506:* **learn:** stop classifying a successful exit code 0 as an error ([#2289](https://github.com/headroomlabs-ai/headroom/issues/2289)) ([a24fe7d](https://github.com/headroomlabs-ai/headroom/commit/a24fe7dcbfe5ab30d0cef631c936e2245c12d123))"
+        }
+      ]
+    },
+    {
+      "commit": "e240df2b698e601324b85956bd93cb304f6030ab",
+      "subject": "fix(learn/grok): detect a Windows absolute project path (#2283)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "e240df2b698e601324b85956bd93cb304f6030ab",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:505:* **learn/grok:** detect a Windows absolute project path ([#2283](https://github.com/headroomlabs-ai/headroom/issues/2283)) ([e240df2](https://github.com/headroomlabs-ai/headroom/commit/e240df2b698e601324b85956bd93cb304f6030ab))"
+        },
+        {
+          "pattern": "e240df2b",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:505:* **learn/grok:** detect a Windows absolute project path ([#2283](https://github.com/headroomlabs-ai/headroom/issues/2283)) ([e240df2](https://github.com/headroomlabs-ai/headroom/commit/e240df2b698e601324b85956bd93cb304f6030ab))"
+        }
+      ]
+    },
+    {
+      "commit": "a30db2cae49b4ef03ebbd404ec1fc6c4f5f2404d",
+      "subject": "fix(proxy/openai): don't crash the Responses memory tool loops on null arguments (#2273)",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/proxy/handlers/openai.py"
+      ]
+    },
+    {
+      "commit": "6840153473caa0d61e982215e16a8cf54b0b6cc7",
+      "subject": "fix(tokenizer): price CJK in the Rust fixed-ratio estimator (Python parity) (#2260)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "2483f570025763cd9183a93749ea8cf38f1aeb85",
+      "subject": "fix(gemini): resolve native CCR retrieval calls (#2253)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "2483f570025763cd9183a93749ea8cf38f1aeb85",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:497:* **gemini:** resolve native CCR retrieval calls ([#2253](https://github.com/headroomlabs-ai/headroom/issues/2253)) ([2483f57](https://github.com/headroomlabs-ai/headroom/commit/2483f570025763cd9183a93749ea8cf38f1aeb85))"
+        },
+        {
+          "pattern": "2483f570",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:497:* **gemini:** resolve native CCR retrieval calls ([#2253](https://github.com/headroomlabs-ai/headroom/issues/2253)) ([2483f57](https://github.com/headroomlabs-ai/headroom/commit/2483f570025763cd9183a93749ea8cf38f1aeb85))"
+        }
+      ]
+    },
+    {
+      "commit": "5568d738afb5e080d8df56e64500026996cbf025",
+      "subject": "fix(ci): publish latest from the root Docker manifest (#2252)",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "3bb02f8f75f12cf8258a5b1c2a7fbdc190f9d074",
+      "subject": "fix(transforms/smart_crusher): don't crash on a tool call with a null function (#2232)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "3bb02f8f75f12cf8258a5b1c2a7fbdc190f9d074",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:561:* **transforms/smart_crusher:** don't crash on a tool call with a null function ([#2232](https://github.com/headroomlabs-ai/headroom/issues/2232)) ([3bb02f8](https://github.com/headroomlabs-ai/headroom/commit/3bb02f8f75f12cf8258a5b1c2a7fbdc190f9d074))"
+        },
+        {
+          "pattern": "3bb02f8f",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:561:* **transforms/smart_crusher:** don't crash on a tool call with a null function ([#2232](https://github.com/headroomlabs-ai/headroom/issues/2232)) ([3bb02f8](https://github.com/headroomlabs-ai/headroom/commit/3bb02f8f75f12cf8258a5b1c2a7fbdc190f9d074))"
+        }
+      ]
+    },
+    {
+      "commit": "f840d5f2fe938432e542c3f71f2218eeecd06b05",
+      "subject": "fix(memory): make explicit-project and user store keys collision-resistant (#2231)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "f840d5f2fe938432e542c3f71f2218eeecd06b05",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:514:* **memory:** make explicit-project and user store keys collision-resistant ([#2231](https://github.com/headroomlabs-ai/headroom/issues/2231)) ([f840d5f](https://github.com/headroomlabs-ai/headroom/commit/f840d5f2fe938432e542c3f71f2218eeecd06b05))"
+        },
+        {
+          "pattern": "f840d5f2",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:514:* **memory:** make explicit-project and user store keys collision-resistant ([#2231](https://github.com/headroomlabs-ai/headroom/issues/2231)) ([f840d5f](https://github.com/headroomlabs-ai/headroom/commit/f840d5f2fe938432e542c3f71f2218eeecd06b05))"
+        }
+      ]
+    },
+    {
+      "commit": "29d8a5e563cf16dbd3a53a1571f4f352e61e1b33",
+      "subject": "fix(learn/gemini): stop double-counting session tokens (#2230)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "29d8a5e563cf16dbd3a53a1571f4f352e61e1b33",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:504:* **learn/gemini:** stop double-counting session tokens ([#2230](https://github.com/headroomlabs-ai/headroom/issues/2230)) ([29d8a5e](https://github.com/headroomlabs-ai/headroom/commit/29d8a5e563cf16dbd3a53a1571f4f352e61e1b33))"
+        },
+        {
+          "pattern": "29d8a5e5",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:504:* **learn/gemini:** stop double-counting session tokens ([#2230](https://github.com/headroomlabs-ai/headroom/issues/2230)) ([29d8a5e](https://github.com/headroomlabs-ai/headroom/commit/29d8a5e563cf16dbd3a53a1571f4f352e61e1b33))"
+        }
+      ]
+    },
+    {
+      "commit": "7e83b8da3cdefd5c0820017ff60e48eb489044fd",
+      "subject": "fix(learn/gemini): detect the project path for JSONL sessions (#2229)",
+      "status": "selected",
+      "task_id": "N7"
+    },
+    {
+      "commit": "d02df1075894b414d60626aca2bbcadd7a3577a0",
+      "subject": "fix(proxy): give each Codex /v1/responses WS turn a unique request_id (#2164)",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/proxy/handlers/openai.py"
+      ]
+    },
+    {
+      "commit": "a4bd2e62a5bb73f15b3b12e979c69e2b555bee10",
+      "subject": "fix(proxy): gate mid-turn message coalescing to Claude Code clients (#1643)",
+      "status": "rejected",
+      "reason": "production_file_overlap",
+      "overlap": [
+        "headroom/proxy/handlers/anthropic.py"
+      ]
+    },
+    {
+      "commit": "89493714d2cffdc1f81a8f417ea09891453d7009",
+      "subject": "fix(health): label kompress as degraded/optional when not yet loaded (#2865)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "89493714d2cffdc1f81a8f417ea09891453d7009",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:498:* **health:** label kompress as degraded/optional when not yet loaded ([#2865](https://github.com/headroomlabs-ai/headroom/issues/2865)) ([8949371](https://github.com/headroomlabs-ai/headroom/commit/89493714d2cffdc1f81a8f417ea09891453d7009))"
+        },
+        {
+          "pattern": "89493714",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:498:* **health:** label kompress as degraded/optional when not yet loaded ([#2865](https://github.com/headroomlabs-ai/headroom/issues/2865)) ([8949371](https://github.com/headroomlabs-ai/headroom/commit/89493714d2cffdc1f81a8f417ea09891453d7009))"
+        }
+      ]
+    },
+    {
+      "commit": "685ebe457d727922ba4057515556a2d2aac0f616",
+      "subject": "fix(ccr): report embedded hashes from compress endpoint (#717)",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/proxy/handlers/openai.py"
+      ]
+    },
+    {
+      "commit": "a5b0a8f4cc54d68afcf371a422b3a4a9635b7e7f",
+      "subject": "fix(proxy): allow settings routes for trusted gateway/dashboard clients (#2491)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "a5b0a8f4cc54d68afcf371a422b3a4a9635b7e7f",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:535:* **proxy:** allow settings routes for trusted gateway/dashboard clients ([#2491](https://github.com/headroomlabs-ai/headroom/issues/2491)) ([a5b0a8f](https://github.com/headroomlabs-ai/headroom/commit/a5b0a8f4cc54d68afcf371a422b3a4a9635b7e7f))"
+        },
+        {
+          "pattern": "a5b0a8f4",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:535:* **proxy:** allow settings routes for trusted gateway/dashboard clients ([#2491](https://github.com/headroomlabs-ai/headroom/issues/2491)) ([a5b0a8f](https://github.com/headroomlabs-ai/headroom/commit/a5b0a8f4cc54d68afcf371a422b3a4a9635b7e7f))"
+        }
+      ]
+    },
+    {
+      "commit": "eb5b5e41988f5c27d29ae8ae3e5fe74e56493b8c",
+      "subject": "fix: Vertex model pricing shows $0.00 for versioned model names and vertex:anthropic provider (#2517)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "eb5b5e41988f5c27d29ae8ae3e5fe74e56493b8c",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:562:* Vertex model pricing shows $0.00 for versioned model names and vertex:anthropic provider ([#2517](https://github.com/headroomlabs-ai/headroom/issues/2517)) ([eb5b5e4](https://github.com/headroomlabs-ai/headroom/commit/eb5b5e41988f5c27d29ae8ae3e5fe74e56493b8c))"
+        },
+        {
+          "pattern": "eb5b5e41",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:562:* Vertex model pricing shows $0.00 for versioned model names and vertex:anthropic provider ([#2517](https://github.com/headroomlabs-ai/headroom/issues/2517)) ([eb5b5e4](https://github.com/headroomlabs-ai/headroom/commit/eb5b5e41988f5c27d29ae8ae3e5fe74e56493b8c))"
+        }
+      ]
+    },
+    {
+      "commit": "12149f74466c08b69be8d5fe751425be63c2fda4",
+      "subject": "fix(proxy): include tool_search_deferral savings in the savings ledger",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "12149f74466c08b69be8d5fe751425be63c2fda4",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:546:* **proxy:** include tool_search_deferral savings in the savings ledger ([12149f7](https://github.com/headroomlabs-ai/headroom/commit/12149f74466c08b69be8d5fe751425be63c2fda4))"
+        },
+        {
+          "pattern": "12149f74",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:546:* **proxy:** include tool_search_deferral savings in the savings ledger ([12149f7](https://github.com/headroomlabs-ai/headroom/commit/12149f74466c08b69be8d5fe751425be63c2fda4))"
+        }
+      ]
+    },
+    {
+      "commit": "09516635621caccf7e3db4f537eb49ea49b8a453",
+      "subject": "fix(proxy): close the upstream stream when a streaming body is never consumed",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "09516635621caccf7e3db4f537eb49ea49b8a453",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:538:* **proxy:** close the upstream stream when a streaming body is never consumed ([0951663](https://github.com/headroomlabs-ai/headroom/commit/09516635621caccf7e3db4f537eb49ea49b8a453))"
+        },
+        {
+          "pattern": "09516635",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:538:* **proxy:** close the upstream stream when a streaming body is never consumed ([0951663](https://github.com/headroomlabs-ai/headroom/commit/09516635621caccf7e3db4f537eb49ea49b8a453))"
+        }
+      ]
+    },
+    {
+      "commit": "d7bc1e275f411788abffa2d007db14aa17fd31c5",
+      "subject": "fix(content-router): protect custom-tag blocks before mixed-content section split",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/transforms/content_router.py"
+      ]
+    },
+    {
+      "commit": "e4904e23a6ba6f5cff2488332946481172446922",
+      "subject": "fix(backends/anyllm): stream tool_use blocks and map finish_reason on the streaming path",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "e4904e23a6ba6f5cff2488332946481172446922",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:475:* **backends/anyllm:** stream tool_use blocks and map finish_reason on the streaming path ([e4904e2](https://github.com/headroomlabs-ai/headroom/commit/e4904e23a6ba6f5cff2488332946481172446922))"
+        },
+        {
+          "pattern": "e4904e23",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:475:* **backends/anyllm:** stream tool_use blocks and map finish_reason on the streaming path ([e4904e2](https://github.com/headroomlabs-ai/headroom/commit/e4904e23a6ba6f5cff2488332946481172446922))"
+        }
+      ]
+    },
+    {
+      "commit": "0d6866b91a3777475abd58cd8b63a10cd0621e7f",
+      "subject": "fix(backends/anyllm): convert Anthropic tools and tool_choice to OpenAI shape",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "0d6866b91a3777475abd58cd8b63a10cd0621e7f",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:474:* **backends/anyllm:** convert Anthropic tools and tool_choice to OpenAI shape ([0d6866b](https://github.com/headroomlabs-ai/headroom/commit/0d6866b91a3777475abd58cd8b63a10cd0621e7f))"
+        },
+        {
+          "pattern": "0d6866b9",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:474:* **backends/anyllm:** convert Anthropic tools and tool_choice to OpenAI shape ([0d6866b](https://github.com/headroomlabs-ai/headroom/commit/0d6866b91a3777475abd58cd8b63a10cd0621e7f))"
+        }
+      ]
+    },
+    {
+      "commit": "def3d76e5ab4665e609b51bfba54dd6d25116925",
+      "subject": "fix(cache): mirror client cache_control positions instead of single-marker consolidation",
+      "status": "rejected",
+      "reason": "too_broad"
+    },
+    {
+      "commit": "c093bf11eb5f356f71367ebb7b56ae3c2b434a12",
+      "subject": "fix(wrap/claude): keep --1m effective when an explicit --model is passed through",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "c093bf11eb5f356f71367ebb7b56ae3c2b434a12",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:563:* **wrap/claude:** keep --1m effective when an explicit --model is passed through ([c093bf1](https://github.com/headroomlabs-ai/headroom/commit/c093bf11eb5f356f71367ebb7b56ae3c2b434a12))"
+        },
+        {
+          "pattern": "c093bf11",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:563:* **wrap/claude:** keep --1m effective when an explicit --model is passed through ([c093bf1](https://github.com/headroomlabs-ai/headroom/commit/c093bf11eb5f356f71367ebb7b56ae3c2b434a12))"
+        }
+      ]
+    },
+    {
+      "commit": "ae384862a4950cec057103e9daf75e74107640df",
+      "subject": "fix(wrap/opencode): verify the opencode binary before mutating config",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "ae384862a4950cec057103e9daf75e74107640df",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:564:* **wrap/opencode:** verify the opencode binary before mutating config ([ae38486](https://github.com/headroomlabs-ai/headroom/commit/ae384862a4950cec057103e9daf75e74107640df))"
+        },
+        {
+          "pattern": "ae384862",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:564:* **wrap/opencode:** verify the opencode binary before mutating config ([ae38486](https://github.com/headroomlabs-ai/headroom/commit/ae384862a4950cec057103e9daf75e74107640df))"
+        }
+      ]
+    },
+    {
+      "commit": "d0c1f5b8ad68c7a44ed3aaa0fe40e3a656950123",
+      "subject": "fix(ccr): avoid injecting tool on chat streaming",
+      "status": "rejected",
+      "reason": "touches_v3_treatment",
+      "overlap": [
+        "headroom/proxy/handlers/openai.py"
+      ]
+    },
+    {
+      "commit": "cde1513c91b6c6c240869bc5660f4b8966197bbc",
+      "subject": "fix(proxy): guard telemetry and TOIN endpoints",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "cde1513c91b6c6c240869bc5660f4b8966197bbc",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:545:* **proxy:** guard telemetry and TOIN endpoints ([cde1513](https://github.com/headroomlabs-ai/headroom/commit/cde1513c91b6c6c240869bc5660f4b8966197bbc))"
+        },
+        {
+          "pattern": "cde1513c",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:545:* **proxy:** guard telemetry and TOIN endpoints ([cde1513](https://github.com/headroomlabs-ai/headroom/commit/cde1513c91b6c6c240869bc5660f4b8966197bbc))"
+        }
+      ]
+    },
+    {
+      "commit": "8cd138039edbfc295080ec474325d527fb3aedf3",
+      "subject": "fix(toin): bound private query and pattern retention",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "8cd138039edbfc295080ec474325d527fb3aedf3",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:557:* **toin:** bound private query and pattern retention ([8cd1380](https://github.com/headroomlabs-ai/headroom/commit/8cd138039edbfc295080ec474325d527fb3aedf3))"
+        },
+        {
+          "pattern": "8cd13803",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:557:* **toin:** bound private query and pattern retention ([8cd1380](https://github.com/headroomlabs-ai/headroom/commit/8cd138039edbfc295080ec474325d527fb3aedf3))"
+        }
+      ]
+    },
+    {
+      "commit": "7092b53c466bf5dbda8a1cda88403d1a4b16deb1",
+      "subject": "fix(cli/update): let install ownership win over bare /.dockerenv so venv installs self-update (#2830)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "7092b53c466bf5dbda8a1cda88403d1a4b16deb1",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:490:* **cli/update:** let install ownership win over bare /.dockerenv so venv installs self-update ([#2830](https://github.com/headroomlabs-ai/headroom/issues/2830)) ([7092b53](https://github.com/headroomlabs-ai/headroom/commit/7092b53c466bf5dbda8a1cda88403d1a4b16deb1))"
+        },
+        {
+          "pattern": "7092b53c",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:490:* **cli/update:** let install ownership win over bare /.dockerenv so venv installs self-update ([#2830](https://github.com/headroomlabs-ai/headroom/issues/2830)) ([7092b53](https://github.com/headroomlabs-ai/headroom/commit/7092b53c466bf5dbda8a1cda88403d1a4b16deb1))"
+        }
+      ]
+    },
+    {
+      "commit": "de9e0523dad47b700062464adecd60f82547f332",
+      "subject": "fix(settings): accept documented HEADROOM_* env names as settings keys (#2833)",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "de9e0523dad47b700062464adecd60f82547f332",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:555:* **settings:** accept documented HEADROOM_* env names as settings keys ([#2833](https://github.com/headroomlabs-ai/headroom/issues/2833)) ([de9e052](https://github.com/headroomlabs-ai/headroom/commit/de9e0523dad47b700062464adecd60f82547f332))"
+        },
+        {
+          "pattern": "de9e0523",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:555:* **settings:** accept documented HEADROOM_* env names as settings keys ([#2833](https://github.com/headroomlabs-ai/headroom/issues/2833)) ([de9e052](https://github.com/headroomlabs-ai/headroom/commit/de9e0523dad47b700062464adecd60f82547f332))"
+        }
+      ]
+    },
+    {
+      "commit": "fd4628d82156c65d4fa22df9513315790a6cd2fb",
+      "subject": "fix(memory): sync FTS5 and vector indexes on CLI delete/edit/prune/purge",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "fd4628d82156c65d4fa22df9513315790a6cd2fb",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:516:* **memory:** sync FTS5 and vector indexes on CLI delete/edit/prune/purge ([fd4628d](https://github.com/headroomlabs-ai/headroom/commit/fd4628d82156c65d4fa22df9513315790a6cd2fb))"
+        },
+        {
+          "pattern": "fd4628d8",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:516:* **memory:** sync FTS5 and vector indexes on CLI delete/edit/prune/purge ([fd4628d](https://github.com/headroomlabs-ai/headroom/commit/fd4628d82156c65d4fa22df9513315790a6cd2fb))"
+        }
+      ]
+    },
+    {
+      "commit": "65961827cf5e90d7b4e7026feb89aac000a73ea3",
+      "subject": "fix(memory): close DirectMem0 resources",
+      "status": "rejected",
+      "reason": "tracked_provenance_leak",
+      "leaks": [
+        {
+          "pattern": "65961827cf5e90d7b4e7026feb89aac000a73ea3",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:510:* **memory:** close DirectMem0 resources ([6596182](https://github.com/headroomlabs-ai/headroom/commit/65961827cf5e90d7b4e7026feb89aac000a73ea3))"
+        },
+        {
+          "pattern": "65961827",
+          "sample": "7c4fe80c19b3a9537f395f515a64432e41ee1d43:CHANGELOG.md:510:* **memory:** close DirectMem0 resources ([6596182](https://github.com/headroomlabs-ai/headroom/commit/65961827cf5e90d7b4e7026feb89aac000a73ea3))"
+        }
+      ]
+    },
+    {
+      "commit": "e044139001680fd5198147bf373df6f00db32cc7",
+      "subject": "fix(install): trust Docker bridge for dashboard metadata",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "c85abf7a87920012e01f0a677f6fbd98c4b08de0",
+      "subject": "fix(oauth2): make repository lint checks pass",
+      "status": "rejected",
+      "reason": "missing_prod_or_test"
+    },
+    {
+      "commit": "07d89a751d603f5cf73b8fd7af0c766a08e65da8",
+      "subject": "fix(litellm): close shared cloud client",
+      "status": "selected",
+      "task_id": "N8"
+    }
+  ]
+}

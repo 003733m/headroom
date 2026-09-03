@@ -1,0 +1,201 @@
+{
+  "status": "locked_before_any_v3_prospective_agent_run",
+  "freeze_sha": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "v2_prospective_archive_commit": "29bb41c2",
+  "protocol": {
+    "number_of_tasks": 4,
+    "stop_after_tasks": 4,
+    "no_task_replacement_after_agent_runs_begin": true,
+    "no_v3_algorithm_changes_after_freeze": true,
+    "primary_endpoint": "external regression oracle pass/fail",
+    "secondary_endpoints": [
+      "trajectory_relevance activation",
+      "predefined critical-evidence retention",
+      "agent requests",
+      "agent token usage",
+      "wall time"
+    ],
+    "agent_instruction_suffix": "Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+    "condition_orders": {
+      "N5": [
+        "OFF",
+        "ON"
+      ],
+      "N6": [
+        "ON",
+        "OFF"
+      ],
+      "N7": [
+        "OFF",
+        "ON"
+      ],
+      "N8": [
+        "ON",
+        "OFF"
+      ]
+    },
+    "critical_evidence_definition": "Exact expected failing test-function names and historical production-file paths were fixed before agent runs. They are used only as predefined retention probes, not for task selection or algorithm tuning.",
+    "selection_artifact": "experiments/bridge_relevance/results/v3/prospective_screening.json",
+    "screening_was_agent_blind": true
+  },
+  "tasks": [
+    {
+      "id": "N5",
+      "source_commit": "36cc800162eae83aceffce705cc4ecba05f6ec02",
+      "source_subject": "fix(copilot): honor corporate TLS for token refresh (#3246)",
+      "production_files": [
+        "headroom/copilot_auth.py",
+        "headroom/proxy/ssl_context.py"
+      ],
+      "oracle_tests": [
+        "tests/test_copilot_auth.py",
+        "tests/test_integrations/agno/test_model.py"
+      ],
+      "expected_buggy_failures": [
+        "tests/test_copilot_auth.py::test_exchange_token_sync_uses_configured_corporate_tls_context"
+      ],
+      "order": [
+        "OFF",
+        "ON"
+      ],
+      "task_prompt": "A regression causes Copilot token refresh to ignore the configured corporate TLS context. Investigate and fix the regression with the minimal production change. Run relevant tests. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "task_prompt_sha256": "399bc3ab6500f723678f775f0ce7ed90094ac12e869983b7ae0b8cc155da555c",
+      "critical_evidence": {
+        "test_names": [
+          "test_exchange_token_sync_uses_configured_corporate_tls_context"
+        ],
+        "production_paths": [
+          "headroom/copilot_auth.py",
+          "headroom/proxy/ssl_context.py"
+        ]
+      },
+      "snapshot": {
+        "path": "/tmp/headroom-v3-prospective-locked/N5",
+        "head": "a0d8a91bd7f4e1ad57ae1d148f4e850a96ef5434",
+        "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+        "historical_git_removed": true,
+        "initial_oracle_rc": 1,
+        "initial_oracle_failures": [
+          "tests/test_copilot_auth.py::test_exchange_token_sync_uses_configured_corporate_tls_context"
+        ]
+      }
+    },
+    {
+      "id": "N6",
+      "source_commit": "9ca5a16bde81f515454f9bc6ad022caa15e118b8",
+      "source_subject": "fix(proxy/anthropic): coerce present-null usage counters on the buffered backend path (#3084)",
+      "production_files": [
+        "headroom/proxy/handlers/anthropic.py"
+      ],
+      "oracle_tests": [
+        "tests/test_backend_nonstreaming_cache_metrics.py"
+      ],
+      "expected_buggy_failures": [
+        "tests/test_backend_nonstreaming_cache_metrics.py::test_anthropic_backend_nonstreaming_present_null_cache_counters_do_not_crash"
+      ],
+      "order": [
+        "ON",
+        "OFF"
+      ],
+      "task_prompt": "The buffered Anthropic backend crashes when usage metadata contains cache counters that are present but null. Investigate and fix the regression with the minimal production change. Run relevant tests. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "task_prompt_sha256": "22ca2e1b2d27716dd30944de7f757ad7ead42f8e3ed53acc997e7283bccce138",
+      "critical_evidence": {
+        "test_names": [
+          "test_anthropic_backend_nonstreaming_present_null_cache_counters_do_not_crash"
+        ],
+        "production_paths": [
+          "headroom/proxy/handlers/anthropic.py"
+        ]
+      },
+      "snapshot": {
+        "path": "/tmp/headroom-v3-prospective-locked/N6",
+        "head": "924a8f3f09e93e310f3fc9837d62362eaa964fb4",
+        "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+        "historical_git_removed": true,
+        "initial_oracle_rc": 1,
+        "initial_oracle_failures": [
+          "tests/test_backend_nonstreaming_cache_metrics.py::test_anthropic_backend_nonstreaming_present_null_cache_counters_do_not_crash"
+        ]
+      }
+    },
+    {
+      "id": "N7",
+      "source_commit": "7e83b8da3cdefd5c0820017ff60e48eb489044fd",
+      "source_subject": "fix(learn/gemini): detect the project path for JSONL sessions (#2229)",
+      "production_files": [
+        "headroom/learn/plugins/gemini.py"
+      ],
+      "oracle_tests": [
+        "tests/test_learn/test_gemini_scanner.py"
+      ],
+      "expected_buggy_failures": [
+        "tests/test_learn/test_gemini_scanner.py::TestProjectDiscovery::test_detects_project_path_from_jsonl_cwd"
+      ],
+      "order": [
+        "OFF",
+        "ON"
+      ],
+      "task_prompt": "Gemini JSONL session discovery fails to recover the project path from the session working-directory metadata. Investigate and fix the regression with the minimal production change. Run relevant tests. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "task_prompt_sha256": "dea95bb4f096cb5ef201038df48168a624f3f2c2d9b60bc7774ce95caaa7a1d4",
+      "critical_evidence": {
+        "test_names": [
+          "test_detects_project_path_from_jsonl_cwd"
+        ],
+        "production_paths": [
+          "headroom/learn/plugins/gemini.py"
+        ]
+      },
+      "snapshot": {
+        "path": "/tmp/headroom-v3-prospective-locked/N7",
+        "head": "ac029b8d70f11b1185195eda60f6a0c5719b48e9",
+        "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+        "historical_git_removed": true,
+        "initial_oracle_rc": 1,
+        "initial_oracle_failures": [
+          "tests/test_learn/test_gemini_scanner.py::TestProjectDiscovery::test_detects_project_path_from_jsonl_cwd"
+        ]
+      }
+    },
+    {
+      "id": "N8",
+      "source_commit": "07d89a751d603f5cf73b8fd7af0c766a08e65da8",
+      "source_subject": "fix(litellm): close shared cloud client",
+      "production_files": [
+        "headroom/integrations/litellm_callback.py"
+      ],
+      "oracle_tests": [
+        "tests/test_integrations/test_litellm_callback.py"
+      ],
+      "expected_buggy_failures": [
+        "tests/test_integrations/test_litellm_callback.py::TestHeadroomCallbackClientLifecycle::test_aclose_closes_and_clears_initialized_client",
+        "tests/test_integrations/test_litellm_callback.py::TestHeadroomCallbackClientLifecycle::test_aclose_without_initialized_client_is_a_noop"
+      ],
+      "order": [
+        "ON",
+        "OFF"
+      ],
+      "task_prompt": "A LiteLLM callback lifecycle regression leaves an initialized shared cloud client open during shutdown; shutdown must also remain safe when no client was initialized. Investigate and fix the regression with the minimal production change. Run relevant tests. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "task_prompt_sha256": "6b4dcc2883b7e34a0a1b8804b0f660ff6f371768379513cf7ddcb210d7553bf8",
+      "critical_evidence": {
+        "test_names": [
+          "test_aclose_closes_and_clears_initialized_client",
+          "test_aclose_without_initialized_client_is_a_noop"
+        ],
+        "production_paths": [
+          "headroom/integrations/litellm_callback.py"
+        ]
+      },
+      "snapshot": {
+        "path": "/tmp/headroom-v3-prospective-locked/N8",
+        "head": "72d26363be519cc773a9e31d8ca872e01c62c7ba",
+        "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+        "historical_git_removed": true,
+        "initial_oracle_rc": 1,
+        "initial_oracle_failures": [
+          "tests/test_integrations/test_litellm_callback.py::TestHeadroomCallbackClientLifecycle::test_aclose_closes_and_clears_initialized_client",
+          "tests/test_integrations/test_litellm_callback.py::TestHeadroomCallbackClientLifecycle::test_aclose_without_initialized_client_is_a_noop"
+        ]
+      }
+    }
+  ]
+}
