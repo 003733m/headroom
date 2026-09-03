@@ -1,0 +1,38 @@
+{
+  "name": "V3 bridge-hard challenge selection protocol",
+  "status": "declared_before_bridge_hard_screening",
+  "purpose": "Test the marginal regime where task-critical safe bridge identifiers are discovered during tool use but are absent from the user prompt.",
+  "relationship_to_existing_evaluation": {
+    "v3_prospective_n5_n8": "unchanged primary prospective evaluation",
+    "bridge_hard": "separate targeted post-hoc challenge benchmark motivated by prospective forensic analysis",
+    "must_not_merge_results": true
+  },
+  "algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "max_selected_tasks": 4,
+  "candidate_order": "git date order, newest to oldest",
+  "selection_rules": [
+    "historical non-merge bug-fix commit older than the V3 algorithm freeze",
+    "must change at least one production file under headroom/ and at least one test file under tests/",
+    "maximum 3 production files and maximum 2 changed test files",
+    "must not touch V3 trajectory-relevance treatment files",
+    "must not reuse commits already recorded in bridge_relevance experiment artifacts",
+    "selected tasks must not overlap each other in production files",
+    "reverse production patch must apply cleanly to the V3 freeze snapshot",
+    "changed tests must pass on the pristine V3 freeze",
+    "after reversing production fix only, changed tests must exit with pytest rc=1",
+    "reversed oracle must expose exactly 1 or 2 failing tests",
+    "at least one safe bridge identifier must be exposed by the failing oracle",
+    "safe bridge kinds for this challenge are test_name or exception",
+    "safe bridge identifier must not appear in the challenge user prompt",
+    "challenge prompt reveals changed test file paths but not failing test names or exception names",
+    "stop immediately after the first four eligible tasks",
+    "do not inspect V3 bridge scores, V3 KEEP/DROP decisions, trajectory activation, or agent outcomes during task selection",
+    "do not replace a selected task after observing V3 or agent results"
+  ],
+  "challenge_prompt_template": "Fix the regression covered by the tests in: <changed test files>. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell rg -nH instead of the dedicated Grep tool for repository text searches. Do not inspect git history or historical commits.",
+  "interpretation": {
+    "positive_result": "A baseline DROP to V3 KEEP result is evidence of marginal trajectory value in the predeclared bridge-hard regime.",
+    "negative_result": "Must be reported; tasks are never discarded because V3 does not help.",
+    "agent_success": "Secondary; the challenge primarily tests the relevance mechanism under low prompt-to-bridge overlap."
+  }
+}
