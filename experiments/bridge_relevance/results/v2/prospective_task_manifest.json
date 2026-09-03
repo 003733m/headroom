@@ -1,0 +1,100 @@
+{
+  "status": "locked_before_any_prospective_agent_run",
+  "freeze_sha": "6e97d220477ca7d4e01a9ab044bb5606d77ff32a",
+  "protocol": {
+    "number_of_tasks": 4,
+    "stop_after_tasks": 4,
+    "no_task_replacement_after_agent_runs_begin": true,
+    "no_v2_retuning_after_agent_runs_begin": true,
+    "primary_endpoint": "external regression oracle pass/fail",
+    "secondary_endpoints": [
+      "trajectory_relevance activation",
+      "predefined critical-evidence retention",
+      "agent requests",
+      "agent token usage",
+      "wall time"
+    ],
+    "agent_instruction_suffix": "Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+    "selection_rule": [
+      "Candidate must have freeze baseline pytest rc=0.",
+      "Production-only historical fix reversion must apply cleanly.",
+      "Retained regression tests must then return pytest rc=1.",
+      "Exclude previously used T1-T6 commits.",
+      "Prefer maximum subsystem/production-file diversity.",
+      "If multiple valid candidates touch the same production file, prefer the candidate with fewer failing regression-oracle tests."
+    ],
+    "excluded_valid_candidate": {
+      "commit": "536c949a692f4855719d71d612abc4968040286b",
+      "reason": "Touches the same production file as N2; N2 has one regression-oracle failure while this candidate has two."
+    }
+  },
+  "tasks": [
+    {
+      "id": "N1",
+      "source_commit": "2cae0f8eaf627f6b743deb215f7c19c499c26bcd",
+      "domain": "semantic cache key",
+      "production_files": [
+        "headroom/proxy/semantic_cache_key.py",
+        "headroom/proxy/semantic_cache_key_policy.py"
+      ],
+      "oracle_tests": [
+        "tests/test_proxy_semantic_cache_key.py",
+        "tests/test_proxy_semantic_cache_key_policy.py"
+      ],
+      "expected_buggy_failures": [
+        "tests/test_proxy_semantic_cache_key.py::test_message_cache_control_breakpoint_move_same_key",
+        "tests/test_proxy_semantic_cache_key_policy.py::test_semantic_cache_key_ignores_moved_message_cache_control"
+      ],
+      "order": ["OFF", "ON"],
+      "task_prompt": "A regression causes semantically equivalent message histories to produce different semantic-cache keys when only message cache-control placement changes. Investigate and fix the regression with the minimal production change. Run relevant tests. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits."
+    },
+    {
+      "id": "N2",
+      "source_commit": "a06a51eca63f88271dfa77f2ee6bf3c8da6b24e4",
+      "domain": "Codex WebSocket model attribution",
+      "production_files": [
+        "headroom/proxy/handlers/openai.py"
+      ],
+      "oracle_tests": [
+        "tests/test_openai_codex_ws_lifecycle.py"
+      ],
+      "expected_buggy_failures": [
+        "tests/test_openai_codex_ws_lifecycle.py::test_ws_session_metrics_track_model_per_response_create"
+      ],
+      "order": ["ON", "OFF"],
+      "task_prompt": "A regression causes WebSocket session metrics to record the model as unknown instead of tracking the model supplied by each response.create request. Investigate and fix the regression with the minimal production change. Run relevant tests. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits."
+    },
+    {
+      "id": "N3",
+      "source_commit": "08466f3cae4dbb2647dc6f249fe42c4e840600c5",
+      "domain": "Anthropic token counting",
+      "production_files": [
+        "headroom/providers/anthropic.py"
+      ],
+      "oracle_tests": [
+        "tests/test_providers/test_anthropic.py"
+      ],
+      "expected_buggy_failures": [
+        "tests/test_providers/test_anthropic.py::TestAnthropicTokenCounting::test_count_messages_tolerates_null_tool_calls"
+      ],
+      "order": ["OFF", "ON"],
+      "task_prompt": "Anthropic token estimation crashes when a message contains tool_calls set to null. Investigate and fix the regression with the minimal production change. Run relevant tests. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits."
+    },
+    {
+      "id": "N4",
+      "source_commit": "e00c6ff81ce2003e04042b8f2d1bd6aa3c6e885c",
+      "domain": "inline memory parsing",
+      "production_files": [
+        "headroom/memory/inline_extractor.py"
+      ],
+      "oracle_tests": [
+        "tests/test_memory_wrapper.py"
+      ],
+      "expected_buggy_failures": [
+        "tests/test_memory_wrapper.py::test_parse_response_with_memory_tolerates_non_object_memory_block"
+      ],
+      "order": ["ON", "OFF"],
+      "task_prompt": "Inline memory parsing crashes when a memory block contains valid JSON that is not an object. Investigate and fix the regression with the minimal production change. Run relevant tests. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "task_id": "N4",
+  "status": "completed",
+  "evaluation_type": "prospective_frozen_pair",
+  "freeze_sha": "6e97d220477ca7d4e01a9ab044bb5606d77ff32a",
+  "snapshot_sha": "ff3a382efcd4dc01ab334db7e0b8c3f71fa8d8e6",
+  "prompt_sha256": "abb212f725efe34de0b6d3cd604440b9503ad7eb342e0e157e5114050619bc04",
+  "order": ["on", "off"],
+  "on": {
+    "agent_rc": 0,
+    "oracle_rc": 0,
+    "oracle_pass": true,
+    "relevance_split_occurrences": 0,
+    "wall_seconds": 68.71,
+    "changed_files": [
+      "headroom/memory/inline_extractor.py"
+    ]
+  },
+  "off": {
+    "agent_rc": 0,
+    "oracle_rc": 0,
+    "oracle_pass": true,
+    "relevance_split_occurrences": 0,
+    "wall_seconds": 49.13,
+    "changed_files": [
+      "headroom/memory/inline_extractor.py"
+    ]
+  },
+  "paired_outcome": "both_pass",
+  "treatment_activated": false,
+  "treatment_effect_estimable": false,
+  "classification": "unactivated_pair",
+  "interpretation": "Both conditions solved the frozen regression with the same production file changed. Trajectory relevance did not activate in the ON condition. Across N1-N4, prospective ON activation was therefore 0/4.",
+  "protocol_note": "N4 closes the predeclared four-task prospective evaluation. Do not rerun or replace any prospective task."
+}

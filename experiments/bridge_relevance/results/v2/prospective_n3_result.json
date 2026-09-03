@@ -1,0 +1,35 @@
+{
+  "task_id": "N3",
+  "status": "completed",
+  "evaluation_type": "prospective_frozen_pair",
+  "freeze_sha": "6e97d220477ca7d4e01a9ab044bb5606d77ff32a",
+  "snapshot_sha": "079895167454075433d5569baf1dd03faf830289",
+  "prompt_sha256": "4cd39dbe9c29f009ff161284e4ea1ac816a695dc17bdc9423495f04675bd32df",
+  "order": ["off", "on"],
+  "off": {
+    "agent_rc": 0,
+    "oracle_rc": 0,
+    "oracle_pass": true,
+    "relevance_split_occurrences": 0,
+    "wall_seconds": 108.62,
+    "changed_files": [
+      "headroom/providers/anthropic.py"
+    ]
+  },
+  "on": {
+    "agent_rc": 0,
+    "oracle_rc": 0,
+    "oracle_pass": true,
+    "relevance_split_occurrences": 0,
+    "wall_seconds": 87.72,
+    "changed_files": [
+      "headroom/providers/anthropic.py"
+    ]
+  },
+  "paired_outcome": "both_pass",
+  "treatment_activated": false,
+  "treatment_effect_estimable": false,
+  "classification": "unactivated_pair",
+  "interpretation": "Both conditions solved the frozen regression with the same one-line production fix. The critical failing test and TypeError were encountered during the trajectory, but trajectory relevance still did not activate. This is a third prospective reachability failure.",
+  "protocol_note": "Do not rerun or replace N3."
+}

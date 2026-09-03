@@ -1,0 +1,35 @@
+{
+  "task_id": "N2",
+  "status": "completed",
+  "evaluation_type": "prospective_frozen_pair",
+  "freeze_sha": "6e97d220477ca7d4e01a9ab044bb5606d77ff32a",
+  "snapshot_sha": "d33f0b1a2232fb19a48a720ca7890c75cb4d626b",
+  "prompt_sha256": "8bb5c1e2132bc5178b6d777460237bab3795f7a5308fcb7948f3c5aa23663550",
+  "order": ["on", "off"],
+  "on": {
+    "agent_rc": 0,
+    "oracle_rc": 0,
+    "oracle_pass": true,
+    "relevance_split_occurrences": 0,
+    "wall_seconds": 196.28,
+    "changed_files": [
+      "headroom/proxy/handlers/openai.py"
+    ]
+  },
+  "off": {
+    "agent_rc": 0,
+    "oracle_rc": 0,
+    "oracle_pass": true,
+    "relevance_split_occurrences": 0,
+    "wall_seconds": 136.97,
+    "changed_files": [
+      "headroom/proxy/handlers/openai.py"
+    ]
+  },
+  "paired_outcome": "both_pass",
+  "treatment_activated": false,
+  "treatment_effect_estimable": false,
+  "classification": "unactivated_pair",
+  "interpretation": "Both conditions solved the frozen regression. Trajectory relevance did not activate in the ON condition, so the pair provides no treatment-effect estimate. It does provide a second prospective reachability failure despite repeated shell rg searches.",
+  "protocol_note": "Do not rerun or replace N2."
+}

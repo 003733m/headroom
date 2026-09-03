@@ -1,0 +1,22 @@
+{
+  "status": "locked_before_N2_agent_run",
+  "freeze_sha": "6e97d220477ca7d4e01a9ab044bb5606d77ff32a",
+  "note": "N1 did not have a separately predeclared critical-evidence token; none is assigned retroactively.",
+  "tasks": {
+    "N2": {
+      "primary_critical_evidence": "test_ws_session_metrics_track_model_per_response_create",
+      "source": "frozen regression oracle",
+      "defined_before_run": true
+    },
+    "N3": {
+      "primary_critical_evidence": "test_count_messages_tolerates_null_tool_calls",
+      "source": "frozen regression oracle",
+      "defined_before_run": true
+    },
+    "N4": {
+      "primary_critical_evidence": "test_parse_response_with_memory_tolerates_non_object_memory_block",
+      "source": "frozen regression oracle",
+      "defined_before_run": true
+    }
+  }
+}

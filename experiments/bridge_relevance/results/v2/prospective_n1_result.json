@@ -1,0 +1,39 @@
+{
+  "task_id": "N1",
+  "status": "completed",
+  "evaluation_type": "prospective_frozen_pair",
+  "freeze_sha": "6e97d220477ca7d4e01a9ab044bb5606d77ff32a",
+  "snapshot_sha": "81d6337c3a8e3fa4a312cba2f9d5af4259684e5a",
+  "prompt_sha256": "fe1dc9510f5ded0a9cd473e86012d6b822a587fe727d792c209c8ea6fca52f0e",
+  "order": [
+    "off",
+    "on"
+  ],
+  "off": {
+    "agent_rc": 0,
+    "oracle_rc": 1,
+    "oracle_pass": false,
+    "relevance_split_occurrences": 0,
+    "wall_seconds": 69.28,
+    "changed_files": [
+      "headroom/proxy/semantic_cache_key_policy.py"
+    ]
+  },
+  "on": {
+    "agent_rc": 0,
+    "oracle_rc": 0,
+    "oracle_pass": true,
+    "relevance_split_occurrences": 0,
+    "wall_seconds": 83.74,
+    "changed_files": [
+      "headroom/proxy/semantic_cache_key.py",
+      "headroom/proxy/semantic_cache_key_policy.py"
+    ]
+  },
+  "paired_outcome": "off_fail_on_pass",
+  "treatment_activated": false,
+  "treatment_effect_estimable": false,
+  "classification": "unactivated_pair",
+  "interpretation": "The downstream outcome differed between conditions, but measured trajectory relevance did not activate in either condition. The OFF/ON success difference therefore cannot be attributed to V2. OFF repaired only semantic_cache_key_policy.py, while ON repaired both duplicated semantic-cache key implementations.",
+  "protocol_note": "Do not rerun or replace N1. Continue to N2 regardless of this outcome."
+}
