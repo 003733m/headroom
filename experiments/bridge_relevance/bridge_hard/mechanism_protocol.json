@@ -1,0 +1,33 @@
+{
+  "name": "V3 bridge-hard deterministic mechanism probe",
+  "status": "declared_before_keep_drop_inspection",
+  "task_manifest_commit": "c0df5b70",
+  "algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "purpose": "Test whether safe identifiers discovered in a failing test can change retention of bug-relevant records in the same later repository search.",
+  "tasks": ["H1", "H2", "H3", "H4"],
+  "no_task_replacement": true,
+  "no_algorithm_tuning": true,
+  "no_agent_run": true,
+  "target_construction": {
+    "source_state": "V3 freeze with the historical production fix reversed",
+    "bridge_source": "actual failing pytest output",
+    "search_terms": "deterministically derived from predeclared safe bridge identifiers only",
+    "term_policy": "full safe test identifier plus up to three rare lexical singletons/bigrams; separator variants treated equivalently",
+    "search_scope": "Python files under headroom plus the task's changed test files",
+    "result_order": "lexicographic path then source line",
+    "result_format": "path:line:text"
+  },
+  "critical_record_oracle": {
+    "source": "historical production patch",
+    "definition": "records in changed production files within five source lines of a production hunk on the reversed buggy snapshot",
+    "radius_lines": 5
+  },
+  "comparison": {
+    "baseline": "latest user prompt only",
+    "v3": "build_search_relevance_context over user prompt plus failing pytest tool output, validated against the same target search content",
+    "same_target": true,
+    "primary_positive": "a historical-patch-adjacent production record is DROP under baseline and KEEP under V3",
+    "secondary_positive": "any production record is DROP under baseline and KEEP under V3",
+    "negative_results": "retained and reported; tasks are never replaced"
+  }
+}
