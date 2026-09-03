@@ -23,6 +23,19 @@ from typing import Any
 DEFAULT_TOP_K = 6
 DEFAULT_MAX_TOOL_OUTPUTS = 8
 
+# V3: a structured identifier seen once in prior trajectory evidence may
+# use an exact occurrence in the current target as corroboration.
+#
+# The target is never a candidate source: the identifier must already have
+# been extracted from a PRIOR tool output.
+TARGET_CORROBORATION_KINDS = frozenset(
+    {
+        "test_name",
+        "request_id",
+        "exception",
+    }
+)
+
 
 @dataclass(frozen=True)
 class BridgeScoringConfig:
@@ -324,6 +337,7 @@ def rank_bridge_candidates(
     *,
     top_k: int | None = DEFAULT_TOP_K,
     scoring: BridgeScoringConfig | None = None,
+    provisional_kinds: frozenset[str] | None = None,
 ) -> list[BridgeCandidate]:
     """Rank identifiers using bounded hybrid trajectory evidence.
 
@@ -394,9 +408,17 @@ def rank_bridge_candidates(
         positive = best_positive[token]
         negative = strongest_negative[token]
 
-        # Abstain from weak identifiers with neither corroboration
-        # nor explicit evidence.
-        if distinct_tools < 2 and positive <= 0:
+        provisional = (
+            provisional_kinds is not None
+            and token_kind[token] in provisional_kinds
+            and distinct_tools == 1
+            and positive <= 0
+        )
+
+        # Frozen V1 eligibility remains unchanged by default. Target-aware V3
+        # may provisionally carry a structured singleton to the target layer,
+        # where it must be independently corroborated.
+        if distinct_tools < 2 and positive <= 0 and not provisional:
             continue
 
         # Saturate cross-tool recurrence so a stale hypothesis cannot
@@ -459,6 +481,7 @@ def rank_bridge_candidates(
         if (
             scoring.min_score is not None
             and score < scoring.min_score
+            and not provisional
         ):
             continue
 
@@ -876,6 +899,7 @@ def select_target_bridge_candidates(
     target_content: str,
     user_context: str,
     top_k: int = DEFAULT_TOP_K,
+    scoring: BridgeScoringConfig | None = None,
 ) -> list[TargetBridgeCandidate]:
     """Condition frozen V1 candidates on the current SEARCH result.
 
@@ -893,6 +917,8 @@ def select_target_bridge_candidates(
     """
     if not candidates or not target_content or top_k <= 0:
         return []
+
+    scoring = scoring or BridgeScoringConfig()
 
     admissible: list[BridgeCandidate] = []
 
@@ -933,10 +959,93 @@ def select_target_bridge_candidates(
             document_frequency=document_frequencies[candidate],
         )
 
-        adjusted_score = candidate.score * specificity
-
         # Absent candidates and identifiers present in effectively every
         # target line both have no selective value.
+        if specificity <= 0.0:
+            continue
+
+        evidence_score = candidate.score
+
+        # V3 target corroboration:
+        #
+        # A structured identifier discovered in exactly one PRIOR tool output
+        # may use its exact occurrence in the CURRENT search target as a
+        # second independent search observation. The target never creates a
+        # candidate; it can only corroborate a prior one.
+        #
+        # Reuse the frozen V1 scoring equation and weights. Only the evidence
+        # state changes:
+        #   distinct outputs: D=1 -> effective D=2
+        #   occurrences:      O -> O+1
+        #   recency:           current observation -> 1.0
+        #
+        # file_path is deliberately excluded from this relaxation because one
+        # grep result can repeat the same path on many matching lines.
+        corroborated_singleton = (
+            candidate.kind in TARGET_CORROBORATION_KINDS
+            and candidate.distinct_tools == 1
+            and candidate.positive_evidence <= 0
+        )
+
+        if corroborated_singleton:
+            effective_distinct_tools = 2
+            effective_occurrences = candidate.occurrences + 1
+
+            cross_tool_steps = min(
+                max(effective_distinct_tools - 1, 0),
+                scoring.max_cross_tool_steps,
+            )
+
+            bounded_occurrences = min(
+                effective_occurrences,
+                scoring.max_occurrences,
+            )
+
+            causal_signal = (
+                float(candidate.positive_evidence)
+                / float(_MAX_POSITIVE_CUE)
+            )
+
+            if scoring.max_cross_tool_steps > 0:
+                cross_tool_signal = (
+                    float(cross_tool_steps)
+                    / float(scoring.max_cross_tool_steps)
+                )
+            else:
+                cross_tool_signal = 0.0
+
+            if scoring.max_occurrences > 0:
+                occurrence_signal = (
+                    float(bounded_occurrences)
+                    / float(scoring.max_occurrences)
+                )
+            else:
+                occurrence_signal = 0.0
+
+            speculation_signal = (
+                float(candidate.negative_evidence)
+                / float(_MAX_NEGATIVE_CUE)
+            )
+
+            evidence_score = (
+                scoring.causal_weight * causal_signal
+                + scoring.cross_tool_weight * cross_tool_signal
+                + scoring.occurrence_weight * occurrence_signal
+                + scoring.recency_weight
+                - scoring.speculation_weight * speculation_signal
+            )
+
+            # The singleton was allowed to bypass the PRIOR-only threshold
+            # only provisionally. After current-target corroboration it must
+            # satisfy the same frozen abstention threshold.
+            if (
+                scoring.min_score is not None
+                and evidence_score < scoring.min_score
+            ):
+                continue
+
+        adjusted_score = evidence_score * specificity
+
         if adjusted_score <= 0.0:
             continue
 
@@ -989,6 +1098,11 @@ def build_search_relevance_context(
         outputs,
         top_k=None if target_content is not None else top_k,
         scoring=scoring,
+        provisional_kinds=(
+            TARGET_CORROBORATION_KINDS
+            if target_content is not None
+            else None
+        ),
     )
 
     if target_content is not None:
@@ -1001,6 +1115,7 @@ def build_search_relevance_context(
                 else novelty_context
             ),
             top_k=top_k,
+            scoring=scoring,
         )
 
         if not target_ranked:

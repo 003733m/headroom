@@ -5233,6 +5233,11 @@ class ContentRouter(Transform):
                 route_counts["ccr_retrieve"] += 1
                 continue
 
+            # Preserve repository-search intent if a Bash search cannot
+            # take the byte-lossless fold and falls through to lossy routing.
+            # Successful lossless folds still pre-empt below as before.
+            bash_search_intent = False
+
             # Skip OpenAI-style tool messages for excluded tools
             # BUT: allow compression of old excluded-tool outputs beyond the
             # adaptive protection window (age-based decay).
@@ -5274,6 +5279,16 @@ class ContentRouter(Transform):
                 # Look up tool-specific compression bias for OpenAI tool messages
                 tool_name = tool_name_map.get(tool_call_id, "")
                 bias = self._get_tool_bias(tool_name) if tool_name else 1.0
+
+                command = self._tool_call_commands.get(tool_call_id, "")
+                bash_search_intent = (
+                    bool(command)
+                    and tool_name.lower() in self.config.bash_tool_names
+                    and _bash_command_is_search(
+                        command,
+                        self.config.bash_search_commands,
+                    )
+                )
 
                 # Bash-search lossless pre-empt: a read-only search (grep/rg/git
                 # grep) run via a shell tool yields byte-losslessly foldable
@@ -5506,7 +5521,10 @@ class ContentRouter(Transform):
                     detection.content_type
                 )
 
-                if task_strategy is CompressionStrategy.SEARCH:
+                if (
+                    task_strategy is CompressionStrategy.SEARCH
+                    or bash_search_intent
+                ):
                     from headroom.trajectory_relevance import (
                         build_search_relevance_context,
                     )

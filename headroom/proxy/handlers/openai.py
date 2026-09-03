@@ -654,6 +654,57 @@ def _responses_trajectory_search_eligible(router: Any, text: str) -> bool:
     return _try_detect_search(text) is not None
 
 
+def _responses_bash_search_call_ids(
+    router: Any,
+    items: list[Any],
+    function_name_by_call_id: dict[str, str],
+) -> set[str]:
+    """Return Responses call IDs whose producing tool has shell-search intent.
+
+    Responses compression routes output items independently, so output shape
+    alone can lose the fact that a CODE_AWARE-looking payload was produced by
+    ``bash rg``/``grep``. Correlate the producing call through ``call_id`` and
+    reuse ContentRouter's existing shell-search parser rather than introducing
+    a second command heuristic.
+    """
+    from headroom.transforms.content_router import (
+        _bash_command_is_search,
+        _tool_call_command_text,
+    )
+
+    search_call_ids: set[str] = set()
+
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+
+        item_type = item.get("type")
+        call_id = item.get("call_id")
+        if not isinstance(call_id, str) or not call_id:
+            continue
+
+        if item_type == "function_call":
+            tool_name = function_name_by_call_id.get(call_id, "")
+            command = _tool_call_command_text(item.get("arguments"))
+        elif item_type == "local_shell_call":
+            tool_name = "local_shell"
+            command = _tool_call_command_text(item.get("action"))
+        else:
+            continue
+
+        if (
+            command
+            and tool_name.lower() in router.config.bash_tool_names
+            and _bash_command_is_search(
+                command,
+                router.config.bash_search_commands,
+            )
+        ):
+            search_call_ids.add(call_id)
+
+    return search_call_ids
+
+
 def _json_debug_dumps(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, default=str, separators=(",", ":"))
 
@@ -2126,6 +2177,21 @@ class OpenAIHandlerMixin:
                 if isinstance(call_id, str) and call_id:
                     headroom_retrieve_call_ids.add(call_id)
 
+        # V3 trajectory reachability: preserve the producing tool's intent for
+        # Responses outputs. A shell rg/grep result can look like source code
+        # to the content classifier, but it is still semantically SEARCH for
+        # trajectory relevance. This affects eligibility only; the current
+        # output never becomes a source of bridge candidates.
+        bash_search_call_ids = (
+            _responses_bash_search_call_ids(
+                router,
+                items,
+                function_name_by_call_id,
+            )
+            if trajectory_relevance
+            else set()
+        )
+
         # Resolve the effective exclude set once (None -> built-in defaults),
         # mirroring ContentRouter's policy. exclude_tools already contains both
         # original and lowercased name variants (see _parse_exclude_tools), but
@@ -2435,7 +2501,23 @@ class OpenAIHandlerMixin:
                 #
                 # Enrich SEARCH only: code/config/log/tabular compressors retain
                 # their historical context behavior.
-                if _responses_trajectory_search_eligible(router, original_text):
+                output_call_id = (
+                    item.get("call_id")
+                    if isinstance(item, dict)
+                    else None
+                )
+                tool_search_eligible = (
+                    isinstance(output_call_id, str)
+                    and output_call_id in bash_search_call_ids
+                )
+
+                if (
+                    _responses_trajectory_search_eligible(
+                        router,
+                        original_text,
+                    )
+                    or tool_search_eligible
+                ):
                     from headroom.trajectory_relevance import (
                         build_responses_search_relevance_context,
                     )

@@ -643,8 +643,9 @@ def test_builder_v2_filters_for_target_before_final_top_k(
         *,
         top_k: int | None = tr.DEFAULT_TOP_K,
         scoring: tr.BridgeScoringConfig | None = None,
+        provisional_kinds: frozenset[str] | None = None,
     ) -> list[tr.BridgeCandidate]:
-        del tool_outputs, scoring
+        del tool_outputs, scoring, provisional_kinds
 
         if top_k is None:
             return candidates

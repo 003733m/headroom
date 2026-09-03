@@ -363,6 +363,508 @@ def test_router_enriches_context_for_search_target_only():
     assert "req-9999" not in on_context
 
 
+
+def test_v3_single_prior_test_name_can_be_target_corroborated():
+    from headroom.trajectory_relevance import (
+        build_search_relevance_context,
+    )
+
+    token = "test_count_messages_tolerates_null_tool_calls"
+
+    prior = (
+        "tests/test_providers/test_anthropic.py:205: "
+        f"def {token}(self, anthropic_provider):"
+    )
+
+    target = "\n".join(
+        [
+            *[
+                f"tests/test_misc.py:{i}: unrelated result {i}"
+                for i in range(1, 60)
+            ],
+            (
+                "tests/test_providers/test_anthropic.py:205: "
+                f"def {token}(self, anthropic_provider):"
+            ),
+        ]
+    )
+
+    messages = [
+        {
+            "role": "user",
+            "content": "fix Anthropic token estimation crash",
+        },
+        {
+            "role": "tool",
+            "content": prior,
+        },
+        {
+            "role": "tool",
+            "content": target,
+        },
+    ]
+
+    context = build_search_relevance_context(
+        messages,
+        before_index=2,
+        user_context="fix Anthropic token estimation crash",
+        target_content=target,
+    )
+
+    assert "Trajectory bridge identifiers:" in context
+    assert token in context
+
+
+def test_v3_single_prior_file_path_does_not_get_singleton_corroboration():
+    from headroom.trajectory_relevance import (
+        build_search_relevance_context,
+    )
+
+    token = "headroom/providers/anthropic.py"
+
+    messages = [
+        {
+            "role": "user",
+            "content": "investigate provider crash",
+        },
+        {
+            "role": "tool",
+            "content": (
+                "headroom/providers/anthropic.py:486: "
+                'for tool_call in message.get("tool_calls", []):'
+            ),
+        },
+        {
+            "role": "tool",
+            "content": "\n".join(
+                [
+                    *[
+                        f"headroom/other_{i}.py:{i}: unrelated"
+                        for i in range(1, 50)
+                    ],
+                    (
+                        "headroom/providers/anthropic.py:486: "
+                        'for tool_call in message.get("tool_calls", []):'
+                    ),
+                ]
+            ),
+        },
+    ]
+
+    context = build_search_relevance_context(
+        messages,
+        before_index=2,
+        user_context="investigate provider crash",
+        target_content=messages[2]["content"],
+    )
+
+    assert token not in context
+    assert context == "investigate provider crash"
+
+
+def test_v3_target_only_identifier_cannot_self_seed():
+    from headroom.trajectory_relevance import (
+        build_search_relevance_context,
+    )
+
+    target_only = "test_target_only_regression"
+
+    target = "\n".join(
+        [
+            *[
+                f"tests/test_misc.py:{i}: unrelated result {i}"
+                for i in range(1, 50)
+            ],
+            f"tests/test_target.py:99: def {target_only}():",
+        ]
+    )
+
+    messages = [
+        {
+            "role": "user",
+            "content": "investigate regression",
+        },
+        {
+            "role": "tool",
+            "content": (
+                "tests/test_prior.py:10: "
+                "def test_unrelated_prior_identifier():"
+            ),
+        },
+        {
+            "role": "tool",
+            "content": target,
+        },
+    ]
+
+    context = build_search_relevance_context(
+        messages,
+        before_index=2,
+        user_context="investigate regression",
+        target_content=target,
+    )
+
+    assert context == "investigate regression"
+    assert target_only not in context
+
+
+def test_v3_target_corroboration_does_not_relax_function_name():
+    from headroom.trajectory_relevance import (
+        build_search_relevance_context,
+    )
+
+    messages = [
+        {
+            "role": "user",
+            "content": "investigate parser failure",
+        },
+        {
+            "role": "tool",
+            "content": "src/parser.py:20: parse_payload(raw)",
+        },
+        {
+            "role": "tool",
+            "content": "\n".join(
+                [
+                    *[
+                        f"src/module_{i}.py:{i}: unrelated_call(value)"
+                        for i in range(1, 50)
+                    ],
+                    "src/parser.py:100: parse_payload(value)",
+                ]
+            ),
+        },
+    ]
+
+    context = build_search_relevance_context(
+        messages,
+        before_index=2,
+        user_context="investigate parser failure",
+        target_content=messages[2]["content"],
+    )
+
+    # parse_payload is a function_name, not one of the structured
+    # singleton kinds allowed to use V3 current-target corroboration.
+    assert "parse_payload" not in context
+    assert "src/parser.py" not in context
+    assert context == "investigate parser failure"
+
+
+def test_v3_default_v1_ranking_still_rejects_structured_singleton():
+    from headroom.trajectory_relevance import (
+        rank_bridge_candidates,
+    )
+
+    token = "test_count_messages_tolerates_null_tool_calls"
+
+    ranked = rank_bridge_candidates(
+        [
+            (
+                "tests/test_providers/test_anthropic.py:205: "
+                f"def {token}(self, anthropic_provider):"
+            )
+        ]
+    )
+
+    assert all(candidate.token != token for candidate in ranked)
+
+
+def test_v3_bash_search_intent_reaches_trajectory_on_lossy_fallthrough(
+    monkeypatch,
+):
+    import json
+
+    from headroom.transforms.content_router import (
+        CompressionStrategy,
+        ContentRouter,
+        RouterCompressionResult,
+    )
+
+    class Tokenizer:
+        @staticmethod
+        def count_text(text: str) -> int:
+            return max(1, len(str(text).split()))
+
+    target = "\n".join(
+        [
+            *[
+                (
+                    f"src/module_{i:04d}.py:{i}: "
+                    f"unrelated diagnostic req-{10000 + i}"
+                )
+                for i in range(1, 100)
+            ],
+            "src/target_module.py:999: diagnostic req-0184",
+        ]
+    )
+
+    messages = [
+        {
+            "role": "user",
+            "content": "investigate checkout failure",
+        },
+        {
+            "role": "tool",
+            "content": "Observed affected request req-0184",
+        },
+        {
+            "role": "tool",
+            "content": "Follow-up confirms req-0184",
+        },
+        {
+            "role": "assistant",
+            "tool_calls": [
+                {
+                    "id": "search-call",
+                    "function": {
+                        "name": "bash",
+                        "arguments": json.dumps(
+                            {
+                                "command": (
+                                    "rg -nH req-0184 src/"
+                                )
+                            }
+                        ),
+                    },
+                }
+            ],
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "search-call",
+            "content": target,
+        },
+    ]
+
+    router = ContentRouter()
+
+    # Force the exact V3 case: Bash search intent is known, but the
+    # byte-lossless fold cannot shrink this result and falls through.
+    monkeypatch.setattr(
+        router,
+        "_bash_search_fold",
+        lambda *_args, **_kwargs: None,
+    )
+
+    # Reproduce the prospective failure mode in which repository-search
+    # output is structurally classified as code rather than SEARCH.
+    monkeypatch.setattr(
+        router,
+        "_strategy_from_detection_type",
+        lambda _content_type: CompressionStrategy.CODE_AWARE,
+    )
+
+    seen = {}
+
+    def fake_compress(
+        content: str,
+        context: str = "",
+        question=None,
+        bias: float = 1.0,
+        precomputed_detection=None,
+    ):
+        if content == target:
+            seen["context"] = context
+
+        return RouterCompressionResult(
+            compressed=content,
+            original=content,
+            strategy_used=CompressionStrategy.PASSTHROUGH,
+        )
+
+    router.compress = fake_compress  # type: ignore[method-assign]
+
+    router.apply(
+        messages,
+        Tokenizer(),
+        context="BASE USER QUERY",
+        trajectory_relevance=True,
+        protect_recent=0,
+        min_tokens_to_compress=10,
+    )
+
+    assert "target" not in seen or "context" in seen
+    assert seen["context"] != "BASE USER QUERY"
+    assert "req-0184" in seen["context"]
+
+
+def test_v3_nonsearch_bash_does_not_gain_search_intent(
+    monkeypatch,
+):
+    import json
+
+    from headroom.transforms.content_router import (
+        CompressionStrategy,
+        ContentRouter,
+        RouterCompressionResult,
+    )
+
+    class Tokenizer:
+        @staticmethod
+        def count_text(text: str) -> int:
+            return max(1, len(str(text).split()))
+
+    target = "\n".join(
+        [
+            *[
+                (
+                    f"src/module_{i:04d}.py:{i}: "
+                    f"unrelated diagnostic req-{10000 + i}"
+                )
+                for i in range(1, 100)
+            ],
+            "src/target_module.py:999: diagnostic req-0184",
+        ]
+    )
+
+    messages = [
+        {
+            "role": "user",
+            "content": "investigate checkout failure",
+        },
+        {
+            "role": "tool",
+            "content": "Observed affected request req-0184",
+        },
+        {
+            "role": "tool",
+            "content": "Follow-up confirms req-0184",
+        },
+        {
+            "role": "assistant",
+            "tool_calls": [
+                {
+                    "id": "pytest-call",
+                    "function": {
+                        "name": "bash",
+                        "arguments": json.dumps(
+                            {"command": "pytest tests/ -q"}
+                        ),
+                    },
+                }
+            ],
+        },
+        {
+            "role": "tool",
+            "tool_call_id": "pytest-call",
+            "content": target,
+        },
+    ]
+
+    router = ContentRouter()
+
+    monkeypatch.setattr(
+        router,
+        "_bash_search_fold",
+        lambda *_args, **_kwargs: None,
+    )
+    monkeypatch.setattr(
+        router,
+        "_strategy_from_detection_type",
+        lambda _content_type: CompressionStrategy.CODE_AWARE,
+    )
+
+    seen = {}
+
+    def fake_compress(
+        content: str,
+        context: str = "",
+        question=None,
+        bias: float = 1.0,
+        precomputed_detection=None,
+    ):
+        if content == target:
+            seen["context"] = context
+
+        return RouterCompressionResult(
+            compressed=content,
+            original=content,
+            strategy_used=CompressionStrategy.PASSTHROUGH,
+        )
+
+    router.compress = fake_compress  # type: ignore[method-assign]
+
+    router.apply(
+        messages,
+        Tokenizer(),
+        context="BASE USER QUERY",
+        trajectory_relevance=True,
+        protect_recent=0,
+        min_tokens_to_compress=10,
+    )
+
+    assert seen["context"] == "BASE USER QUERY"
+
+
+
+def test_v3_repeated_single_output_paths_do_not_crowd_out_corroborated_test_name():
+    from headroom.trajectory_relevance import (
+        build_search_relevance_context,
+    )
+
+    critical = "test_count_messages_tolerates_null_tool_calls"
+
+    noisy_prior_lines = [
+        (
+            "tests/test_integrations/langchain/test_chat_model.py:"
+            f"{i}: repeated unrelated path"
+        )
+        for i in range(1, 13)
+    ]
+
+    messages = [
+        {
+            "role": "user",
+            "content": "fix Anthropic token estimation crash",
+        },
+        {
+            "role": "tool",
+            "content": "\n".join(
+                [
+                    *noisy_prior_lines,
+                    (
+                        "tests/test_providers/test_anthropic.py:205: "
+                        f"def {critical}(self, provider):"
+                    ),
+                ]
+            ),
+        },
+        {
+            "role": "tool",
+            "content": "\n".join(
+                [
+                    *[
+                        f"tests/test_misc_{i}.py:{i}: unrelated result"
+                        for i in range(1, 80)
+                    ],
+                    (
+                        "tests/test_integrations/langchain/"
+                        "test_chat_model.py:200: unrelated result"
+                    ),
+                    (
+                        "tests/test_providers/test_anthropic.py:205: "
+                        f"def {critical}(self, provider):"
+                    ),
+                ]
+            ),
+        },
+    ]
+
+    context = build_search_relevance_context(
+        messages,
+        before_index=2,
+        user_context="fix Anthropic token estimation crash",
+        target_content=messages[2]["content"],
+        top_k=1,
+    )
+
+    assert critical in context
+    assert (
+        "tests/test_integrations/langchain/test_chat_model.py"
+        not in context
+    )
+
+
 def test_custom_scoring_threshold_can_abstain():
     from headroom.trajectory_relevance import (
         BridgeScoringConfig,
@@ -633,3 +1135,188 @@ def test_compression_unit_forwards_trajectory_search_relevance_metadata():
     assert result.modified
     assert router.kwargs["context"] == "req-0184"
     assert router.kwargs["trajectory_search_relevance"] is True
+
+
+def test_v3_responses_bash_rg_intent_is_call_id_scoped():
+    import json
+    from types import SimpleNamespace
+
+    from headroom.proxy.handlers.openai import (
+        _responses_bash_search_call_ids,
+    )
+
+    router = SimpleNamespace(
+        config=SimpleNamespace(
+            bash_tool_names=frozenset(
+                {"bash", "shell", "local_shell"}
+            ),
+            bash_search_commands=frozenset(
+                {
+                    "grep",
+                    "egrep",
+                    "fgrep",
+                    "rg",
+                    "ripgrep",
+                    "ag",
+                    "ack",
+                }
+            ),
+        )
+    )
+
+    items = [
+        {
+            "type": "function_call",
+            "call_id": "call-search",
+            "name": "bash",
+            "arguments": json.dumps(
+                {
+                    "command": (
+                        "rg -nH "
+                        "'anthropic_api_url|openai_api_url' "
+                        "headroom tests"
+                    )
+                }
+            ),
+        },
+        {
+            "type": "function_call_output",
+            "call_id": "call-search",
+            "output": (
+                "def resolve_target(config):\n"
+                "    return config.openai_api_url\n"
+            ),
+        },
+        {
+            "type": "function_call_output",
+            "call_id": "call-other",
+            "output": (
+                "def unrelated():\n"
+                "    return None\n"
+            ),
+        },
+    ]
+
+    search_call_ids = _responses_bash_search_call_ids(
+        router,
+        items,
+        {"call-search": "bash"},
+    )
+
+    assert search_call_ids == {"call-search"}
+    assert items[1]["call_id"] in search_call_ids
+    assert items[2]["call_id"] not in search_call_ids
+
+
+def test_v3_responses_nonsearch_bash_does_not_gain_search_intent():
+    import json
+    from types import SimpleNamespace
+
+    from headroom.proxy.handlers.openai import (
+        _responses_bash_search_call_ids,
+    )
+
+    router = SimpleNamespace(
+        config=SimpleNamespace(
+            bash_tool_names=frozenset(
+                {"bash", "shell", "local_shell"}
+            ),
+            bash_search_commands=frozenset(
+                {
+                    "grep",
+                    "egrep",
+                    "fgrep",
+                    "rg",
+                    "ripgrep",
+                    "ag",
+                    "ack",
+                }
+            ),
+        )
+    )
+
+    items = [
+        {
+            "type": "function_call",
+            "call_id": "call-pytest",
+            "name": "bash",
+            "arguments": json.dumps(
+                {
+                    "command": (
+                        "pytest "
+                        "tests/test_provider_registry.py"
+                    )
+                }
+            ),
+        },
+        {
+            "type": "function_call_output",
+            "call_id": "call-pytest",
+            "output": (
+                "def test_example():\n"
+                "    assert True\n"
+            ),
+        },
+    ]
+
+    search_call_ids = _responses_bash_search_call_ids(
+        router,
+        items,
+        {"call-pytest": "bash"},
+    )
+
+    assert search_call_ids == set()
+
+
+def test_v3_responses_native_local_shell_rg_has_search_intent():
+    from types import SimpleNamespace
+
+    from headroom.proxy.handlers.openai import (
+        _responses_bash_search_call_ids,
+    )
+
+    router = SimpleNamespace(
+        config=SimpleNamespace(
+            bash_tool_names=frozenset(
+                {"bash", "shell", "local_shell"}
+            ),
+            bash_search_commands=frozenset(
+                {
+                    "grep",
+                    "egrep",
+                    "fgrep",
+                    "rg",
+                    "ripgrep",
+                    "ag",
+                    "ack",
+                }
+            ),
+        )
+    )
+
+    items = [
+        {
+            "type": "local_shell_call",
+            "call_id": "call-shell-search",
+            "action": {
+                "type": "exec",
+                "command": "rg -nH req-0184 headroom tests",
+            },
+        },
+        {
+            "type": "local_shell_call_output",
+            "call_id": "call-shell-search",
+            "output": (
+                "headroom/example.py:10:"
+                "def handle_req_0184():\n"
+            ),
+        },
+    ]
+
+    search_call_ids = _responses_bash_search_call_ids(
+        router,
+        items,
+        {},
+    )
+
+    assert search_call_ids == {"call-shell-search"}
