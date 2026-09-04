@@ -1,0 +1,303 @@
+{
+  "status": "prepared_before_any_difficulty_screen_agent_run",
+  "algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "selection_lock_commit": "abb3e81c5198408b37127b40f8b2237130363072",
+  "execution_lock_commit": "0644ef8b703050dfd84671f6073952a68ddd99e4",
+  "model": "openai/gpt-5.6-terra",
+  "opencode_version": "1.18.25",
+  "task_count": 24,
+  "tasks": [
+    {
+      "task_id": "G01",
+      "source_commit": "65b0e8c58dbbc0b77e4b7159b279287979767c4c",
+      "snapshot_head": "332ed5217d8132cbc489453f665fff2fc656c5db",
+      "snapshot_tree": "fb57646dea06a8781f62628b27a874324a49e05d",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "99e78ace458dcecfcb63363f93d595d7afbabd6e306caba432bf36cbdfd3d41a",
+      "expected_buggy_failures": [
+        "tests/test_compression/test_json_handler.py::TestJSONStructureHandler::test_short_value_threshold_excludes_quotes"
+      ]
+    },
+    {
+      "task_id": "G02",
+      "source_commit": "1de35e775f2f19e51258fecddcabc2b88775f7d8",
+      "snapshot_head": "1b111b2092e014ef9d7e57776d83ec2af5de1958",
+      "snapshot_tree": "aaba3401e1a3e7a67513452be4adcf7c4a729c7b",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "8f5ac839ac458f0dfd4a4ed88961dd709d9dfbe1b4367be35aeb5de82c19be33",
+      "expected_buggy_failures": [
+        "tests/test_compression/test_code_handler.py::TestAvailabilityProbe::test_abi_mismatch_returns_false"
+      ]
+    },
+    {
+      "task_id": "G03",
+      "source_commit": "eed80dd4baa6a9d8be0ed36a575d0169f6b5eb3c",
+      "snapshot_head": "3c0a4ce947242089318e63f9966cd0ebadfd870e",
+      "snapshot_tree": "5c30cf74192593cc5b8111c10f507d42968cb8ac",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "d848dc651ebd163976e1c7160a41737a2328fe94eb37815a7f252e0dd888abfe",
+      "expected_buggy_failures": [
+        "tests/test_learn/test_subagent_scanning.py::test_scan_survives_null_message_line"
+      ]
+    },
+    {
+      "task_id": "G04",
+      "source_commit": "8d6c175d605b88d1c5a7f5e7671778a0e54fb09e",
+      "snapshot_head": "8a492b9a1c1dbbb7a79d9716105071870b527fcb",
+      "snapshot_tree": "f0671b2400dd2e498f0613638ddc265b1e72f4b3",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "5e8ba2247b710704e6fbf6f66b35360a17c820280d1fb80d1521d8196e9009aa",
+      "expected_buggy_failures": [
+        "tests/test_subscription_tracker.py::test_second_level_reset_jitter_does_not_reset_contribution"
+      ]
+    },
+    {
+      "task_id": "G05",
+      "source_commit": "045f3dfe6fd9f4e39e4cdd8c0c529a815d925c7e",
+      "snapshot_head": "11a65f732146e387c3a33c1f6c90be6b26a8e316",
+      "snapshot_tree": "3b7df35756bba9ff5bda6abfef2da05a05ee049a",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "bba60012c865a41797ce28d651ef14b13cf17d446d4ef4dbe3c536fd7108f278",
+      "expected_buggy_failures": [
+        "tests/test_install/test_runtime.py::test_run_foreground_and_detached_helpers"
+      ]
+    },
+    {
+      "task_id": "G06",
+      "source_commit": "18e5680be33d6881bfa3fdd9e0fdd32324ec8af7",
+      "snapshot_head": "f004da1d54e4f2b1839afbdad6a646380839d5d1",
+      "snapshot_tree": "2845ac7f1f9226b7d77f41e01a69948ea239d298",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "750a405eca1bec3c67a6c9c2066eeb1b6090d9a0aeb0aa22351539892d6fee95",
+      "expected_buggy_failures": [
+        "tests/test_install/test_planner.py::test_resolve_targets_provider_scope_all_ignores_unsupported_requested",
+        "tests/test_install/test_planner.py::test_resolve_targets_provider_scope_auto_ignores_unsupported_requested"
+      ]
+    },
+    {
+      "task_id": "G07",
+      "source_commit": "ae10d6c99d7b187a92a9bcef3e7aabfe8b43a97f",
+      "snapshot_head": "ecfc2bde2fe5c0bce78265f37348b372308a701f",
+      "snapshot_tree": "6f02f926a843133a859f0b6d6cc1675e2d2d5110",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "ce412b56c08920edb8b13d460730ed69b78195777055a8801654ae075e18f082",
+      "expected_buggy_failures": [
+        "tests/test_tokenizers.py::TestTiktokenCounter::test_count_messages_image_block_is_not_stringified"
+      ]
+    },
+    {
+      "task_id": "G08",
+      "source_commit": "6ea6e31f09845b2ad5c8bae73bcf353f3b629188",
+      "snapshot_head": "0a721fa940d455cf7b2d43a2cd13492f8cd796e2",
+      "snapshot_tree": "94324844a98552a9babf3fe01b79a542a3dd5c8c",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "a356b9052fa5c655fa586f0a5f910796b2992406503410491dd2c7b861d2fc40",
+      "expected_buggy_failures": [
+        "tests/test_cli/test_init_cli.py::test_command_string_normalizes_backslashes_on_windows",
+        "tests/test_cli/test_init_cli.py::test_command_string_quotes_spaces_after_normalization"
+      ]
+    },
+    {
+      "task_id": "G09",
+      "source_commit": "be51008c701f18e6856efc65d46401dbd2c9856f",
+      "snapshot_head": "3ef467401810a3ebcc983385b7074e5bf02f56d5",
+      "snapshot_tree": "eb10d6cfcdbec0b58a2760f5198436d4b115b243",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "1888148ac7dab5609f156dbe89f7db491c8bb372000202d1f9fae8e6c0e20119",
+      "expected_buggy_failures": [
+        "tests/test_toin_publish.py::test_publish_command_writes_toml",
+        "tests/test_toin_publish.py::test_publish_preserves_skip_recommendation"
+      ]
+    },
+    {
+      "task_id": "G10",
+      "source_commit": "cb6c8284575b70d754f5fc83158d8ef38777526b",
+      "snapshot_head": "8d0557d06f472da0105801da2b28c1c794320538",
+      "snapshot_tree": "73e49f4ebaeab46fa5b86471466500b841008acc",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "fd721c453feb5efba1bae611a5708a3a088222de68455864b053da9550f61b54",
+      "expected_buggy_failures": [
+        "tests/test_proxy_extensions.py::test_install_all_skips_failed_extension_and_continues"
+      ]
+    },
+    {
+      "task_id": "G11",
+      "source_commit": "6137967083936467c570e8c7f20e94f43ccc13aa",
+      "snapshot_head": "b996f430bb1a909db5fcd28bbc8e1fd41c6ae8f7",
+      "snapshot_tree": "a4b54919d97096c3343a682d45c283a89b74713d",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "395dc98a919c90c6c57a9a46c0b61e5ba85ba0937d520d9407f9d75dd26ac7f0",
+      "expected_buggy_failures": [
+        "tests/test_pricing_litellm_model_resolution.py::test_retired_claude_3_sonnet_aliases_to_sonnet_tier_not_haiku"
+      ]
+    },
+    {
+      "task_id": "G12",
+      "source_commit": "b0afee85b3a94f829c4743fce2bbf75c494e6312",
+      "snapshot_head": "57db74596317b080ef102fbc61681927ad9c0726",
+      "snapshot_tree": "b59b9b62af317f88e4903785bafb529bc76b012e",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "884376edfe144283cfcc3f162ce868b4df3fdc147697c6b2fcd6da1a665b96fb",
+      "expected_buggy_failures": [
+        "tests/test_memory/test_hnsw_batch_capacity.py::test_index_batch_after_deletion_churn_does_not_overflow"
+      ]
+    },
+    {
+      "task_id": "G13",
+      "source_commit": "ec12e18186852118204ec9ac8fdd33e068c0dcad",
+      "snapshot_head": "7a320b0690a60828945d425a425c958e19dc991b",
+      "snapshot_tree": "41cb840f5b78782479d20a5d5983c178b912443c",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "9ca3f3c52580091471c0395359c1e6f6dd5d0e3bc2c25ab60497e3295c15d356",
+      "expected_buggy_failures": [
+        "tests/test_savings_tracker_zero_price.py::test_output_savings_zero_for_free_model"
+      ]
+    },
+    {
+      "task_id": "G14",
+      "source_commit": "63f74aa3e6477db9ac2049007a71ec5a3522649c",
+      "snapshot_head": "c4a5fa5cc2a10915d1f9e74d316ea94e945bdd87",
+      "snapshot_tree": "a76fc0c1c92f3b06028cc467d4f6b31679b783cd",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "e544acf171c7305b1127793020b81b0610206f6c44d6f974bb9aaecfa261c3bb",
+      "expected_buggy_failures": [
+        "tests/test_output_shaper_responses.py::TestClassifyResponsesTurn::test_apply_patch_call_output_is_mechanical"
+      ]
+    },
+    {
+      "task_id": "G15",
+      "source_commit": "842d7e1ad1869b147ec94903ac87cf1414d86cdb",
+      "snapshot_head": "6812616eca749f24ee1f675f6f919a63533cc7a9",
+      "snapshot_tree": "ce99a08b9dfee3fb8d0b72079dcdbbb692e975ae",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "40ab56e9f84e312fcbe006e0b6ff7e52e892145c61b6e03e23ad52cd5a94cac3",
+      "expected_buggy_failures": [
+        "tests/test_ccr_tool_injection.py::TestHashSecurityValidation::test_accepts_uppercase_hex",
+        "tests/test_ccr_tool_injection.py::TestParseToolCall::test_parse_normalises_uppercase_hash_to_lowercase"
+      ]
+    },
+    {
+      "task_id": "G16",
+      "source_commit": "1725cd1f8376828849c0e48fd9008afa25d24fff",
+      "snapshot_head": "ac5f384ac994e83982b7bccf5252174f1d95486c",
+      "snapshot_tree": "db42abc9aa0dcf949c7552f3dfaa0a29d9feada6",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "18c58cabd8af2c844905caeee4f7ffd1ffbd6326569d5d0be7856c44ad0bd6d6",
+      "expected_buggy_failures": [
+        "tests/test_memory/test_factory_embedder_cache.py::test_ollama_embedder_cache_keys_on_base_url"
+      ]
+    },
+    {
+      "task_id": "G17",
+      "source_commit": "eecb81e8478dbe4337a48dcdc2ace6537df0784f",
+      "snapshot_head": "1b5f2d9eb4e69d7eb7e67a72525fae49edad810d",
+      "snapshot_tree": "6aa2704b4e924767091565c2349c43fef337bb5a",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "485d9f8fe5cba6e2af6cab1d058efe57350e0edfeda0eaefa36b6db0b7dc7dd5",
+      "expected_buggy_failures": [
+        "tests/test_ccr_feedback.py::TestCompressionFeedback::test_eviction_success_is_not_counted_as_retrieval"
+      ]
+    },
+    {
+      "task_id": "G18",
+      "source_commit": "f71fef1ca6a1540a3c13c3508c5c1468bf14ea88",
+      "snapshot_head": "a2e8c60eac3688fd8d095dcefb89f2c3ce669bc9",
+      "snapshot_tree": "27839a98cb18038db44648d2e0c559d81d697445",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "e7cf13fcd9719323d95f6d8f43decb3cd3240b21276a2b7b2422d4be7756c38c",
+      "expected_buggy_failures": [
+        "tests/test_issue_1779_remote_control_gate.py::test_detect_claude_code_version_nonzero_exit_is_none"
+      ]
+    },
+    {
+      "task_id": "G19",
+      "source_commit": "a70e5ff78dc9486e63a6563f122d392469ceef38",
+      "snapshot_head": "6d6ea3d2bbf957cd2457519bc9b67c5d920e7cf0",
+      "snapshot_tree": "f4cb891cb41edc0c8ad2967b0c25cc58899f3202",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "7e50c854c212774675630b7ee2899ad8a72d597d33422f8fc7fb1e1f8065912b",
+      "expected_buggy_failures": [
+        "tests/test_memory/test_traffic_learner.py::TestFlushToFile::test_discover_projects_does_not_block_the_event_loop"
+      ]
+    },
+    {
+      "task_id": "G20",
+      "source_commit": "d6e07102283745a44aece2222f84c1599eabf90a",
+      "snapshot_head": "23005884efe8701d639aaa93725a8a885744f9c7",
+      "snapshot_tree": "d81e89380d5b9d92a720a9aef1ba08f03c6fde12",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "6be92e2180498a7e95eb66bfbeea1ce6099d20a95b4c3a3ac98545f184a81326",
+      "expected_buggy_failures": [
+        "tests/test_install/test_supervisors.py::test_install_supervisor_darwin_windows_and_unsupported"
+      ]
+    },
+    {
+      "task_id": "G21",
+      "source_commit": "5279c33b192402faa7c4cbb7b1f6bae36ccda9c7",
+      "snapshot_head": "98ac4dab4fb0d392b48d473e5ad5b3acd54f4561",
+      "snapshot_tree": "87988b865623b41008c1eb0d067c8e5488cc9baf",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "ab54585e8db4cca15d7c91adbf8c32ef8e45b94125ab2b81466a566e852e9023",
+      "expected_buggy_failures": [
+        "tests/test_memory_handler_native_ops.py::test_execute_save_preserves_high_similarity_distinct_memory"
+      ]
+    },
+    {
+      "task_id": "G22",
+      "source_commit": "c811007f813becac3dbe885a832dede8daaa7693",
+      "snapshot_head": "27161875c4be93a0f84a2761a2ea7b503c1cf70e",
+      "snapshot_tree": "6564b23cb7ce18ac9039fefd0dc1da86504ad35c",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "5d7136d48c6395bfd1632dc72971f631c8f06240d4bc2712b10dfd36f09165aa",
+      "expected_buggy_failures": [
+        "tests/test_transforms/test_kompress_compressor.py::TestOnnxBackendPrefixGating::test_timed_canary_onnx_coreml_skips_pytorch_device_dispatch"
+      ]
+    },
+    {
+      "task_id": "G23",
+      "source_commit": "e0232df9b42b326358addacb8980aa1dd207ee01",
+      "snapshot_head": "543df5b29577fd11f2b03b5e5620ea4ea789e4fc",
+      "snapshot_tree": "a03dcd0fd4e310d63d2cbf692d687b67dd65f0d0",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "ad522ec1681b46d8f7bee6dee53033e2b914c1e5bccb30ab0f4e06013417caf2",
+      "expected_buggy_failures": [
+        "tests/test_huggingface_tokenizer_timeout.py::test_get_tokenizer_name_prefers_most_specific_prefix"
+      ]
+    },
+    {
+      "task_id": "G24",
+      "source_commit": "5e14b8c0f293df78f2576a9fc7eb90189e604cb5",
+      "snapshot_head": "313a45cb82418dac7880a88091aab4f383bfed42",
+      "snapshot_tree": "b35ae382be4ec9551602f469ddfc4b3ad9096e43",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "8b39649301f42d0aa2e939fb86e1ad490b29d7d6841b71050ad96fb1ecbb1f68",
+      "expected_buggy_failures": [
+        "tests/test_memory_sync.py::TestClaudeCodeAdapter::test_write_distinct_memories_sharing_first_line_do_not_clobber"
+      ]
+    }
+  ]
+}
