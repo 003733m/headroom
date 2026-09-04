@@ -1,0 +1,61 @@
+{
+  "status": "locked_before_any_exact_wire_validation_agent_run",
+  "experiment": "natural_exact_wire_validation",
+  "analysis_type": "prospectively_declared_post_hoc_validation",
+  "purpose": "Determine whether a real coding agent naturally retrieves historical critical evidence that baseline Headroom removes from the exact parsed model request, and enable offline replay of the identical inbound request with the frozen V3 algorithm.",
+  "algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "natural_transfer_manifest_commit": "1c5500dc",
+  "snapshot_lock_commit": "fb571aa7",
+  "base_natural_harness_fix_commit": "38eafa07",
+  "model": "openai/gpt-5.6-terra",
+  "opencode_version": "1.18.25",
+  "condition": "OFF only",
+  "trajectory_relevance": false,
+  "task_count": 8,
+  "run_order": [
+    "F1-OFF",
+    "F2-OFF",
+    "F3-OFF",
+    "F4-OFF",
+    "F5-OFF",
+    "F6-OFF",
+    "F7-OFF",
+    "F8-OFF"
+  ],
+  "selection_policy": "All eight previously locked fresh-rescue tasks are rerun. No task is selected or excluded based on prior natural forensic overlap.",
+  "replacement_policy": "No task replacement and no outcome-driven reruns. A rerun is permitted only after an objectively demonstrated harness or capture-validity failure, which must be recorded before rerunning.",
+  "agent_success_role": "Secondary descriptive outcome only. The previous 16-condition natural transfer experiment remains the agent-level OFF/ON evaluation.",
+  "wire_capture": {
+    "mechanism": "existing Headroom codex wire debug",
+    "production_instrumentation_modified": false,
+    "content_policy": "Parsed JSON request content is preserved except secret-looking keys redacted by Headroom's existing wire-debug redaction policy.",
+    "websocket_pre_events": [
+      "ws_inbound_first_frame",
+      "ws_inbound_client_frame"
+    ],
+    "websocket_post_events": [
+      "ws_upstream_first_frame",
+      "ws_upstream_client_frame"
+    ],
+    "http_pre_events": [
+      "http_inbound_request"
+    ],
+    "http_post_events": [
+      "http_upstream_request",
+      "http_stream_upstream_request"
+    ]
+  },
+  "primary_evidence_definition": {
+    "natural_agent_retrieval": "The agent's own captured rg output contains an exact historical critical production record.",
+    "baseline_exact_drop": "The record occurs in the corresponding inbound parsed request body but not in the paired outbound parsed request body.",
+    "frozen_v3_rescue": "Offline processing of that same captured inbound request with frozen V3 retains the exact record where baseline did not.",
+    "strong_natural_mechanism_example": "All three conditions hold for the same evidence record and request."
+  },
+  "claim_boundaries": [
+    "Wire snapshots are parsed JSON envelopes, not byte-for-byte network captures.",
+    "Secret-looking fields are redacted by the existing Headroom wire-debug policy.",
+    "A record-level rescue does not by itself prove task-success improvement.",
+    "Offline frozen-V3 replay must use the identical captured inbound request before claiming exact-request DROP-to-KEEP."
+  ],
+  "raw_artifact_policy": "Wire captures, transcripts, proxy logs, and authentication-adjacent raw artifacts stay local and are never committed to Git."
+}
