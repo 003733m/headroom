@@ -1,0 +1,35 @@
+{
+  "status": "locked_before_query_hit_floor_probe_results",
+  "evaluation_type": "post_hoc_exploratory_mechanism",
+  "base_algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "name": "query_hit_preservation_floor",
+  "data": "existing hard-confirmatory OFF exact-wire trajectories and already-produced matched replay outputs",
+  "motivation": "A strict-valid natural search exposure showed that a record containing an identifier explicitly requested by the current retrieval query could still be dropped by lossy search compression.",
+  "algorithm": [
+    "parse the current rg/grep search pattern",
+    "extract only conservative structured identifiers: identifiers containing underscore, CamelCase identifiers, or identifiers explicitly introduced by def/class in the search pattern",
+    "do not treat generic bare words, regex fragments, paths, globs, warning/error words, or prose terms as preservation anchors",
+    "use exact identifier-boundary matching against each search-result record",
+    "if a record contains at least one preservation anchor, KEEP it regardless of learned relevance",
+    "all other records retain the existing query-only baseline decision"
+  ],
+  "primary_evaluation_stratum": "strict_hash_valid",
+  "secondary_strata": [
+    "content_valid",
+    "all_existing_replay_units"
+  ],
+  "primary_metrics": [
+    "historical-fix-adjacent record recall before and after the floor",
+    "baseline DROP to floor KEEP historical-fix-adjacent rescues",
+    "additional non-fix-adjacent retained record tokens",
+    "total newly retained record tokens",
+    "historical-fix-adjacent fraction among newly retained record exposures"
+  ],
+  "interpretation_limits": [
+    "this probe is post-hoc because the failure mode was observed before defining the floor",
+    "historical-fix-adjacent is a proxy and not causal ground truth",
+    "non-fix-adjacent does not imply irrelevant",
+    "record-token additions estimate retention cost but are not exact final folded-output token counts",
+    "no agent task-success claim is made"
+  ]
+}
