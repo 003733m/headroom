@@ -1,0 +1,25 @@
+{
+  "status": "declared_after_retention-matcher diagnostic before corrected results",
+  "evaluation_type": "measurement_correction",
+  "base_algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "reason": "The previous record-retention matcher required formatting variants that did not cover Headroom's folded search-output representation. Manual diagnostic inspection showed false negatives: historical-fix-adjacent source text reported as DROP was visibly preserved in compressed output, including all four G09 strategy_hint records and G21 DEDUP_AUTO_THRESHOLD.",
+  "withdrawn_metric": "the previously reported 0/18 historical-fix-adjacent recall for B, C, and E",
+  "corrected_matcher": [
+    "normalize whitespace in original record content and compressed output",
+    "score only informative record contents that occur uniquely within the original parsed search target",
+    "count a record as retained when its normalized exact content occurs in the compressed output",
+    "exclude duplicate or punctuation-only source records from the record-level denominator rather than guessing their identity"
+  ],
+  "validity_strata": {
+    "strict": "captured upstream search unit and frozen OFF replay have identical output SHA256",
+    "content_valid": "captured upstream and frozen OFF replay agree on normalized retention for every scorable record in the unit"
+  },
+  "unchanged": [
+    "same captured hard-confirmatory trajectories",
+    "same historical-fix-adjacent oracle",
+    "same B, C, and E outputs already produced",
+    "no agent rerun",
+    "no compression rerun",
+    "no algorithm, threshold, candidate, or scoring change"
+  ]
+}
