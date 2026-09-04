@@ -1,0 +1,27 @@
+{
+  "status": "locked_before_v4_1_matched_replay_results",
+  "evaluation_type": "post_hoc_exploratory_matched_replay",
+  "base_algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "tasks": ["G10", "G09", "G07", "G19", "G04", "G21"],
+  "conditions": {
+    "B": "current search-query relevance only",
+    "C": "current search-query relevance plus global frozen V3 trajectory",
+    "E": "current search-query relevance plus retrieval-anchored V4.1 trajectory"
+  },
+  "primary_contrasts": ["B_to_E", "C_to_E"],
+  "metrics": [
+    "historical-fix-adjacent recall",
+    "DROP_to_KEEP rescues",
+    "KEEP_to_DROP regressions",
+    "non-fix-adjacent retained record tokens",
+    "full retained search-output tokens",
+    "evidence efficiency"
+  ],
+  "validity": "Only units whose OFF replay reproduces captured record-level KEEP/DROP decisions contribute to retention claims.",
+  "limits": [
+    "post-hoc exploratory analysis",
+    "historical-fix-adjacent is not causal ground truth",
+    "non-fix-adjacent does not imply irrelevant",
+    "no agent task-success claim"
+  ]
+}
