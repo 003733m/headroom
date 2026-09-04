@@ -314,19 +314,22 @@
     },
     {
       "task_id": "G18",
-      "source_commit": "c24b1fa46f5b99d3988ca824cc5366c625222f1f",
-      "subject": "fix: harden release notes and semver",
+      "source_commit": "f71fef1ca6a1540a3c13c3508c5c1468bf14ea88",
+      "subject": "fix(claude): treat non-zero claude --version exit as version-unknown … (#2233)",
       "production_files": [
-        "headroom/release_version.py"
+        "headroom/providers/claude/runtime.py"
       ],
       "test_files": [
-        "tests/test_release_version.py"
+        "tests/test_issue_1779_remote_control_gate.py"
       ],
       "failing_nodeids": [
-        "tests/test_release_version.py::test_manual_version_override_rejects_legacy_four_part_version"
+        "tests/test_issue_1779_remote_control_gate.py::test_detect_claude_code_version_nonzero_exit_is_none"
       ],
-      "prompt": "Fix the regression covered by the tests in: tests/test_release_version.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
-      "prompt_sha256": "982e27027f78885c6329b2b49ce33ac48951bef5b32e517935a16555d1b0c039"
+      "prompt": "Fix the regression covered by the tests in: tests/test_issue_1779_remote_control_gate.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "e7cf13fcd9719323d95f6d8f43decb3cd3240b21276a2b7b2422d4be7756c38c",
+      "replacement_of_source_commit": "c24b1fa46f5b99d3988ca824cc5366c625222f1f",
+      "replacement_reason": "Original G18 failed reverse-patch snapshot construction against the frozen V3 runtime before any benchmark agent run.",
+      "replacement_rank": 25
     },
     {
       "task_id": "G19",
@@ -423,6 +426,21 @@
       ],
       "prompt": "Fix the regression covered by the tests in: tests/test_memory_sync.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
       "prompt_sha256": "8b39649301f42d0aa2e939fb86e1ad490b29d7d6841b71050ad96fb1ecbb1f68"
+    }
+  ],
+  "pre_agent_replacements": [
+    {
+      "slot": "G18",
+      "original_source_commit": "c24b1fa46f5b99d3988ca824cc5366c625222f1f",
+      "original_subject": "fix: harden release notes and semver",
+      "replacement_source_commit": "f71fef1ca6a1540a3c13c3508c5c1468bf14ea88",
+      "replacement_subject": "fix(claude): treat non-zero claude --version exit as version-unknown … (#2233)",
+      "replacement_rank": 25,
+      "selection_base_commit": "1420e72b27f863ca4b00eda8f35ea7d272ee59b1",
+      "rule": "Use the next treatment-blind candidate in the originally frozen deterministic ranking when a selected task cannot construct a valid buggy snapshot before any agent run.",
+      "trigger": "reverse_patch_check_failed",
+      "agent_runs_before_replacement": 0,
+      "treatment_outcomes_consulted": false
     }
   ]
 }

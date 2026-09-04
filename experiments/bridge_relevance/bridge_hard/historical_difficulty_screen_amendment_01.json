@@ -1,0 +1,21 @@
+{
+  "status": "pre_agent_protocol_amendment",
+  "experiment": "historical_agent_difficulty_screen",
+  "reason": "G18 could not be reconstructed because its historical production reverse patch did not apply to the frozen V3 runtime.",
+  "timing": "before_any_difficulty_screen_agent_run",
+  "replacement_policy": "Advance to the next candidate in the originally frozen treatment-blind deterministic ranking. If that candidate also fails snapshot construction before any agent run, repeat the same rule with the next rank.",
+  "treatment_information_used": false,
+  "replacement": {
+    "slot": "G18",
+    "original_source_commit": "c24b1fa46f5b99d3988ca824cc5366c625222f1f",
+    "original_subject": "fix: harden release notes and semver",
+    "replacement_source_commit": "f71fef1ca6a1540a3c13c3508c5c1468bf14ea88",
+    "replacement_subject": "fix(claude): treat non-zero claude --version exit as version-unknown … (#2233)",
+    "replacement_rank": 25,
+    "selection_base_commit": "1420e72b27f863ca4b00eda8f35ea7d272ee59b1",
+    "rule": "Use the next treatment-blind candidate in the originally frozen deterministic ranking when a selected task cannot construct a valid buggy snapshot before any agent run.",
+    "trigger": "reverse_patch_check_failed",
+    "agent_runs_before_replacement": 0,
+    "treatment_outcomes_consulted": false
+  }
+}
