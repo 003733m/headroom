@@ -1,0 +1,29 @@
+{
+  "status": "locked_before_adopted_bridge_floor_results",
+  "evaluation_type": "post_hoc_exploratory_mechanism",
+  "base_algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "name": "adopted_bridge_preservation_floor",
+  "motivation": "A naive current-query exact-hit floor rescued one historical-fix-adjacent record but retained 116 additional non-fix records. This refinement requires evidence that an identifier is both selected from prior trajectory state by frozen V3 and explicitly reused by the agent in its current retrieval query.",
+  "algorithm": [
+    "parse conservative structured identifiers from the current rg/grep search pattern",
+    "read the frozen V3 trajectory bridge identifiers for the same captured search exposure",
+    "an identifier is adopted only when the current query identifier exactly equals a frozen V3 bridge identifier case-insensitively",
+    "preserve baseline-dropped search records containing an exact identifier-boundary match for an adopted bridge",
+    "all other records retain the existing current-query-only baseline decision"
+  ],
+  "primary_stratum": "strict_hash_valid",
+  "primary_metrics": [
+    "historical-fix-adjacent recall",
+    "historical-fix-adjacent DROP-to-KEEP rescue",
+    "additional non-fix record count",
+    "additional non-fix record tokens",
+    "fix-adjacent fraction among newly kept records"
+  ],
+  "comparison": "current-query-only baseline B",
+  "limits": [
+    "post-hoc exploratory because the preservation failure was already observed",
+    "historical-fix-adjacent is a proxy, not causal ground truth",
+    "no agent or compression rerun",
+    "no end-to-end task-success claim"
+  ]
+}
