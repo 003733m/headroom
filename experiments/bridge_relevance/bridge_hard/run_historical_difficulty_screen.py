@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import os
 import subprocess
 from pathlib import Path
 
@@ -49,6 +50,118 @@ base.CONTROL = CONTROL
 base.ROOT = ROOT
 base.SNAPSHOTS = SNAPSHOTS
 base.SNAP_LOCK_REL = SNAP_LOCK_REL
+
+
+# Do not leak the caller's control-repo virtualenv into the wrapped
+# OpenCode process. The benchmark runtime has its own frozen venv.
+os.environ.pop("VIRTUAL_ENV", None)
+
+
+def screening_validate_agent_isolation(out: Path, run_dir: Path):
+    """
+    Strict snapshot-isolation check with one narrow exception.
+
+    The original validator rejected any textual occurrence of CONTROL,
+    including uv's launcher warning about an inherited VIRTUAL_ENV.
+    That warning is runner metadata, not an agent tool/read/test target.
+
+    Every other CONTROL occurrence remains invalid, and every captured
+    rg cwd must stay inside the locked condition snapshot.
+    """
+    expected = run_dir.resolve()
+    control = CONTROL.resolve()
+
+    transcript_path = out / "opencode.txt"
+    transcript = (
+        transcript_path.read_text(errors="replace")
+        if transcript_path.exists()
+        else ""
+    )
+
+    problems = []
+    ignored_benign = []
+
+    for line in transcript.splitlines():
+        if str(control) not in line:
+            continue
+
+        if (
+            line.startswith("warning: `VIRTUAL_ENV=")
+            and "does not match the project environment path" in line
+        ):
+            ignored_benign.append(line)
+            continue
+
+        problems.append(
+            "non-whitelisted CONTROL_REPO transcript reference: "
+            + line[:500]
+        )
+
+    capdir = out / "rg-captures"
+
+    for meta in sorted(capdir.glob("*.meta")):
+        cwd_line = None
+
+        for line in meta.read_text(
+            errors="replace"
+        ).splitlines():
+            if line.startswith("cwd="):
+                cwd_line = line[4:]
+                break
+
+        if cwd_line is None:
+            problems.append(
+                f"{meta.name}: missing cwd"
+            )
+            continue
+
+        got = Path(cwd_line).resolve()
+
+        if not (
+            got == expected
+            or expected in got.parents
+        ):
+            problems.append(
+                f"{meta.name}: rg cwd escaped snapshot: {got}"
+            )
+
+    result = {
+        "expected_run_dir": str(expected),
+        "control_repo_forbidden": True,
+        "benign_virtual_env_warning_ignored": bool(
+            ignored_benign
+        ),
+        "ignored_benign_lines": ignored_benign,
+        "rg_capture_count": len(
+            list(capdir.glob("*.meta"))
+        ),
+        "valid": not problems,
+        "problems": problems,
+    }
+
+    (out / "isolation.json").write_text(
+        json.dumps(
+            result,
+            indent=2,
+            ensure_ascii=False,
+        ) + "\n"
+    )
+
+    if problems:
+        (out / "INVALID_RUN").write_text(
+            "\n".join(problems) + "\n"
+        )
+        die(
+            "agent isolation invariant failed: "
+            + "; ".join(problems)
+        )
+
+    print("Agent isolation: OK")
+
+
+base.validate_agent_isolation = (
+    screening_validate_agent_isolation
+)
 
 # Kept only for legacy metadata fields inside reused helpers.
 base.MANIFEST_COMMIT = "abb3e81c"

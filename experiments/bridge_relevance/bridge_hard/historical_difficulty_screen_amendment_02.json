@@ -1,0 +1,27 @@
+{
+  "status": "post_start_harness_amendment_before_any_completed_screen_result",
+  "experiment": "historical_agent_difficulty_screen",
+  "affected_condition": "G01-OFF",
+  "treatment_condition": "OFF",
+  "problem": "The inherited natural-transfer isolation validator rejected any textual occurrence of the control-repository path. G01's transcript contained that path only in uv's VIRTUAL_ENV mismatch warning.",
+  "diagnosis": {
+    "agent_working_directory": "/tmp/headroom-v3-difficulty-screen/runs/G01-OFF",
+    "captured_rg_commands_inside_locked_run_directory": true,
+    "control_repo_used_as_agent_tool_target": false,
+    "agent_modified_locked_run_snapshot": true,
+    "validator_false_positive": true
+  },
+  "amendment": {
+    "remove_inherited_VIRTUAL_ENV_before_future_agent_launches": true,
+    "isolation_validator_exception": "Ignore only uv's VIRTUAL_ENV mismatch warning. Any other transcript occurrence of the control repository remains invalid.",
+    "rg_cwd_isolation_check_retained": true
+  },
+  "g01_policy": {
+    "rerun_agent": false,
+    "reason": "The original agent execution was isolated and complete; rerunning after observing its behavior would introduce an unnecessary second stochastic attempt.",
+    "salvage": "Partition requests using the pre-existing AGENT_STARTED timestamp, run the final oracle without invoking an agent, and construct screening metrics from the original run."
+  },
+  "selection_impact": "none",
+  "task_or_prompt_changed": false,
+  "treatment_information_used_to_change_task": false
+}
