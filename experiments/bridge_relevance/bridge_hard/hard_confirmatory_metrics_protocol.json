@@ -1,0 +1,67 @@
+{
+  "status": "locked_before_any_hard_confirmatory_agent_run",
+  "experiment": "hard_holdout_confirmatory_v3",
+  "purpose": "Measure whether frozen V3 trajectory-aware relevance improves coding-agent outcomes or context allocation on effort-heavy historical bugs selected treatment-blind by the difficulty screen.",
+  "hard_task_count": 6,
+  "hard_tasks": [
+    "G10",
+    "G09",
+    "G07",
+    "G19",
+    "G04",
+    "G21"
+  ],
+  "primary_outcome": {
+    "name": "paired_task_success",
+    "definition": "Oracle PASS/FAIL for one fresh OFF and one fresh ON agent session per hard task.",
+    "report": [
+      "OFF passes / 6",
+      "ON passes / 6",
+      "OFF-fail_ON-pass discordances",
+      "OFF-pass_ON-fail discordances"
+    ]
+  },
+  "secondary_agent_efficiency": {
+    "metrics": [
+      "model request count",
+      "original input-token sum",
+      "optimized input-token sum",
+      "reported and derived token savings",
+      "rg search count",
+      "raw rg output bytes",
+      "exact repeated rg-query count",
+      "wall time"
+    ],
+    "interpretation": "Request, search, token and wall-time differences are descriptive because OFF and ON agent trajectories are stochastic."
+  },
+  "mechanism_metrics": {
+    "historical_critical_evidence": "Production records adjacent to the historical fixing change that are present in the naturally retrieved raw search result. This label does not imply causal necessity.",
+    "matched_historical_critical_recall": "For the same raw search target and same captured inbound trajectory, fraction of historical-critical records retained after OFF versus frozen V3 replay.",
+    "critical_record_rescue_rate": "Among records dropped by OFF, fraction retained by V3 (D->K).",
+    "critical_record_regression_rate": "Among records retained by OFF, fraction dropped by V3 (K->D).",
+    "bridge_conditioned_noncritical_token_burden": "For matched bridge-relevant search units, retained compressed tokens excluding retained historical-critical evidence tokens.",
+    "noncritical_suppression_gain": "(OFF non-critical retained tokens - V3 non-critical retained tokens) / OFF non-critical retained tokens.",
+    "bridge_evidence_efficiency": "Historical-critical records retained per 1000 retained non-critical tokens.",
+    "treatment_reachability": "Number of ON tasks and search units where trajectory relevance actually activates."
+  },
+  "matched_replay_policy": {
+    "required_capture": [
+      "raw rg stdout/stderr/meta",
+      "exact Codex wire-debug request snapshots",
+      "proxy logs"
+    ],
+    "unit_population": "Naturally occurring search units that can be paired to an exact captured inbound request. Critical-recall analysis further requires at least one historical-critical record in raw target.",
+    "same_raw_target": true,
+    "same_captured_trajectory": true,
+    "compare": [
+      "baseline OFF production replay",
+      "frozen V3 ON production replay"
+    ],
+    "no_agent_rerun_for_forensic_replay": true
+  },
+  "causal_language_policy": {
+    "historical_critical_is_not_causal": true,
+    "causally_critical_requires_ablation_or_injection": true,
+    "if_off_and_on_both_pass": "Do not claim task-success improvement. Evaluate efficiency and matched evidence allocation instead."
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "status": "locked_before_any_hard_confirmatory_agent_run",
+  "experiment": "historical_hard_holdout_confirmatory",
+  "algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "model": "openai/gpt-5.6-terra",
+  "opencode_version": "1.18.25",
+  "task_count": 6,
+  "condition_count": 12,
+  "fresh_session_per_condition": true,
+  "screening_runs_excluded": true,
+  "selection_source": "historical_difficulty_screen_summary.json",
+  "metrics_protocol": "hard_confirmatory_metrics_protocol.json",
+  "wire_debug_required": true,
+  "run_order": [
+    "G10-OFF",
+    "G10-ON",
+    "G09-ON",
+    "G09-OFF",
+    "G07-OFF",
+    "G07-ON",
+    "G19-ON",
+    "G19-OFF",
+    "G04-OFF",
+    "G04-ON",
+    "G21-ON",
+    "G21-OFF"
+  ],
+  "tasks": [
+    {
+      "task_id": "G10",
+      "source_commit": "cb6c8284575b70d754f5fc83158d8ef38777526b",
+      "subject": "fix(proxy): one bad extension no longer aborts proxy startup (#2215)",
+      "production_files": [
+        "headroom/proxy/extensions.py"
+      ],
+      "test_files": [
+        "tests/test_proxy_extensions.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_proxy_extensions.py::test_install_all_skips_failed_extension_and_continues"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_proxy_extensions.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "fd721c453feb5efba1bae611a5708a3a088222de68455864b053da9550f61b54"
+    },
+    {
+      "task_id": "G09",
+      "source_commit": "be51008c701f18e6856efc65d46401dbd2c9856f",
+      "subject": "fix(toin): publish skip compression recommendations (#1782)",
+      "production_files": [
+        "headroom/cli/toin_publish.py"
+      ],
+      "test_files": [
+        "tests/test_toin_publish.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_toin_publish.py::test_publish_command_writes_toml",
+        "tests/test_toin_publish.py::test_publish_preserves_skip_recommendation"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_toin_publish.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "1888148ac7dab5609f156dbe89f7db491c8bb372000202d1f9fae8e6c0e20119"
+    },
+    {
+      "task_id": "G07",
+      "source_commit": "ae10d6c99d7b187a92a9bcef3e7aabfe8b43a97f",
+      "subject": "fix(tokenizers): don't tokenize image blocks as text in TiktokenCounter (#2093)",
+      "production_files": [
+        "headroom/tokenizers/tiktoken_counter.py"
+      ],
+      "test_files": [
+        "tests/test_tokenizers.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_tokenizers.py::TestTiktokenCounter::test_count_messages_image_block_is_not_stringified"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_tokenizers.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "ce412b56c08920edb8b13d460730ed69b78195777055a8801654ae075e18f082"
+    },
+    {
+      "task_id": "G19",
+      "source_commit": "a70e5ff78dc9486e63a6563f122d392469ceef38",
+      "subject": "fix(learn): run project discovery off the event loop (#2731)",
+      "production_files": [
+        "headroom/memory/traffic_learner.py"
+      ],
+      "test_files": [
+        "tests/test_memory/test_traffic_learner.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_memory/test_traffic_learner.py::TestFlushToFile::test_discover_projects_does_not_block_the_event_loop"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_memory/test_traffic_learner.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "7e50c854c212774675630b7ee2899ad8a72d597d33422f8fc7fb1e1f8065912b"
+    },
+    {
+      "task_id": "G04",
+      "source_commit": "8d6c175d605b88d1c5a7f5e7671778a0e54fb09e",
+      "subject": "fix(subscription): only reset 5h contribution on real rollover, not API jitter (#1255)",
+      "production_files": [
+        "headroom/subscription/tracker.py"
+      ],
+      "test_files": [
+        "tests/test_subscription_tracker.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_subscription_tracker.py::test_second_level_reset_jitter_does_not_reset_contribution"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_subscription_tracker.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "5e8ba2247b710704e6fbf6f66b35360a17c820280d1fb80d1521d8196e9009aa"
+    },
+    {
+      "task_id": "G21",
+      "source_commit": "5279c33b192402faa7c4cbb7b1f6bae36ccda9c7",
+      "subject": "fix(memory): preserve semantically similar memories (#2303)",
+      "production_files": [
+        "headroom/proxy/memory_handler.py"
+      ],
+      "test_files": [
+        "tests/test_memory_handler_native_ops.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_memory_handler_native_ops.py::test_execute_save_preserves_high_similarity_distinct_memory"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_memory_handler_native_ops.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "ab54585e8db4cca15d7c91adbf8c32ef8e45b94125ab2b81466a566e852e9023"
+    }
+  ]
+}
