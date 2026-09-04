@@ -1,0 +1,21 @@
+{
+  "status": "declared_after_v4_0_diagnostic_before_v4_1_results",
+  "evaluation_type": "post_hoc_exploratory_mechanism",
+  "parent": "retrieval_anchored_v4_protocol.json",
+  "version": "v4.1",
+  "reason": "The v4.0 probe applied the frozen trajectory candidate extractor directly to raw rg/grep regex patterns. Inspection of the first results showed an implementation-conformance failure: identifiers visibly present both in the current search pattern and in prior trajectory evidence (for example install_all, count_messages, discover_projects, and _execute_save) were frequently not recognized as anchors. Therefore the observed 95.45% bridge-count reduction is not interpretable as successful selectivity.",
+  "fix": [
+    "derive structured candidate identifiers from prior tool outputs using the frozen trajectory extractor",
+    "intersect those prior candidates with the current rg/grep search pattern",
+    "for each adopted anchor retain its most recent prior tool output",
+    "leave frozen V3 ranking, eligibility, target conditioning, and all other protocol choices unchanged"
+  ],
+  "unchanged": [
+    "same six already-observed hard-confirmatory tasks",
+    "same captured OFF exact-wire trajectories",
+    "same current search commands and outputs",
+    "no agent rerun",
+    "no threshold or scoring-weight tuning",
+    "post-hoc exploratory interpretation only"
+  ]
+}

@@ -11,7 +11,7 @@ from typing import Any
 HERE = Path(__file__).resolve().parent
 BASE_PATH = HERE / "run_hard_matched_context_replay.py"
 ROOT = Path.home() / "headroom-hard-confirmatory-20260904"
-OUT = ROOT / "retrieval_anchored_v4_probe.json"
+OUT = ROOT / "retrieval_anchored_v41_probe.json"
 
 TASKS = ["G10", "G09", "G07", "G19", "G04", "G21"]
 
@@ -113,70 +113,83 @@ def context_tokens(context: str) -> list[str]:
     return tail.split()
 
 
-def structured_pattern_hits(pattern: str):
-    seen = set()
-    result = []
-
-    for hit in tr._find_candidates(pattern):
-        key = (hit.token.casefold(), hit.kind)
-        if key in seen:
-            continue
-        seen.add(key)
-        result.append(hit)
-
-    return result
+def _candidate_occurs_in_pattern(
+    pattern: str,
+    token: str,
+    kind: str,
+) -> bool:
+    """Match a PRIOR structured candidate against current retrieval intent."""
+    try:
+        return tr._contains_candidate(
+            pattern,
+            token,
+            kind=kind,
+        )
+    except Exception:
+        return token.casefold() in pattern.casefold()
 
 
 def latest_anchor_outputs(
     messages: list[dict[str, Any]],
     pattern: str,
-) -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """
+    V4.1 conformance fix.
+
+    Structured candidates come from PRIOR tool outputs, where the frozen
+    extractor is defined to operate.  The current rg/grep pattern is only
+    used as an adoption filter: a prior identifier becomes an anchor when
+    the agent explicitly reuses it in the current search pattern.
+    """
     latest_user = tr._latest_bridge_user_context(messages)
 
-    chosen_indexes = set()
-    anchors = []
+    chosen_indexes: set[int] = set()
+    anchors: list[dict[str, Any]] = []
+    seen: set[tuple[str, str]] = set()
 
-    for hit in structured_pattern_hits(pattern):
-        # Must be newly trajectory-derived, not simply copied from user prompt.
-        if latest_user and tr._contains_candidate(
-            latest_user,
-            hit.token,
-            kind=hit.kind,
-        ):
+    # Newest prior tool output wins for each adopted identifier.
+    for i in range(len(messages) - 1, -1, -1):
+        message = messages[i]
+
+        if message.get("role") != "tool":
             continue
 
-        found_index = None
+        text = message.get("content")
+        if not isinstance(text, str) or not text:
+            continue
 
-        for i in range(len(messages) - 1, -1, -1):
-            message = messages[i]
+        for hit in tr._find_candidates(text):
+            key = (hit.token.casefold(), hit.kind)
 
-            if message.get("role") != "tool":
+            if key in seen:
                 continue
 
-            text = message.get("content")
-            if not isinstance(text, str):
+            if not _candidate_occurs_in_pattern(
+                pattern,
+                hit.token,
+                hit.kind,
+            ):
                 continue
 
-            if tr._contains_candidate(
-                text,
+            # Do not call something trajectory-derived when it was already
+            # explicitly present in the latest user request.
+            if latest_user and tr._contains_candidate(
+                latest_user,
                 hit.token,
                 kind=hit.kind,
             ):
-                found_index = i
-                break
+                continue
 
-        if found_index is None:
-            continue
+            seen.add(key)
+            chosen_indexes.add(i)
 
-        chosen_indexes.add(found_index)
-
-        anchors.append(
-            {
-                "token": hit.token,
-                "kind": hit.kind,
-                "message_index": found_index,
-            }
-        )
+            anchors.append(
+                {
+                    "token": hit.token,
+                    "kind": hit.kind,
+                    "message_index": i,
+                }
+            )
 
     selected = [
         messages[i]
@@ -343,7 +356,7 @@ for task in TASKS:
 payload = {
     "evaluation_type": "post_hoc_exploratory_mechanism",
     "base_algorithm_freeze": base.FREEZE,
-    "algorithm": "retrieval_anchored_local_provenance",
+    "algorithm": "retrieval_anchored_local_provenance_v41",
     "aggregate": aggregate,
     "units": results,
 }
