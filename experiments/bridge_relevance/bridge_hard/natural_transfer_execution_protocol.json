@@ -1,0 +1,36 @@
+{
+  "name": "Frozen V3 natural-agent bridge transfer execution",
+  "status": "declared_before_any_transfer_agent_run",
+  "evaluation_class": "post_hoc_naturalistic_transfer_validation",
+  "algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "task_manifest_commit": "1c5500dc",
+  "exhaustive_result_commit": "0552b836",
+  "model": "openai/gpt-5.6-terra",
+  "opencode_version": "1.18.25",
+  "python": "3.12",
+  "condition_count": 16,
+  "tasks": ["F1","F2","F3","F4","F5","F6","F7","F8"],
+  "primary_forensic_trajectory": "OFF",
+  "execution": {
+    "fresh_snapshot_per_condition": true,
+    "same_buggy_snapshot_within_pair": true,
+    "kompress_warm_before_measurement": true,
+    "shell_rg_capture": true,
+    "raw_agent_and_proxy_logs_stay_under_tmp": true,
+    "no_condition_rerun_after_AGENT_STARTED": true
+  },
+  "primary_positive": {
+    "natural_retrieval": "OFF coding agent independently executes a repository rg search whose actual search result contains historical-fix-adjacent production evidence",
+    "baseline": "the evidence is outside the baseline high-relevance KEEP partition",
+    "counterfactual_v3": "using the same search target and the OFF trajectory state available before that search, frozen V3 moves the same evidence into KEEP"
+  },
+  "raw_rg_limit": "For automatic exact-output claims, use only an rg invocation whose agent-visible output can be reconstructed exactly. A wrapper capture before a downstream shell pipe is not by itself proof that every captured line reached the agent.",
+  "secondary_outcomes": [
+    "OFF/ON regression oracle",
+    "actual ON relevance activation",
+    "request count",
+    "compression savings",
+    "wall time"
+  ],
+  "stopping_rule": "run all 16 locked conditions; do not replace tasks or stop after a positive result"
+}
