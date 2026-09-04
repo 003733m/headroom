@@ -1,0 +1,286 @@
+{
+  "name": "Frozen V3 natural-agent transfer validation",
+  "status": "locked_before_any_transfer_agent_run",
+  "evaluation_class": "post_hoc_naturalistic_transfer_validation",
+  "algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "exhaustive_result_commit": "0552b836",
+  "selection_rule": "all eight fresh rescue tasks from the completed exhaustive historical controlled scan",
+  "task_count": 8,
+  "no_task_replacement": true,
+  "no_result_conditioned_tuning": true,
+  "no_historical_fix_information_in_agent_prompt": true,
+  "primary_question": "On the real OFF coding-agent trajectory, does the agent independently retrieve historical-fix-adjacent evidence in a shell search for which baseline relevance does not retain the record but frozen V3 counterfactual relevance on the exact same search target and prior trajectory would retain it?",
+  "primary_forensic_source": "OFF natural-agent trajectory",
+  "primary_positive_definition": {
+    "natural_retrieval": "the OFF agent independently generated the repository search whose raw result contains a historical-fix-adjacent production record",
+    "baseline": "that record is not in the baseline high-relevance KEEP partition",
+    "v3_counterfactual": "using the exact same raw search target and exact prior OFF trajectory state, frozen V3 places the same record in the high-relevance KEEP partition"
+  },
+  "secondary_outcomes": [
+    "OFF/ON external regression oracle",
+    "actual ON trajectory relevance activation",
+    "agent request count",
+    "compression savings",
+    "wall-clock time"
+  ],
+  "interpretation_limits": [
+    "tasks were selected after the controlled exhaustive scan and therefore this is not prospective",
+    "a counterfactual search-level rescue does not by itself prove that downstream agent success was caused by the rescued record",
+    "all eight selected tasks must be reported regardless of outcome"
+  ],
+  "run_order": [
+    "F1-OFF",
+    "F1-ON",
+    "F2-ON",
+    "F2-OFF",
+    "F3-OFF",
+    "F3-ON",
+    "F4-ON",
+    "F4-OFF",
+    "F5-OFF",
+    "F5-ON",
+    "F6-ON",
+    "F6-OFF",
+    "F7-OFF",
+    "F7-ON",
+    "F8-ON",
+    "F8-OFF"
+  ],
+  "tasks": [
+    {
+      "task_id": "F1",
+      "source_commit": "1f5fefffd3e82c73bddd928cfd53334031e807bc",
+      "production_files": [
+        "headroom/memory/traffic_learner.py"
+      ],
+      "test_files": [
+        "tests/test_memory/test_traffic_learner.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_memory/test_traffic_learner.py::TestTrafficLearner::test_pending_accumulator_is_bounded",
+        "tests/test_memory/test_traffic_learner.py::TestTrafficLearner::test_pending_accumulator_lru_still_promotes_corroborated_pattern"
+      ],
+      "safe_bridges": [
+        {
+          "kind": "test_name",
+          "token": "test_pending_accumulator_is_bounded"
+        },
+        {
+          "kind": "test_name",
+          "token": "test_pending_accumulator_lru_still_promotes_corroborated_pattern"
+        }
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_memory/test_traffic_learner.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "7e50c854c212774675630b7ee2899ad8a72d597d33422f8fc7fb1e1f8065912b",
+      "pair_order": [
+        "OFF",
+        "ON"
+      ],
+      "primary_forensic_trajectory": "OFF"
+    },
+    {
+      "task_id": "F2",
+      "source_commit": "85e869945138f06471501046c5725eac119dea58",
+      "production_files": [
+        "headroom/learn/analyzer.py"
+      ],
+      "test_files": [
+        "tests/test_learn/test_analyzer.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_learn/test_analyzer.py::TestDigestBuilder::test_long_error_output_preserves_tail_root_cause"
+      ],
+      "safe_bridges": [
+        {
+          "kind": "test_name",
+          "token": "test_long_error_output_preserves_tail_root_cause"
+        }
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_learn/test_analyzer.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "32ea5c5710305b95f7fbff92150d0ed46ed6cd07e9a982a8998794d0a5591a37",
+      "pair_order": [
+        "ON",
+        "OFF"
+      ],
+      "primary_forensic_trajectory": "OFF"
+    },
+    {
+      "task_id": "F3",
+      "source_commit": "4e2bbfee3f65e3287ab7693da70f0d7b20dada28",
+      "production_files": [
+        "headroom/install/paths.py",
+        "headroom/providers/opencode/config.py"
+      ],
+      "test_files": [
+        "tests/test_cli/test_wrap_opencode.py",
+        "tests/test_providers_opencode_config.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_cli/test_wrap_opencode.py::test_unwrap_opencode_restores_from_backup_jsonc",
+        "tests/test_providers_opencode_config.py::test_opencode_config_paths_default_jsonc"
+      ],
+      "safe_bridges": [
+        {
+          "kind": "test_name",
+          "token": "test_unwrap_opencode_restores_from_backup_jsonc"
+        },
+        {
+          "kind": "test_name",
+          "token": "test_opencode_config_paths_default_jsonc"
+        }
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_cli/test_wrap_opencode.py, tests/test_providers_opencode_config.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "c36abed30d87a522cdc6b05bedceeeb8e39b497aab1b6a9717edc56776e832a7",
+      "pair_order": [
+        "OFF",
+        "ON"
+      ],
+      "primary_forensic_trajectory": "OFF"
+    },
+    {
+      "task_id": "F4",
+      "source_commit": "0cddac632d8ab4e0bcd752b9c7519d5099aa085e",
+      "production_files": [
+        "headroom/telemetry/reporter.py"
+      ],
+      "test_files": [
+        "tests/test_usage_reporter_snapshot.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_usage_reporter_snapshot.py::test_baseline_not_advanced_on_non_200",
+        "tests/test_usage_reporter_snapshot.py::test_baseline_not_advanced_on_exception"
+      ],
+      "safe_bridges": [
+        {
+          "kind": "test_name",
+          "token": "test_baseline_not_advanced_on_non_200"
+        },
+        {
+          "kind": "test_name",
+          "token": "test_baseline_not_advanced_on_exception"
+        }
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_usage_reporter_snapshot.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "29fdf04f4f518fb5a7513fa290d0558a2c3c9baeea8b6f89b66ba8e9cb60cb4a",
+      "pair_order": [
+        "ON",
+        "OFF"
+      ],
+      "primary_forensic_trajectory": "OFF"
+    },
+    {
+      "task_id": "F5",
+      "source_commit": "cc072f0821b76618659a2dd6c81a1daee49dbaab",
+      "production_files": [
+        "headroom/transforms/cache_aligner.py"
+      ],
+      "test_files": [
+        "tests/test_cache_aligner_prefix_stability.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_cache_aligner_prefix_stability.py::test_frozen_prefix_change_flags_prefix_changed"
+      ],
+      "safe_bridges": [
+        {
+          "kind": "test_name",
+          "token": "test_frozen_prefix_change_flags_prefix_changed"
+        }
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_cache_aligner_prefix_stability.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "a3a535af6645a6ee7d05b2260b2cb8c2b94f7ffba9275895dd214ff9561e1fb6",
+      "pair_order": [
+        "OFF",
+        "ON"
+      ],
+      "primary_forensic_trajectory": "OFF"
+    },
+    {
+      "task_id": "F6",
+      "source_commit": "fa330f3e2bed3f51b7f4d49bcd64ec4aaa17f44f",
+      "production_files": [
+        "headroom/memory/core.py"
+      ],
+      "test_files": [
+        "tests/test_memory/test_core_operations.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_memory/test_core_operations.py::TestSupersede::test_superseded_memory_does_not_resurface_in_search",
+        "tests/test_memory/test_core_operations.py::TestSupersede::test_superseded_index_removal_boundary"
+      ],
+      "safe_bridges": [
+        {
+          "kind": "test_name",
+          "token": "test_superseded_memory_does_not_resurface_in_search"
+        },
+        {
+          "kind": "test_name",
+          "token": "test_superseded_index_removal_boundary"
+        }
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_memory/test_core_operations.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "ca51525dd44c05de60d89f319f15ecacc87f5744ded5c393ccb8710ac5c93e2b",
+      "pair_order": [
+        "ON",
+        "OFF"
+      ],
+      "primary_forensic_trajectory": "OFF"
+    },
+    {
+      "task_id": "F7",
+      "source_commit": "c7b5a24b4ffca78bacf1919ace00087b6ab6f7d0",
+      "production_files": [
+        "headroom/learn/_shared.py"
+      ],
+      "test_files": [
+        "tests/test_learn/test_error_classification.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_learn/test_error_classification.py::test_timeout_repr_is_not_shadowed_by_runtime_error",
+        "tests/test_learn/test_error_classification.py::test_connection_repr_is_not_shadowed_by_runtime_error"
+      ],
+      "safe_bridges": [
+        {
+          "kind": "test_name",
+          "token": "test_timeout_repr_is_not_shadowed_by_runtime_error"
+        },
+        {
+          "kind": "test_name",
+          "token": "test_connection_repr_is_not_shadowed_by_runtime_error"
+        }
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_learn/test_error_classification.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "5d56554ee7e5d5589617055145b85c6f9554b353194ed78859511f05483d20ea",
+      "pair_order": [
+        "OFF",
+        "ON"
+      ],
+      "primary_forensic_trajectory": "OFF"
+    },
+    {
+      "task_id": "F8",
+      "source_commit": "d05802b6200b94f198e99319e6c778e78b53db8b",
+      "production_files": [
+        "headroom/proxy/handlers/streaming.py"
+      ],
+      "test_files": [
+        "tests/test_sse_thinking_blocks.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_sse_thinking_blocks.py::test_response_to_sse_emits_unknown_content_block_verbatim"
+      ],
+      "safe_bridges": [
+        {
+          "kind": "test_name",
+          "token": "test_response_to_sse_emits_unknown_content_block_verbatim"
+        }
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_sse_thinking_blocks.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "435bbcf76278202a2a6d797e12d7649a9802c396043719767d83eac14a25fcca",
+      "pair_order": [
+        "ON",
+        "OFF"
+      ],
+      "primary_forensic_trajectory": "OFF"
+    }
+  ]
+}
