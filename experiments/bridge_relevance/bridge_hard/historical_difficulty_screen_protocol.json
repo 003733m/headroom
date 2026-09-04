@@ -1,0 +1,28 @@
+{
+  "status": "locked_before_any_difficulty_screen_agent_run",
+  "purpose": "Measure treatment-blind agent difficulty before selecting a fresh confirmatory hard-task OFF/ON holdout.",
+  "screening": {
+    "conditions": 24,
+    "one_condition_per_task": true,
+    "trajectory_relevance": false,
+    "screening_runs_excluded_from_confirmatory_treatment_estimate": true,
+    "no_replacement_after_agent_run": true,
+    "no_git_history": true,
+    "required_repository_search": "shell rg -nH",
+    "model": "gpt-5.6-terra"
+  },
+  "hard_holdout_selection": {
+    "target_count": 6,
+    "priority_1": "oracle FAIL",
+    "priority_2_if_needed": "higher request count",
+    "priority_3_if_needed": "higher repository-search count",
+    "priority_4_if_needed": "higher measured input-token burden",
+    "tie_break": "deterministic source SHA",
+    "wall_time_not_primary": true
+  },
+  "confirmatory_rule": {
+    "screening_OFF_does_not_count_as_confirmatory_OFF": true,
+    "selected_tasks_receive_fresh_sessions": true,
+    "fresh_OFF_and_ON_required": true
+  }
+}
