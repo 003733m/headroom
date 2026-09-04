@@ -1163,6 +1163,88 @@ def write_metrics(
     )
 
 
+def validate_agent_isolation(out: Path, run_dir: Path):
+    """Reject a measured condition if the agent escaped its locked snapshot."""
+    expected = run_dir.resolve()
+    control = CONTROL.resolve()
+
+    transcript_path = out / "opencode.txt"
+    transcript = (
+        transcript_path.read_text(errors="replace")
+        if transcript_path.exists()
+        else ""
+    )
+
+    problems = []
+
+    # The control repo must never appear as an agent tool/read/test target.
+    if str(control) in transcript:
+        problems.append(
+            "agent transcript references CONTROL_REPO"
+        )
+
+    # Every captured rg command must execute in the condition snapshot
+    # or one of its descendants.
+    capdir = out / "rg-captures"
+
+    for meta in sorted(capdir.glob("*.meta")):
+        cwd_line = None
+
+        for line in meta.read_text(
+            errors="replace"
+        ).splitlines():
+            if line.startswith("cwd="):
+                cwd_line = line[4:]
+                break
+
+        if cwd_line is None:
+            problems.append(
+                f"{meta.name}: missing cwd"
+            )
+            continue
+
+        # wrapper uses printf %q; benchmark paths contain no spaces,
+        # so the serialized cwd is directly path-compatible here.
+        got = Path(cwd_line).resolve()
+
+        if not (
+            got == expected
+            or expected in got.parents
+        ):
+            problems.append(
+                f"{meta.name}: rg cwd escaped snapshot: {got}"
+            )
+
+    result = {
+        "expected_run_dir": str(expected),
+        "control_repo_forbidden": True,
+        "rg_capture_count": len(
+            list(capdir.glob("*.meta"))
+        ),
+        "valid": not problems,
+        "problems": problems,
+    }
+
+    (out / "isolation.json").write_text(
+        json.dumps(
+            result,
+            indent=2,
+            ensure_ascii=False,
+        ) + "\\n"
+    )
+
+    if problems:
+        (out / "INVALID_RUN").write_text(
+            "\\n".join(problems) + "\\n"
+        )
+        die(
+            "agent isolation invariant failed: "
+            + "; ".join(problems)
+        )
+
+    print("Agent isolation: OK")
+
+
 def run_condition(task, cond):
     flag = condition_flag(cond)
     tid = task["task_id"]
@@ -1312,6 +1394,7 @@ def run_condition(task, cond):
                     "--no-serena",
                     "--",
                     "run",
+                    "--dir", str(run_dir),
                     "-m", MODEL,
                     prompt,
                 ],
@@ -1323,6 +1406,11 @@ def run_condition(task, cond):
 
         wall = time.monotonic() - start
         agent_rc = cp.returncode
+
+        validate_agent_isolation(
+            out,
+            run_dir,
+        )
 
         measured = tail_jsonl(
             requests_path,

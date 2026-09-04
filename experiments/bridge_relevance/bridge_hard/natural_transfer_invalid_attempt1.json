@@ -1,0 +1,17 @@
+{
+  "task": "F1",
+  "condition": "OFF",
+  "attempt": 1,
+  "status": "invalid_excluded",
+  "reason": "coding agent executed against the control repository instead of the locked buggy condition snapshot",
+  "objective_invariant_violation": "agent tool paths and pytest rootdir resolved outside the condition run directory",
+  "contamination": "the unintended control repository exposed post-freeze experiment artifacts and historical-fix information",
+  "benchmark_use": {
+    "task_outcome": false,
+    "natural_retrieval": false,
+    "drop_keep_analysis": false,
+    "aggregate_denominator": false
+  },
+  "rerun_policy": "one corrected F1-OFF execution is permitted after a working-directory harness fix because attempt 1 never instantiated the intended experimental condition",
+  "raw_artifacts": "retained separately under the temporary benchmark invalid-attempt archive; raw logs are not committed"
+}
