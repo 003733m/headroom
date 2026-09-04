@@ -1,0 +1,29 @@
+{
+  "status": "declared_before_first_forensic_scan",
+  "analysis_type": "post_hoc_exploratory_natural_transfer_forensics",
+  "new_agent_runs": false,
+  "scope": [
+    "F1-OFF",
+    "F2-OFF",
+    "F3-OFF",
+    "F4-OFF",
+    "F5-OFF",
+    "F6-OFF",
+    "F7-OFF",
+    "F8-OFF"
+  ],
+  "purpose": "Test whether critical records previously shown to be baseline DROP -> V3 KEEP in the controlled exhaustive historical scan were independently retrieved by a natural OFF coding-agent search and whether those exact records were visible in the corresponding agent transcript.",
+  "primary_candidate_definition": {
+    "controlled_exhaustive_decision": "baseline_keep=false and v3_keep=true",
+    "natural_raw_rg_contains_exact_record": true,
+    "corresponding_agent_visible_rg_segment_contains_exact_record": false,
+    "rg_capture_and_transcript_command_are_order-paired": true,
+    "exclude_shell_pipeline_or_redirection": true
+  },
+  "interpretation": {
+    "allowed": "natural retrieval plus baseline non-visibility of a record independently known to be V3-rescuable under the controlled exhaustive construction",
+    "not_allowed": "claim that frozen V3 would necessarily keep the record under the exact natural trajectory",
+    "reason": "full natural request message payloads were not persisted"
+  },
+  "selection_policy": "scan all eight locked OFF tasks; no replacement, early stopping, or task selection based on forensic outcomes"
+}
