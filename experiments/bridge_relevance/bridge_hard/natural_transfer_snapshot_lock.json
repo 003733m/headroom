@@ -1,0 +1,110 @@
+{
+  "status": "prepared_before_any_transfer_agent_run",
+  "algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "manifest_commit": "1c5500dc",
+  "model": "openai/gpt-5.6-terra",
+  "opencode_version": "1.18.25",
+  "tasks": [
+    {
+      "task_id": "F1",
+      "source_commit": "1f5fefffd3e82c73bddd928cfd53334031e807bc",
+      "snapshot_head": "172f49a07a0b560f04a1887e6a641885ce61f4ff",
+      "snapshot_tree": "2117fc8b3b82994b012e7b3277c1c0eb48349d73",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "7e50c854c212774675630b7ee2899ad8a72d597d33422f8fc7fb1e1f8065912b",
+      "expected_buggy_failures": [
+        "tests/test_memory/test_traffic_learner.py::TestTrafficLearner::test_pending_accumulator_is_bounded",
+        "tests/test_memory/test_traffic_learner.py::TestTrafficLearner::test_pending_accumulator_lru_still_promotes_corroborated_pattern"
+      ]
+    },
+    {
+      "task_id": "F2",
+      "source_commit": "85e869945138f06471501046c5725eac119dea58",
+      "snapshot_head": "2e0c96f9e302efe1c585f1669099a3b6abc2b27b",
+      "snapshot_tree": "a2648bc131276ef2ff519faf8e7660e2161e7e9a",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "32ea5c5710305b95f7fbff92150d0ed46ed6cd07e9a982a8998794d0a5591a37",
+      "expected_buggy_failures": [
+        "tests/test_learn/test_analyzer.py::TestDigestBuilder::test_long_error_output_preserves_tail_root_cause"
+      ]
+    },
+    {
+      "task_id": "F3",
+      "source_commit": "4e2bbfee3f65e3287ab7693da70f0d7b20dada28",
+      "snapshot_head": "56a0155a711e6cb83716c18837b59930c91dd995",
+      "snapshot_tree": "ebd1ac487ec70d69d9e48fdd0b7b5ea59f4040af",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "c36abed30d87a522cdc6b05bedceeeb8e39b497aab1b6a9717edc56776e832a7",
+      "expected_buggy_failures": [
+        "tests/test_cli/test_wrap_opencode.py::test_unwrap_opencode_restores_from_backup_jsonc",
+        "tests/test_providers_opencode_config.py::test_opencode_config_paths_default_jsonc"
+      ]
+    },
+    {
+      "task_id": "F4",
+      "source_commit": "0cddac632d8ab4e0bcd752b9c7519d5099aa085e",
+      "snapshot_head": "eeeab195996fe365312d28d8167a1aa39d4c4902",
+      "snapshot_tree": "4f16b8b6339c4a1088cd984ec17b37ca14c0f4bf",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "29fdf04f4f518fb5a7513fa290d0558a2c3c9baeea8b6f89b66ba8e9cb60cb4a",
+      "expected_buggy_failures": [
+        "tests/test_usage_reporter_snapshot.py::test_baseline_not_advanced_on_exception",
+        "tests/test_usage_reporter_snapshot.py::test_baseline_not_advanced_on_non_200"
+      ]
+    },
+    {
+      "task_id": "F5",
+      "source_commit": "cc072f0821b76618659a2dd6c81a1daee49dbaab",
+      "snapshot_head": "ef282901ab9ea5e1f19a98bbf3913dc895f119f8",
+      "snapshot_tree": "315d18688afdc220630e163279216217562f847c",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "a3a535af6645a6ee7d05b2260b2cb8c2b94f7ffba9275895dd214ff9561e1fb6",
+      "expected_buggy_failures": [
+        "tests/test_cache_aligner_prefix_stability.py::test_frozen_prefix_change_flags_prefix_changed"
+      ]
+    },
+    {
+      "task_id": "F6",
+      "source_commit": "fa330f3e2bed3f51b7f4d49bcd64ec4aaa17f44f",
+      "snapshot_head": "feef73ed7c34bf05e1d1d8a7c30660d4aee1815d",
+      "snapshot_tree": "202c1e376e8173d4729b4dc28953c50b75b98931",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "ca51525dd44c05de60d89f319f15ecacc87f5744ded5c393ccb8710ac5c93e2b",
+      "expected_buggy_failures": [
+        "tests/test_memory/test_core_operations.py::TestSupersede::test_superseded_index_removal_boundary",
+        "tests/test_memory/test_core_operations.py::TestSupersede::test_superseded_memory_does_not_resurface_in_search"
+      ]
+    },
+    {
+      "task_id": "F7",
+      "source_commit": "c7b5a24b4ffca78bacf1919ace00087b6ab6f7d0",
+      "snapshot_head": "13370efeec95cc9614d56fa08cd57f65a3b8e6fe",
+      "snapshot_tree": "b8565a289b8b3beba0598beead88b040c74bcc6f",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "5d56554ee7e5d5589617055145b85c6f9554b353194ed78859511f05483d20ea",
+      "expected_buggy_failures": [
+        "tests/test_learn/test_error_classification.py::test_connection_repr_is_not_shadowed_by_runtime_error",
+        "tests/test_learn/test_error_classification.py::test_timeout_repr_is_not_shadowed_by_runtime_error"
+      ]
+    },
+    {
+      "task_id": "F8",
+      "source_commit": "d05802b6200b94f198e99319e6c778e78b53db8b",
+      "snapshot_head": "6961de1031cd62c473ab2bedb8d0a736be2eb691",
+      "snapshot_tree": "f7a276539fe93ee63e672435078fd2fcad645154",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "435bbcf76278202a2a6d797e12d7649a9802c396043719767d83eac14a25fcca",
+      "expected_buggy_failures": [
+        "tests/test_sse_thinking_blocks.py::test_response_to_sse_emits_unknown_content_block_verbatim"
+      ]
+    }
+  ]
+}
