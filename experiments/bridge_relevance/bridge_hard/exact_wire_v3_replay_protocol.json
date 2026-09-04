@@ -1,0 +1,54 @@
+{
+  "status": "locked_before_any_exact_wire_v3_replay",
+  "experiment": "exact_wire_frozen_v3_replay",
+  "evaluation_type": "post_hoc_exact_request_counterfactual",
+  "v3_freeze_sha": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "natural_transfer_manifest_commit": "1c5500dc",
+  "exact_wire_protocol_commit": "99683fbe",
+  "runtime": "/tmp/headroom-v3-runtime",
+  "raw_capture_root": "~/headroom-exact-wire-raw-20260904",
+  "tasks": ["F1","F2","F3","F4","F5","F6","F7","F8"],
+  "selection": {
+    "primary_population": "all naturally retrieved historical-critical records that reach an exact captured inbound request at first exposure",
+    "no_selection_on_v3_replay_outcome": true,
+    "preknown_controlled_dk_subset": [
+      "F1:headroom/memory/traffic_learner.py:1258",
+      "F3:headroom/providers/opencode/config.py:75",
+      "F7:headroom/learn/_shared.py:59"
+    ]
+  },
+  "canonical_wire_pair": {
+    "pre": "http_inbound_request",
+    "post": "http_stream_upstream_request",
+    "pair_key": "request_id",
+    "duplicate_post_check": "http_upstream_request was already verified identical for 97/97 requests"
+  },
+  "replay": {
+    "production_wrapper": "OpenAIHandlerMixin._compress_openai_responses_payload",
+    "profile": "coding",
+    "off": "HEADROOM_TRAJECTORY_RELEVANCE=0",
+    "on": "HEADROOM_TRAJECTORY_RELEVANCE=1",
+    "request_order": "chronological within task",
+    "fresh_handler_and_cache_per_condition": true
+  },
+  "validity": {
+    "primary_replay_validity": "captured baseline and OFF replay must agree on KEEP/DROP for the critical exact record",
+    "stronger_unit_validity": "same function_call_output call_id compressed output hash matches captured baseline when available",
+    "whole_payload_byte_identity_required": false,
+    "reason": "the claim concerns the critical compressed unit; ancillary envelope transformations need not be byte-identical"
+  },
+  "metrics": [
+    "captured_baseline_first_exposure_exact_critical_recall",
+    "valid_off_replay_first_exposure_exact_critical_recall",
+    "v3_first_exposure_exact_critical_recall",
+    "drop_to_keep_rescue_count",
+    "keep_to_drop_regression_count",
+    "preknown_controlled_dk_subset_outcomes"
+  ],
+  "claim_boundaries": [
+    "Exact string retention is not equivalent to semantic information retention.",
+    "Replay evidence is a compression-fidelity result, not by itself an end-to-end task-success result.",
+    "Only records whose OFF replay reproduces the captured baseline KEEP/DROP decision are valid counterfactual replay evidence.",
+    "No LLM or agent is invoked by this replay."
+  ]
+}
