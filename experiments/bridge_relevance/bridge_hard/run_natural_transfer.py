@@ -783,8 +783,10 @@ def warm_proxy(port, out, flag):
                 "run",
                 "-m", MODEL,
                 (
-                    "Run ./prime.sh exactly once and "
-                    "then reply only PRIME_DONE."
+                    "Run "
+                    + str(script.resolve())
+                    + " exactly once and then reply only "
+                      "PRIME_DONE."
                 ),
             ],
             cwd=prime,
