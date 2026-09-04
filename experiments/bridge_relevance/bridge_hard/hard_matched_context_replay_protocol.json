@@ -1,0 +1,31 @@
+{
+  "status": "locked_before_matched_replay_results",
+  "evaluation_type": "post_hoc_forensic_matched_replay",
+  "algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "tasks": ["G10", "G09", "G07", "G19", "G04", "G21"],
+  "source_trajectory": "fresh hard-confirmatory OFF exact-wire captures",
+  "unit_population": "first exposure of each distinct rg/grep search output >= 512 bytes",
+  "conditions": {
+    "A": "frozen production OFF",
+    "D": "frozen production V3 as implemented",
+    "B": "current search-query relevance only, using the same V3 routing seam but no prior trajectory identifiers",
+    "C": "same current search-query relevance as B plus frozen V3 prior-tool trajectory context"
+  },
+  "primary_contrast": "B_to_C",
+  "historical_critical_oracle": "non-empty parent-version production lines within +/-5 lines of each source fix hunk; historical-fix-adjacent, not causal ground truth",
+  "validity_gate": "A replay must reproduce captured upstream KEEP/DROP decisions for every parsed record in the search unit",
+  "primary_metrics": [
+    "historical-fix-adjacent record recall",
+    "B_DROP_to_C_KEEP rescues",
+    "B_KEEP_to_C_DROP regressions",
+    "non-fix-adjacent retained record token burden",
+    "full retained search-output token burden",
+    "historical-fix-adjacent records retained per 1000 non-fix-adjacent retained record tokens"
+  ],
+  "interpretation_limits": [
+    "non-fix-adjacent does not mean semantically irrelevant",
+    "B and C are exploratory counterfactual variants, not frozen production V3",
+    "task success is not re-estimated because no agent is rerun",
+    "primary trajectory-value claim comes from B versus C, since both receive identical current search intent"
+  ]
+}
