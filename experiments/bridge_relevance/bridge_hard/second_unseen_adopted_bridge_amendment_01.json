@@ -1,0 +1,21 @@
+{
+  "experiment": "second_unseen_adopted_bridge_validation",
+  "amendment": 1,
+  "classification": "procedural reachability clarification",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "facts": [
+    "The initial U01 applicability analysis found a frozen trajectory bridge intersecting the natural current search query.",
+    "A subsequent structural-only reachability check returned false.",
+    "The frozen production handler uses structural search eligibility OR producing-tool bash-search eligibility.",
+    "Post-run verification of the already-captured U01-OFF trajectory showed that the selected output call_id is in the frozen production bash_search_call_ids set.",
+    "U01-ON had already been consumed exactly once before this reachability clarification was completed.",
+    "No historical-critical oracle, baseline retention decision, preservation rescue result, or fix-adjacent overlap was inspected before U01-ON."
+  ],
+  "consequences": [
+    "U01 remains the first task in the pre-locked ordering satisfying the complete frozen applicability condition.",
+    "No task is replaced.",
+    "No completed agent condition is rerun.",
+    "The production algorithm remains unchanged.",
+    "The clarification affects reachability accounting only and does not modify the treatment."
+  ]
+}

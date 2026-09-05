@@ -1,0 +1,36 @@
+{
+  "status": "locked_before_second_unseen_retention_outcome",
+  "experiment": "second_unseen_adopted_bridge_mechanism_evaluation",
+  "classification": "prospective unseen mechanism evaluation after natural applicability",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "selected_task": {
+    "task_id": "U01",
+    "source_commit": "24cf256e50fbd0df8ac67fefa90982cd20807274",
+    "selection_reason": "first task in pre-locked deterministic order satisfying frozen natural adopted-bridge applicability",
+    "off_adopted_bridges": [
+      "COPILOT_PROVIDER_TYPE",
+      "HEADROOM_BACKEND"
+    ],
+    "on_adopted_bridges": [
+      "COPILOT_PROVIDER_TYPE"
+    ],
+    "on_target_call_id": "call_NM0wmbNuSl4zUdOh8rhqsUR0",
+    "on_command": "rg -nH -C 5 \"COPILOT_PROVIDER_TYPE|HEADROOM_BACKEND\" headroom/providers/c copilot headroom 2>/dev/null"
+  },
+  "primary_data": "first exact captured U01-ON search output satisfying frozen adopted-bridge applicability",
+  "conditions": {
+    "A": "same frozen production relevance scoring/context with force_keep_identifiers disabled",
+    "D": "same frozen production relevance scoring/context with the naturally adopted identifiers enabled"
+  },
+  "historical_oracle": "parent-version production lines within +/-5 lines of the historical fix hunk; historical-fix-adjacent, not asserted causal ground truth",
+  "primary_metrics": [
+    "scorable historical-fix-adjacent records",
+    "critical records retained by A",
+    "critical records retained by D",
+    "A-DROP to D-KEEP rescues",
+    "A-KEEP to D-DROP regressions",
+    "newly retained non-critical records",
+    "newly retained non-critical tokens"
+  ],
+  "stopping_rule": "report this single U01 result whether positive, null, or negative; no replacement and no additional agent run"
+}
