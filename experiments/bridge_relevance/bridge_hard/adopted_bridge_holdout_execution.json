@@ -1,0 +1,64 @@
+{
+  "status": "locked_before_any_adopted_bridge_holdout_agent_run",
+  "experiment": "adopted_bridge_unseen_holdout",
+  "algorithm_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "selection_lock_commit": "8be5623f2c5fb9af3777524c747cca02db968c2b",
+  "selection_file": "experiments/bridge_relevance/bridge_hard/adopted_bridge_holdout_selection.json",
+  "selection_source": "treatment-blind historical difficulty-screen OFF-only rg traces",
+  "applicability_conditioned": true,
+  "task_count": 1,
+  "condition_count": 2,
+  "run_order": [
+    "G11-OFF",
+    "G11-ON"
+  ],
+  "fresh_condition_sessions": true,
+  "historical_screen_OFF_reused_as_outcome": false,
+  "replacement_allowed": false,
+  "automatic_rerun_allowed": false,
+  "selected_adopted_bridge_opportunity": {
+    "task_id": "G11",
+    "identifier": "resolve_litellm_model_name",
+    "opportunities": [
+      {
+        "capture_index": 5,
+        "started_ns": 1788513708350245840,
+        "argv": "-nH --glob \\*.py pricing_lookup_candidates\\|resolve_litellm_model_name\\|resolution_candidates headroom ",
+        "command": "rg -nH --glob '*.py' 'pricing_lookup_candidates|resolve_litellm_model_name|resolution_candidates' headroom",
+        "pattern": "pricing_lookup_candidates|resolve_litellm_model_name|resolution_candidates",
+        "query_identifiers": [
+          "pricing_lookup_candidates",
+          "resolution_candidates",
+          "resolve_litellm_model_name"
+        ],
+        "v3_bridges": [
+          "LiteLLM",
+          "LITELLM",
+          "resolve_litellm_model_name",
+          "headroom/pricing/litellm_pricing.py",
+          "MODEL"
+        ],
+        "adopted_bridge_identifiers": [
+          "resolve_litellm_model_name"
+        ],
+        "target_bytes": 876
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "task_id": "G11",
+      "source_commit": "6137967083936467c570e8c7f20e94f43ccc13aa",
+      "subject": "fix(pricing): alias retired claude-3-sonnet to Sonnet-tier price, not Haiku (#2095)",
+      "production_files": [
+        "headroom/pricing/litellm_model_resolution.py"
+      ],
+      "test_files": [
+        "tests/test_pricing_litellm_model_resolution.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_pricing_litellm_model_resolution.py::test_retired_claude_3_sonnet_aliases_to_sonnet_tier_not_haiku"
+      ]
+    }
+  ]
+}
