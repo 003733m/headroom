@@ -1,0 +1,164 @@
+{
+  "status": "prepared_before_any_second_unseen_agent_run",
+  "experiment": "second_unseen_adopted_bridge_validation",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "protocol_lock_commit": "b622d88b4c7b22b4cfe972b83cc4aff10286188f",
+  "selection_lock_commit": "4fa1bc4a6d9fe0a69eb22181e3478d6bc20024ee",
+  "execution_lock_commit": "c108610c6824f3f8eef4aabdfb33dcb2763534a2",
+  "model": "openai/gpt-5.6-terra",
+  "opencode_version": "1.18.25",
+  "task_count": 12,
+  "tasks": [
+    {
+      "task_id": "U01",
+      "source_commit": "24cf256e50fbd0df8ac67fefa90982cd20807274",
+      "snapshot_head": "29f0049bdafe01261cad280f6d8bf8af568eae86",
+      "snapshot_tree": "aa1f04590d44b87242ffcccd0d3d058d06c40ea4",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "0ee8e25f4f8d193274527dc84e3a545f54869dd1754a71562c0f8c63e67ce571",
+      "expected_buggy_failures": [
+        "tests/test_provider_copilot_wrap.py::test_resolve_provider_type_prefers_explicit_and_env"
+      ]
+    },
+    {
+      "task_id": "U02",
+      "source_commit": "3e85eb1880af5663cf083492f1dc1415a354bd99",
+      "snapshot_head": "243db058dc14fa2eaef2648281c7b28b4629d9d4",
+      "snapshot_tree": "55108e959fb495f6e174be28152ecbcd69227fe2",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "2719d5d209634bfe896a0193cf81b0eb42162152277390957395948f5e304ce2",
+      "expected_buggy_failures": [
+        "tests/test_memory_storage_router.py::test_extract_system_prompt_user_reminder_with_cwd_reaches_resolver"
+      ]
+    },
+    {
+      "task_id": "U03",
+      "source_commit": "6ecbdd6b527312ce61a1e8890f0d6d1d63ae4f48",
+      "snapshot_head": "59ce9017ae4d24673b8a3e6e3406d117a37b643b",
+      "snapshot_tree": "1f1ea03feddf4146def6e974153d05f4ac7740e4",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "9ca3f3c52580091471c0395359c1e6f6dd5d0e3bc2c25ab60497e3295c15d356",
+      "expected_buggy_failures": [
+        "tests/test_savings_tracker_zero_price.py::test_compression_savings_zero_for_free_model",
+        "tests/test_savings_tracker_zero_price.py::test_input_cost_zero_for_free_model"
+      ]
+    },
+    {
+      "task_id": "U04",
+      "source_commit": "1612f06a4c19c53b6d8b02b02cd30d14a1858d28",
+      "snapshot_head": "94dea0c41221ef4b22301af9ec946c2187b9dd6f",
+      "snapshot_tree": "1acbe751e5ced73c9ab257c2499046a9e520d62b",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "cacedcc34c0b30bda7e6e2534d72283badd458f8ade09a92505e1e1eb5a5ead1",
+      "expected_buggy_failures": [
+        "tests/test_ccr_tool_calls.py::test_ccr_detection_survives_null_function_tool_call",
+        "tests/test_ccr_tool_injection.py::TestParseToolCall::test_parse_null_function_returns_none_without_crashing"
+      ]
+    },
+    {
+      "task_id": "U05",
+      "source_commit": "58f28dc7a6b6ce5bbf0f88524bd78cbe3f3ffa4b",
+      "snapshot_head": "6c80bef2248e1911827785c940c56d56a86ae653",
+      "snapshot_tree": "9652865eb5e81f2de28c48789df230de1f8e7bdf",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "5ef3e548a52c8c2bd5d655707b48da5ac1a4190f08b668554d1794a20a7fc1cc",
+      "expected_buggy_failures": [
+        "tests/test_cli/test_install_cli.py::test_deploy_honors_headroom_port_env",
+        "tests/test_cli/test_install_cli.py::test_install_apply_honors_headroom_port_env"
+      ]
+    },
+    {
+      "task_id": "U06",
+      "source_commit": "12149f74466c08b69be8d5fe751425be63c2fda4",
+      "snapshot_head": "86412828ef513b808b4d360c1eac4b8760d6a494",
+      "snapshot_tree": "022181a3392bdcc8e9b3149e7d3f0d7e1f018cc7",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "3103c8418475659f02417ba4bbd7e12e4716a76e3810a4dab939096ab85b1ad7",
+      "expected_buggy_failures": [
+        "tests/test_savings_ledger_before_forwarded.py::test_record_savings_event_includes_tool_search_deferral",
+        "tests/test_savings_ledger_before_forwarded.py::test_record_savings_event_written_for_deferral_only_turn"
+      ]
+    },
+    {
+      "task_id": "U07",
+      "source_commit": "0805e8e410543d75c7ddd3b83dde5eda3bc13144",
+      "snapshot_head": "b4e87e099d0425528fdb062ce31b68ba8f05eb40",
+      "snapshot_tree": "27ff77e63363c60d9940ba3d09f15ebd4a5dc60a",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "dd496dee9c5e270e74ad5e45afe3bfcaf8279a97bac9f260cf9dfff8062ecc3e",
+      "expected_buggy_failures": [
+        "tests/test_providers/test_openai.py::TestGuardedEncodingLoad::test_get_encoding_routes_through_bounded_loader",
+        "tests/test_providers/test_openai.py::TestGuardedEncodingLoad::test_get_token_counter_falls_back_to_estimation"
+      ]
+    },
+    {
+      "task_id": "U08",
+      "source_commit": "3e976712e717a53ab6aea73120ae6ffacea74250",
+      "snapshot_head": "feb0de028997ad651c1977a09e1759a16e58ab0c",
+      "snapshot_tree": "b21236eb17cbce67d89caab29ebb7e81e7937412",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "d1d0453a711981db53ff58fff0f9721d1424f8a20272f49a59f1d771b0dccb6d",
+      "expected_buggy_failures": [
+        "tests/test_output_steering.py::test_anthropic_steering_tolerates_non_string_system_block_text"
+      ]
+    },
+    {
+      "task_id": "U09",
+      "source_commit": "84f66da36f0bcd0929ad6d864d745b7685147718",
+      "snapshot_head": "453aa80e478b41dfa1f257c625f1ad581a9d7618",
+      "snapshot_tree": "02d2fddfb7e202399a2a82c1aee651c4b1e050d8",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "a356b9052fa5c655fa586f0a5f910796b2992406503410491dd2c7b861d2fc40",
+      "expected_buggy_failures": [
+        "tests/test_cli/test_init_cli.py::test_ensure_codex_hooks_preserves_user_hooks"
+      ]
+    },
+    {
+      "task_id": "U10",
+      "source_commit": "2f4d001c9ffd7f856c8dab3e31a8240a1c676f04",
+      "snapshot_head": "800d45709bd444100bfa66a10f877b99777e707e",
+      "snapshot_tree": "cfb917bc6164e78e6950ab7e0ec19fab0bc8921e",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "e54c1acda8cc23346bf70a812a0aabc3b870f2179fdc581b6a7cced4195cc14f",
+      "expected_buggy_failures": [
+        "tests/test_issue_746_tool_search.py::test_core_tools_match_leading_underscore_namespace",
+        "tests/test_openai_tool_search_deferral.py::test_prefixed_core_and_terminal_names_stay_resident"
+      ]
+    },
+    {
+      "task_id": "U11",
+      "source_commit": "8b7e797ed41ea9a37ef8711e102b355f9194c571",
+      "snapshot_head": "c7fe26b6c5d3fa3e44f5beedf9d61964b1bf2888",
+      "snapshot_tree": "76c3eb6496fa34c0cd2dd4e75c0e8ef97d5ed081",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "2f34edf267e95daea0b194c96f4f9b7ab0e137908f8a2757cc1ee37d761c16e5",
+      "expected_buggy_failures": [
+        "tests/test_memory_handler_null_function.py::test_has_memory_tool_calls_all_null_functions_is_false",
+        "tests/test_memory_handler_null_function.py::test_has_memory_tool_calls_survives_null_function"
+      ]
+    },
+    {
+      "task_id": "U12",
+      "source_commit": "def2f9a7286a271a36402bc564867b53a3c11b70",
+      "snapshot_head": "eea6e1be6a6b6cb3b400ab66302d425b0a2fa6ec",
+      "snapshot_tree": "b0467b166a1eda8c4570478a58702a1e671b60e3",
+      "commit_count": 1,
+      "uv_lock_sha256": "e2ae943529d378ff7d0bd0bba22352e542f34490358402ea550c6d84d9bbaf91",
+      "prompt_sha256": "1f2a22a80cc3b8e133fb58f74fc25bd1ecac95620043ae0b7e012619dde73123",
+      "expected_buggy_failures": [
+        "tests/test_verbosity_learn.py::TestSignalExtraction::test_empty_assistant_message_does_not_desync_fast_skip"
+      ]
+    }
+  ]
+}
