@@ -1,0 +1,13 @@
+{
+  "experiment": "second_unseen_adopted_bridge_validation",
+  "amendment": "production search-gate reachability correction",
+  "status": "recorded_before_historical-critical_retention_inspection",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "issue": "The first manual reachability check treated structural SEARCH detection as the complete production gate.",
+  "correction": "The frozen OpenAI Responses handler admits trajectory search enrichment when either the output is structurally SEARCH-like OR the output call_id belongs to the set of Bash rg/grep search calls.",
+  "effect_on_algorithm": "none",
+  "effect_on_agent_runs": "none",
+  "reruns": "none",
+  "task_replacement": "none",
+  "note": "U01-ON had already been consumed exactly once. No historical-critical retention outcome had been inspected when this amendment was recorded."
+}
