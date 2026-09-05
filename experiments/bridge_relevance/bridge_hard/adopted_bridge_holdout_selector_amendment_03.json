@@ -1,0 +1,18 @@
+{
+  "status": "pre-result performance/conformance amendment",
+  "experiment": "adopted_bridge_unseen_holdout",
+  "algorithm_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "timing": "after repeated partial selector progress through G08, before any complete eligible-task or selected-task list was observed",
+  "problem": "The literal-prior-occurrence necessary-condition still allowed G11 to invoke frozen V3 target conditioning on a roughly 9.1 MB rg output. Literal prior occurrence is weaker than frozen V3 candidate eligibility.",
+  "change": [
+    "run the exact frozen pre-target V3 stages on the bounded prior trajectory: extract_prior_tool_outputs followed by rank_bridge_candidates",
+    "intersect current structured query identifiers with the resulting frozen prior candidate set",
+    "skip target-aware V3 entirely when no current query identifier is an eligible frozen prior bridge candidate",
+    "when at least one eligible current identifier exists, run the original frozen target-aware V3 builder unchanged",
+    "selection eligibility, exclusions, ordering, and first-six rule remain unchanged"
+  ],
+  "semantic_argument": "select_target_bridge_candidates can only select from rank_bridge_candidates output. Therefore a current query identifier absent from the frozen pre-target ranked candidate set cannot become an adopted bridge for any target content.",
+  "selection_rule_unchanged": true,
+  "eligible_task_ids_observed_before_change": false,
+  "selected_task_ids_observed_before_change": false
+}

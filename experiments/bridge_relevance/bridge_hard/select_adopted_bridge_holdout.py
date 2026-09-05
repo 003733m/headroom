@@ -10,10 +10,13 @@ from typing import Any
 
 from headroom.trajectory_relevance import (
     DEFAULT_MAX_TOOL_OUTPUTS,
+    TARGET_CORROBORATION_KINDS,
     _responses_query_identifiers,
     _responses_search_pattern,
     _trajectory_context_bridge_identifiers,
     build_search_relevance_context,
+    extract_prior_tool_outputs,
+    rank_bridge_candidates,
 )
 
 HERE = Path(__file__).resolve().parent
@@ -154,6 +157,48 @@ def _prior_query_identifiers_present(
     ]
 
 
+
+def _eligible_prior_bridge_query_ids(
+    messages: list[dict[str, Any]],
+    query_ids: list[str],
+) -> list[str]:
+    """Exact frozen V3 pre-target necessary condition.
+
+    Target-aware V3 can only select identifiers that survive the frozen
+    prior-output extraction and bridge ranking stages. Restricting expensive
+    target conditioning to current query identifiers present in that ranked
+    candidate set is therefore semantics-preserving.
+    """
+    if not messages or not query_ids:
+        return []
+
+    outputs = extract_prior_tool_outputs(
+        messages,
+        before_index=len(messages),
+        max_tool_outputs=DEFAULT_MAX_TOOL_OUTPUTS,
+    )
+
+    if not outputs:
+        return []
+
+    ranked = rank_bridge_candidates(
+        outputs,
+        top_k=None,
+        provisional_kinds=TARGET_CORROBORATION_KINDS,
+    )
+
+    ranked_by_casefold = {
+        candidate.token.casefold(): candidate.token
+        for candidate in ranked
+    }
+
+    return [
+        identifier
+        for identifier in query_ids
+        if identifier.casefold() in ranked_by_casefold
+    ]
+
+
 def analyze_task(task_id: str) -> dict[str, Any]:
     run_root = RAW_ROOT / f"{task_id}-OFF"
     cap_root = run_root / "rg-captures"
@@ -197,13 +242,25 @@ def analyze_task(task_id: str) -> dict[str, Any]:
             query_ids,
         )
 
-        if history and target and prior_query_ids:
-            if len(target.encode("utf-8", errors="replace")) >= 1_000_000:
+        eligible_prior_query_ids: list[str] = []
+
+        if prior_query_ids:
+            eligible_prior_query_ids = _eligible_prior_bridge_query_ids(
+                history,
+                prior_query_ids,
+            )
+
+        if history and target and eligible_prior_query_ids:
+            target_bytes = len(
+                target.encode("utf-8", errors="replace")
+            )
+
+            if target_bytes >= 1_000_000:
                 print(
-                    f"    target-aware V3: {task_id} "
+                    f"    target-aware V3 REQUIRED: {task_id} "
                     f"capture={cap['stem']} "
-                    f"bytes={len(target.encode('utf-8', errors='replace'))} "
-                    f"possible_ids={prior_query_ids}",
+                    f"bytes={target_bytes} "
+                    f"eligible_ids={eligible_prior_query_ids}",
                     flush=True,
                 )
 
