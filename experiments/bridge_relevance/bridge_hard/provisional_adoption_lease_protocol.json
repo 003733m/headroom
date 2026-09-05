@@ -1,0 +1,55 @@
+{
+  "status": "locked_before_provisional_lease_probe_results",
+  "experiment": "provisional_adoption_lease_exploratory_probe",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "classification": "post_hoc exploratory mechanism probe",
+  "motivation": [
+    "Fresh G11-ON showed explicit agent reuse of resolve_litellm_model_name after only one prior occurrence, before the frozen function-name bridge gate admitted it.",
+    "Persistent adoption can also retain stale evidence after an investigative branch is abandoned."
+  ],
+  "states": {
+    "raw_candidate": {
+      "condition": "identifier appears in prior trajectory but is neither currently adopted nor corroborated",
+      "preservation": "none"
+    },
+    "provisional_adoption": {
+      "condition": "a conservative structured identifier appears in bounded prior output and is explicitly reused in the current retrieval query, even if frozen V3 has not admitted it as a bridge",
+      "preservation": "exact-boundary matching records in the current retrieval result only",
+      "lifetime": "one retrieval result",
+      "renewal": "requires explicit reuse in a later retrieval query"
+    },
+    "corroborated_adoption": {
+      "condition": "identifier is admitted by frozen V3 trajectory relevance and explicitly reused in the current retrieval query",
+      "preservation": "existing adopted-bridge floor from production freeze"
+    }
+  },
+  "constraints": [
+    "do not modify production algorithm",
+    "do not rerun benchmark agents",
+    "use only already-captured trajectories",
+    "current search result may not self-source prior occurrence",
+    "provisional lease expires after the current retrieval result unless a later query explicitly reuses the identifier",
+    "do not classify this probe as unseen validation"
+  ],
+  "primary_case": "fresh G11-ON exact captured trajectory",
+  "secondary_cases": "already-observed hard-confirmatory trajectories with natural structured-identifier query adoption",
+  "comparisons": [
+    "frozen production OFF",
+    "frozen production adopted-bridge floor",
+    "provisional one-search lease",
+    "naive current-query preservation where already available"
+  ],
+  "metrics": [
+    "critical retained records",
+    "critical DROP-to-KEEP",
+    "critical KEEP-to-DROP",
+    "newly retained non-critical records",
+    "newly retained non-critical tokens",
+    "provisional activation count",
+    "corroborated activation count",
+    "lease renewals",
+    "lease expirations",
+    "retention events after final explicit reuse"
+  ],
+  "desired_pattern": "recover early adopted evidence with materially lower burden than naive query preservation while preventing preservation after explicit-query reuse stops"
+}

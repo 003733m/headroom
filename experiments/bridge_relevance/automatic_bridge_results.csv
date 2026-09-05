@@ -1,0 +1,2001 @@
+budget,position,needle,condition,preserved,added_chars,candidate_count,selected_candidates
+10,377,req-0377,user_only,False,0,0,
+10,377,req-0377,naive,False,177,18,req-0083 req-0158 req-0340 req-0418 req-0211 req-0386 req-0305 req-0252 test_checkout_consistency FAILED req-0377 req-0380 req-0284 req-0123 req-0185 req-0121 req-0176 req-0432
+10,377,req-0377,bridge,True,69,6,req-0377 FAILED test_checkout_consistency req-0432 req-0176 req-0121
+10,377,req-0377,oracle,True,9,1,req-0377
+10,107,req-0107,user_only,False,0,0,
+10,107,req-0107,naive,True,177,18,req-0338 req-0326 req-0185 req-0433 req-0350 req-0270 req-0349 req-0255 test_checkout_consistency FAILED req-0107 req-0236 req-0163 req-0121 req-0311 req-0303 req-0096 req-0437
+10,107,req-0107,bridge,True,69,6,req-0107 FAILED test_checkout_consistency req-0437 req-0096 req-0303
+10,107,req-0107,oracle,True,9,1,req-0107
+10,62,req-0062,user_only,False,0,0,
+10,62,req-0062,naive,True,177,18,req-0075 req-0107 req-0129 req-0372 req-0132 req-0399 req-0267 req-0356 test_checkout_consistency FAILED req-0062 req-0083 req-0248 req-0246 req-0290 req-0321 req-0179 req-0334
+10,62,req-0062,bridge,True,69,6,req-0062 FAILED test_checkout_consistency req-0334 req-0179 req-0321
+10,62,req-0062,oracle,True,9,1,req-0062
+10,429,req-0429,user_only,False,0,0,
+10,429,req-0429,naive,False,177,18,req-0055 req-0398 req-0419 req-0108 req-0399 req-0324 req-0435 req-0186 test_checkout_consistency FAILED req-0429 req-0444 req-0378 req-0224 req-0107 req-0200 req-0272 req-0130
+10,429,req-0429,bridge,True,69,6,req-0429 FAILED test_checkout_consistency req-0130 req-0272 req-0200
+10,429,req-0429,oracle,True,9,1,req-0429
+10,190,req-0190,user_only,False,0,0,
+10,190,req-0190,naive,True,177,18,req-0283 req-0051 req-0420 req-0419 req-0184 req-0307 req-0441 req-0141 test_checkout_consistency FAILED req-0190 req-0310 req-0104 req-0371 req-0203 req-0378 req-0362 req-0151
+10,190,req-0190,bridge,True,69,6,req-0190 FAILED test_checkout_consistency req-0151 req-0362 req-0378
+10,190,req-0190,oracle,True,9,1,req-0190
+10,175,req-0175,user_only,False,0,0,
+10,175,req-0175,naive,True,177,18,req-0128 req-0242 req-0441 req-0132 req-0327 req-0449 req-0322 req-0050 test_checkout_consistency FAILED req-0175 req-0357 req-0216 req-0301 req-0059 req-0107 req-0236 req-0208
+10,175,req-0175,bridge,True,69,6,req-0175 FAILED test_checkout_consistency req-0208 req-0236 req-0107
+10,175,req-0175,oracle,True,9,1,req-0175
+10,164,req-0164,user_only,False,0,0,
+10,164,req-0164,naive,True,177,18,req-0173 req-0079 req-0174 req-0341 req-0090 req-0093 req-0425 req-0299 test_checkout_consistency FAILED req-0164 req-0085 req-0440 req-0323 req-0443 req-0114 req-0115 req-0388
+10,164,req-0164,bridge,True,69,6,req-0164 FAILED test_checkout_consistency req-0388 req-0115 req-0114
+10,164,req-0164,oracle,True,9,1,req-0164
+10,121,req-0121,user_only,False,0,0,
+10,121,req-0121,naive,True,177,18,req-0294 req-0332 req-0135 req-0186 req-0321 req-0361 req-0267 req-0159 test_checkout_consistency FAILED req-0121 req-0327 req-0437 req-0424 req-0404 req-0153 req-0416 req-0210
+10,121,req-0121,bridge,True,69,6,req-0121 FAILED test_checkout_consistency req-0210 req-0416 req-0153
+10,121,req-0121,oracle,True,9,1,req-0121
+10,427,req-0427,user_only,False,0,0,
+10,427,req-0427,naive,False,177,18,req-0254 req-0393 req-0382 req-0241 req-0274 req-0314 req-0281 req-0111 test_checkout_consistency FAILED req-0427 req-0176 req-0165 req-0082 req-0223 req-0060 req-0351 req-0333
+10,427,req-0427,bridge,True,69,6,req-0427 FAILED test_checkout_consistency req-0333 req-0351 req-0060
+10,427,req-0427,oracle,True,9,1,req-0427
+10,102,req-0102,user_only,False,0,0,
+10,102,req-0102,naive,True,177,18,req-0168 req-0352 req-0163 req-0053 req-0086 req-0413 req-0374 req-0080 test_checkout_consistency FAILED req-0102 req-0084 req-0066 req-0220 req-0314 req-0172 req-0193 req-0393
+10,102,req-0102,bridge,True,69,6,req-0102 FAILED test_checkout_consistency req-0393 req-0193 req-0172
+10,102,req-0102,oracle,True,9,1,req-0102
+10,396,req-0396,user_only,False,0,0,
+10,396,req-0396,naive,False,177,18,req-0298 req-0159 req-0326 req-0117 req-0421 req-0342 req-0345 req-0292 test_checkout_consistency FAILED req-0396 req-0174 req-0258 req-0147 req-0098 req-0099 req-0387 req-0270
+10,396,req-0396,bridge,True,69,6,req-0396 FAILED test_checkout_consistency req-0270 req-0387 req-0099
+10,396,req-0396,oracle,True,9,1,req-0396
+10,447,req-0447,user_only,False,0,0,
+10,447,req-0447,naive,False,177,18,req-0231 req-0266 req-0260 req-0289 req-0423 req-0077 req-0394 req-0384 test_checkout_consistency FAILED req-0447 req-0380 req-0100 req-0081 req-0256 req-0422 req-0223 req-0105
+10,447,req-0447,bridge,True,69,6,req-0447 FAILED test_checkout_consistency req-0105 req-0223 req-0422
+10,447,req-0447,oracle,True,9,1,req-0447
+10,329,req-0329,user_only,False,0,0,
+10,329,req-0329,naive,False,177,18,req-0177 req-0148 req-0147 req-0324 req-0279 req-0121 req-0266 req-0143 test_checkout_consistency FAILED req-0329 req-0192 req-0286 req-0088 req-0276 req-0332 req-0100 req-0075
+10,329,req-0329,bridge,True,69,6,req-0329 FAILED test_checkout_consistency req-0075 req-0100 req-0332
+10,329,req-0329,oracle,True,9,1,req-0329
+10,94,req-0094,user_only,False,0,0,
+10,94,req-0094,naive,True,177,18,req-0384 req-0327 req-0057 req-0098 req-0436 req-0172 req-0136 req-0259 test_checkout_consistency FAILED req-0094 req-0299 req-0297 req-0160 req-0256 req-0080 req-0135 req-0245
+10,94,req-0094,bridge,True,69,6,req-0094 FAILED test_checkout_consistency req-0245 req-0135 req-0080
+10,94,req-0094,oracle,True,9,1,req-0094
+10,352,req-0352,user_only,False,0,0,
+10,352,req-0352,naive,False,177,18,req-0051 req-0249 req-0185 req-0282 req-0196 req-0266 req-0407 req-0425 test_checkout_consistency FAILED req-0352 req-0334 req-0389 req-0418 req-0299 req-0129 req-0147 req-0201
+10,352,req-0352,bridge,True,69,6,req-0352 FAILED test_checkout_consistency req-0201 req-0147 req-0129
+10,352,req-0352,oracle,True,9,1,req-0352
+10,266,req-0266,user_only,False,0,0,
+10,266,req-0266,naive,True,177,18,req-0161 req-0079 req-0347 req-0427 req-0328 req-0081 req-0433 req-0210 test_checkout_consistency FAILED req-0266 req-0075 req-0350 req-0295 req-0308 req-0322 req-0130 req-0311
+10,266,req-0266,bridge,True,69,6,req-0266 FAILED test_checkout_consistency req-0311 req-0130 req-0322
+10,266,req-0266,oracle,True,9,1,req-0266
+10,66,req-0066,user_only,False,0,0,
+10,66,req-0066,naive,True,177,18,req-0092 req-0146 req-0086 req-0355 req-0085 req-0396 req-0171 req-0257 test_checkout_consistency FAILED req-0066 req-0112 req-0342 req-0177 req-0347 req-0071 req-0368 req-0265
+10,66,req-0066,bridge,True,69,6,req-0066 FAILED test_checkout_consistency req-0265 req-0368 req-0071
+10,66,req-0066,oracle,True,9,1,req-0066
+10,65,req-0065,user_only,False,0,0,
+10,65,req-0065,naive,True,177,18,req-0387 req-0349 req-0340 req-0318 req-0212 req-0184 req-0155 req-0393 test_checkout_consistency FAILED req-0065 req-0417 req-0211 req-0173 req-0186 req-0253 req-0118 req-0394
+10,65,req-0065,bridge,True,69,6,req-0065 FAILED test_checkout_consistency req-0394 req-0118 req-0253
+10,65,req-0065,oracle,True,9,1,req-0065
+10,97,req-0097,user_only,False,0,0,
+10,97,req-0097,naive,True,177,18,req-0381 req-0204 req-0285 req-0212 req-0435 req-0087 req-0054 req-0369 test_checkout_consistency FAILED req-0097 req-0339 req-0102 req-0326 req-0160 req-0310 req-0186 req-0118
+10,97,req-0097,bridge,True,69,6,req-0097 FAILED test_checkout_consistency req-0118 req-0186 req-0310
+10,97,req-0097,oracle,True,9,1,req-0097
+10,161,req-0161,user_only,False,0,0,
+10,161,req-0161,naive,True,177,18,req-0229 req-0085 req-0176 req-0240 req-0196 req-0130 req-0275 req-0329 test_checkout_consistency FAILED req-0161 req-0411 req-0205 req-0364 req-0385 req-0321 req-0054 req-0392
+10,161,req-0161,bridge,True,69,6,req-0161 FAILED test_checkout_consistency req-0392 req-0054 req-0321
+10,161,req-0161,oracle,True,9,1,req-0161
+10,169,req-0169,user_only,False,0,0,
+10,169,req-0169,naive,True,177,18,req-0334 req-0204 req-0390 req-0103 req-0118 req-0186 req-0109 req-0104 test_checkout_consistency FAILED req-0169 req-0431 req-0129 req-0190 req-0195 req-0360 req-0157 req-0418
+10,169,req-0169,bridge,True,69,6,req-0169 FAILED test_checkout_consistency req-0418 req-0157 req-0360
+10,169,req-0169,oracle,True,9,1,req-0169
+10,308,req-0308,user_only,False,0,0,
+10,308,req-0308,naive,False,177,18,req-0225 req-0154 req-0402 req-0375 req-0185 req-0309 req-0300 req-0178 test_checkout_consistency FAILED req-0308 req-0076 req-0097 req-0266 req-0191 req-0072 req-0051 req-0220
+10,308,req-0308,bridge,True,69,6,req-0308 FAILED test_checkout_consistency req-0220 req-0051 req-0072
+10,308,req-0308,oracle,True,9,1,req-0308
+10,358,req-0358,user_only,False,0,0,
+10,358,req-0358,naive,False,177,18,req-0445 req-0116 req-0377 req-0184 req-0132 req-0430 req-0276 req-0332 test_checkout_consistency FAILED req-0358 req-0412 req-0268 req-0337 req-0054 req-0107 req-0088 req-0404
+10,358,req-0358,bridge,True,69,6,req-0358 FAILED test_checkout_consistency req-0404 req-0088 req-0107
+10,358,req-0358,oracle,True,9,1,req-0358
+10,63,req-0063,user_only,False,0,0,
+10,63,req-0063,naive,True,177,18,req-0127 req-0330 req-0069 req-0240 req-0349 req-0333 req-0126 req-0271 test_checkout_consistency FAILED req-0063 req-0116 req-0072 req-0208 req-0237 req-0071 req-0234 req-0158
+10,63,req-0063,bridge,True,69,6,req-0063 FAILED test_checkout_consistency req-0158 req-0234 req-0071
+10,63,req-0063,oracle,True,9,1,req-0063
+10,337,req-0337,user_only,False,0,0,
+10,337,req-0337,naive,False,177,18,req-0400 req-0177 req-0392 req-0102 req-0231 req-0450 req-0336 req-0258 test_checkout_consistency FAILED req-0337 req-0368 req-0434 req-0129 req-0171 req-0133 req-0140 req-0261
+10,337,req-0337,bridge,True,69,6,req-0337 FAILED test_checkout_consistency req-0261 req-0140 req-0133
+10,337,req-0337,oracle,True,9,1,req-0337
+10,151,req-0151,user_only,False,0,0,
+10,151,req-0151,naive,True,177,18,req-0062 req-0141 req-0428 req-0221 req-0261 req-0393 req-0427 req-0178 test_checkout_consistency FAILED req-0151 req-0187 req-0131 req-0410 req-0105 req-0246 req-0069 req-0291
+10,151,req-0151,bridge,True,69,6,req-0151 FAILED test_checkout_consistency req-0291 req-0069 req-0246
+10,151,req-0151,oracle,True,9,1,req-0151
+10,416,req-0416,user_only,False,0,0,
+10,416,req-0416,naive,False,177,18,req-0163 req-0152 req-0285 req-0229 req-0206 req-0166 req-0164 req-0062 test_checkout_consistency FAILED req-0416 req-0387 req-0148 req-0254 req-0218 req-0192 req-0085 req-0446
+10,416,req-0416,bridge,True,69,6,req-0416 FAILED test_checkout_consistency req-0446 req-0085 req-0192
+10,416,req-0416,oracle,True,9,1,req-0416
+10,382,req-0382,user_only,False,0,0,
+10,382,req-0382,naive,False,177,18,req-0192 req-0229 req-0378 req-0310 req-0254 req-0398 req-0324 req-0219 test_checkout_consistency FAILED req-0382 req-0064 req-0109 req-0183 req-0141 req-0347 req-0185 req-0069
+10,382,req-0382,bridge,True,69,6,req-0382 FAILED test_checkout_consistency req-0069 req-0185 req-0347
+10,382,req-0382,oracle,True,9,1,req-0382
+10,409,req-0409,user_only,False,0,0,
+10,409,req-0409,naive,False,177,18,req-0105 req-0355 req-0272 req-0226 req-0424 req-0210 req-0273 req-0360 test_checkout_consistency FAILED req-0409 req-0311 req-0109 req-0247 req-0345 req-0147 req-0180 req-0072
+10,409,req-0409,bridge,True,69,6,req-0409 FAILED test_checkout_consistency req-0072 req-0180 req-0147
+10,409,req-0409,oracle,True,9,1,req-0409
+10,438,req-0438,user_only,False,0,0,
+10,438,req-0438,naive,False,177,18,req-0412 req-0273 req-0050 req-0316 req-0325 req-0401 req-0418 req-0429 test_checkout_consistency FAILED req-0438 req-0427 req-0393 req-0150 req-0236 req-0270 req-0085 req-0390
+10,438,req-0438,bridge,True,69,6,req-0438 FAILED test_checkout_consistency req-0390 req-0085 req-0270
+10,438,req-0438,oracle,True,9,1,req-0438
+10,264,req-0264,user_only,False,0,0,
+10,264,req-0264,naive,False,177,18,req-0219 req-0370 req-0210 req-0390 req-0113 req-0419 req-0203 req-0310 test_checkout_consistency FAILED req-0264 req-0208 req-0392 req-0259 req-0217 req-0256 req-0407 req-0201
+10,264,req-0264,bridge,True,69,6,req-0264 FAILED test_checkout_consistency req-0201 req-0407 req-0256
+10,264,req-0264,oracle,True,9,1,req-0264
+10,162,req-0162,user_only,False,0,0,
+10,162,req-0162,naive,True,177,18,req-0334 req-0115 req-0148 req-0266 req-0391 req-0245 req-0397 req-0434 test_checkout_consistency FAILED req-0162 req-0139 req-0366 req-0342 req-0205 req-0258 req-0331 req-0050
+10,162,req-0162,bridge,True,69,6,req-0162 FAILED test_checkout_consistency req-0050 req-0331 req-0258
+10,162,req-0162,oracle,True,9,1,req-0162
+10,279,req-0279,user_only,False,0,0,
+10,279,req-0279,naive,True,177,18,req-0205 req-0196 req-0157 req-0270 req-0347 req-0361 req-0386 req-0214 test_checkout_consistency FAILED req-0279 req-0289 req-0276 req-0396 req-0159 req-0312 req-0293 req-0427
+10,279,req-0279,bridge,True,69,6,req-0279 FAILED test_checkout_consistency req-0427 req-0293 req-0312
+10,279,req-0279,oracle,True,9,1,req-0279
+10,351,req-0351,user_only,False,0,0,
+10,351,req-0351,naive,False,177,18,req-0136 req-0388 req-0093 req-0195 req-0313 req-0390 req-0375 req-0368 test_checkout_consistency FAILED req-0351 req-0221 req-0097 req-0435 req-0170 req-0395 req-0208 req-0165
+10,351,req-0351,bridge,True,69,6,req-0351 FAILED test_checkout_consistency req-0165 req-0208 req-0395
+10,351,req-0351,oracle,True,9,1,req-0351
+10,192,req-0192,user_only,False,0,0,
+10,192,req-0192,naive,True,177,18,req-0151 req-0125 req-0062 req-0073 req-0175 req-0294 req-0363 req-0444 test_checkout_consistency FAILED req-0192 req-0087 req-0284 req-0263 req-0373 req-0345 req-0149 req-0418
+10,192,req-0192,bridge,True,69,6,req-0192 FAILED test_checkout_consistency req-0418 req-0149 req-0345
+10,192,req-0192,oracle,True,9,1,req-0192
+10,53,req-0053,user_only,False,0,0,
+10,53,req-0053,naive,True,177,18,req-0407 req-0247 req-0304 req-0255 req-0175 req-0126 req-0386 req-0403 test_checkout_consistency FAILED req-0053 req-0052 req-0435 req-0445 req-0105 req-0449 req-0268 req-0163
+10,53,req-0053,bridge,True,69,6,req-0053 FAILED test_checkout_consistency req-0163 req-0268 req-0449
+10,53,req-0053,oracle,True,9,1,req-0053
+10,131,req-0131,user_only,False,0,0,
+10,131,req-0131,naive,True,177,18,req-0141 req-0407 req-0316 req-0288 req-0075 req-0336 req-0178 req-0112 test_checkout_consistency FAILED req-0131 req-0284 req-0118 req-0392 req-0322 req-0337 req-0355 req-0213
+10,131,req-0131,bridge,True,69,6,req-0131 FAILED test_checkout_consistency req-0213 req-0355 req-0337
+10,131,req-0131,oracle,True,9,1,req-0131
+10,407,req-0407,user_only,False,0,0,
+10,407,req-0407,naive,False,177,18,req-0437 req-0276 req-0363 req-0419 req-0308 req-0268 req-0330 req-0278 test_checkout_consistency FAILED req-0407 req-0131 req-0431 req-0293 req-0280 req-0182 req-0435 req-0176
+10,407,req-0407,bridge,True,69,6,req-0407 FAILED test_checkout_consistency req-0176 req-0435 req-0182
+10,407,req-0407,oracle,True,9,1,req-0407
+10,435,req-0435,user_only,False,0,0,
+10,435,req-0435,naive,False,177,18,req-0376 req-0191 req-0443 req-0449 req-0316 req-0298 req-0370 req-0172 test_checkout_consistency FAILED req-0435 req-0190 req-0275 req-0089 req-0415 req-0196 req-0170 req-0189
+10,435,req-0435,bridge,True,69,6,req-0435 FAILED test_checkout_consistency req-0189 req-0170 req-0196
+10,435,req-0435,oracle,True,9,1,req-0435
+10,224,req-0224,user_only,False,0,0,
+10,224,req-0224,naive,False,177,18,req-0221 req-0213 req-0327 req-0091 req-0120 req-0127 req-0168 req-0247 test_checkout_consistency FAILED req-0224 req-0406 req-0128 req-0412 req-0159 req-0082 req-0263 req-0259
+10,224,req-0224,bridge,True,69,6,req-0224 FAILED test_checkout_consistency req-0259 req-0263 req-0082
+10,224,req-0224,oracle,True,9,1,req-0224
+10,424,req-0424,user_only,False,0,0,
+10,424,req-0424,naive,False,177,18,req-0219 req-0327 req-0288 req-0262 req-0081 req-0155 req-0265 req-0249 test_checkout_consistency FAILED req-0424 req-0445 req-0349 req-0406 req-0060 req-0442 req-0344 req-0244
+10,424,req-0424,bridge,True,69,6,req-0424 FAILED test_checkout_consistency req-0244 req-0344 req-0442
+10,424,req-0424,oracle,True,9,1,req-0424
+10,129,req-0129,user_only,False,0,0,
+10,129,req-0129,naive,True,177,18,req-0295 req-0053 req-0231 req-0203 req-0436 req-0250 req-0265 req-0326 test_checkout_consistency FAILED req-0129 req-0433 req-0427 req-0330 req-0359 req-0163 req-0300 req-0190
+10,129,req-0129,bridge,True,69,6,req-0129 FAILED test_checkout_consistency req-0190 req-0300 req-0163
+10,129,req-0129,oracle,True,9,1,req-0129
+10,160,req-0160,user_only,False,0,0,
+10,160,req-0160,naive,True,177,18,req-0274 req-0299 req-0064 req-0250 req-0223 req-0393 req-0398 req-0258 test_checkout_consistency FAILED req-0160 req-0421 req-0134 req-0290 req-0115 req-0369 req-0324 req-0063
+10,160,req-0160,bridge,True,69,6,req-0160 FAILED test_checkout_consistency req-0063 req-0324 req-0369
+10,160,req-0160,oracle,True,9,1,req-0160
+10,222,req-0222,user_only,False,0,0,
+10,222,req-0222,naive,True,177,18,req-0252 req-0354 req-0339 req-0390 req-0063 req-0092 req-0380 req-0270 test_checkout_consistency FAILED req-0222 req-0119 req-0287 req-0143 req-0075 req-0183 req-0245 req-0217
+10,222,req-0222,bridge,True,69,6,req-0222 FAILED test_checkout_consistency req-0217 req-0245 req-0183
+10,222,req-0222,oracle,True,9,1,req-0222
+10,441,req-0441,user_only,False,0,0,
+10,441,req-0441,naive,False,177,18,req-0158 req-0282 req-0217 req-0222 req-0439 req-0244 req-0192 req-0435 test_checkout_consistency FAILED req-0441 req-0265 req-0179 req-0091 req-0290 req-0059 req-0433 req-0326
+10,441,req-0441,bridge,True,69,6,req-0441 FAILED test_checkout_consistency req-0326 req-0433 req-0059
+10,441,req-0441,oracle,True,9,1,req-0441
+10,432,req-0432,user_only,False,0,0,
+10,432,req-0432,naive,False,177,18,req-0076 req-0229 req-0164 req-0382 req-0085 req-0450 req-0383 req-0070 test_checkout_consistency FAILED req-0432 req-0437 req-0065 req-0176 req-0152 req-0060 req-0368 req-0128
+10,432,req-0432,bridge,True,69,6,req-0432 FAILED test_checkout_consistency req-0128 req-0368 req-0060
+10,432,req-0432,oracle,True,9,1,req-0432
+10,244,req-0244,user_only,False,0,0,
+10,244,req-0244,naive,True,177,18,req-0172 req-0114 req-0293 req-0393 req-0108 req-0339 req-0161 req-0289 test_checkout_consistency FAILED req-0244 req-0409 req-0181 req-0443 req-0238 req-0135 req-0361 req-0433
+10,244,req-0244,bridge,True,69,6,req-0244 FAILED test_checkout_consistency req-0433 req-0361 req-0135
+10,244,req-0244,oracle,True,9,1,req-0244
+10,99,req-0099,user_only,False,0,0,
+10,99,req-0099,naive,True,177,18,req-0418 req-0109 req-0449 req-0134 req-0210 req-0106 req-0347 req-0063 test_checkout_consistency FAILED req-0099 req-0345 req-0397 req-0243 req-0254 req-0417 req-0152 req-0088
+10,99,req-0099,bridge,True,69,6,req-0099 FAILED test_checkout_consistency req-0088 req-0152 req-0417
+10,99,req-0099,oracle,True,9,1,req-0099
+10,233,req-0233,user_only,False,0,0,
+10,233,req-0233,naive,True,177,18,req-0354 req-0404 req-0372 req-0174 req-0102 req-0407 req-0446 req-0204 test_checkout_consistency FAILED req-0233 req-0401 req-0358 req-0111 req-0340 req-0071 req-0227 req-0323
+10,233,req-0233,bridge,True,69,6,req-0233 FAILED test_checkout_consistency req-0323 req-0227 req-0071
+10,233,req-0233,oracle,True,9,1,req-0233
+10,226,req-0226,user_only,False,0,0,
+10,226,req-0226,naive,True,177,18,req-0270 req-0389 req-0240 req-0085 req-0310 req-0382 req-0224 req-0056 test_checkout_consistency FAILED req-0226 req-0266 req-0301 req-0104 req-0272 req-0236 req-0376 req-0286
+10,226,req-0226,bridge,True,69,6,req-0226 FAILED test_checkout_consistency req-0286 req-0376 req-0236
+10,226,req-0226,oracle,True,9,1,req-0226
+10,359,req-0359,user_only,False,0,0,
+10,359,req-0359,naive,False,177,18,req-0413 req-0128 req-0272 req-0140 req-0426 req-0317 req-0384 req-0188 test_checkout_consistency FAILED req-0359 req-0366 req-0325 req-0447 req-0297 req-0288 req-0273 req-0425
+10,359,req-0359,bridge,True,69,6,req-0359 FAILED test_checkout_consistency req-0425 req-0273 req-0288
+10,359,req-0359,oracle,True,9,1,req-0359
+10,185,req-0185,user_only,False,0,0,
+10,185,req-0185,naive,True,177,18,req-0354 req-0188 req-0216 req-0175 req-0094 req-0193 req-0281 req-0174 test_checkout_consistency FAILED req-0185 req-0435 req-0288 req-0342 req-0363 req-0393 req-0245 req-0223
+10,185,req-0185,bridge,True,69,6,req-0185 FAILED test_checkout_consistency req-0223 req-0245 req-0393
+10,185,req-0185,oracle,True,9,1,req-0185
+10,72,req-0072,user_only,False,0,0,
+10,72,req-0072,naive,True,177,18,req-0064 req-0304 req-0217 req-0144 req-0300 req-0159 req-0232 req-0183 test_checkout_consistency FAILED req-0072 req-0225 req-0194 req-0356 req-0410 req-0192 req-0335 req-0055
+10,72,req-0072,bridge,True,69,6,req-0072 FAILED test_checkout_consistency req-0055 req-0335 req-0192
+10,72,req-0072,oracle,True,9,1,req-0072
+10,285,req-0285,user_only,False,0,0,
+10,285,req-0285,naive,True,177,18,req-0315 req-0147 req-0093 req-0173 req-0419 req-0258 req-0301 req-0335 test_checkout_consistency FAILED req-0285 req-0439 req-0404 req-0294 req-0381 req-0415 req-0302 req-0279
+10,285,req-0285,bridge,True,69,6,req-0285 FAILED test_checkout_consistency req-0279 req-0302 req-0415
+10,285,req-0285,oracle,True,9,1,req-0285
+10,324,req-0324,user_only,False,0,0,
+10,324,req-0324,naive,False,177,18,req-0058 req-0097 req-0200 req-0163 req-0257 req-0405 req-0174 req-0206 test_checkout_consistency FAILED req-0324 req-0390 req-0348 req-0238 req-0292 req-0334 req-0321 req-0226
+10,324,req-0324,bridge,True,69,6,req-0324 FAILED test_checkout_consistency req-0226 req-0321 req-0334
+10,324,req-0324,oracle,True,9,1,req-0324
+10,113,req-0113,user_only,False,0,0,
+10,113,req-0113,naive,True,177,18,req-0268 req-0432 req-0332 req-0220 req-0231 req-0410 req-0283 req-0189 test_checkout_consistency FAILED req-0113 req-0207 req-0179 req-0169 req-0111 req-0420 req-0149 req-0212
+10,113,req-0113,bridge,True,69,6,req-0113 FAILED test_checkout_consistency req-0212 req-0149 req-0420
+10,113,req-0113,oracle,True,9,1,req-0113
+10,243,req-0243,user_only,False,0,0,
+10,243,req-0243,naive,True,177,18,req-0111 req-0431 req-0325 req-0441 req-0404 req-0144 req-0148 req-0160 test_checkout_consistency FAILED req-0243 req-0429 req-0298 req-0191 req-0421 req-0352 req-0440 req-0319
+10,243,req-0243,bridge,True,69,6,req-0243 FAILED test_checkout_consistency req-0319 req-0440 req-0352
+10,243,req-0243,oracle,True,9,1,req-0243
+10,90,req-0090,user_only,False,0,0,
+10,90,req-0090,naive,True,177,18,req-0356 req-0195 req-0102 req-0150 req-0202 req-0167 req-0235 req-0142 test_checkout_consistency FAILED req-0090 req-0205 req-0057 req-0413 req-0324 req-0115 req-0191 req-0073
+10,90,req-0090,bridge,True,69,6,req-0090 FAILED test_checkout_consistency req-0073 req-0191 req-0115
+10,90,req-0090,oracle,True,9,1,req-0090
+10,332,req-0332,user_only,False,0,0,
+10,332,req-0332,naive,False,177,18,req-0077 req-0334 req-0199 req-0408 req-0114 req-0377 req-0436 req-0301 test_checkout_consistency FAILED req-0332 req-0102 req-0056 req-0344 req-0195 req-0290 req-0295 req-0275
+10,332,req-0332,bridge,True,69,6,req-0332 FAILED test_checkout_consistency req-0275 req-0295 req-0290
+10,332,req-0332,oracle,True,9,1,req-0332
+10,200,req-0200,user_only,False,0,0,
+10,200,req-0200,naive,False,177,18,req-0225 req-0144 req-0076 req-0179 req-0295 req-0108 req-0083 req-0256 test_checkout_consistency FAILED req-0200 req-0302 req-0087 req-0346 req-0373 req-0402 req-0077 req-0127
+10,200,req-0200,bridge,True,69,6,req-0200 FAILED test_checkout_consistency req-0127 req-0077 req-0402
+10,200,req-0200,oracle,True,9,1,req-0200
+10,371,req-0371,user_only,False,0,0,
+10,371,req-0371,naive,False,177,18,req-0126 req-0338 req-0205 req-0093 req-0177 req-0110 req-0335 req-0442 test_checkout_consistency FAILED req-0371 req-0263 req-0360 req-0355 req-0366 req-0165 req-0448 req-0317
+10,371,req-0371,bridge,True,69,6,req-0371 FAILED test_checkout_consistency req-0317 req-0448 req-0165
+10,371,req-0371,oracle,True,9,1,req-0371
+10,366,req-0366,user_only,False,0,0,
+10,366,req-0366,naive,False,177,18,req-0244 req-0280 req-0276 req-0202 req-0351 req-0269 req-0206 req-0341 test_checkout_consistency FAILED req-0366 req-0368 req-0080 req-0362 req-0429 req-0100 req-0441 req-0156
+10,366,req-0366,bridge,True,69,6,req-0366 FAILED test_checkout_consistency req-0156 req-0441 req-0100
+10,366,req-0366,oracle,True,9,1,req-0366
+10,235,req-0235,user_only,False,0,0,
+10,235,req-0235,naive,False,177,18,req-0371 req-0158 req-0185 req-0389 req-0091 req-0130 req-0172 req-0138 test_checkout_consistency FAILED req-0235 req-0333 req-0088 req-0051 req-0260 req-0281 req-0403 req-0355
+10,235,req-0235,bridge,True,69,6,req-0235 FAILED test_checkout_consistency req-0355 req-0403 req-0281
+10,235,req-0235,oracle,True,9,1,req-0235
+10,345,req-0345,user_only,False,0,0,
+10,345,req-0345,naive,False,177,18,req-0290 req-0199 req-0066 req-0168 req-0197 req-0412 req-0194 req-0410 test_checkout_consistency FAILED req-0345 req-0282 req-0086 req-0402 req-0169 req-0185 req-0371 req-0352
+10,345,req-0345,bridge,True,69,6,req-0345 FAILED test_checkout_consistency req-0352 req-0371 req-0185
+10,345,req-0345,oracle,True,9,1,req-0345
+10,148,req-0148,user_only,False,0,0,
+10,148,req-0148,naive,True,177,18,req-0389 req-0152 req-0268 req-0108 req-0329 req-0166 req-0382 req-0126 test_checkout_consistency FAILED req-0148 req-0187 req-0122 req-0086 req-0080 req-0134 req-0208 req-0355
+10,148,req-0148,bridge,True,69,6,req-0148 FAILED test_checkout_consistency req-0355 req-0208 req-0134
+10,148,req-0148,oracle,True,9,1,req-0148
+10,85,req-0085,user_only,False,0,0,
+10,85,req-0085,naive,True,177,18,req-0434 req-0342 req-0198 req-0275 req-0114 req-0290 req-0403 req-0206 test_checkout_consistency FAILED req-0085 req-0409 req-0257 req-0190 req-0307 req-0327 req-0303 req-0092
+10,85,req-0085,bridge,True,69,6,req-0085 FAILED test_checkout_consistency req-0092 req-0303 req-0327
+10,85,req-0085,oracle,True,9,1,req-0085
+10,73,req-0073,user_only,False,0,0,
+10,73,req-0073,naive,True,177,18,req-0357 req-0070 req-0272 req-0427 req-0216 req-0360 req-0179 req-0063 test_checkout_consistency FAILED req-0073 req-0097 req-0168 req-0396 req-0345 req-0351 req-0060 req-0442
+10,73,req-0073,bridge,True,69,6,req-0073 FAILED test_checkout_consistency req-0442 req-0060 req-0351
+10,73,req-0073,oracle,True,9,1,req-0073
+10,166,req-0166,user_only,False,0,0,
+10,166,req-0166,naive,True,177,18,req-0395 req-0188 req-0346 req-0070 req-0441 req-0438 req-0139 req-0291 test_checkout_consistency FAILED req-0166 req-0316 req-0384 req-0277 req-0193 req-0142 req-0350 req-0274
+10,166,req-0166,bridge,True,69,6,req-0166 FAILED test_checkout_consistency req-0274 req-0350 req-0142
+10,166,req-0166,oracle,True,9,1,req-0166
+10,198,req-0198,user_only,False,0,0,
+10,198,req-0198,naive,True,177,18,req-0376 req-0302 req-0096 req-0291 req-0229 req-0260 req-0221 req-0215 test_checkout_consistency FAILED req-0198 req-0394 req-0103 req-0132 req-0219 req-0261 req-0406 req-0304
+10,198,req-0198,bridge,True,69,6,req-0198 FAILED test_checkout_consistency req-0304 req-0406 req-0261
+10,198,req-0198,oracle,True,9,1,req-0198
+10,393,req-0393,user_only,False,0,0,
+10,393,req-0393,naive,False,177,18,req-0197 req-0389 req-0255 req-0440 req-0331 req-0068 req-0282 req-0095 test_checkout_consistency FAILED req-0393 req-0211 req-0179 req-0215 req-0109 req-0446 req-0256 req-0313
+10,393,req-0393,bridge,True,69,6,req-0393 FAILED test_checkout_consistency req-0313 req-0256 req-0446
+10,393,req-0393,oracle,True,9,1,req-0393
+10,430,req-0430,user_only,False,0,0,
+10,430,req-0430,naive,False,177,18,req-0050 req-0386 req-0327 req-0286 req-0261 req-0077 req-0146 req-0315 test_checkout_consistency FAILED req-0430 req-0235 req-0368 req-0438 req-0305 req-0370 req-0276 req-0440
+10,430,req-0430,bridge,True,69,6,req-0430 FAILED test_checkout_consistency req-0440 req-0276 req-0370
+10,430,req-0430,oracle,True,9,1,req-0430
+10,101,req-0101,user_only,False,0,0,
+10,101,req-0101,naive,True,177,18,req-0076 req-0155 req-0187 req-0332 req-0118 req-0198 req-0275 req-0408 test_checkout_consistency FAILED req-0101 req-0299 req-0113 req-0064 req-0373 req-0362 req-0173 req-0414
+10,101,req-0101,bridge,True,69,6,req-0101 FAILED test_checkout_consistency req-0414 req-0173 req-0362
+10,101,req-0101,oracle,True,9,1,req-0101
+10,404,req-0404,user_only,False,0,0,
+10,404,req-0404,naive,False,177,18,req-0131 req-0209 req-0332 req-0057 req-0258 req-0097 req-0165 req-0108 test_checkout_consistency FAILED req-0404 req-0286 req-0110 req-0381 req-0128 req-0305 req-0417 req-0199
+10,404,req-0404,bridge,True,69,6,req-0404 FAILED test_checkout_consistency req-0199 req-0417 req-0305
+10,404,req-0404,oracle,True,9,1,req-0404
+10,410,req-0410,user_only,False,0,0,
+10,410,req-0410,naive,False,177,18,req-0310 req-0412 req-0189 req-0262 req-0297 req-0291 req-0174 req-0283 test_checkout_consistency FAILED req-0410 req-0332 req-0124 req-0246 req-0147 req-0356 req-0433 req-0119
+10,410,req-0410,bridge,True,69,6,req-0410 FAILED test_checkout_consistency req-0119 req-0433 req-0356
+10,410,req-0410,oracle,True,9,1,req-0410
+10,282,req-0282,user_only,False,0,0,
+10,282,req-0282,naive,False,177,18,req-0085 req-0191 req-0446 req-0262 req-0224 req-0310 req-0186 req-0051 test_checkout_consistency FAILED req-0282 req-0194 req-0422 req-0202 req-0351 req-0347 req-0388 req-0301
+10,282,req-0282,bridge,True,69,6,req-0282 FAILED test_checkout_consistency req-0301 req-0388 req-0347
+10,282,req-0282,oracle,True,9,1,req-0282
+10,375,req-0375,user_only,False,0,0,
+10,375,req-0375,naive,False,177,18,req-0126 req-0278 req-0325 req-0297 req-0226 req-0220 req-0332 req-0441 test_checkout_consistency FAILED req-0375 req-0328 req-0243 req-0283 req-0214 req-0146 req-0408 req-0172
+10,375,req-0375,bridge,True,69,6,req-0375 FAILED test_checkout_consistency req-0172 req-0408 req-0146
+10,375,req-0375,oracle,True,9,1,req-0375
+10,236,req-0236,user_only,False,0,0,
+10,236,req-0236,naive,True,177,18,req-0343 req-0247 req-0169 req-0448 req-0261 req-0072 req-0212 req-0432 test_checkout_consistency FAILED req-0236 req-0293 req-0412 req-0246 req-0248 req-0390 req-0384 req-0127
+10,236,req-0236,bridge,True,69,6,req-0236 FAILED test_checkout_consistency req-0127 req-0384 req-0390
+10,236,req-0236,oracle,True,9,1,req-0236
+10,133,req-0133,user_only,False,0,0,
+10,133,req-0133,naive,True,177,18,req-0304 req-0068 req-0114 req-0308 req-0353 req-0220 req-0101 req-0276 test_checkout_consistency FAILED req-0133 req-0320 req-0284 req-0057 req-0420 req-0123 req-0260 req-0386
+10,133,req-0133,bridge,True,69,6,req-0133 FAILED test_checkout_consistency req-0386 req-0260 req-0123
+10,133,req-0133,oracle,True,9,1,req-0133
+10,239,req-0239,user_only,False,0,0,
+10,239,req-0239,naive,True,177,18,req-0129 req-0088 req-0291 req-0185 req-0223 req-0370 req-0405 req-0254 test_checkout_consistency FAILED req-0239 req-0383 req-0091 req-0218 req-0396 req-0324 req-0245 req-0212
+10,239,req-0239,bridge,True,69,6,req-0239 FAILED test_checkout_consistency req-0212 req-0245 req-0324
+10,239,req-0239,oracle,True,9,1,req-0239
+10,231,req-0231,user_only,False,0,0,
+10,231,req-0231,naive,True,177,18,req-0371 req-0418 req-0439 req-0300 req-0328 req-0068 req-0367 req-0085 test_checkout_consistency FAILED req-0231 req-0170 req-0374 req-0401 req-0197 req-0166 req-0433 req-0096
+10,231,req-0231,bridge,True,69,6,req-0231 FAILED test_checkout_consistency req-0096 req-0433 req-0166
+10,231,req-0231,oracle,True,9,1,req-0231
+10,157,req-0157,user_only,False,0,0,
+10,157,req-0157,naive,True,177,18,req-0273 req-0100 req-0440 req-0375 req-0411 req-0101 req-0278 req-0135 test_checkout_consistency FAILED req-0157 req-0406 req-0204 req-0064 req-0073 req-0217 req-0078 req-0201
+10,157,req-0157,bridge,True,69,6,req-0157 FAILED test_checkout_consistency req-0201 req-0078 req-0217
+10,157,req-0157,oracle,True,9,1,req-0157
+10,186,req-0186,user_only,False,0,0,
+10,186,req-0186,naive,True,177,18,req-0234 req-0242 req-0271 req-0124 req-0175 req-0322 req-0261 req-0340 test_checkout_consistency FAILED req-0186 req-0400 req-0142 req-0137 req-0139 req-0090 req-0363 req-0246
+10,186,req-0186,bridge,True,69,6,req-0186 FAILED test_checkout_consistency req-0246 req-0363 req-0090
+10,186,req-0186,oracle,True,9,1,req-0186
+10,86,req-0086,user_only,False,0,0,
+10,86,req-0086,naive,True,177,18,req-0368 req-0400 req-0174 req-0305 req-0349 req-0124 req-0169 req-0287 test_checkout_consistency FAILED req-0086 req-0377 req-0181 req-0286 req-0392 req-0054 req-0289 req-0198
+10,86,req-0086,bridge,True,69,6,req-0086 FAILED test_checkout_consistency req-0198 req-0289 req-0054
+10,86,req-0086,oracle,True,9,1,req-0086
+10,361,req-0361,user_only,False,0,0,
+10,361,req-0361,naive,False,177,18,req-0397 req-0329 req-0130 req-0087 req-0276 req-0226 req-0350 req-0203 test_checkout_consistency FAILED req-0361 req-0378 req-0267 req-0404 req-0178 req-0283 req-0204 req-0151
+10,361,req-0361,bridge,True,69,6,req-0361 FAILED test_checkout_consistency req-0151 req-0204 req-0283
+10,361,req-0361,oracle,True,9,1,req-0361
+10,137,req-0137,user_only,False,0,0,
+10,137,req-0137,naive,True,177,18,req-0247 req-0298 req-0104 req-0172 req-0246 req-0343 req-0234 req-0345 test_checkout_consistency FAILED req-0137 req-0202 req-0409 req-0061 req-0388 req-0253 req-0191 req-0054
+10,137,req-0137,bridge,True,69,6,req-0137 FAILED test_checkout_consistency req-0054 req-0191 req-0253
+10,137,req-0137,oracle,True,9,1,req-0137
+10,323,req-0323,user_only,False,0,0,
+10,323,req-0323,naive,True,177,18,req-0340 req-0402 req-0449 req-0432 req-0075 req-0361 req-0304 req-0196 test_checkout_consistency FAILED req-0323 req-0448 req-0167 req-0230 req-0162 req-0376 req-0147 req-0368
+10,323,req-0323,bridge,True,69,6,req-0323 FAILED test_checkout_consistency req-0368 req-0147 req-0376
+10,323,req-0323,oracle,True,9,1,req-0323
+10,445,req-0445,user_only,False,0,0,
+10,445,req-0445,naive,False,177,18,req-0178 req-0397 req-0436 req-0419 req-0442 req-0387 req-0398 req-0120 test_checkout_consistency FAILED req-0445 req-0371 req-0099 req-0380 req-0070 req-0208 req-0275 req-0067
+10,445,req-0445,bridge,True,69,6,req-0445 FAILED test_checkout_consistency req-0067 req-0275 req-0208
+10,445,req-0445,oracle,True,9,1,req-0445
+10,373,req-0373,user_only,False,0,0,
+10,373,req-0373,naive,False,177,18,req-0346 req-0236 req-0425 req-0117 req-0096 req-0201 req-0217 req-0433 test_checkout_consistency FAILED req-0373 req-0262 req-0139 req-0152 req-0326 req-0237 req-0321 req-0306
+10,373,req-0373,bridge,True,69,6,req-0373 FAILED test_checkout_consistency req-0306 req-0321 req-0237
+10,373,req-0373,oracle,True,9,1,req-0373
+10,286,req-0286,user_only,False,0,0,
+10,286,req-0286,naive,False,177,18,req-0189 req-0134 req-0181 req-0297 req-0201 req-0433 req-0223 req-0108 test_checkout_consistency FAILED req-0286 req-0290 req-0088 req-0122 req-0437 req-0165 req-0397 req-0421
+10,286,req-0286,bridge,True,69,6,req-0286 FAILED test_checkout_consistency req-0421 req-0397 req-0165
+10,286,req-0286,oracle,True,9,1,req-0286
+10,378,req-0378,user_only,False,0,0,
+10,378,req-0378,naive,False,177,18,req-0396 req-0253 req-0335 req-0237 req-0096 req-0252 req-0057 req-0185 test_checkout_consistency FAILED req-0378 req-0324 req-0113 req-0282 req-0238 req-0395 req-0434 req-0184
+10,378,req-0378,bridge,True,69,6,req-0378 FAILED test_checkout_consistency req-0184 req-0434 req-0395
+10,378,req-0378,oracle,True,9,1,req-0378
+10,188,req-0188,user_only,False,0,0,
+10,188,req-0188,naive,True,177,18,req-0350 req-0246 req-0377 req-0241 req-0105 req-0396 req-0169 req-0292 test_checkout_consistency FAILED req-0188 req-0062 req-0368 req-0338 req-0218 req-0363 req-0163 req-0382
+10,188,req-0188,bridge,True,69,6,req-0188 FAILED test_checkout_consistency req-0382 req-0163 req-0363
+10,188,req-0188,oracle,True,9,1,req-0188
+10,335,req-0335,user_only,False,0,0,
+10,335,req-0335,naive,False,177,18,req-0082 req-0376 req-0287 req-0409 req-0204 req-0383 req-0259 req-0109 test_checkout_consistency FAILED req-0335 req-0121 req-0073 req-0069 req-0205 req-0302 req-0099 req-0170
+10,335,req-0335,bridge,True,69,6,req-0335 FAILED test_checkout_consistency req-0170 req-0099 req-0302
+10,335,req-0335,oracle,True,9,1,req-0335
+10,419,req-0419,user_only,False,0,0,
+10,419,req-0419,naive,False,177,18,req-0325 req-0119 req-0248 req-0282 req-0239 req-0393 req-0431 req-0406 test_checkout_consistency FAILED req-0419 req-0326 req-0264 req-0350 req-0423 req-0129 req-0262 req-0385
+10,419,req-0419,bridge,True,69,6,req-0419 FAILED test_checkout_consistency req-0385 req-0262 req-0129
+10,419,req-0419,oracle,True,9,1,req-0419
+10,216,req-0216,user_only,False,0,0,
+10,216,req-0216,naive,True,177,18,req-0100 req-0301 req-0366 req-0259 req-0193 req-0066 req-0404 req-0240 test_checkout_consistency FAILED req-0216 req-0161 req-0278 req-0170 req-0236 req-0402 req-0239 req-0329
+10,216,req-0216,bridge,True,69,6,req-0216 FAILED test_checkout_consistency req-0329 req-0239 req-0402
+10,216,req-0216,oracle,True,9,1,req-0216
+10,78,req-0078,user_only,False,0,0,
+10,78,req-0078,naive,True,177,18,req-0381 req-0234 req-0082 req-0254 req-0192 req-0148 req-0113 req-0283 test_checkout_consistency FAILED req-0078 req-0097 req-0390 req-0159 req-0379 req-0378 req-0356 req-0060
+10,78,req-0078,bridge,True,69,6,req-0078 FAILED test_checkout_consistency req-0060 req-0356 req-0378
+10,78,req-0078,oracle,True,9,1,req-0078
+10,167,req-0167,user_only,False,0,0,
+10,167,req-0167,naive,True,177,18,req-0075 req-0221 req-0175 req-0114 req-0340 req-0155 req-0085 req-0442 test_checkout_consistency FAILED req-0167 req-0334 req-0156 req-0351 req-0160 req-0170 req-0219 req-0447
+10,167,req-0167,bridge,True,69,6,req-0167 FAILED test_checkout_consistency req-0447 req-0219 req-0170
+10,167,req-0167,oracle,True,9,1,req-0167
+10,434,req-0434,user_only,False,0,0,
+10,434,req-0434,naive,False,177,18,req-0125 req-0355 req-0051 req-0191 req-0124 req-0116 req-0326 req-0178 test_checkout_consistency FAILED req-0434 req-0139 req-0106 req-0388 req-0063 req-0117 req-0057 req-0233
+10,434,req-0434,bridge,True,69,6,req-0434 FAILED test_checkout_consistency req-0233 req-0057 req-0117
+10,434,req-0434,oracle,True,9,1,req-0434
+10,211,req-0211,user_only,False,0,0,
+10,211,req-0211,naive,False,177,18,req-0171 req-0352 req-0216 req-0058 req-0139 req-0185 req-0076 req-0114 test_checkout_consistency FAILED req-0211 req-0430 req-0266 req-0320 req-0108 req-0432 req-0082 req-0294
+10,211,req-0211,bridge,True,69,6,req-0211 FAILED test_checkout_consistency req-0294 req-0082 req-0432
+10,211,req-0211,oracle,True,9,1,req-0211
+10,255,req-0255,user_only,False,0,0,
+10,255,req-0255,naive,True,177,18,req-0280 req-0449 req-0235 req-0313 req-0354 req-0105 req-0282 req-0308 test_checkout_consistency FAILED req-0255 req-0163 req-0365 req-0072 req-0423 req-0388 req-0317 req-0204
+10,255,req-0255,bridge,True,69,6,req-0255 FAILED test_checkout_consistency req-0204 req-0317 req-0388
+10,255,req-0255,oracle,True,9,1,req-0255
+10,187,req-0187,user_only,False,0,0,
+10,187,req-0187,naive,True,177,18,req-0285 req-0380 req-0065 req-0081 req-0296 req-0256 req-0269 req-0402 test_checkout_consistency FAILED req-0187 req-0105 req-0302 req-0415 req-0278 req-0087 req-0091 req-0215
+10,187,req-0187,bridge,True,69,6,req-0187 FAILED test_checkout_consistency req-0215 req-0091 req-0087
+10,187,req-0187,oracle,True,9,1,req-0187
+20,377,req-0377,user_only,False,0,0,
+20,377,req-0377,naive,True,177,18,req-0361 req-0125 req-0083 req-0114 req-0190 req-0369 req-0374 req-0349 test_checkout_consistency FAILED req-0377 req-0330 req-0415 req-0216 req-0245 req-0355 req-0321 req-0200
+20,377,req-0377,bridge,True,69,6,req-0377 FAILED test_checkout_consistency req-0200 req-0321 req-0355
+20,377,req-0377,oracle,True,9,1,req-0377
+20,107,req-0107,user_only,False,0,0,
+20,107,req-0107,naive,True,177,18,req-0283 req-0309 req-0360 req-0271 req-0100 req-0410 req-0109 req-0386 test_checkout_consistency FAILED req-0107 req-0384 req-0444 req-0333 req-0420 req-0161 req-0282 req-0167
+20,107,req-0107,bridge,True,69,6,req-0107 FAILED test_checkout_consistency req-0167 req-0282 req-0161
+20,107,req-0107,oracle,True,9,1,req-0107
+20,62,req-0062,user_only,False,0,0,
+20,62,req-0062,naive,True,177,18,req-0262 req-0224 req-0283 req-0255 req-0263 req-0424 req-0099 req-0211 test_checkout_consistency FAILED req-0062 req-0269 req-0391 req-0181 req-0242 req-0129 req-0402 req-0293
+20,62,req-0062,bridge,True,69,6,req-0062 FAILED test_checkout_consistency req-0293 req-0402 req-0129
+20,62,req-0062,oracle,True,9,1,req-0062
+20,429,req-0429,user_only,False,0,0,
+20,429,req-0429,naive,True,177,18,req-0084 req-0096 req-0093 req-0097 req-0271 req-0099 req-0432 req-0428 test_checkout_consistency FAILED req-0429 req-0240 req-0116 req-0334 req-0080 req-0350 req-0337 req-0218
+20,429,req-0429,bridge,True,69,6,req-0429 FAILED test_checkout_consistency req-0218 req-0337 req-0350
+20,429,req-0429,oracle,True,9,1,req-0429
+20,190,req-0190,user_only,False,0,0,
+20,190,req-0190,naive,True,177,18,req-0394 req-0112 req-0261 req-0232 req-0391 req-0435 req-0267 req-0420 test_checkout_consistency FAILED req-0190 req-0076 req-0198 req-0358 req-0210 req-0231 req-0103 req-0346
+20,190,req-0190,bridge,True,69,6,req-0190 FAILED test_checkout_consistency req-0346 req-0103 req-0231
+20,190,req-0190,oracle,True,9,1,req-0190
+20,175,req-0175,user_only,False,0,0,
+20,175,req-0175,naive,True,177,18,req-0310 req-0158 req-0129 req-0387 req-0297 req-0164 req-0105 req-0230 test_checkout_consistency FAILED req-0175 req-0335 req-0239 req-0108 req-0441 req-0193 req-0344 req-0165
+20,175,req-0175,bridge,True,69,6,req-0175 FAILED test_checkout_consistency req-0165 req-0344 req-0193
+20,175,req-0175,oracle,True,9,1,req-0175
+20,164,req-0164,user_only,False,0,0,
+20,164,req-0164,naive,True,177,18,req-0270 req-0338 req-0443 req-0369 req-0365 req-0396 req-0380 req-0336 test_checkout_consistency FAILED req-0164 req-0063 req-0362 req-0387 req-0406 req-0187 req-0064 req-0142
+20,164,req-0164,bridge,True,69,6,req-0164 FAILED test_checkout_consistency req-0142 req-0064 req-0187
+20,164,req-0164,oracle,True,9,1,req-0164
+20,121,req-0121,user_only,False,0,0,
+20,121,req-0121,naive,True,177,18,req-0190 req-0410 req-0441 req-0209 req-0224 req-0230 req-0053 req-0143 test_checkout_consistency FAILED req-0121 req-0124 req-0340 req-0387 req-0256 req-0085 req-0123 req-0430
+20,121,req-0121,bridge,True,69,6,req-0121 FAILED test_checkout_consistency req-0430 req-0123 req-0085
+20,121,req-0121,oracle,True,9,1,req-0121
+20,427,req-0427,user_only,False,0,0,
+20,427,req-0427,naive,True,177,18,req-0374 req-0065 req-0096 req-0433 req-0321 req-0160 req-0242 req-0264 test_checkout_consistency FAILED req-0427 req-0282 req-0224 req-0130 req-0239 req-0209 req-0419 req-0216
+20,427,req-0427,bridge,True,69,6,req-0427 FAILED test_checkout_consistency req-0216 req-0419 req-0209
+20,427,req-0427,oracle,True,9,1,req-0427
+20,102,req-0102,user_only,False,0,0,
+20,102,req-0102,naive,True,177,18,req-0448 req-0341 req-0356 req-0093 req-0076 req-0130 req-0131 req-0437 test_checkout_consistency FAILED req-0102 req-0367 req-0075 req-0396 req-0091 req-0190 req-0277 req-0389
+20,102,req-0102,bridge,True,69,6,req-0102 FAILED test_checkout_consistency req-0389 req-0277 req-0190
+20,102,req-0102,oracle,True,9,1,req-0102
+20,396,req-0396,user_only,False,0,0,
+20,396,req-0396,naive,True,177,18,req-0267 req-0298 req-0360 req-0276 req-0262 req-0189 req-0160 req-0437 test_checkout_consistency FAILED req-0396 req-0312 req-0108 req-0226 req-0270 req-0106 req-0195 req-0398
+20,396,req-0396,bridge,True,69,6,req-0396 FAILED test_checkout_consistency req-0398 req-0195 req-0106
+20,396,req-0396,oracle,True,9,1,req-0396
+20,447,req-0447,user_only,False,0,0,
+20,447,req-0447,naive,True,177,18,req-0397 req-0353 req-0299 req-0319 req-0391 req-0207 req-0073 req-0162 test_checkout_consistency FAILED req-0447 req-0252 req-0356 req-0078 req-0053 req-0154 req-0204 req-0158
+20,447,req-0447,bridge,True,69,6,req-0447 FAILED test_checkout_consistency req-0158 req-0204 req-0154
+20,447,req-0447,oracle,True,9,1,req-0447
+20,329,req-0329,user_only,False,0,0,
+20,329,req-0329,naive,True,177,18,req-0443 req-0120 req-0442 req-0180 req-0198 req-0217 req-0111 req-0053 test_checkout_consistency FAILED req-0329 req-0304 req-0433 req-0270 req-0139 req-0116 req-0244 req-0322
+20,329,req-0329,bridge,True,69,6,req-0329 FAILED test_checkout_consistency req-0322 req-0244 req-0116
+20,329,req-0329,oracle,True,9,1,req-0329
+20,94,req-0094,user_only,False,0,0,
+20,94,req-0094,naive,True,177,18,req-0411 req-0168 req-0307 req-0337 req-0393 req-0232 req-0086 req-0254 test_checkout_consistency FAILED req-0094 req-0430 req-0071 req-0274 req-0059 req-0286 req-0089 req-0211
+20,94,req-0094,bridge,True,69,6,req-0094 FAILED test_checkout_consistency req-0211 req-0089 req-0286
+20,94,req-0094,oracle,True,9,1,req-0094
+20,352,req-0352,user_only,False,0,0,
+20,352,req-0352,naive,True,177,18,req-0344 req-0269 req-0343 req-0257 req-0414 req-0378 req-0263 req-0198 test_checkout_consistency FAILED req-0352 req-0108 req-0060 req-0216 req-0137 req-0367 req-0285 req-0404
+20,352,req-0352,bridge,True,69,6,req-0352 FAILED test_checkout_consistency req-0404 req-0285 req-0367
+20,352,req-0352,oracle,True,9,1,req-0352
+20,266,req-0266,user_only,False,0,0,
+20,266,req-0266,naive,True,177,18,req-0235 req-0095 req-0274 req-0104 req-0174 req-0352 req-0255 req-0319 test_checkout_consistency FAILED req-0266 req-0090 req-0252 req-0208 req-0432 req-0223 req-0163 req-0220
+20,266,req-0266,bridge,True,69,6,req-0266 FAILED test_checkout_consistency req-0220 req-0163 req-0223
+20,266,req-0266,oracle,True,9,1,req-0266
+20,66,req-0066,user_only,False,0,0,
+20,66,req-0066,naive,True,177,18,req-0449 req-0137 req-0090 req-0312 req-0375 req-0109 req-0322 req-0150 test_checkout_consistency FAILED req-0066 req-0448 req-0229 req-0230 req-0423 req-0381 req-0126 req-0171
+20,66,req-0066,bridge,True,69,6,req-0066 FAILED test_checkout_consistency req-0171 req-0126 req-0381
+20,66,req-0066,oracle,True,9,1,req-0066
+20,65,req-0065,user_only,False,0,0,
+20,65,req-0065,naive,True,177,18,req-0103 req-0125 req-0182 req-0152 req-0139 req-0359 req-0129 req-0440 test_checkout_consistency FAILED req-0065 req-0439 req-0386 req-0089 req-0141 req-0446 req-0372 req-0303
+20,65,req-0065,bridge,True,69,6,req-0065 FAILED test_checkout_consistency req-0303 req-0372 req-0446
+20,65,req-0065,oracle,True,9,1,req-0065
+20,97,req-0097,user_only,False,0,0,
+20,97,req-0097,naive,True,177,18,req-0288 req-0437 req-0339 req-0440 req-0347 req-0280 req-0399 req-0340 test_checkout_consistency FAILED req-0097 req-0380 req-0376 req-0370 req-0216 req-0372 req-0212 req-0128
+20,97,req-0097,bridge,True,69,6,req-0097 FAILED test_checkout_consistency req-0128 req-0212 req-0372
+20,97,req-0097,oracle,True,9,1,req-0097
+20,161,req-0161,user_only,False,0,0,
+20,161,req-0161,naive,True,177,18,req-0276 req-0084 req-0291 req-0277 req-0374 req-0206 req-0191 req-0353 test_checkout_consistency FAILED req-0161 req-0078 req-0231 req-0310 req-0087 req-0209 req-0287 req-0282
+20,161,req-0161,bridge,True,69,6,req-0161 FAILED test_checkout_consistency req-0282 req-0287 req-0209
+20,161,req-0161,oracle,True,9,1,req-0161
+20,169,req-0169,user_only,False,0,0,
+20,169,req-0169,naive,True,177,18,req-0069 req-0079 req-0239 req-0197 req-0089 req-0381 req-0096 req-0365 test_checkout_consistency FAILED req-0169 req-0355 req-0310 req-0247 req-0287 req-0348 req-0334 req-0429
+20,169,req-0169,bridge,True,69,6,req-0169 FAILED test_checkout_consistency req-0429 req-0334 req-0348
+20,169,req-0169,oracle,True,9,1,req-0169
+20,308,req-0308,user_only,False,0,0,
+20,308,req-0308,naive,True,177,18,req-0071 req-0280 req-0343 req-0384 req-0146 req-0214 req-0360 req-0293 test_checkout_consistency FAILED req-0308 req-0306 req-0127 req-0081 req-0102 req-0225 req-0416 req-0093
+20,308,req-0308,bridge,True,69,6,req-0308 FAILED test_checkout_consistency req-0093 req-0416 req-0225
+20,308,req-0308,oracle,True,9,1,req-0308
+20,358,req-0358,user_only,False,0,0,
+20,358,req-0358,naive,True,177,18,req-0308 req-0381 req-0138 req-0070 req-0176 req-0413 req-0274 req-0318 test_checkout_consistency FAILED req-0358 req-0317 req-0363 req-0131 req-0236 req-0240 req-0194 req-0248
+20,358,req-0358,bridge,True,69,6,req-0358 FAILED test_checkout_consistency req-0248 req-0194 req-0240
+20,358,req-0358,oracle,True,9,1,req-0358
+20,63,req-0063,user_only,False,0,0,
+20,63,req-0063,naive,True,177,18,req-0260 req-0447 req-0224 req-0398 req-0357 req-0077 req-0374 req-0382 test_checkout_consistency FAILED req-0063 req-0222 req-0084 req-0219 req-0099 req-0336 req-0248 req-0196
+20,63,req-0063,bridge,True,69,6,req-0063 FAILED test_checkout_consistency req-0196 req-0248 req-0336
+20,63,req-0063,oracle,True,9,1,req-0063
+20,337,req-0337,user_only,False,0,0,
+20,337,req-0337,naive,True,177,18,req-0179 req-0421 req-0387 req-0359 req-0126 req-0220 req-0091 req-0349 test_checkout_consistency FAILED req-0337 req-0390 req-0122 req-0229 req-0208 req-0386 req-0408 req-0250
+20,337,req-0337,bridge,True,69,6,req-0337 FAILED test_checkout_consistency req-0250 req-0408 req-0386
+20,337,req-0337,oracle,True,9,1,req-0337
+20,151,req-0151,user_only,False,0,0,
+20,151,req-0151,naive,True,177,18,req-0116 req-0355 req-0413 req-0093 req-0209 req-0337 req-0243 req-0380 test_checkout_consistency FAILED req-0151 req-0219 req-0115 req-0394 req-0410 req-0429 req-0401 req-0320
+20,151,req-0151,bridge,True,69,6,req-0151 FAILED test_checkout_consistency req-0320 req-0401 req-0429
+20,151,req-0151,oracle,True,9,1,req-0151
+20,416,req-0416,user_only,False,0,0,
+20,416,req-0416,naive,True,177,18,req-0097 req-0380 req-0393 req-0266 req-0310 req-0235 req-0059 req-0208 test_checkout_consistency FAILED req-0416 req-0142 req-0159 req-0224 req-0443 req-0298 req-0148 req-0165
+20,416,req-0416,bridge,True,69,6,req-0416 FAILED test_checkout_consistency req-0165 req-0148 req-0298
+20,416,req-0416,oracle,True,9,1,req-0416
+20,382,req-0382,user_only,False,0,0,
+20,382,req-0382,naive,True,177,18,req-0120 req-0129 req-0089 req-0201 req-0101 req-0309 req-0445 req-0326 test_checkout_consistency FAILED req-0382 req-0429 req-0319 req-0069 req-0389 req-0222 req-0443 req-0366
+20,382,req-0382,bridge,True,69,6,req-0382 FAILED test_checkout_consistency req-0366 req-0443 req-0222
+20,382,req-0382,oracle,True,9,1,req-0382
+20,409,req-0409,user_only,False,0,0,
+20,409,req-0409,naive,True,177,18,req-0117 req-0355 req-0242 req-0128 req-0133 req-0142 req-0404 req-0445 test_checkout_consistency FAILED req-0409 req-0369 req-0134 req-0420 req-0274 req-0072 req-0260 req-0236
+20,409,req-0409,bridge,True,69,6,req-0409 FAILED test_checkout_consistency req-0236 req-0260 req-0072
+20,409,req-0409,oracle,True,9,1,req-0409
+20,438,req-0438,user_only,False,0,0,
+20,438,req-0438,naive,True,177,18,req-0396 req-0418 req-0171 req-0277 req-0362 req-0195 req-0435 req-0433 test_checkout_consistency FAILED req-0438 req-0279 req-0169 req-0323 req-0172 req-0208 req-0290 req-0149
+20,438,req-0438,bridge,True,69,6,req-0438 FAILED test_checkout_consistency req-0149 req-0290 req-0208
+20,438,req-0438,oracle,True,9,1,req-0438
+20,264,req-0264,user_only,False,0,0,
+20,264,req-0264,naive,True,177,18,req-0238 req-0398 req-0343 req-0276 req-0287 req-0444 req-0194 req-0449 test_checkout_consistency FAILED req-0264 req-0245 req-0308 req-0321 req-0265 req-0132 req-0152 req-0360
+20,264,req-0264,bridge,True,69,6,req-0264 FAILED test_checkout_consistency req-0360 req-0152 req-0132
+20,264,req-0264,oracle,True,9,1,req-0264
+20,162,req-0162,user_only,False,0,0,
+20,162,req-0162,naive,True,177,18,req-0120 req-0179 req-0076 req-0379 req-0297 req-0241 req-0334 req-0102 test_checkout_consistency FAILED req-0162 req-0415 req-0315 req-0113 req-0196 req-0092 req-0441 req-0132
+20,162,req-0162,bridge,True,69,6,req-0162 FAILED test_checkout_consistency req-0132 req-0441 req-0092
+20,162,req-0162,oracle,True,9,1,req-0162
+20,279,req-0279,user_only,False,0,0,
+20,279,req-0279,naive,True,177,18,req-0189 req-0281 req-0313 req-0125 req-0273 req-0096 req-0163 req-0228 test_checkout_consistency FAILED req-0279 req-0063 req-0262 req-0077 req-0252 req-0308 req-0241 req-0170
+20,279,req-0279,bridge,True,69,6,req-0279 FAILED test_checkout_consistency req-0170 req-0241 req-0308
+20,279,req-0279,oracle,True,9,1,req-0279
+20,351,req-0351,user_only,False,0,0,
+20,351,req-0351,naive,True,177,18,req-0247 req-0091 req-0241 req-0164 req-0064 req-0213 req-0100 req-0416 test_checkout_consistency FAILED req-0351 req-0383 req-0221 req-0124 req-0120 req-0069 req-0196 req-0291
+20,351,req-0351,bridge,True,69,6,req-0351 FAILED test_checkout_consistency req-0291 req-0196 req-0069
+20,351,req-0351,oracle,True,9,1,req-0351
+20,192,req-0192,user_only,False,0,0,
+20,192,req-0192,naive,True,177,18,req-0407 req-0121 req-0439 req-0412 req-0291 req-0280 req-0366 req-0052 test_checkout_consistency FAILED req-0192 req-0090 req-0059 req-0181 req-0160 req-0126 req-0331 req-0423
+20,192,req-0192,bridge,True,69,6,req-0192 FAILED test_checkout_consistency req-0423 req-0331 req-0126
+20,192,req-0192,oracle,True,9,1,req-0192
+20,53,req-0053,user_only,False,0,0,
+20,53,req-0053,naive,True,177,18,req-0362 req-0321 req-0267 req-0107 req-0448 req-0198 req-0172 req-0205 test_checkout_consistency FAILED req-0053 req-0113 req-0075 req-0173 req-0265 req-0378 req-0369 req-0285
+20,53,req-0053,bridge,True,69,6,req-0053 FAILED test_checkout_consistency req-0285 req-0369 req-0378
+20,53,req-0053,oracle,True,9,1,req-0053
+20,131,req-0131,user_only,False,0,0,
+20,131,req-0131,naive,True,177,18,req-0082 req-0106 req-0306 req-0356 req-0325 req-0058 req-0374 req-0314 test_checkout_consistency FAILED req-0131 req-0345 req-0174 req-0418 req-0123 req-0200 req-0270 req-0050
+20,131,req-0131,bridge,True,69,6,req-0131 FAILED test_checkout_consistency req-0050 req-0270 req-0200
+20,131,req-0131,oracle,True,9,1,req-0131
+20,407,req-0407,user_only,False,0,0,
+20,407,req-0407,naive,True,177,18,req-0364 req-0230 req-0173 req-0342 req-0263 req-0145 req-0390 req-0392 test_checkout_consistency FAILED req-0407 req-0093 req-0318 req-0234 req-0084 req-0319 req-0328 req-0309
+20,407,req-0407,bridge,True,69,6,req-0407 FAILED test_checkout_consistency req-0309 req-0328 req-0319
+20,407,req-0407,oracle,True,9,1,req-0407
+20,435,req-0435,user_only,False,0,0,
+20,435,req-0435,naive,True,177,18,req-0309 req-0333 req-0060 req-0249 req-0290 req-0072 req-0375 req-0248 test_checkout_consistency FAILED req-0435 req-0241 req-0179 req-0432 req-0058 req-0232 req-0084 req-0226
+20,435,req-0435,bridge,True,69,6,req-0435 FAILED test_checkout_consistency req-0226 req-0084 req-0232
+20,435,req-0435,oracle,True,9,1,req-0435
+20,224,req-0224,user_only,False,0,0,
+20,224,req-0224,naive,True,177,18,req-0173 req-0426 req-0387 req-0372 req-0103 req-0446 req-0348 req-0427 test_checkout_consistency FAILED req-0224 req-0438 req-0220 req-0118 req-0072 req-0231 req-0330 req-0223
+20,224,req-0224,bridge,True,69,6,req-0224 FAILED test_checkout_consistency req-0223 req-0330 req-0231
+20,224,req-0224,oracle,True,9,1,req-0224
+20,424,req-0424,user_only,False,0,0,
+20,424,req-0424,naive,True,177,18,req-0379 req-0139 req-0449 req-0400 req-0287 req-0406 req-0295 req-0373 test_checkout_consistency FAILED req-0424 req-0143 req-0119 req-0082 req-0416 req-0448 req-0284 req-0068
+20,424,req-0424,bridge,True,69,6,req-0424 FAILED test_checkout_consistency req-0068 req-0284 req-0448
+20,424,req-0424,oracle,True,9,1,req-0424
+20,129,req-0129,user_only,False,0,0,
+20,129,req-0129,naive,True,177,18,req-0201 req-0154 req-0072 req-0153 req-0071 req-0212 req-0209 req-0314 test_checkout_consistency FAILED req-0129 req-0254 req-0329 req-0293 req-0180 req-0068 req-0436 req-0382
+20,129,req-0129,bridge,True,69,6,req-0129 FAILED test_checkout_consistency req-0382 req-0436 req-0068
+20,129,req-0129,oracle,True,9,1,req-0129
+20,160,req-0160,user_only,False,0,0,
+20,160,req-0160,naive,True,177,18,req-0147 req-0197 req-0233 req-0450 req-0074 req-0386 req-0220 req-0190 test_checkout_consistency FAILED req-0160 req-0113 req-0239 req-0274 req-0255 req-0431 req-0276 req-0248
+20,160,req-0160,bridge,True,69,6,req-0160 FAILED test_checkout_consistency req-0248 req-0276 req-0431
+20,160,req-0160,oracle,True,9,1,req-0160
+20,222,req-0222,user_only,False,0,0,
+20,222,req-0222,naive,True,177,18,req-0224 req-0145 req-0305 req-0405 req-0239 req-0316 req-0186 req-0092 test_checkout_consistency FAILED req-0222 req-0423 req-0268 req-0090 req-0271 req-0359 req-0142 req-0330
+20,222,req-0222,bridge,True,69,6,req-0222 FAILED test_checkout_consistency req-0330 req-0142 req-0359
+20,222,req-0222,oracle,True,9,1,req-0222
+20,441,req-0441,user_only,False,0,0,
+20,441,req-0441,naive,True,177,18,req-0200 req-0214 req-0102 req-0090 req-0217 req-0388 req-0201 req-0206 test_checkout_consistency FAILED req-0441 req-0278 req-0358 req-0417 req-0268 req-0135 req-0403 req-0277
+20,441,req-0441,bridge,True,69,6,req-0441 FAILED test_checkout_consistency req-0277 req-0403 req-0135
+20,441,req-0441,oracle,True,9,1,req-0441
+20,432,req-0432,user_only,False,0,0,
+20,432,req-0432,naive,True,177,18,req-0229 req-0278 req-0071 req-0422 req-0230 req-0364 req-0272 req-0190 test_checkout_consistency FAILED req-0432 req-0377 req-0079 req-0088 req-0393 req-0376 req-0257 req-0236
+20,432,req-0432,bridge,True,69,6,req-0432 FAILED test_checkout_consistency req-0236 req-0257 req-0376
+20,432,req-0432,oracle,True,9,1,req-0432
+20,244,req-0244,user_only,False,0,0,
+20,244,req-0244,naive,True,177,18,req-0313 req-0434 req-0398 req-0131 req-0065 req-0123 req-0362 req-0275 test_checkout_consistency FAILED req-0244 req-0067 req-0114 req-0084 req-0170 req-0449 req-0381 req-0237
+20,244,req-0244,bridge,True,69,6,req-0244 FAILED test_checkout_consistency req-0237 req-0381 req-0449
+20,244,req-0244,oracle,True,9,1,req-0244
+20,99,req-0099,user_only,False,0,0,
+20,99,req-0099,naive,True,177,18,req-0236 req-0247 req-0341 req-0066 req-0360 req-0129 req-0398 req-0281 test_checkout_consistency FAILED req-0099 req-0240 req-0241 req-0278 req-0441 req-0089 req-0344 req-0121
+20,99,req-0099,bridge,True,69,6,req-0099 FAILED test_checkout_consistency req-0121 req-0344 req-0089
+20,99,req-0099,oracle,True,9,1,req-0099
+20,233,req-0233,user_only,False,0,0,
+20,233,req-0233,naive,True,177,18,req-0322 req-0238 req-0254 req-0210 req-0383 req-0192 req-0177 req-0108 test_checkout_consistency FAILED req-0233 req-0063 req-0427 req-0145 req-0306 req-0316 req-0249 req-0338
+20,233,req-0233,bridge,True,69,6,req-0233 FAILED test_checkout_consistency req-0338 req-0249 req-0316
+20,233,req-0233,oracle,True,9,1,req-0233
+20,226,req-0226,user_only,False,0,0,
+20,226,req-0226,naive,True,177,18,req-0110 req-0184 req-0447 req-0183 req-0411 req-0279 req-0159 req-0364 test_checkout_consistency FAILED req-0226 req-0196 req-0406 req-0302 req-0152 req-0112 req-0119 req-0087
+20,226,req-0226,bridge,True,69,6,req-0226 FAILED test_checkout_consistency req-0087 req-0119 req-0112
+20,226,req-0226,oracle,True,9,1,req-0226
+20,359,req-0359,user_only,False,0,0,
+20,359,req-0359,naive,True,177,18,req-0281 req-0138 req-0416 req-0277 req-0094 req-0400 req-0213 req-0392 test_checkout_consistency FAILED req-0359 req-0227 req-0414 req-0083 req-0331 req-0327 req-0198 req-0203
+20,359,req-0359,bridge,True,69,6,req-0359 FAILED test_checkout_consistency req-0203 req-0198 req-0327
+20,359,req-0359,oracle,True,9,1,req-0359
+20,185,req-0185,user_only,False,0,0,
+20,185,req-0185,naive,True,177,18,req-0130 req-0415 req-0414 req-0409 req-0377 req-0139 req-0236 req-0311 test_checkout_consistency FAILED req-0185 req-0164 req-0112 req-0152 req-0121 req-0171 req-0303 req-0063
+20,185,req-0185,bridge,True,69,6,req-0185 FAILED test_checkout_consistency req-0063 req-0303 req-0171
+20,185,req-0185,oracle,True,9,1,req-0185
+20,72,req-0072,user_only,False,0,0,
+20,72,req-0072,naive,True,177,18,req-0235 req-0334 req-0344 req-0239 req-0290 req-0333 req-0117 req-0364 test_checkout_consistency FAILED req-0072 req-0095 req-0084 req-0209 req-0254 req-0418 req-0419 req-0296
+20,72,req-0072,bridge,True,69,6,req-0072 FAILED test_checkout_consistency req-0296 req-0419 req-0418
+20,72,req-0072,oracle,True,9,1,req-0072
+20,285,req-0285,user_only,False,0,0,
+20,285,req-0285,naive,True,177,18,req-0320 req-0260 req-0444 req-0259 req-0345 req-0087 req-0114 req-0212 test_checkout_consistency FAILED req-0285 req-0379 req-0280 req-0289 req-0399 req-0315 req-0226 req-0115
+20,285,req-0285,bridge,True,69,6,req-0285 FAILED test_checkout_consistency req-0115 req-0226 req-0315
+20,285,req-0285,oracle,True,9,1,req-0285
+20,324,req-0324,user_only,False,0,0,
+20,324,req-0324,naive,True,177,18,req-0450 req-0333 req-0378 req-0351 req-0143 req-0444 req-0116 req-0271 test_checkout_consistency FAILED req-0324 req-0307 req-0078 req-0113 req-0315 req-0128 req-0205 req-0134
+20,324,req-0324,bridge,True,69,6,req-0324 FAILED test_checkout_consistency req-0134 req-0205 req-0128
+20,324,req-0324,oracle,True,9,1,req-0324
+20,113,req-0113,user_only,False,0,0,
+20,113,req-0113,naive,True,177,18,req-0133 req-0216 req-0414 req-0166 req-0228 req-0316 req-0196 req-0090 test_checkout_consistency FAILED req-0113 req-0179 req-0151 req-0376 req-0333 req-0191 req-0115 req-0371
+20,113,req-0113,bridge,True,69,6,req-0113 FAILED test_checkout_consistency req-0371 req-0115 req-0191
+20,113,req-0113,oracle,True,9,1,req-0113
+20,243,req-0243,user_only,False,0,0,
+20,243,req-0243,naive,True,177,18,req-0205 req-0365 req-0324 req-0097 req-0308 req-0379 req-0136 req-0354 test_checkout_consistency FAILED req-0243 req-0348 req-0128 req-0137 req-0388 req-0370 req-0419 req-0360
+20,243,req-0243,bridge,True,69,6,req-0243 FAILED test_checkout_consistency req-0360 req-0419 req-0370
+20,243,req-0243,oracle,True,9,1,req-0243
+20,90,req-0090,user_only,False,0,0,
+20,90,req-0090,naive,True,177,18,req-0223 req-0339 req-0071 req-0064 req-0092 req-0073 req-0379 req-0445 test_checkout_consistency FAILED req-0090 req-0346 req-0186 req-0384 req-0158 req-0443 req-0343 req-0264
+20,90,req-0090,bridge,True,69,6,req-0090 FAILED test_checkout_consistency req-0264 req-0343 req-0443
+20,90,req-0090,oracle,True,9,1,req-0090
+20,332,req-0332,user_only,False,0,0,
+20,332,req-0332,naive,True,177,18,req-0367 req-0378 req-0065 req-0304 req-0372 req-0329 req-0198 req-0379 test_checkout_consistency FAILED req-0332 req-0204 req-0297 req-0175 req-0401 req-0257 req-0202 req-0282
+20,332,req-0332,bridge,True,69,6,req-0332 FAILED test_checkout_consistency req-0282 req-0202 req-0257
+20,332,req-0332,oracle,True,9,1,req-0332
+20,200,req-0200,user_only,False,0,0,
+20,200,req-0200,naive,True,177,18,req-0087 req-0403 req-0080 req-0130 req-0276 req-0263 req-0298 req-0288 test_checkout_consistency FAILED req-0200 req-0154 req-0225 req-0361 req-0123 req-0211 req-0418 req-0214
+20,200,req-0200,bridge,True,69,6,req-0200 FAILED test_checkout_consistency req-0214 req-0418 req-0211
+20,200,req-0200,oracle,True,9,1,req-0200
+20,371,req-0371,user_only,False,0,0,
+20,371,req-0371,naive,True,177,18,req-0426 req-0226 req-0254 req-0116 req-0440 req-0239 req-0313 req-0337 test_checkout_consistency FAILED req-0371 req-0104 req-0213 req-0173 req-0288 req-0112 req-0186 req-0280
+20,371,req-0371,bridge,True,69,6,req-0371 FAILED test_checkout_consistency req-0280 req-0186 req-0112
+20,371,req-0371,oracle,True,9,1,req-0371
+20,366,req-0366,user_only,False,0,0,
+20,366,req-0366,naive,True,177,18,req-0176 req-0122 req-0099 req-0075 req-0198 req-0246 req-0365 req-0264 test_checkout_consistency FAILED req-0366 req-0177 req-0131 req-0217 req-0345 req-0420 req-0210 req-0147
+20,366,req-0366,bridge,True,69,6,req-0366 FAILED test_checkout_consistency req-0147 req-0210 req-0420
+20,366,req-0366,oracle,True,9,1,req-0366
+20,235,req-0235,user_only,False,0,0,
+20,235,req-0235,naive,True,177,18,req-0441 req-0131 req-0306 req-0314 req-0290 req-0207 req-0305 req-0061 test_checkout_consistency FAILED req-0235 req-0096 req-0252 req-0309 req-0285 req-0173 req-0160 req-0349
+20,235,req-0235,bridge,True,69,6,req-0235 FAILED test_checkout_consistency req-0349 req-0160 req-0173
+20,235,req-0235,oracle,True,9,1,req-0235
+20,345,req-0345,user_only,False,0,0,
+20,345,req-0345,naive,True,177,18,req-0230 req-0074 req-0075 req-0194 req-0303 req-0356 req-0385 req-0395 test_checkout_consistency FAILED req-0345 req-0290 req-0196 req-0324 req-0054 req-0105 req-0270 req-0118
+20,345,req-0345,bridge,True,69,6,req-0345 FAILED test_checkout_consistency req-0118 req-0270 req-0105
+20,345,req-0345,oracle,True,9,1,req-0345
+20,148,req-0148,user_only,False,0,0,
+20,148,req-0148,naive,True,177,18,req-0186 req-0423 req-0238 req-0442 req-0257 req-0073 req-0256 req-0076 test_checkout_consistency FAILED req-0148 req-0342 req-0338 req-0150 req-0236 req-0334 req-0198 req-0087
+20,148,req-0148,bridge,True,69,6,req-0148 FAILED test_checkout_consistency req-0087 req-0198 req-0334
+20,148,req-0148,oracle,True,9,1,req-0148
+20,85,req-0085,user_only,False,0,0,
+20,85,req-0085,naive,True,177,18,req-0248 req-0309 req-0281 req-0442 req-0332 req-0194 req-0370 req-0399 test_checkout_consistency FAILED req-0085 req-0363 req-0111 req-0116 req-0100 req-0252 req-0242 req-0224
+20,85,req-0085,bridge,True,69,6,req-0085 FAILED test_checkout_consistency req-0224 req-0242 req-0252
+20,85,req-0085,oracle,True,9,1,req-0085
+20,73,req-0073,user_only,False,0,0,
+20,73,req-0073,naive,True,177,18,req-0336 req-0238 req-0437 req-0124 req-0152 req-0359 req-0311 req-0256 test_checkout_consistency FAILED req-0073 req-0307 req-0070 req-0074 req-0069 req-0121 req-0416 req-0221
+20,73,req-0073,bridge,True,69,6,req-0073 FAILED test_checkout_consistency req-0221 req-0416 req-0121
+20,73,req-0073,oracle,True,9,1,req-0073
+20,166,req-0166,user_only,False,0,0,
+20,166,req-0166,naive,True,177,18,req-0293 req-0316 req-0284 req-0126 req-0361 req-0314 req-0121 req-0218 test_checkout_consistency FAILED req-0166 req-0364 req-0214 req-0133 req-0252 req-0366 req-0429 req-0204
+20,166,req-0166,bridge,True,69,6,req-0166 FAILED test_checkout_consistency req-0204 req-0429 req-0366
+20,166,req-0166,oracle,True,9,1,req-0166
+20,198,req-0198,user_only,False,0,0,
+20,198,req-0198,naive,True,177,18,req-0354 req-0223 req-0310 req-0311 req-0323 req-0301 req-0413 req-0339 test_checkout_consistency FAILED req-0198 req-0204 req-0294 req-0058 req-0239 req-0220 req-0395 req-0106
+20,198,req-0198,bridge,True,69,6,req-0198 FAILED test_checkout_consistency req-0106 req-0395 req-0220
+20,198,req-0198,oracle,True,9,1,req-0198
+20,393,req-0393,user_only,False,0,0,
+20,393,req-0393,naive,True,177,18,req-0263 req-0348 req-0207 req-0422 req-0403 req-0372 req-0063 req-0355 test_checkout_consistency FAILED req-0393 req-0292 req-0185 req-0385 req-0448 req-0346 req-0345 req-0166
+20,393,req-0393,bridge,True,69,6,req-0393 FAILED test_checkout_consistency req-0166 req-0345 req-0346
+20,393,req-0393,oracle,True,9,1,req-0393
+20,430,req-0430,user_only,False,0,0,
+20,430,req-0430,naive,True,177,18,req-0419 req-0076 req-0348 req-0295 req-0137 req-0318 req-0372 req-0367 test_checkout_consistency FAILED req-0430 req-0447 req-0244 req-0125 req-0398 req-0174 req-0066 req-0343
+20,430,req-0430,bridge,True,69,6,req-0430 FAILED test_checkout_consistency req-0343 req-0066 req-0174
+20,430,req-0430,oracle,True,9,1,req-0430
+20,101,req-0101,user_only,False,0,0,
+20,101,req-0101,naive,True,177,18,req-0409 req-0107 req-0148 req-0059 req-0276 req-0211 req-0265 req-0128 test_checkout_consistency FAILED req-0101 req-0262 req-0404 req-0155 req-0261 req-0307 req-0447 req-0364
+20,101,req-0101,bridge,True,69,6,req-0101 FAILED test_checkout_consistency req-0364 req-0447 req-0307
+20,101,req-0101,oracle,True,9,1,req-0101
+20,404,req-0404,user_only,False,0,0,
+20,404,req-0404,naive,True,177,18,req-0291 req-0427 req-0423 req-0081 req-0412 req-0120 req-0315 req-0156 test_checkout_consistency FAILED req-0404 req-0337 req-0216 req-0389 req-0294 req-0319 req-0242 req-0210
+20,404,req-0404,bridge,True,69,6,req-0404 FAILED test_checkout_consistency req-0210 req-0242 req-0319
+20,404,req-0404,oracle,True,9,1,req-0404
+20,410,req-0410,user_only,False,0,0,
+20,410,req-0410,naive,True,177,18,req-0138 req-0285 req-0322 req-0225 req-0329 req-0231 req-0396 req-0446 test_checkout_consistency FAILED req-0410 req-0420 req-0398 req-0379 req-0404 req-0185 req-0362 req-0297
+20,410,req-0410,bridge,True,69,6,req-0410 FAILED test_checkout_consistency req-0297 req-0362 req-0185
+20,410,req-0410,oracle,True,9,1,req-0410
+20,282,req-0282,user_only,False,0,0,
+20,282,req-0282,naive,True,177,18,req-0148 req-0176 req-0192 req-0336 req-0202 req-0165 req-0445 req-0197 test_checkout_consistency FAILED req-0282 req-0411 req-0156 req-0404 req-0301 req-0212 req-0296 req-0228
+20,282,req-0282,bridge,True,69,6,req-0282 FAILED test_checkout_consistency req-0228 req-0296 req-0212
+20,282,req-0282,oracle,True,9,1,req-0282
+20,375,req-0375,user_only,False,0,0,
+20,375,req-0375,naive,True,177,18,req-0336 req-0420 req-0190 req-0197 req-0112 req-0343 req-0397 req-0328 test_checkout_consistency FAILED req-0375 req-0244 req-0252 req-0226 req-0446 req-0124 req-0198 req-0071
+20,375,req-0375,bridge,True,69,6,req-0375 FAILED test_checkout_consistency req-0071 req-0198 req-0124
+20,375,req-0375,oracle,True,9,1,req-0375
+20,236,req-0236,user_only,False,0,0,
+20,236,req-0236,naive,True,177,18,req-0197 req-0416 req-0090 req-0227 req-0277 req-0386 req-0181 req-0433 test_checkout_consistency FAILED req-0236 req-0296 req-0159 req-0153 req-0326 req-0188 req-0338 req-0407
+20,236,req-0236,bridge,True,69,6,req-0236 FAILED test_checkout_consistency req-0407 req-0338 req-0188
+20,236,req-0236,oracle,True,9,1,req-0236
+20,133,req-0133,user_only,False,0,0,
+20,133,req-0133,naive,True,177,18,req-0190 req-0120 req-0105 req-0366 req-0430 req-0351 req-0173 req-0175 test_checkout_consistency FAILED req-0133 req-0075 req-0393 req-0322 req-0166 req-0377 req-0170 req-0076
+20,133,req-0133,bridge,True,69,6,req-0133 FAILED test_checkout_consistency req-0076 req-0170 req-0377
+20,133,req-0133,oracle,True,9,1,req-0133
+20,239,req-0239,user_only,False,0,0,
+20,239,req-0239,naive,True,177,18,req-0101 req-0262 req-0219 req-0418 req-0292 req-0399 req-0445 req-0120 test_checkout_consistency FAILED req-0239 req-0052 req-0332 req-0130 req-0259 req-0385 req-0294 req-0295
+20,239,req-0239,bridge,True,69,6,req-0239 FAILED test_checkout_consistency req-0295 req-0294 req-0385
+20,239,req-0239,oracle,True,9,1,req-0239
+20,231,req-0231,user_only,False,0,0,
+20,231,req-0231,naive,True,177,18,req-0384 req-0152 req-0438 req-0197 req-0214 req-0196 req-0381 req-0080 test_checkout_consistency FAILED req-0231 req-0444 req-0095 req-0344 req-0168 req-0324 req-0429 req-0421
+20,231,req-0231,bridge,True,69,6,req-0231 FAILED test_checkout_consistency req-0421 req-0429 req-0324
+20,231,req-0231,oracle,True,9,1,req-0231
+20,157,req-0157,user_only,False,0,0,
+20,157,req-0157,naive,True,177,18,req-0069 req-0139 req-0264 req-0140 req-0068 req-0254 req-0304 req-0145 test_checkout_consistency FAILED req-0157 req-0434 req-0199 req-0054 req-0203 req-0341 req-0359 req-0104
+20,157,req-0157,bridge,True,69,6,req-0157 FAILED test_checkout_consistency req-0104 req-0359 req-0341
+20,157,req-0157,oracle,True,9,1,req-0157
+20,186,req-0186,user_only,False,0,0,
+20,186,req-0186,naive,True,177,18,req-0222 req-0196 req-0283 req-0379 req-0329 req-0319 req-0303 req-0118 test_checkout_consistency FAILED req-0186 req-0309 req-0290 req-0190 req-0148 req-0107 req-0220 req-0133
+20,186,req-0186,bridge,True,69,6,req-0186 FAILED test_checkout_consistency req-0133 req-0220 req-0107
+20,186,req-0186,oracle,True,9,1,req-0186
+20,86,req-0086,user_only,False,0,0,
+20,86,req-0086,naive,True,177,18,req-0425 req-0285 req-0382 req-0182 req-0418 req-0146 req-0057 req-0428 test_checkout_consistency FAILED req-0086 req-0223 req-0202 req-0341 req-0396 req-0438 req-0149 req-0140
+20,86,req-0086,bridge,True,69,6,req-0086 FAILED test_checkout_consistency req-0140 req-0149 req-0438
+20,86,req-0086,oracle,True,9,1,req-0086
+20,361,req-0361,user_only,False,0,0,
+20,361,req-0361,naive,True,177,18,req-0363 req-0378 req-0257 req-0268 req-0313 req-0217 req-0094 req-0255 test_checkout_consistency FAILED req-0361 req-0393 req-0098 req-0144 req-0121 req-0294 req-0215 req-0177
+20,361,req-0361,bridge,True,69,6,req-0361 FAILED test_checkout_consistency req-0177 req-0215 req-0294
+20,361,req-0361,oracle,True,9,1,req-0361
+20,137,req-0137,user_only,False,0,0,
+20,137,req-0137,naive,True,177,18,req-0053 req-0184 req-0247 req-0171 req-0279 req-0436 req-0187 req-0219 test_checkout_consistency FAILED req-0137 req-0205 req-0349 req-0421 req-0344 req-0055 req-0385 req-0235
+20,137,req-0137,bridge,True,69,6,req-0137 FAILED test_checkout_consistency req-0235 req-0385 req-0055
+20,137,req-0137,oracle,True,9,1,req-0137
+20,323,req-0323,user_only,False,0,0,
+20,323,req-0323,naive,True,177,18,req-0405 req-0170 req-0081 req-0392 req-0110 req-0288 req-0207 req-0131 test_checkout_consistency FAILED req-0323 req-0257 req-0402 req-0307 req-0411 req-0445 req-0209 req-0404
+20,323,req-0323,bridge,True,69,6,req-0323 FAILED test_checkout_consistency req-0404 req-0209 req-0445
+20,323,req-0323,oracle,True,9,1,req-0323
+20,445,req-0445,user_only,False,0,0,
+20,445,req-0445,naive,True,177,18,req-0110 req-0377 req-0201 req-0238 req-0364 req-0163 req-0162 req-0118 test_checkout_consistency FAILED req-0445 req-0294 req-0128 req-0282 req-0432 req-0360 req-0241 req-0262
+20,445,req-0445,bridge,True,69,6,req-0445 FAILED test_checkout_consistency req-0262 req-0241 req-0360
+20,445,req-0445,oracle,True,9,1,req-0445
+20,373,req-0373,user_only,False,0,0,
+20,373,req-0373,naive,True,177,18,req-0410 req-0331 req-0291 req-0438 req-0325 req-0391 req-0161 req-0441 test_checkout_consistency FAILED req-0373 req-0176 req-0399 req-0437 req-0355 req-0091 req-0319 req-0278
+20,373,req-0373,bridge,True,69,6,req-0373 FAILED test_checkout_consistency req-0278 req-0319 req-0091
+20,373,req-0373,oracle,True,9,1,req-0373
+20,286,req-0286,user_only,False,0,0,
+20,286,req-0286,naive,True,177,18,req-0321 req-0411 req-0235 req-0089 req-0339 req-0107 req-0081 req-0331 test_checkout_consistency FAILED req-0286 req-0309 req-0153 req-0344 req-0325 req-0126 req-0134 req-0217
+20,286,req-0286,bridge,True,69,6,req-0286 FAILED test_checkout_consistency req-0217 req-0134 req-0126
+20,286,req-0286,oracle,True,9,1,req-0286
+20,378,req-0378,user_only,False,0,0,
+20,378,req-0378,naive,True,177,18,req-0316 req-0276 req-0109 req-0399 req-0155 req-0418 req-0348 req-0300 test_checkout_consistency FAILED req-0378 req-0096 req-0311 req-0278 req-0078 req-0282 req-0117 req-0312
+20,378,req-0378,bridge,True,69,6,req-0378 FAILED test_checkout_consistency req-0312 req-0117 req-0282
+20,378,req-0378,oracle,True,9,1,req-0378
+20,188,req-0188,user_only,False,0,0,
+20,188,req-0188,naive,True,177,18,req-0263 req-0284 req-0339 req-0079 req-0337 req-0287 req-0395 req-0208 test_checkout_consistency FAILED req-0188 req-0421 req-0061 req-0253 req-0180 req-0051 req-0432 req-0161
+20,188,req-0188,bridge,True,69,6,req-0188 FAILED test_checkout_consistency req-0161 req-0432 req-0051
+20,188,req-0188,oracle,True,9,1,req-0188
+20,335,req-0335,user_only,False,0,0,
+20,335,req-0335,naive,True,177,18,req-0347 req-0087 req-0073 req-0266 req-0226 req-0409 req-0082 req-0327 test_checkout_consistency FAILED req-0335 req-0080 req-0085 req-0291 req-0066 req-0196 req-0259 req-0142
+20,335,req-0335,bridge,True,69,6,req-0335 FAILED test_checkout_consistency req-0142 req-0259 req-0196
+20,335,req-0335,oracle,True,9,1,req-0335
+20,419,req-0419,user_only,False,0,0,
+20,419,req-0419,naive,True,177,18,req-0444 req-0119 req-0443 req-0378 req-0424 req-0380 req-0265 req-0241 test_checkout_consistency FAILED req-0419 req-0245 req-0279 req-0243 req-0242 req-0091 req-0399 req-0388
+20,419,req-0419,bridge,True,69,6,req-0419 FAILED test_checkout_consistency req-0388 req-0399 req-0091
+20,419,req-0419,oracle,True,9,1,req-0419
+20,216,req-0216,user_only,False,0,0,
+20,216,req-0216,naive,True,177,18,req-0327 req-0118 req-0385 req-0229 req-0110 req-0141 req-0326 req-0252 test_checkout_consistency FAILED req-0216 req-0321 req-0115 req-0423 req-0164 req-0051 req-0438 req-0061
+20,216,req-0216,bridge,True,69,6,req-0216 FAILED test_checkout_consistency req-0061 req-0438 req-0051
+20,216,req-0216,oracle,True,9,1,req-0216
+20,78,req-0078,user_only,False,0,0,
+20,78,req-0078,naive,True,177,18,req-0203 req-0288 req-0395 req-0419 req-0329 req-0268 req-0323 req-0245 test_checkout_consistency FAILED req-0078 req-0168 req-0177 req-0286 req-0228 req-0130 req-0192 req-0147
+20,78,req-0078,bridge,True,69,6,req-0078 FAILED test_checkout_consistency req-0147 req-0192 req-0130
+20,78,req-0078,oracle,True,9,1,req-0078
+20,167,req-0167,user_only,False,0,0,
+20,167,req-0167,naive,True,177,18,req-0422 req-0442 req-0107 req-0066 req-0389 req-0265 req-0365 req-0443 test_checkout_consistency FAILED req-0167 req-0058 req-0174 req-0155 req-0084 req-0101 req-0355 req-0067
+20,167,req-0167,bridge,True,69,6,req-0167 FAILED test_checkout_consistency req-0067 req-0355 req-0101
+20,167,req-0167,oracle,True,9,1,req-0167
+20,434,req-0434,user_only,False,0,0,
+20,434,req-0434,naive,True,177,18,req-0278 req-0356 req-0394 req-0410 req-0074 req-0175 req-0429 req-0072 test_checkout_consistency FAILED req-0434 req-0255 req-0274 req-0169 req-0326 req-0161 req-0437 req-0448
+20,434,req-0434,bridge,True,69,6,req-0434 FAILED test_checkout_consistency req-0448 req-0437 req-0161
+20,434,req-0434,oracle,True,9,1,req-0434
+20,211,req-0211,user_only,False,0,0,
+20,211,req-0211,naive,True,177,18,req-0078 req-0121 req-0308 req-0198 req-0169 req-0425 req-0345 req-0214 test_checkout_consistency FAILED req-0211 req-0346 req-0357 req-0446 req-0395 req-0215 req-0171 req-0204
+20,211,req-0211,bridge,True,69,6,req-0211 FAILED test_checkout_consistency req-0204 req-0171 req-0215
+20,211,req-0211,oracle,True,9,1,req-0211
+20,255,req-0255,user_only,False,0,0,
+20,255,req-0255,naive,True,177,18,req-0123 req-0389 req-0317 req-0163 req-0262 req-0203 req-0190 req-0081 test_checkout_consistency FAILED req-0255 req-0336 req-0353 req-0427 req-0139 req-0371 req-0398 req-0269
+20,255,req-0255,bridge,True,69,6,req-0255 FAILED test_checkout_consistency req-0269 req-0398 req-0371
+20,255,req-0255,oracle,True,9,1,req-0255
+20,187,req-0187,user_only,False,0,0,
+20,187,req-0187,naive,True,177,18,req-0335 req-0304 req-0074 req-0227 req-0380 req-0394 req-0246 req-0319 test_checkout_consistency FAILED req-0187 req-0214 req-0407 req-0264 req-0260 req-0126 req-0204 req-0243
+20,187,req-0187,bridge,True,69,6,req-0187 FAILED test_checkout_consistency req-0243 req-0204 req-0126
+20,187,req-0187,oracle,True,9,1,req-0187
+30,377,req-0377,user_only,False,0,0,
+30,377,req-0377,naive,True,177,18,req-0144 req-0437 req-0325 req-0292 req-0173 req-0165 req-0203 req-0413 test_checkout_consistency FAILED req-0377 req-0123 req-0287 req-0079 req-0337 req-0261 req-0263 req-0335
+30,377,req-0377,bridge,True,69,6,req-0377 FAILED test_checkout_consistency req-0335 req-0263 req-0261
+30,377,req-0377,oracle,True,9,1,req-0377
+30,107,req-0107,user_only,False,0,0,
+30,107,req-0107,naive,True,177,18,req-0322 req-0119 req-0249 req-0175 req-0181 req-0155 req-0220 req-0382 test_checkout_consistency FAILED req-0107 req-0090 req-0281 req-0240 req-0097 req-0325 req-0421 req-0148
+30,107,req-0107,bridge,True,69,6,req-0107 FAILED test_checkout_consistency req-0148 req-0421 req-0325
+30,107,req-0107,oracle,True,9,1,req-0107
+30,62,req-0062,user_only,False,0,0,
+30,62,req-0062,naive,True,177,18,req-0077 req-0188 req-0244 req-0395 req-0360 req-0359 req-0071 req-0088 test_checkout_consistency FAILED req-0062 req-0147 req-0440 req-0351 req-0421 req-0394 req-0337 req-0162
+30,62,req-0062,bridge,True,69,6,req-0062 FAILED test_checkout_consistency req-0162 req-0337 req-0394
+30,62,req-0062,oracle,True,9,1,req-0062
+30,429,req-0429,user_only,False,0,0,
+30,429,req-0429,naive,True,177,18,req-0295 req-0156 req-0220 req-0205 req-0057 req-0158 req-0147 req-0430 test_checkout_consistency FAILED req-0429 req-0110 req-0433 req-0437 req-0174 req-0406 req-0359 req-0410
+30,429,req-0429,bridge,True,69,6,req-0429 FAILED test_checkout_consistency req-0410 req-0359 req-0406
+30,429,req-0429,oracle,True,9,1,req-0429
+30,190,req-0190,user_only,False,0,0,
+30,190,req-0190,naive,True,177,18,req-0154 req-0254 req-0172 req-0333 req-0215 req-0448 req-0195 req-0245 test_checkout_consistency FAILED req-0190 req-0289 req-0324 req-0383 req-0234 req-0208 req-0183 req-0235
+30,190,req-0190,bridge,True,69,6,req-0190 FAILED test_checkout_consistency req-0235 req-0183 req-0208
+30,190,req-0190,oracle,True,9,1,req-0190
+30,175,req-0175,user_only,False,0,0,
+30,175,req-0175,naive,True,177,18,req-0313 req-0305 req-0289 req-0100 req-0420 req-0291 req-0440 req-0214 test_checkout_consistency FAILED req-0175 req-0154 req-0240 req-0211 req-0262 req-0073 req-0339 req-0163
+30,175,req-0175,bridge,True,69,6,req-0175 FAILED test_checkout_consistency req-0163 req-0339 req-0073
+30,175,req-0175,oracle,True,9,1,req-0175
+30,164,req-0164,user_only,False,0,0,
+30,164,req-0164,naive,True,177,18,req-0430 req-0124 req-0058 req-0184 req-0334 req-0350 req-0347 req-0419 test_checkout_consistency FAILED req-0164 req-0264 req-0202 req-0128 req-0150 req-0219 req-0168 req-0245
+30,164,req-0164,bridge,True,69,6,req-0164 FAILED test_checkout_consistency req-0245 req-0168 req-0219
+30,164,req-0164,oracle,True,9,1,req-0164
+30,121,req-0121,user_only,False,0,0,
+30,121,req-0121,naive,True,177,18,req-0342 req-0176 req-0306 req-0332 req-0386 req-0401 req-0223 req-0182 test_checkout_consistency FAILED req-0121 req-0441 req-0301 req-0421 req-0379 req-0429 req-0302 req-0286
+30,121,req-0121,bridge,True,69,6,req-0121 FAILED test_checkout_consistency req-0286 req-0302 req-0429
+30,121,req-0121,oracle,True,9,1,req-0121
+30,427,req-0427,user_only,False,0,0,
+30,427,req-0427,naive,True,177,18,req-0136 req-0425 req-0230 req-0121 req-0418 req-0329 req-0300 req-0144 test_checkout_consistency FAILED req-0427 req-0327 req-0378 req-0080 req-0318 req-0067 req-0088 req-0392
+30,427,req-0427,bridge,True,69,6,req-0427 FAILED test_checkout_consistency req-0392 req-0088 req-0067
+30,427,req-0427,oracle,True,9,1,req-0427
+30,102,req-0102,user_only,False,0,0,
+30,102,req-0102,naive,True,177,18,req-0074 req-0442 req-0053 req-0262 req-0121 req-0373 req-0169 req-0084 test_checkout_consistency FAILED req-0102 req-0413 req-0128 req-0054 req-0162 req-0309 req-0284 req-0242
+30,102,req-0102,bridge,True,69,6,req-0102 FAILED test_checkout_consistency req-0242 req-0284 req-0309
+30,102,req-0102,oracle,True,9,1,req-0102
+30,396,req-0396,user_only,False,0,0,
+30,396,req-0396,naive,True,177,18,req-0080 req-0366 req-0376 req-0391 req-0365 req-0297 req-0387 req-0299 test_checkout_consistency FAILED req-0396 req-0058 req-0053 req-0322 req-0332 req-0260 req-0056 req-0321
+30,396,req-0396,bridge,True,69,6,req-0396 FAILED test_checkout_consistency req-0321 req-0056 req-0260
+30,396,req-0396,oracle,True,9,1,req-0396
+30,447,req-0447,user_only,False,0,0,
+30,447,req-0447,naive,True,177,18,req-0419 req-0190 req-0324 req-0196 req-0058 req-0307 req-0407 req-0395 test_checkout_consistency FAILED req-0447 req-0270 req-0141 req-0104 req-0099 req-0318 req-0126 req-0173
+30,447,req-0447,bridge,True,69,6,req-0447 FAILED test_checkout_consistency req-0173 req-0126 req-0318
+30,447,req-0447,oracle,True,9,1,req-0447
+30,329,req-0329,user_only,False,0,0,
+30,329,req-0329,naive,True,177,18,req-0148 req-0368 req-0319 req-0179 req-0231 req-0186 req-0253 req-0090 test_checkout_consistency FAILED req-0329 req-0241 req-0257 req-0285 req-0340 req-0174 req-0407 req-0165
+30,329,req-0329,bridge,True,69,6,req-0329 FAILED test_checkout_consistency req-0165 req-0407 req-0174
+30,329,req-0329,oracle,True,9,1,req-0329
+30,94,req-0094,user_only,False,0,0,
+30,94,req-0094,naive,True,177,18,req-0204 req-0401 req-0091 req-0385 req-0383 req-0439 req-0066 req-0098 test_checkout_consistency FAILED req-0094 req-0258 req-0245 req-0244 req-0333 req-0294 req-0078 req-0377
+30,94,req-0094,bridge,True,69,6,req-0094 FAILED test_checkout_consistency req-0377 req-0078 req-0294
+30,94,req-0094,oracle,True,9,1,req-0094
+30,352,req-0352,user_only,False,0,0,
+30,352,req-0352,naive,True,177,18,req-0054 req-0410 req-0137 req-0092 req-0305 req-0272 req-0381 req-0219 test_checkout_consistency FAILED req-0352 req-0339 req-0098 req-0320 req-0071 req-0167 req-0158 req-0405
+30,352,req-0352,bridge,True,69,6,req-0352 FAILED test_checkout_consistency req-0405 req-0158 req-0167
+30,352,req-0352,oracle,True,9,1,req-0352
+30,266,req-0266,user_only,False,0,0,
+30,266,req-0266,naive,True,177,18,req-0341 req-0294 req-0188 req-0073 req-0088 req-0401 req-0193 req-0329 test_checkout_consistency FAILED req-0266 req-0339 req-0387 req-0066 req-0141 req-0211 req-0058 req-0156
+30,266,req-0266,bridge,True,69,6,req-0266 FAILED test_checkout_consistency req-0156 req-0058 req-0211
+30,266,req-0266,oracle,True,9,1,req-0266
+30,66,req-0066,user_only,False,0,0,
+30,66,req-0066,naive,True,177,18,req-0351 req-0124 req-0436 req-0415 req-0254 req-0090 req-0204 req-0134 test_checkout_consistency FAILED req-0066 req-0339 req-0174 req-0341 req-0250 req-0397 req-0327 req-0220
+30,66,req-0066,bridge,True,69,6,req-0066 FAILED test_checkout_consistency req-0220 req-0327 req-0397
+30,66,req-0066,oracle,True,9,1,req-0066
+30,65,req-0065,user_only,False,0,0,
+30,65,req-0065,naive,True,177,18,req-0247 req-0437 req-0429 req-0122 req-0403 req-0421 req-0091 req-0307 test_checkout_consistency FAILED req-0065 req-0432 req-0228 req-0078 req-0101 req-0274 req-0169 req-0089
+30,65,req-0065,bridge,True,69,6,req-0065 FAILED test_checkout_consistency req-0089 req-0169 req-0274
+30,65,req-0065,oracle,True,9,1,req-0065
+30,97,req-0097,user_only,False,0,0,
+30,97,req-0097,naive,True,177,18,req-0225 req-0360 req-0444 req-0365 req-0355 req-0254 req-0447 req-0218 test_checkout_consistency FAILED req-0097 req-0065 req-0375 req-0190 req-0281 req-0302 req-0167 req-0233
+30,97,req-0097,bridge,True,69,6,req-0097 FAILED test_checkout_consistency req-0233 req-0167 req-0302
+30,97,req-0097,oracle,True,9,1,req-0097
+30,161,req-0161,user_only,False,0,0,
+30,161,req-0161,naive,True,177,18,req-0334 req-0243 req-0272 req-0145 req-0399 req-0350 req-0389 req-0245 test_checkout_consistency FAILED req-0161 req-0093 req-0446 req-0367 req-0202 req-0177 req-0416 req-0087
+30,161,req-0161,bridge,True,69,6,req-0161 FAILED test_checkout_consistency req-0087 req-0416 req-0177
+30,161,req-0161,oracle,True,9,1,req-0161
+30,169,req-0169,user_only,False,0,0,
+30,169,req-0169,naive,True,177,18,req-0092 req-0188 req-0128 req-0245 req-0415 req-0375 req-0429 req-0250 test_checkout_consistency FAILED req-0169 req-0213 req-0235 req-0104 req-0096 req-0052 req-0208 req-0278
+30,169,req-0169,bridge,True,69,6,req-0169 FAILED test_checkout_consistency req-0278 req-0208 req-0052
+30,169,req-0169,oracle,True,9,1,req-0169
+30,308,req-0308,user_only,False,0,0,
+30,308,req-0308,naive,True,177,18,req-0234 req-0440 req-0188 req-0102 req-0117 req-0094 req-0145 req-0270 test_checkout_consistency FAILED req-0308 req-0279 req-0336 req-0335 req-0313 req-0258 req-0063 req-0095
+30,308,req-0308,bridge,True,69,6,req-0308 FAILED test_checkout_consistency req-0095 req-0063 req-0258
+30,308,req-0308,oracle,True,9,1,req-0308
+30,358,req-0358,user_only,False,0,0,
+30,358,req-0358,naive,True,177,18,req-0231 req-0333 req-0097 req-0355 req-0356 req-0216 req-0247 req-0056 test_checkout_consistency FAILED req-0358 req-0199 req-0261 req-0248 req-0449 req-0093 req-0422 req-0336
+30,358,req-0358,bridge,True,69,6,req-0358 FAILED test_checkout_consistency req-0336 req-0422 req-0093
+30,358,req-0358,oracle,True,9,1,req-0358
+30,63,req-0063,user_only,False,0,0,
+30,63,req-0063,naive,True,177,18,req-0175 req-0343 req-0317 req-0137 req-0401 req-0245 req-0122 req-0188 test_checkout_consistency FAILED req-0063 req-0205 req-0303 req-0125 req-0083 req-0136 req-0273 req-0192
+30,63,req-0063,bridge,True,69,6,req-0063 FAILED test_checkout_consistency req-0192 req-0273 req-0136
+30,63,req-0063,oracle,True,9,1,req-0063
+30,337,req-0337,user_only,False,0,0,
+30,337,req-0337,naive,True,177,18,req-0265 req-0203 req-0297 req-0089 req-0234 req-0178 req-0176 req-0420 test_checkout_consistency FAILED req-0337 req-0371 req-0303 req-0355 req-0366 req-0150 req-0284 req-0104
+30,337,req-0337,bridge,True,69,6,req-0337 FAILED test_checkout_consistency req-0104 req-0284 req-0150
+30,337,req-0337,oracle,True,9,1,req-0337
+30,151,req-0151,user_only,False,0,0,
+30,151,req-0151,naive,True,177,18,req-0119 req-0206 req-0053 req-0253 req-0221 req-0368 req-0245 req-0219 test_checkout_consistency FAILED req-0151 req-0276 req-0222 req-0271 req-0384 req-0355 req-0204 req-0215
+30,151,req-0151,bridge,True,69,6,req-0151 FAILED test_checkout_consistency req-0215 req-0204 req-0355
+30,151,req-0151,oracle,True,9,1,req-0151
+30,416,req-0416,user_only,False,0,0,
+30,416,req-0416,naive,True,177,18,req-0358 req-0405 req-0152 req-0295 req-0210 req-0140 req-0253 req-0213 test_checkout_consistency FAILED req-0416 req-0199 req-0427 req-0374 req-0301 req-0344 req-0174 req-0216
+30,416,req-0416,bridge,True,69,6,req-0416 FAILED test_checkout_consistency req-0216 req-0174 req-0344
+30,416,req-0416,oracle,True,9,1,req-0416
+30,382,req-0382,user_only,False,0,0,
+30,382,req-0382,naive,True,177,18,req-0242 req-0193 req-0251 req-0236 req-0108 req-0338 req-0152 req-0353 test_checkout_consistency FAILED req-0382 req-0329 req-0142 req-0400 req-0444 req-0331 req-0063 req-0423
+30,382,req-0382,bridge,True,69,6,req-0382 FAILED test_checkout_consistency req-0423 req-0063 req-0331
+30,382,req-0382,oracle,True,9,1,req-0382
+30,409,req-0409,user_only,False,0,0,
+30,409,req-0409,naive,True,177,18,req-0286 req-0413 req-0157 req-0274 req-0199 req-0404 req-0085 req-0259 test_checkout_consistency FAILED req-0409 req-0394 req-0305 req-0121 req-0374 req-0205 req-0173 req-0179
+30,409,req-0409,bridge,True,69,6,req-0409 FAILED test_checkout_consistency req-0179 req-0173 req-0205
+30,409,req-0409,oracle,True,9,1,req-0409
+30,438,req-0438,user_only,False,0,0,
+30,438,req-0438,naive,True,177,18,req-0387 req-0128 req-0416 req-0266 req-0243 req-0087 req-0279 req-0356 test_checkout_consistency FAILED req-0438 req-0295 req-0348 req-0255 req-0323 req-0309 req-0404 req-0264
+30,438,req-0438,bridge,True,69,6,req-0438 FAILED test_checkout_consistency req-0264 req-0404 req-0309
+30,438,req-0438,oracle,True,9,1,req-0438
+30,264,req-0264,user_only,False,0,0,
+30,264,req-0264,naive,True,177,18,req-0329 req-0068 req-0234 req-0410 req-0325 req-0355 req-0377 req-0093 test_checkout_consistency FAILED req-0264 req-0105 req-0444 req-0177 req-0387 req-0391 req-0231 req-0135
+30,264,req-0264,bridge,True,69,6,req-0264 FAILED test_checkout_consistency req-0135 req-0231 req-0391
+30,264,req-0264,oracle,True,9,1,req-0264
+30,162,req-0162,user_only,False,0,0,
+30,162,req-0162,naive,True,177,18,req-0382 req-0364 req-0072 req-0339 req-0381 req-0397 req-0255 req-0436 test_checkout_consistency FAILED req-0162 req-0220 req-0271 req-0104 req-0055 req-0100 req-0183 req-0164
+30,162,req-0162,bridge,True,69,6,req-0162 FAILED test_checkout_consistency req-0164 req-0183 req-0100
+30,162,req-0162,oracle,True,9,1,req-0162
+30,279,req-0279,user_only,False,0,0,
+30,279,req-0279,naive,True,177,18,req-0312 req-0433 req-0316 req-0336 req-0348 req-0403 req-0345 req-0163 test_checkout_consistency FAILED req-0279 req-0278 req-0241 req-0250 req-0288 req-0446 req-0398 req-0352
+30,279,req-0279,bridge,True,69,6,req-0279 FAILED test_checkout_consistency req-0352 req-0398 req-0446
+30,279,req-0279,oracle,True,9,1,req-0279
+30,351,req-0351,user_only,False,0,0,
+30,351,req-0351,naive,True,177,18,req-0404 req-0306 req-0127 req-0226 req-0062 req-0297 req-0103 req-0201 test_checkout_consistency FAILED req-0351 req-0262 req-0093 req-0109 req-0424 req-0122 req-0228 req-0209
+30,351,req-0351,bridge,True,69,6,req-0351 FAILED test_checkout_consistency req-0209 req-0228 req-0122
+30,351,req-0351,oracle,True,9,1,req-0351
+30,192,req-0192,user_only,False,0,0,
+30,192,req-0192,naive,True,177,18,req-0226 req-0284 req-0155 req-0317 req-0298 req-0229 req-0294 req-0099 test_checkout_consistency FAILED req-0192 req-0275 req-0420 req-0407 req-0282 req-0214 req-0084 req-0204
+30,192,req-0192,bridge,True,69,6,req-0192 FAILED test_checkout_consistency req-0204 req-0084 req-0214
+30,192,req-0192,oracle,True,9,1,req-0192
+30,53,req-0053,user_only,False,0,0,
+30,53,req-0053,naive,True,177,18,req-0073 req-0414 req-0109 req-0062 req-0226 req-0382 req-0106 req-0397 test_checkout_consistency FAILED req-0053 req-0135 req-0430 req-0175 req-0315 req-0140 req-0333 req-0132
+30,53,req-0053,bridge,True,69,6,req-0053 FAILED test_checkout_consistency req-0132 req-0333 req-0140
+30,53,req-0053,oracle,True,9,1,req-0053
+30,131,req-0131,user_only,False,0,0,
+30,131,req-0131,naive,True,177,18,req-0220 req-0337 req-0269 req-0287 req-0169 req-0258 req-0373 req-0145 test_checkout_consistency FAILED req-0131 req-0146 req-0378 req-0387 req-0272 req-0253 req-0064 req-0428
+30,131,req-0131,bridge,True,69,6,req-0131 FAILED test_checkout_consistency req-0428 req-0064 req-0253
+30,131,req-0131,oracle,True,9,1,req-0131
+30,407,req-0407,user_only,False,0,0,
+30,407,req-0407,naive,True,177,18,req-0364 req-0151 req-0280 req-0353 req-0269 req-0249 req-0052 req-0411 test_checkout_consistency FAILED req-0407 req-0159 req-0155 req-0192 req-0436 req-0082 req-0345 req-0102
+30,407,req-0407,bridge,True,69,6,req-0407 FAILED test_checkout_consistency req-0102 req-0345 req-0082
+30,407,req-0407,oracle,True,9,1,req-0407
+30,435,req-0435,user_only,False,0,0,
+30,435,req-0435,naive,True,177,18,req-0324 req-0145 req-0237 req-0216 req-0150 req-0284 req-0108 req-0184 test_checkout_consistency FAILED req-0435 req-0393 req-0300 req-0320 req-0377 req-0210 req-0355 req-0248
+30,435,req-0435,bridge,True,69,6,req-0435 FAILED test_checkout_consistency req-0248 req-0355 req-0210
+30,435,req-0435,oracle,True,9,1,req-0435
+30,224,req-0224,user_only,False,0,0,
+30,224,req-0224,naive,True,177,18,req-0363 req-0251 req-0351 req-0108 req-0229 req-0231 req-0285 req-0367 test_checkout_consistency FAILED req-0224 req-0138 req-0395 req-0412 req-0202 req-0365 req-0353 req-0093
+30,224,req-0224,bridge,True,69,6,req-0224 FAILED test_checkout_consistency req-0093 req-0353 req-0365
+30,224,req-0224,oracle,True,9,1,req-0224
+30,424,req-0424,user_only,False,0,0,
+30,424,req-0424,naive,True,177,18,req-0394 req-0118 req-0210 req-0110 req-0172 req-0206 req-0109 req-0143 test_checkout_consistency FAILED req-0424 req-0241 req-0405 req-0122 req-0311 req-0248 req-0264 req-0355
+30,424,req-0424,bridge,True,69,6,req-0424 FAILED test_checkout_consistency req-0355 req-0264 req-0248
+30,424,req-0424,oracle,True,9,1,req-0424
+30,129,req-0129,user_only,False,0,0,
+30,129,req-0129,naive,True,177,18,req-0120 req-0345 req-0247 req-0267 req-0146 req-0300 req-0376 req-0326 test_checkout_consistency FAILED req-0129 req-0406 req-0381 req-0139 req-0335 req-0136 req-0301 req-0198
+30,129,req-0129,bridge,True,69,6,req-0129 FAILED test_checkout_consistency req-0198 req-0301 req-0136
+30,129,req-0129,oracle,True,9,1,req-0129
+30,160,req-0160,user_only,False,0,0,
+30,160,req-0160,naive,True,177,18,req-0121 req-0145 req-0212 req-0281 req-0368 req-0077 req-0234 req-0054 test_checkout_consistency FAILED req-0160 req-0299 req-0119 req-0149 req-0247 req-0338 req-0309 req-0385
+30,160,req-0160,bridge,True,69,6,req-0160 FAILED test_checkout_consistency req-0385 req-0309 req-0338
+30,160,req-0160,oracle,True,9,1,req-0160
+30,222,req-0222,user_only,False,0,0,
+30,222,req-0222,naive,True,177,18,req-0304 req-0260 req-0401 req-0302 req-0263 req-0414 req-0278 req-0301 test_checkout_consistency FAILED req-0222 req-0135 req-0092 req-0340 req-0065 req-0440 req-0162 req-0199
+30,222,req-0222,bridge,True,69,6,req-0222 FAILED test_checkout_consistency req-0199 req-0162 req-0440
+30,222,req-0222,oracle,True,9,1,req-0222
+30,441,req-0441,user_only,False,0,0,
+30,441,req-0441,naive,True,177,18,req-0066 req-0190 req-0165 req-0325 req-0197 req-0136 req-0450 req-0284 test_checkout_consistency FAILED req-0441 req-0339 req-0430 req-0446 req-0443 req-0303 req-0331 req-0311
+30,441,req-0441,bridge,True,69,6,req-0441 FAILED test_checkout_consistency req-0311 req-0331 req-0303
+30,441,req-0441,oracle,True,9,1,req-0441
+30,432,req-0432,user_only,False,0,0,
+30,432,req-0432,naive,True,177,18,req-0107 req-0343 req-0108 req-0187 req-0447 req-0328 req-0237 req-0327 test_checkout_consistency FAILED req-0432 req-0438 req-0071 req-0440 req-0418 req-0275 req-0329 req-0161
+30,432,req-0432,bridge,True,69,6,req-0432 FAILED test_checkout_consistency req-0161 req-0329 req-0275
+30,432,req-0432,oracle,True,9,1,req-0432
+30,244,req-0244,user_only,False,0,0,
+30,244,req-0244,naive,True,177,18,req-0268 req-0102 req-0427 req-0385 req-0435 req-0176 req-0202 req-0066 test_checkout_consistency FAILED req-0244 req-0281 req-0184 req-0228 req-0094 req-0275 req-0110 req-0448
+30,244,req-0244,bridge,True,69,6,req-0244 FAILED test_checkout_consistency req-0448 req-0110 req-0275
+30,244,req-0244,oracle,True,9,1,req-0244
+30,99,req-0099,user_only,False,0,0,
+30,99,req-0099,naive,True,177,18,req-0172 req-0158 req-0428 req-0352 req-0403 req-0230 req-0414 req-0363 test_checkout_consistency FAILED req-0099 req-0374 req-0270 req-0135 req-0366 req-0122 req-0156 req-0080
+30,99,req-0099,bridge,True,69,6,req-0099 FAILED test_checkout_consistency req-0080 req-0156 req-0122
+30,99,req-0099,oracle,True,9,1,req-0099
+30,233,req-0233,user_only,False,0,0,
+30,233,req-0233,naive,True,177,18,req-0342 req-0229 req-0323 req-0193 req-0356 req-0326 req-0136 req-0215 test_checkout_consistency FAILED req-0233 req-0411 req-0199 req-0198 req-0344 req-0186 req-0314 req-0398
+30,233,req-0233,bridge,True,69,6,req-0233 FAILED test_checkout_consistency req-0398 req-0314 req-0186
+30,233,req-0233,oracle,True,9,1,req-0233
+30,226,req-0226,user_only,False,0,0,
+30,226,req-0226,naive,True,177,18,req-0098 req-0119 req-0435 req-0261 req-0080 req-0191 req-0386 req-0114 test_checkout_consistency FAILED req-0226 req-0410 req-0117 req-0177 req-0124 req-0415 req-0214 req-0176
+30,226,req-0226,bridge,True,69,6,req-0226 FAILED test_checkout_consistency req-0176 req-0214 req-0415
+30,226,req-0226,oracle,True,9,1,req-0226
+30,359,req-0359,user_only,False,0,0,
+30,359,req-0359,naive,True,177,18,req-0440 req-0397 req-0251 req-0300 req-0122 req-0345 req-0374 req-0187 test_checkout_consistency FAILED req-0359 req-0372 req-0262 req-0242 req-0281 req-0088 req-0375 req-0444
+30,359,req-0359,bridge,True,69,6,req-0359 FAILED test_checkout_consistency req-0444 req-0375 req-0088
+30,359,req-0359,oracle,True,9,1,req-0359
+30,185,req-0185,user_only,False,0,0,
+30,185,req-0185,naive,True,177,18,req-0097 req-0257 req-0314 req-0434 req-0193 req-0406 req-0239 req-0283 test_checkout_consistency FAILED req-0185 req-0300 req-0218 req-0348 req-0051 req-0447 req-0426 req-0425
+30,185,req-0185,bridge,True,69,6,req-0185 FAILED test_checkout_consistency req-0425 req-0426 req-0447
+30,185,req-0185,oracle,True,9,1,req-0185
+30,72,req-0072,user_only,False,0,0,
+30,72,req-0072,naive,True,177,18,req-0285 req-0376 req-0391 req-0408 req-0234 req-0083 req-0324 req-0254 test_checkout_consistency FAILED req-0072 req-0162 req-0270 req-0159 req-0304 req-0188 req-0216 req-0196
+30,72,req-0072,bridge,True,69,6,req-0072 FAILED test_checkout_consistency req-0196 req-0216 req-0188
+30,72,req-0072,oracle,True,9,1,req-0072
+30,285,req-0285,user_only,False,0,0,
+30,285,req-0285,naive,True,177,18,req-0222 req-0331 req-0346 req-0116 req-0340 req-0299 req-0225 req-0400 test_checkout_consistency FAILED req-0285 req-0441 req-0074 req-0073 req-0100 req-0371 req-0286 req-0058
+30,285,req-0285,bridge,True,69,6,req-0285 FAILED test_checkout_consistency req-0058 req-0286 req-0371
+30,285,req-0285,oracle,True,9,1,req-0285
+30,324,req-0324,user_only,False,0,0,
+30,324,req-0324,naive,True,177,18,req-0113 req-0130 req-0275 req-0283 req-0050 req-0269 req-0153 req-0403 test_checkout_consistency FAILED req-0324 req-0117 req-0383 req-0204 req-0131 req-0190 req-0097 req-0386
+30,324,req-0324,bridge,True,69,6,req-0324 FAILED test_checkout_consistency req-0386 req-0097 req-0190
+30,324,req-0324,oracle,True,9,1,req-0324
+30,113,req-0113,user_only,False,0,0,
+30,113,req-0113,naive,True,177,18,req-0235 req-0179 req-0092 req-0241 req-0391 req-0383 req-0135 req-0076 test_checkout_consistency FAILED req-0113 req-0253 req-0371 req-0207 req-0422 req-0409 req-0437 req-0170
+30,113,req-0113,bridge,True,69,6,req-0113 FAILED test_checkout_consistency req-0170 req-0437 req-0409
+30,113,req-0113,oracle,True,9,1,req-0113
+30,243,req-0243,user_only,False,0,0,
+30,243,req-0243,naive,True,177,18,req-0270 req-0386 req-0096 req-0411 req-0098 req-0050 req-0159 req-0295 test_checkout_consistency FAILED req-0243 req-0089 req-0117 req-0354 req-0165 req-0316 req-0399 req-0278
+30,243,req-0243,bridge,True,69,6,req-0243 FAILED test_checkout_consistency req-0278 req-0399 req-0316
+30,243,req-0243,oracle,True,9,1,req-0243
+30,90,req-0090,user_only,False,0,0,
+30,90,req-0090,naive,True,177,18,req-0054 req-0407 req-0226 req-0112 req-0267 req-0406 req-0118 req-0295 test_checkout_consistency FAILED req-0090 req-0086 req-0168 req-0247 req-0096 req-0425 req-0103 req-0211
+30,90,req-0090,bridge,True,69,6,req-0090 FAILED test_checkout_consistency req-0211 req-0103 req-0425
+30,90,req-0090,oracle,True,9,1,req-0090
+30,332,req-0332,user_only,False,0,0,
+30,332,req-0332,naive,True,177,18,req-0238 req-0203 req-0120 req-0245 req-0447 req-0436 req-0118 req-0379 test_checkout_consistency FAILED req-0332 req-0397 req-0123 req-0085 req-0321 req-0339 req-0054 req-0363
+30,332,req-0332,bridge,True,69,6,req-0332 FAILED test_checkout_consistency req-0363 req-0054 req-0339
+30,332,req-0332,oracle,True,9,1,req-0332
+30,200,req-0200,user_only,False,0,0,
+30,200,req-0200,naive,True,177,18,req-0383 req-0134 req-0276 req-0230 req-0420 req-0159 req-0372 req-0434 test_checkout_consistency FAILED req-0200 req-0127 req-0261 req-0366 req-0402 req-0277 req-0161 req-0094
+30,200,req-0200,bridge,True,69,6,req-0200 FAILED test_checkout_consistency req-0094 req-0161 req-0277
+30,200,req-0200,oracle,True,9,1,req-0200
+30,371,req-0371,user_only,False,0,0,
+30,371,req-0371,naive,True,177,18,req-0101 req-0121 req-0436 req-0113 req-0351 req-0424 req-0246 req-0229 test_checkout_consistency FAILED req-0371 req-0269 req-0211 req-0176 req-0191 req-0381 req-0093 req-0177
+30,371,req-0371,bridge,True,69,6,req-0371 FAILED test_checkout_consistency req-0177 req-0093 req-0381
+30,371,req-0371,oracle,True,9,1,req-0371
+30,366,req-0366,user_only,False,0,0,
+30,366,req-0366,naive,True,177,18,req-0333 req-0357 req-0420 req-0361 req-0195 req-0449 req-0404 req-0063 test_checkout_consistency FAILED req-0366 req-0388 req-0204 req-0155 req-0315 req-0360 req-0310 req-0146
+30,366,req-0366,bridge,True,69,6,req-0366 FAILED test_checkout_consistency req-0146 req-0310 req-0360
+30,366,req-0366,oracle,True,9,1,req-0366
+30,235,req-0235,user_only,False,0,0,
+30,235,req-0235,naive,True,177,18,req-0433 req-0251 req-0201 req-0381 req-0077 req-0172 req-0304 req-0248 test_checkout_consistency FAILED req-0235 req-0107 req-0173 req-0306 req-0377 req-0355 req-0086 req-0321
+30,235,req-0235,bridge,True,69,6,req-0235 FAILED test_checkout_consistency req-0321 req-0086 req-0355
+30,235,req-0235,oracle,True,9,1,req-0235
+30,345,req-0345,user_only,False,0,0,
+30,345,req-0345,naive,True,177,18,req-0056 req-0234 req-0212 req-0117 req-0248 req-0341 req-0265 req-0237 test_checkout_consistency FAILED req-0345 req-0329 req-0400 req-0138 req-0441 req-0291 req-0445 req-0087
+30,345,req-0345,bridge,True,69,6,req-0345 FAILED test_checkout_consistency req-0087 req-0445 req-0291
+30,345,req-0345,oracle,True,9,1,req-0345
+30,148,req-0148,user_only,False,0,0,
+30,148,req-0148,naive,True,177,18,req-0058 req-0351 req-0084 req-0057 req-0185 req-0161 req-0070 req-0080 test_checkout_consistency FAILED req-0148 req-0254 req-0310 req-0197 req-0372 req-0415 req-0307 req-0443
+30,148,req-0148,bridge,True,69,6,req-0148 FAILED test_checkout_consistency req-0443 req-0307 req-0415
+30,148,req-0148,oracle,True,9,1,req-0148
+30,85,req-0085,user_only,False,0,0,
+30,85,req-0085,naive,True,177,18,req-0263 req-0267 req-0410 req-0256 req-0093 req-0378 req-0325 req-0326 test_checkout_consistency FAILED req-0085 req-0366 req-0129 req-0193 req-0209 req-0091 req-0312 req-0155
+30,85,req-0085,bridge,True,69,6,req-0085 FAILED test_checkout_consistency req-0155 req-0312 req-0091
+30,85,req-0085,oracle,True,9,1,req-0085
+30,73,req-0073,user_only,False,0,0,
+30,73,req-0073,naive,True,177,18,req-0130 req-0325 req-0218 req-0251 req-0351 req-0375 req-0441 req-0383 test_checkout_consistency FAILED req-0073 req-0399 req-0380 req-0084 req-0209 req-0408 req-0274 req-0424
+30,73,req-0073,bridge,True,69,6,req-0073 FAILED test_checkout_consistency req-0424 req-0274 req-0408
+30,73,req-0073,oracle,True,9,1,req-0073
+30,166,req-0166,user_only,False,0,0,
+30,166,req-0166,naive,True,177,18,req-0173 req-0079 req-0176 req-0094 req-0273 req-0109 req-0283 req-0364 test_checkout_consistency FAILED req-0166 req-0362 req-0078 req-0209 req-0392 req-0430 req-0387 req-0139
+30,166,req-0166,bridge,True,69,6,req-0166 FAILED test_checkout_consistency req-0139 req-0387 req-0430
+30,166,req-0166,oracle,True,9,1,req-0166
+30,198,req-0198,user_only,False,0,0,
+30,198,req-0198,naive,True,177,18,req-0111 req-0056 req-0413 req-0120 req-0410 req-0055 req-0133 req-0305 test_checkout_consistency FAILED req-0198 req-0228 req-0318 req-0315 req-0420 req-0182 req-0135 req-0241
+30,198,req-0198,bridge,True,69,6,req-0198 FAILED test_checkout_consistency req-0241 req-0135 req-0182
+30,198,req-0198,oracle,True,9,1,req-0198
+30,393,req-0393,user_only,False,0,0,
+30,393,req-0393,naive,True,177,18,req-0114 req-0434 req-0450 req-0187 req-0426 req-0110 req-0445 req-0065 test_checkout_consistency FAILED req-0393 req-0221 req-0269 req-0189 req-0318 req-0082 req-0184 req-0415
+30,393,req-0393,bridge,True,69,6,req-0393 FAILED test_checkout_consistency req-0415 req-0184 req-0082
+30,393,req-0393,oracle,True,9,1,req-0393
+30,430,req-0430,user_only,False,0,0,
+30,430,req-0430,naive,True,177,18,req-0345 req-0371 req-0089 req-0304 req-0283 req-0311 req-0234 req-0078 test_checkout_consistency FAILED req-0430 req-0305 req-0340 req-0135 req-0238 req-0130 req-0180 req-0446
+30,430,req-0430,bridge,True,69,6,req-0430 FAILED test_checkout_consistency req-0446 req-0180 req-0130
+30,430,req-0430,oracle,True,9,1,req-0430
+30,101,req-0101,user_only,False,0,0,
+30,101,req-0101,naive,True,177,18,req-0103 req-0344 req-0396 req-0421 req-0110 req-0167 req-0430 req-0311 test_checkout_consistency FAILED req-0101 req-0051 req-0072 req-0056 req-0176 req-0073 req-0292 req-0237
+30,101,req-0101,bridge,True,69,6,req-0101 FAILED test_checkout_consistency req-0237 req-0292 req-0073
+30,101,req-0101,oracle,True,9,1,req-0101
+30,404,req-0404,user_only,False,0,0,
+30,404,req-0404,naive,True,177,18,req-0246 req-0126 req-0141 req-0068 req-0333 req-0416 req-0430 req-0385 test_checkout_consistency FAILED req-0404 req-0264 req-0164 req-0214 req-0177 req-0263 req-0419 req-0213
+30,404,req-0404,bridge,True,69,6,req-0404 FAILED test_checkout_consistency req-0213 req-0419 req-0263
+30,404,req-0404,oracle,True,9,1,req-0404
+30,410,req-0410,user_only,False,0,0,
+30,410,req-0410,naive,True,177,18,req-0188 req-0089 req-0342 req-0240 req-0111 req-0307 req-0394 req-0076 test_checkout_consistency FAILED req-0410 req-0141 req-0164 req-0314 req-0073 req-0255 req-0085 req-0288
+30,410,req-0410,bridge,True,69,6,req-0410 FAILED test_checkout_consistency req-0288 req-0085 req-0255
+30,410,req-0410,oracle,True,9,1,req-0410
+30,282,req-0282,user_only,False,0,0,
+30,282,req-0282,naive,True,177,18,req-0194 req-0447 req-0209 req-0217 req-0094 req-0334 req-0284 req-0054 test_checkout_consistency FAILED req-0282 req-0238 req-0152 req-0199 req-0339 req-0205 req-0429 req-0369
+30,282,req-0282,bridge,True,69,6,req-0282 FAILED test_checkout_consistency req-0369 req-0429 req-0205
+30,282,req-0282,oracle,True,9,1,req-0282
+30,375,req-0375,user_only,False,0,0,
+30,375,req-0375,naive,True,177,18,req-0174 req-0287 req-0238 req-0352 req-0302 req-0446 req-0448 req-0150 test_checkout_consistency FAILED req-0375 req-0426 req-0329 req-0440 req-0175 req-0127 req-0053 req-0259
+30,375,req-0375,bridge,True,69,6,req-0375 FAILED test_checkout_consistency req-0259 req-0053 req-0127
+30,375,req-0375,oracle,True,9,1,req-0375
+30,236,req-0236,user_only,False,0,0,
+30,236,req-0236,naive,True,177,18,req-0062 req-0169 req-0328 req-0227 req-0376 req-0406 req-0054 req-0221 test_checkout_consistency FAILED req-0236 req-0050 req-0439 req-0387 req-0243 req-0428 req-0423 req-0207
+30,236,req-0236,bridge,True,69,6,req-0236 FAILED test_checkout_consistency req-0207 req-0423 req-0428
+30,236,req-0236,oracle,True,9,1,req-0236
+30,133,req-0133,user_only,False,0,0,
+30,133,req-0133,naive,True,177,18,req-0103 req-0156 req-0322 req-0172 req-0265 req-0302 req-0080 req-0122 test_checkout_consistency FAILED req-0133 req-0415 req-0194 req-0097 req-0072 req-0169 req-0317 req-0262
+30,133,req-0133,bridge,True,69,6,req-0133 FAILED test_checkout_consistency req-0262 req-0317 req-0169
+30,133,req-0133,oracle,True,9,1,req-0133
+30,239,req-0239,user_only,False,0,0,
+30,239,req-0239,naive,True,177,18,req-0409 req-0241 req-0285 req-0433 req-0093 req-0348 req-0098 req-0309 test_checkout_consistency FAILED req-0239 req-0118 req-0377 req-0252 req-0088 req-0354 req-0341 req-0081
+30,239,req-0239,bridge,True,69,6,req-0239 FAILED test_checkout_consistency req-0081 req-0341 req-0354
+30,239,req-0239,oracle,True,9,1,req-0239
+30,231,req-0231,user_only,False,0,0,
+30,231,req-0231,naive,True,177,18,req-0273 req-0390 req-0116 req-0171 req-0199 req-0183 req-0211 req-0252 test_checkout_consistency FAILED req-0231 req-0409 req-0427 req-0217 req-0212 req-0282 req-0189 req-0169
+30,231,req-0231,bridge,True,69,6,req-0231 FAILED test_checkout_consistency req-0169 req-0189 req-0282
+30,231,req-0231,oracle,True,9,1,req-0231
+30,157,req-0157,user_only,False,0,0,
+30,157,req-0157,naive,True,177,18,req-0088 req-0153 req-0119 req-0450 req-0445 req-0350 req-0105 req-0129 test_checkout_consistency FAILED req-0157 req-0104 req-0134 req-0281 req-0289 req-0211 req-0259 req-0111
+30,157,req-0157,bridge,True,69,6,req-0157 FAILED test_checkout_consistency req-0111 req-0259 req-0211
+30,157,req-0157,oracle,True,9,1,req-0157
+30,186,req-0186,user_only,False,0,0,
+30,186,req-0186,naive,True,177,18,req-0325 req-0234 req-0445 req-0156 req-0282 req-0208 req-0288 req-0185 test_checkout_consistency FAILED req-0186 req-0111 req-0096 req-0130 req-0402 req-0206 req-0411 req-0407
+30,186,req-0186,bridge,True,69,6,req-0186 FAILED test_checkout_consistency req-0407 req-0411 req-0206
+30,186,req-0186,oracle,True,9,1,req-0186
+30,86,req-0086,user_only,False,0,0,
+30,86,req-0086,naive,True,177,18,req-0359 req-0070 req-0161 req-0218 req-0126 req-0097 req-0415 req-0178 test_checkout_consistency FAILED req-0086 req-0233 req-0253 req-0313 req-0075 req-0397 req-0204 req-0184
+30,86,req-0086,bridge,True,69,6,req-0086 FAILED test_checkout_consistency req-0184 req-0204 req-0397
+30,86,req-0086,oracle,True,9,1,req-0086
+30,361,req-0361,user_only,False,0,0,
+30,361,req-0361,naive,True,177,18,req-0139 req-0065 req-0257 req-0281 req-0334 req-0434 req-0331 req-0177 test_checkout_consistency FAILED req-0361 req-0098 req-0286 req-0102 req-0121 req-0112 req-0056 req-0081
+30,361,req-0361,bridge,True,69,6,req-0361 FAILED test_checkout_consistency req-0081 req-0056 req-0112
+30,361,req-0361,oracle,True,9,1,req-0361
+30,137,req-0137,user_only,False,0,0,
+30,137,req-0137,naive,True,177,18,req-0450 req-0164 req-0116 req-0152 req-0256 req-0241 req-0402 req-0373 test_checkout_consistency FAILED req-0137 req-0381 req-0093 req-0349 req-0351 req-0183 req-0088 req-0061
+30,137,req-0137,bridge,True,69,6,req-0137 FAILED test_checkout_consistency req-0061 req-0088 req-0183
+30,137,req-0137,oracle,True,9,1,req-0137
+30,323,req-0323,user_only,False,0,0,
+30,323,req-0323,naive,True,177,18,req-0083 req-0151 req-0381 req-0277 req-0115 req-0097 req-0219 req-0112 test_checkout_consistency FAILED req-0323 req-0071 req-0286 req-0075 req-0136 req-0344 req-0271 req-0421
+30,323,req-0323,bridge,True,69,6,req-0323 FAILED test_checkout_consistency req-0421 req-0271 req-0344
+30,323,req-0323,oracle,True,9,1,req-0323
+30,445,req-0445,user_only,False,0,0,
+30,445,req-0445,naive,True,177,18,req-0252 req-0304 req-0065 req-0245 req-0399 req-0268 req-0138 req-0231 test_checkout_consistency FAILED req-0445 req-0159 req-0145 req-0190 req-0193 req-0278 req-0126 req-0067
+30,445,req-0445,bridge,True,69,6,req-0445 FAILED test_checkout_consistency req-0067 req-0126 req-0278
+30,445,req-0445,oracle,True,9,1,req-0445
+30,373,req-0373,user_only,False,0,0,
+30,373,req-0373,naive,True,177,18,req-0364 req-0367 req-0365 req-0175 req-0382 req-0201 req-0305 req-0260 test_checkout_consistency FAILED req-0373 req-0331 req-0295 req-0081 req-0094 req-0193 req-0246 req-0120
+30,373,req-0373,bridge,True,69,6,req-0373 FAILED test_checkout_consistency req-0120 req-0246 req-0193
+30,373,req-0373,oracle,True,9,1,req-0373
+30,286,req-0286,user_only,False,0,0,
+30,286,req-0286,naive,True,177,18,req-0264 req-0152 req-0380 req-0320 req-0177 req-0373 req-0329 req-0059 test_checkout_consistency FAILED req-0286 req-0245 req-0416 req-0233 req-0296 req-0299 req-0226 req-0340
+30,286,req-0286,bridge,True,69,6,req-0286 FAILED test_checkout_consistency req-0340 req-0226 req-0299
+30,286,req-0286,oracle,True,9,1,req-0286
+30,378,req-0378,user_only,False,0,0,
+30,378,req-0378,naive,True,177,18,req-0307 req-0214 req-0248 req-0188 req-0142 req-0063 req-0213 req-0355 test_checkout_consistency FAILED req-0378 req-0162 req-0065 req-0449 req-0193 req-0079 req-0291 req-0321
+30,378,req-0378,bridge,True,69,6,req-0378 FAILED test_checkout_consistency req-0321 req-0291 req-0079
+30,378,req-0378,oracle,True,9,1,req-0378
+30,188,req-0188,user_only,False,0,0,
+30,188,req-0188,naive,True,177,18,req-0234 req-0443 req-0350 req-0169 req-0131 req-0101 req-0176 req-0387 test_checkout_consistency FAILED req-0188 req-0173 req-0186 req-0324 req-0428 req-0078 req-0442 req-0162
+30,188,req-0188,bridge,True,69,6,req-0188 FAILED test_checkout_consistency req-0162 req-0442 req-0078
+30,188,req-0188,oracle,True,9,1,req-0188
+30,335,req-0335,user_only,False,0,0,
+30,335,req-0335,naive,True,177,18,req-0345 req-0248 req-0231 req-0138 req-0140 req-0171 req-0354 req-0212 test_checkout_consistency FAILED req-0335 req-0428 req-0408 req-0233 req-0353 req-0064 req-0411 req-0409
+30,335,req-0335,bridge,True,69,6,req-0335 FAILED test_checkout_consistency req-0409 req-0411 req-0064
+30,335,req-0335,oracle,True,9,1,req-0335
+30,419,req-0419,user_only,False,0,0,
+30,419,req-0419,naive,True,177,18,req-0230 req-0340 req-0338 req-0122 req-0146 req-0302 req-0327 req-0208 test_checkout_consistency FAILED req-0419 req-0139 req-0301 req-0069 req-0096 req-0078 req-0169 req-0358
+30,419,req-0419,bridge,True,69,6,req-0419 FAILED test_checkout_consistency req-0358 req-0169 req-0078
+30,419,req-0419,oracle,True,9,1,req-0419
+30,216,req-0216,user_only,False,0,0,
+30,216,req-0216,naive,True,177,18,req-0162 req-0060 req-0320 req-0295 req-0050 req-0220 req-0365 req-0153 test_checkout_consistency FAILED req-0216 req-0116 req-0225 req-0418 req-0140 req-0215 req-0080 req-0061
+30,216,req-0216,bridge,True,69,6,req-0216 FAILED test_checkout_consistency req-0061 req-0080 req-0215
+30,216,req-0216,oracle,True,9,1,req-0216
+30,78,req-0078,user_only,False,0,0,
+30,78,req-0078,naive,True,177,18,req-0126 req-0351 req-0411 req-0123 req-0447 req-0107 req-0320 req-0237 test_checkout_consistency FAILED req-0078 req-0088 req-0242 req-0390 req-0253 req-0102 req-0223 req-0205
+30,78,req-0078,bridge,True,69,6,req-0078 FAILED test_checkout_consistency req-0205 req-0223 req-0102
+30,78,req-0078,oracle,True,9,1,req-0078
+30,167,req-0167,user_only,False,0,0,
+30,167,req-0167,naive,True,177,18,req-0216 req-0119 req-0130 req-0425 req-0274 req-0378 req-0300 req-0383 test_checkout_consistency FAILED req-0167 req-0213 req-0139 req-0413 req-0338 req-0406 req-0365 req-0233
+30,167,req-0167,bridge,True,69,6,req-0167 FAILED test_checkout_consistency req-0233 req-0365 req-0406
+30,167,req-0167,oracle,True,9,1,req-0167
+30,434,req-0434,user_only,False,0,0,
+30,434,req-0434,naive,True,177,18,req-0164 req-0390 req-0351 req-0139 req-0243 req-0207 req-0425 req-0402 test_checkout_consistency FAILED req-0434 req-0200 req-0115 req-0140 req-0423 req-0050 req-0409 req-0343
+30,434,req-0434,bridge,True,69,6,req-0434 FAILED test_checkout_consistency req-0343 req-0409 req-0050
+30,434,req-0434,oracle,True,9,1,req-0434
+30,211,req-0211,user_only,False,0,0,
+30,211,req-0211,naive,True,177,18,req-0251 req-0445 req-0341 req-0066 req-0143 req-0359 req-0213 req-0364 test_checkout_consistency FAILED req-0211 req-0163 req-0378 req-0340 req-0103 req-0305 req-0122 req-0220
+30,211,req-0211,bridge,True,69,6,req-0211 FAILED test_checkout_consistency req-0220 req-0122 req-0305
+30,211,req-0211,oracle,True,9,1,req-0211
+30,255,req-0255,user_only,False,0,0,
+30,255,req-0255,naive,True,177,18,req-0432 req-0089 req-0171 req-0227 req-0213 req-0135 req-0376 req-0095 test_checkout_consistency FAILED req-0255 req-0413 req-0394 req-0378 req-0424 req-0221 req-0279 req-0055
+30,255,req-0255,bridge,True,69,6,req-0255 FAILED test_checkout_consistency req-0055 req-0279 req-0221
+30,255,req-0255,oracle,True,9,1,req-0255
+30,187,req-0187,user_only,False,0,0,
+30,187,req-0187,naive,True,177,18,req-0185 req-0157 req-0177 req-0405 req-0084 req-0230 req-0181 req-0105 test_checkout_consistency FAILED req-0187 req-0419 req-0050 req-0074 req-0248 req-0275 req-0426 req-0265
+30,187,req-0187,bridge,True,69,6,req-0187 FAILED test_checkout_consistency req-0265 req-0426 req-0275
+30,187,req-0187,oracle,True,9,1,req-0187
+50,377,req-0377,user_only,False,0,0,
+50,377,req-0377,naive,True,177,18,req-0135 req-0261 req-0302 req-0243 req-0229 req-0329 req-0242 req-0101 test_checkout_consistency FAILED req-0377 req-0295 req-0345 req-0384 req-0439 req-0402 req-0165 req-0133
+50,377,req-0377,bridge,True,69,6,req-0377 FAILED test_checkout_consistency req-0133 req-0165 req-0402
+50,377,req-0377,oracle,True,9,1,req-0377
+50,107,req-0107,user_only,False,0,0,
+50,107,req-0107,naive,True,177,18,req-0282 req-0087 req-0067 req-0201 req-0060 req-0214 req-0184 req-0103 test_checkout_consistency FAILED req-0107 req-0226 req-0138 req-0243 req-0133 req-0425 req-0088 req-0331
+50,107,req-0107,bridge,True,69,6,req-0107 FAILED test_checkout_consistency req-0331 req-0088 req-0425
+50,107,req-0107,oracle,True,9,1,req-0107
+50,62,req-0062,user_only,False,0,0,
+50,62,req-0062,naive,True,177,18,req-0098 req-0224 req-0355 req-0365 req-0298 req-0411 req-0066 req-0271 test_checkout_consistency FAILED req-0062 req-0385 req-0135 req-0361 req-0273 req-0131 req-0078 req-0102
+50,62,req-0062,bridge,True,69,6,req-0062 FAILED test_checkout_consistency req-0102 req-0078 req-0131
+50,62,req-0062,oracle,True,9,1,req-0062
+50,429,req-0429,user_only,False,0,0,
+50,429,req-0429,naive,True,177,18,req-0219 req-0155 req-0147 req-0259 req-0406 req-0333 req-0419 req-0423 test_checkout_consistency FAILED req-0429 req-0326 req-0185 req-0388 req-0194 req-0202 req-0171 req-0099
+50,429,req-0429,bridge,True,69,6,req-0429 FAILED test_checkout_consistency req-0099 req-0171 req-0202
+50,429,req-0429,oracle,True,9,1,req-0429
+50,190,req-0190,user_only,False,0,0,
+50,190,req-0190,naive,True,177,18,req-0075 req-0252 req-0343 req-0332 req-0302 req-0128 req-0077 req-0235 test_checkout_consistency FAILED req-0190 req-0051 req-0269 req-0094 req-0201 req-0389 req-0371 req-0358
+50,190,req-0190,bridge,True,69,6,req-0190 FAILED test_checkout_consistency req-0358 req-0371 req-0389
+50,190,req-0190,oracle,True,9,1,req-0190
+50,175,req-0175,user_only,False,0,0,
+50,175,req-0175,naive,True,177,18,req-0296 req-0152 req-0099 req-0063 req-0155 req-0137 req-0377 req-0200 test_checkout_consistency FAILED req-0175 req-0091 req-0293 req-0109 req-0208 req-0254 req-0292 req-0301
+50,175,req-0175,bridge,True,69,6,req-0175 FAILED test_checkout_consistency req-0301 req-0292 req-0254
+50,175,req-0175,oracle,True,9,1,req-0175
+50,164,req-0164,user_only,False,0,0,
+50,164,req-0164,naive,True,177,18,req-0389 req-0186 req-0096 req-0379 req-0329 req-0249 req-0144 req-0240 test_checkout_consistency FAILED req-0164 req-0246 req-0145 req-0279 req-0072 req-0185 req-0276 req-0289
+50,164,req-0164,bridge,True,69,6,req-0164 FAILED test_checkout_consistency req-0289 req-0276 req-0185
+50,164,req-0164,oracle,True,9,1,req-0164
+50,121,req-0121,user_only,False,0,0,
+50,121,req-0121,naive,True,177,18,req-0185 req-0166 req-0188 req-0339 req-0081 req-0128 req-0436 req-0407 test_checkout_consistency FAILED req-0121 req-0392 req-0099 req-0093 req-0393 req-0227 req-0328 req-0262
+50,121,req-0121,bridge,True,69,6,req-0121 FAILED test_checkout_consistency req-0262 req-0328 req-0227
+50,121,req-0121,oracle,True,9,1,req-0121
+50,427,req-0427,user_only,False,0,0,
+50,427,req-0427,naive,True,177,18,req-0438 req-0351 req-0166 req-0333 req-0081 req-0248 req-0317 req-0264 test_checkout_consistency FAILED req-0427 req-0324 req-0401 req-0293 req-0343 req-0170 req-0203 req-0090
+50,427,req-0427,bridge,True,69,6,req-0427 FAILED test_checkout_consistency req-0090 req-0203 req-0170
+50,427,req-0427,oracle,True,9,1,req-0427
+50,102,req-0102,user_only,False,0,0,
+50,102,req-0102,naive,True,177,18,req-0253 req-0416 req-0067 req-0308 req-0343 req-0315 req-0397 req-0368 test_checkout_consistency FAILED req-0102 req-0126 req-0112 req-0438 req-0280 req-0139 req-0136 req-0159
+50,102,req-0102,bridge,True,69,6,req-0102 FAILED test_checkout_consistency req-0159 req-0136 req-0139
+50,102,req-0102,oracle,True,9,1,req-0102
+50,396,req-0396,user_only,False,0,0,
+50,396,req-0396,naive,True,177,18,req-0148 req-0114 req-0071 req-0266 req-0090 req-0400 req-0272 req-0153 test_checkout_consistency FAILED req-0396 req-0371 req-0125 req-0354 req-0182 req-0213 req-0423 req-0084
+50,396,req-0396,bridge,True,69,6,req-0396 FAILED test_checkout_consistency req-0084 req-0423 req-0213
+50,396,req-0396,oracle,True,9,1,req-0396
+50,447,req-0447,user_only,False,0,0,
+50,447,req-0447,naive,True,177,18,req-0094 req-0248 req-0334 req-0253 req-0332 req-0216 req-0191 req-0316 test_checkout_consistency FAILED req-0447 req-0284 req-0056 req-0408 req-0369 req-0350 req-0317 req-0264
+50,447,req-0447,bridge,True,69,6,req-0447 FAILED test_checkout_consistency req-0264 req-0317 req-0350
+50,447,req-0447,oracle,True,9,1,req-0447
+50,329,req-0329,user_only,False,0,0,
+50,329,req-0329,naive,True,177,18,req-0107 req-0262 req-0126 req-0125 req-0341 req-0352 req-0349 req-0439 test_checkout_consistency FAILED req-0329 req-0101 req-0104 req-0339 req-0450 req-0196 req-0324 req-0226
+50,329,req-0329,bridge,True,69,6,req-0329 FAILED test_checkout_consistency req-0226 req-0324 req-0196
+50,329,req-0329,oracle,True,9,1,req-0329
+50,94,req-0094,user_only,False,0,0,
+50,94,req-0094,naive,True,177,18,req-0261 req-0186 req-0247 req-0386 req-0299 req-0343 req-0362 req-0293 test_checkout_consistency FAILED req-0094 req-0069 req-0139 req-0192 req-0257 req-0124 req-0367 req-0399
+50,94,req-0094,bridge,True,69,6,req-0094 FAILED test_checkout_consistency req-0399 req-0367 req-0124
+50,94,req-0094,oracle,True,9,1,req-0094
+50,352,req-0352,user_only,False,0,0,
+50,352,req-0352,naive,True,177,18,req-0406 req-0255 req-0069 req-0252 req-0219 req-0404 req-0171 req-0075 test_checkout_consistency FAILED req-0352 req-0432 req-0293 req-0187 req-0240 req-0060 req-0222 req-0205
+50,352,req-0352,bridge,True,69,6,req-0352 FAILED test_checkout_consistency req-0205 req-0222 req-0060
+50,352,req-0352,oracle,True,9,1,req-0352
+50,266,req-0266,user_only,False,0,0,
+50,266,req-0266,naive,True,177,18,req-0209 req-0193 req-0302 req-0407 req-0401 req-0100 req-0166 req-0118 test_checkout_consistency FAILED req-0266 req-0203 req-0431 req-0277 req-0447 req-0214 req-0187 req-0424
+50,266,req-0266,bridge,True,69,6,req-0266 FAILED test_checkout_consistency req-0424 req-0187 req-0214
+50,266,req-0266,oracle,True,9,1,req-0266
+50,66,req-0066,user_only,False,0,0,
+50,66,req-0066,naive,True,177,18,req-0264 req-0360 req-0381 req-0096 req-0147 req-0277 req-0159 req-0259 test_checkout_consistency FAILED req-0066 req-0430 req-0299 req-0439 req-0315 req-0242 req-0079 req-0314
+50,66,req-0066,bridge,True,69,6,req-0066 FAILED test_checkout_consistency req-0314 req-0079 req-0242
+50,66,req-0066,oracle,True,9,1,req-0066
+50,65,req-0065,user_only,False,0,0,
+50,65,req-0065,naive,True,177,18,req-0132 req-0084 req-0210 req-0414 req-0310 req-0257 req-0120 req-0450 test_checkout_consistency FAILED req-0065 req-0319 req-0342 req-0064 req-0139 req-0149 req-0153 req-0080
+50,65,req-0065,bridge,True,69,6,req-0065 FAILED test_checkout_consistency req-0080 req-0153 req-0149
+50,65,req-0065,oracle,True,9,1,req-0065
+50,97,req-0097,user_only,False,0,0,
+50,97,req-0097,naive,True,177,18,req-0178 req-0066 req-0284 req-0075 req-0235 req-0411 req-0152 req-0191 test_checkout_consistency FAILED req-0097 req-0239 req-0288 req-0309 req-0254 req-0376 req-0114 req-0399
+50,97,req-0097,bridge,True,69,6,req-0097 FAILED test_checkout_consistency req-0399 req-0114 req-0376
+50,97,req-0097,oracle,True,9,1,req-0097
+50,161,req-0161,user_only,False,0,0,
+50,161,req-0161,naive,True,177,18,req-0065 req-0174 req-0241 req-0301 req-0355 req-0279 req-0140 req-0293 test_checkout_consistency FAILED req-0161 req-0351 req-0333 req-0230 req-0227 req-0133 req-0183 req-0434
+50,161,req-0161,bridge,True,69,6,req-0161 FAILED test_checkout_consistency req-0434 req-0183 req-0133
+50,161,req-0161,oracle,True,9,1,req-0161
+50,169,req-0169,user_only,False,0,0,
+50,169,req-0169,naive,True,177,18,req-0403 req-0096 req-0196 req-0064 req-0248 req-0075 req-0133 req-0343 test_checkout_consistency FAILED req-0169 req-0450 req-0159 req-0163 req-0382 req-0165 req-0397 req-0155
+50,169,req-0169,bridge,True,69,6,req-0169 FAILED test_checkout_consistency req-0155 req-0397 req-0165
+50,169,req-0169,oracle,True,9,1,req-0169
+50,308,req-0308,user_only,False,0,0,
+50,308,req-0308,naive,True,177,18,req-0187 req-0384 req-0259 req-0313 req-0060 req-0450 req-0443 req-0400 test_checkout_consistency FAILED req-0308 req-0054 req-0292 req-0117 req-0382 req-0138 req-0358 req-0164
+50,308,req-0308,bridge,True,69,6,req-0308 FAILED test_checkout_consistency req-0164 req-0358 req-0138
+50,308,req-0308,oracle,True,9,1,req-0308
+50,358,req-0358,user_only,False,0,0,
+50,358,req-0358,naive,True,177,18,req-0179 req-0362 req-0206 req-0415 req-0414 req-0380 req-0190 req-0266 test_checkout_consistency FAILED req-0358 req-0242 req-0228 req-0285 req-0161 req-0288 req-0204 req-0397
+50,358,req-0358,bridge,True,69,6,req-0358 FAILED test_checkout_consistency req-0397 req-0204 req-0288
+50,358,req-0358,oracle,True,9,1,req-0358
+50,63,req-0063,user_only,False,0,0,
+50,63,req-0063,naive,True,177,18,req-0317 req-0370 req-0254 req-0350 req-0103 req-0053 req-0312 req-0390 test_checkout_consistency FAILED req-0063 req-0242 req-0338 req-0382 req-0355 req-0362 req-0195 req-0203
+50,63,req-0063,bridge,True,69,6,req-0063 FAILED test_checkout_consistency req-0203 req-0195 req-0362
+50,63,req-0063,oracle,True,9,1,req-0063
+50,337,req-0337,user_only,False,0,0,
+50,337,req-0337,naive,True,177,18,req-0401 req-0105 req-0296 req-0082 req-0222 req-0191 req-0378 req-0216 test_checkout_consistency FAILED req-0337 req-0183 req-0386 req-0415 req-0384 req-0202 req-0146 req-0126
+50,337,req-0337,bridge,True,69,6,req-0337 FAILED test_checkout_consistency req-0126 req-0146 req-0202
+50,337,req-0337,oracle,True,9,1,req-0337
+50,151,req-0151,user_only,False,0,0,
+50,151,req-0151,naive,True,177,18,req-0315 req-0442 req-0174 req-0079 req-0358 req-0257 req-0389 req-0214 test_checkout_consistency FAILED req-0151 req-0399 req-0121 req-0420 req-0063 req-0386 req-0305 req-0202
+50,151,req-0151,bridge,True,69,6,req-0151 FAILED test_checkout_consistency req-0202 req-0305 req-0386
+50,151,req-0151,oracle,True,9,1,req-0151
+50,416,req-0416,user_only,False,0,0,
+50,416,req-0416,naive,True,177,18,req-0182 req-0264 req-0257 req-0248 req-0428 req-0068 req-0348 req-0412 test_checkout_consistency FAILED req-0416 req-0342 req-0147 req-0225 req-0422 req-0415 req-0163 req-0401
+50,416,req-0416,bridge,True,69,6,req-0416 FAILED test_checkout_consistency req-0401 req-0163 req-0415
+50,416,req-0416,oracle,True,9,1,req-0416
+50,382,req-0382,user_only,False,0,0,
+50,382,req-0382,naive,True,177,18,req-0323 req-0376 req-0293 req-0394 req-0233 req-0309 req-0203 req-0137 test_checkout_consistency FAILED req-0382 req-0387 req-0335 req-0142 req-0200 req-0099 req-0291 req-0115
+50,382,req-0382,bridge,True,69,6,req-0382 FAILED test_checkout_consistency req-0115 req-0291 req-0099
+50,382,req-0382,oracle,True,9,1,req-0382
+50,409,req-0409,user_only,False,0,0,
+50,409,req-0409,naive,True,177,18,req-0430 req-0182 req-0422 req-0336 req-0441 req-0143 req-0398 req-0221 test_checkout_consistency FAILED req-0409 req-0385 req-0095 req-0163 req-0231 req-0164 req-0432 req-0207
+50,409,req-0409,bridge,True,69,6,req-0409 FAILED test_checkout_consistency req-0207 req-0432 req-0164
+50,409,req-0409,oracle,True,9,1,req-0409
+50,438,req-0438,user_only,False,0,0,
+50,438,req-0438,naive,True,177,18,req-0265 req-0219 req-0240 req-0183 req-0349 req-0200 req-0287 req-0110 test_checkout_consistency FAILED req-0438 req-0290 req-0077 req-0374 req-0348 req-0347 req-0367 req-0086
+50,438,req-0438,bridge,True,69,6,req-0438 FAILED test_checkout_consistency req-0086 req-0367 req-0347
+50,438,req-0438,oracle,True,9,1,req-0438
+50,264,req-0264,user_only,False,0,0,
+50,264,req-0264,naive,True,177,18,req-0292 req-0149 req-0307 req-0111 req-0399 req-0245 req-0322 req-0202 test_checkout_consistency FAILED req-0264 req-0261 req-0077 req-0127 req-0120 req-0152 req-0225 req-0259
+50,264,req-0264,bridge,True,69,6,req-0264 FAILED test_checkout_consistency req-0259 req-0225 req-0152
+50,264,req-0264,oracle,True,9,1,req-0264
+50,162,req-0162,user_only,False,0,0,
+50,162,req-0162,naive,True,177,18,req-0342 req-0285 req-0123 req-0212 req-0417 req-0142 req-0449 req-0091 test_checkout_consistency FAILED req-0162 req-0300 req-0221 req-0374 req-0140 req-0211 req-0375 req-0079
+50,162,req-0162,bridge,True,69,6,req-0162 FAILED test_checkout_consistency req-0079 req-0375 req-0211
+50,162,req-0162,oracle,True,9,1,req-0162
+50,279,req-0279,user_only,False,0,0,
+50,279,req-0279,naive,True,177,18,req-0052 req-0282 req-0190 req-0157 req-0440 req-0447 req-0136 req-0346 test_checkout_consistency FAILED req-0279 req-0442 req-0131 req-0301 req-0441 req-0450 req-0095 req-0116
+50,279,req-0279,bridge,True,69,6,req-0279 FAILED test_checkout_consistency req-0116 req-0095 req-0450
+50,279,req-0279,oracle,True,9,1,req-0279
+50,351,req-0351,user_only,False,0,0,
+50,351,req-0351,naive,True,177,18,req-0365 req-0272 req-0375 req-0269 req-0256 req-0294 req-0246 req-0052 test_checkout_consistency FAILED req-0351 req-0069 req-0323 req-0152 req-0425 req-0241 req-0057 req-0214
+50,351,req-0351,bridge,True,69,6,req-0351 FAILED test_checkout_consistency req-0214 req-0057 req-0241
+50,351,req-0351,oracle,True,9,1,req-0351
+50,192,req-0192,user_only,False,0,0,
+50,192,req-0192,naive,True,177,18,req-0438 req-0322 req-0147 req-0059 req-0397 req-0052 req-0371 req-0426 test_checkout_consistency FAILED req-0192 req-0177 req-0165 req-0406 req-0227 req-0210 req-0116 req-0102
+50,192,req-0192,bridge,True,69,6,req-0192 FAILED test_checkout_consistency req-0102 req-0116 req-0210
+50,192,req-0192,oracle,True,9,1,req-0192
+50,53,req-0053,user_only,False,0,0,
+50,53,req-0053,naive,True,177,18,req-0247 req-0308 req-0352 req-0207 req-0136 req-0084 req-0074 req-0203 test_checkout_consistency FAILED req-0053 req-0199 req-0284 req-0423 req-0317 req-0356 req-0319 req-0223
+50,53,req-0053,bridge,True,69,6,req-0053 FAILED test_checkout_consistency req-0223 req-0319 req-0356
+50,53,req-0053,oracle,True,9,1,req-0053
+50,131,req-0131,user_only,False,0,0,
+50,131,req-0131,naive,True,177,18,req-0273 req-0402 req-0118 req-0226 req-0301 req-0234 req-0435 req-0147 test_checkout_consistency FAILED req-0131 req-0135 req-0257 req-0059 req-0167 req-0165 req-0423 req-0117
+50,131,req-0131,bridge,True,69,6,req-0131 FAILED test_checkout_consistency req-0117 req-0423 req-0165
+50,131,req-0131,oracle,True,9,1,req-0131
+50,407,req-0407,user_only,False,0,0,
+50,407,req-0407,naive,True,177,18,req-0158 req-0426 req-0061 req-0351 req-0308 req-0136 req-0113 req-0237 test_checkout_consistency FAILED req-0407 req-0415 req-0383 req-0069 req-0242 req-0377 req-0180 req-0445
+50,407,req-0407,bridge,True,69,6,req-0407 FAILED test_checkout_consistency req-0445 req-0180 req-0377
+50,407,req-0407,oracle,True,9,1,req-0407
+50,435,req-0435,user_only,False,0,0,
+50,435,req-0435,naive,True,177,18,req-0323 req-0369 req-0074 req-0354 req-0388 req-0105 req-0384 req-0060 test_checkout_consistency FAILED req-0435 req-0403 req-0109 req-0263 req-0277 req-0244 req-0113 req-0330
+50,435,req-0435,bridge,True,69,6,req-0435 FAILED test_checkout_consistency req-0330 req-0113 req-0244
+50,435,req-0435,oracle,True,9,1,req-0435
+50,224,req-0224,user_only,False,0,0,
+50,224,req-0224,naive,True,177,18,req-0179 req-0293 req-0410 req-0128 req-0155 req-0406 req-0402 req-0373 test_checkout_consistency FAILED req-0224 req-0054 req-0204 req-0266 req-0389 req-0101 req-0390 req-0317
+50,224,req-0224,bridge,True,69,6,req-0224 FAILED test_checkout_consistency req-0317 req-0390 req-0101
+50,224,req-0224,oracle,True,9,1,req-0224
+50,424,req-0424,user_only,False,0,0,
+50,424,req-0424,naive,True,177,18,req-0188 req-0368 req-0360 req-0408 req-0120 req-0264 req-0103 req-0311 test_checkout_consistency FAILED req-0424 req-0418 req-0366 req-0110 req-0194 req-0108 req-0104 req-0304
+50,424,req-0424,bridge,True,69,6,req-0424 FAILED test_checkout_consistency req-0304 req-0104 req-0108
+50,424,req-0424,oracle,True,9,1,req-0424
+50,129,req-0129,user_only,False,0,0,
+50,129,req-0129,naive,True,177,18,req-0152 req-0362 req-0153 req-0449 req-0185 req-0318 req-0154 req-0234 test_checkout_consistency FAILED req-0129 req-0411 req-0260 req-0202 req-0133 req-0070 req-0331 req-0305
+50,129,req-0129,bridge,True,69,6,req-0129 FAILED test_checkout_consistency req-0305 req-0331 req-0070
+50,129,req-0129,oracle,True,9,1,req-0129
+50,160,req-0160,user_only,False,0,0,
+50,160,req-0160,naive,True,177,18,req-0156 req-0403 req-0297 req-0220 req-0171 req-0051 req-0056 req-0394 test_checkout_consistency FAILED req-0160 req-0095 req-0106 req-0344 req-0393 req-0303 req-0126 req-0096
+50,160,req-0160,bridge,True,69,6,req-0160 FAILED test_checkout_consistency req-0096 req-0126 req-0303
+50,160,req-0160,oracle,True,9,1,req-0160
+50,222,req-0222,user_only,False,0,0,
+50,222,req-0222,naive,True,177,18,req-0450 req-0312 req-0088 req-0421 req-0101 req-0181 req-0380 req-0168 test_checkout_consistency FAILED req-0222 req-0284 req-0201 req-0185 req-0288 req-0075 req-0139 req-0070
+50,222,req-0222,bridge,True,69,6,req-0222 FAILED test_checkout_consistency req-0070 req-0139 req-0075
+50,222,req-0222,oracle,True,9,1,req-0222
+50,441,req-0441,user_only,False,0,0,
+50,441,req-0441,naive,True,177,18,req-0198 req-0234 req-0396 req-0210 req-0268 req-0428 req-0109 req-0098 test_checkout_consistency FAILED req-0441 req-0438 req-0073 req-0054 req-0120 req-0389 req-0381 req-0137
+50,441,req-0441,bridge,True,69,6,req-0441 FAILED test_checkout_consistency req-0137 req-0381 req-0389
+50,441,req-0441,oracle,True,9,1,req-0441
+50,432,req-0432,user_only,False,0,0,
+50,432,req-0432,naive,True,177,18,req-0218 req-0233 req-0274 req-0368 req-0187 req-0425 req-0097 req-0240 test_checkout_consistency FAILED req-0432 req-0225 req-0143 req-0108 req-0255 req-0254 req-0283 req-0189
+50,432,req-0432,bridge,True,69,6,req-0432 FAILED test_checkout_consistency req-0189 req-0283 req-0254
+50,432,req-0432,oracle,True,9,1,req-0432
+50,244,req-0244,user_only,False,0,0,
+50,244,req-0244,naive,True,177,18,req-0248 req-0404 req-0295 req-0266 req-0383 req-0135 req-0107 req-0117 test_checkout_consistency FAILED req-0244 req-0407 req-0422 req-0080 req-0131 req-0103 req-0264 req-0353
+50,244,req-0244,bridge,True,69,6,req-0244 FAILED test_checkout_consistency req-0353 req-0264 req-0103
+50,244,req-0244,oracle,True,9,1,req-0244
+50,99,req-0099,user_only,False,0,0,
+50,99,req-0099,naive,True,177,18,req-0298 req-0342 req-0398 req-0275 req-0143 req-0363 req-0245 req-0449 test_checkout_consistency FAILED req-0099 req-0234 req-0364 req-0064 req-0401 req-0423 req-0117 req-0300
+50,99,req-0099,bridge,True,69,6,req-0099 FAILED test_checkout_consistency req-0300 req-0117 req-0423
+50,99,req-0099,oracle,True,9,1,req-0099
+50,233,req-0233,user_only,False,0,0,
+50,233,req-0233,naive,True,177,18,req-0107 req-0261 req-0276 req-0073 req-0082 req-0183 req-0386 req-0210 test_checkout_consistency FAILED req-0233 req-0056 req-0411 req-0398 req-0319 req-0443 req-0431 req-0346
+50,233,req-0233,bridge,True,69,6,req-0233 FAILED test_checkout_consistency req-0346 req-0431 req-0443
+50,233,req-0233,oracle,True,9,1,req-0233
+50,226,req-0226,user_only,False,0,0,
+50,226,req-0226,naive,True,177,18,req-0421 req-0340 req-0164 req-0393 req-0223 req-0316 req-0318 req-0403 test_checkout_consistency FAILED req-0226 req-0409 req-0367 req-0098 req-0272 req-0389 req-0423 req-0177
+50,226,req-0226,bridge,True,69,6,req-0226 FAILED test_checkout_consistency req-0177 req-0423 req-0389
+50,226,req-0226,oracle,True,9,1,req-0226
+50,359,req-0359,user_only,False,0,0,
+50,359,req-0359,naive,True,177,18,req-0296 req-0227 req-0390 req-0397 req-0379 req-0247 req-0126 req-0335 test_checkout_consistency FAILED req-0359 req-0364 req-0077 req-0055 req-0380 req-0130 req-0308 req-0290
+50,359,req-0359,bridge,True,69,6,req-0359 FAILED test_checkout_consistency req-0290 req-0308 req-0130
+50,359,req-0359,oracle,True,9,1,req-0359
+50,185,req-0185,user_only,False,0,0,
+50,185,req-0185,naive,True,177,18,req-0304 req-0134 req-0088 req-0435 req-0302 req-0215 req-0173 req-0220 test_checkout_consistency FAILED req-0185 req-0193 req-0075 req-0310 req-0164 req-0332 req-0380 req-0244
+50,185,req-0185,bridge,True,69,6,req-0185 FAILED test_checkout_consistency req-0244 req-0380 req-0332
+50,185,req-0185,oracle,True,9,1,req-0185
+50,72,req-0072,user_only,False,0,0,
+50,72,req-0072,naive,True,177,18,req-0257 req-0171 req-0091 req-0286 req-0278 req-0344 req-0280 req-0096 test_checkout_consistency FAILED req-0072 req-0306 req-0279 req-0212 req-0111 req-0305 req-0432 req-0385
+50,72,req-0072,bridge,True,69,6,req-0072 FAILED test_checkout_consistency req-0385 req-0432 req-0305
+50,72,req-0072,oracle,True,9,1,req-0072
+50,285,req-0285,user_only,False,0,0,
+50,285,req-0285,naive,True,177,18,req-0059 req-0102 req-0256 req-0261 req-0068 req-0336 req-0332 req-0050 test_checkout_consistency FAILED req-0285 req-0096 req-0360 req-0367 req-0377 req-0205 req-0311 req-0338
+50,285,req-0285,bridge,True,69,6,req-0285 FAILED test_checkout_consistency req-0338 req-0311 req-0205
+50,285,req-0285,oracle,True,9,1,req-0285
+50,324,req-0324,user_only,False,0,0,
+50,324,req-0324,naive,True,177,18,req-0155 req-0386 req-0394 req-0283 req-0224 req-0236 req-0077 req-0164 test_checkout_consistency FAILED req-0324 req-0282 req-0219 req-0337 req-0443 req-0368 req-0358 req-0292
+50,324,req-0324,bridge,True,69,6,req-0324 FAILED test_checkout_consistency req-0292 req-0358 req-0368
+50,324,req-0324,oracle,True,9,1,req-0324
+50,113,req-0113,user_only,False,0,0,
+50,113,req-0113,naive,True,177,18,req-0417 req-0387 req-0237 req-0282 req-0108 req-0099 req-0439 req-0388 test_checkout_consistency FAILED req-0113 req-0164 req-0051 req-0225 req-0232 req-0375 req-0200 req-0331
+50,113,req-0113,bridge,True,69,6,req-0113 FAILED test_checkout_consistency req-0331 req-0200 req-0375
+50,113,req-0113,oracle,True,9,1,req-0113
+50,243,req-0243,user_only,False,0,0,
+50,243,req-0243,naive,True,177,18,req-0318 req-0241 req-0410 req-0104 req-0073 req-0134 req-0303 req-0121 test_checkout_consistency FAILED req-0243 req-0418 req-0431 req-0420 req-0260 req-0180 req-0363 req-0150
+50,243,req-0243,bridge,True,69,6,req-0243 FAILED test_checkout_consistency req-0150 req-0363 req-0180
+50,243,req-0243,oracle,True,9,1,req-0243
+50,90,req-0090,user_only,False,0,0,
+50,90,req-0090,naive,True,177,18,req-0147 req-0112 req-0252 req-0161 req-0285 req-0148 req-0417 req-0224 test_checkout_consistency FAILED req-0090 req-0106 req-0438 req-0263 req-0073 req-0375 req-0395 req-0352
+50,90,req-0090,bridge,True,69,6,req-0090 FAILED test_checkout_consistency req-0352 req-0395 req-0375
+50,90,req-0090,oracle,True,9,1,req-0090
+50,332,req-0332,user_only,False,0,0,
+50,332,req-0332,naive,True,177,18,req-0113 req-0446 req-0280 req-0284 req-0388 req-0352 req-0308 req-0118 test_checkout_consistency FAILED req-0332 req-0305 req-0052 req-0321 req-0427 req-0074 req-0334 req-0271
+50,332,req-0332,bridge,True,69,6,req-0332 FAILED test_checkout_consistency req-0271 req-0334 req-0074
+50,332,req-0332,oracle,True,9,1,req-0332
+50,200,req-0200,user_only,False,0,0,
+50,200,req-0200,naive,True,177,18,req-0350 req-0298 req-0311 req-0450 req-0140 req-0405 req-0347 req-0138 test_checkout_consistency FAILED req-0200 req-0425 req-0115 req-0103 req-0249 req-0387 req-0358 req-0361
+50,200,req-0200,bridge,True,69,6,req-0200 FAILED test_checkout_consistency req-0361 req-0358 req-0387
+50,200,req-0200,oracle,True,9,1,req-0200
+50,371,req-0371,user_only,False,0,0,
+50,371,req-0371,naive,True,177,18,req-0214 req-0308 req-0246 req-0264 req-0361 req-0405 req-0441 req-0177 test_checkout_consistency FAILED req-0371 req-0190 req-0253 req-0225 req-0200 req-0281 req-0118 req-0120
+50,371,req-0371,bridge,True,69,6,req-0371 FAILED test_checkout_consistency req-0120 req-0118 req-0281
+50,371,req-0371,oracle,True,9,1,req-0371
+50,366,req-0366,user_only,False,0,0,
+50,366,req-0366,naive,True,177,18,req-0261 req-0358 req-0409 req-0434 req-0312 req-0203 req-0410 req-0330 test_checkout_consistency FAILED req-0366 req-0210 req-0415 req-0428 req-0333 req-0374 req-0161 req-0152
+50,366,req-0366,bridge,True,69,6,req-0366 FAILED test_checkout_consistency req-0152 req-0161 req-0374
+50,366,req-0366,oracle,True,9,1,req-0366
+50,235,req-0235,user_only,False,0,0,
+50,235,req-0235,naive,True,177,18,req-0157 req-0370 req-0416 req-0198 req-0402 req-0226 req-0395 req-0117 test_checkout_consistency FAILED req-0235 req-0414 req-0383 req-0141 req-0308 req-0328 req-0406 req-0377
+50,235,req-0235,bridge,True,69,6,req-0235 FAILED test_checkout_consistency req-0377 req-0406 req-0328
+50,235,req-0235,oracle,True,9,1,req-0235
+50,345,req-0345,user_only,False,0,0,
+50,345,req-0345,naive,True,177,18,req-0215 req-0414 req-0109 req-0440 req-0230 req-0337 req-0295 req-0349 test_checkout_consistency FAILED req-0345 req-0342 req-0392 req-0263 req-0396 req-0433 req-0323 req-0196
+50,345,req-0345,bridge,True,69,6,req-0345 FAILED test_checkout_consistency req-0196 req-0323 req-0433
+50,345,req-0345,oracle,True,9,1,req-0345
+50,148,req-0148,user_only,False,0,0,
+50,148,req-0148,naive,True,177,18,req-0267 req-0056 req-0318 req-0104 req-0062 req-0246 req-0124 req-0077 test_checkout_consistency FAILED req-0148 req-0394 req-0078 req-0153 req-0187 req-0435 req-0132 req-0197
+50,148,req-0148,bridge,True,69,6,req-0148 FAILED test_checkout_consistency req-0197 req-0132 req-0435
+50,148,req-0148,oracle,True,9,1,req-0148
+50,85,req-0085,user_only,False,0,0,
+50,85,req-0085,naive,True,177,18,req-0400 req-0179 req-0125 req-0081 req-0404 req-0202 req-0155 req-0436 test_checkout_consistency FAILED req-0085 req-0328 req-0066 req-0234 req-0282 req-0103 req-0366 req-0396
+50,85,req-0085,bridge,True,69,6,req-0085 FAILED test_checkout_consistency req-0396 req-0366 req-0103
+50,85,req-0085,oracle,True,9,1,req-0085
+50,73,req-0073,user_only,False,0,0,
+50,73,req-0073,naive,True,177,18,req-0429 req-0338 req-0165 req-0431 req-0382 req-0250 req-0172 req-0312 test_checkout_consistency FAILED req-0073 req-0407 req-0198 req-0405 req-0391 req-0075 req-0246 req-0249
+50,73,req-0073,bridge,True,69,6,req-0073 FAILED test_checkout_consistency req-0249 req-0246 req-0075
+50,73,req-0073,oracle,True,9,1,req-0073
+50,166,req-0166,user_only,False,0,0,
+50,166,req-0166,naive,True,177,18,req-0264 req-0401 req-0211 req-0333 req-0077 req-0056 req-0431 req-0179 test_checkout_consistency FAILED req-0166 req-0153 req-0368 req-0450 req-0277 req-0165 req-0375 req-0411
+50,166,req-0166,bridge,True,69,6,req-0166 FAILED test_checkout_consistency req-0411 req-0375 req-0165
+50,166,req-0166,oracle,True,9,1,req-0166
+50,198,req-0198,user_only,False,0,0,
+50,198,req-0198,naive,True,177,18,req-0414 req-0382 req-0239 req-0437 req-0352 req-0330 req-0429 req-0359 test_checkout_consistency FAILED req-0198 req-0150 req-0448 req-0422 req-0149 req-0201 req-0280 req-0140
+50,198,req-0198,bridge,True,69,6,req-0198 FAILED test_checkout_consistency req-0140 req-0280 req-0201
+50,198,req-0198,oracle,True,9,1,req-0198
+50,393,req-0393,user_only,False,0,0,
+50,393,req-0393,naive,True,177,18,req-0400 req-0088 req-0145 req-0138 req-0427 req-0313 req-0111 req-0243 test_checkout_consistency FAILED req-0393 req-0070 req-0269 req-0192 req-0334 req-0185 req-0116 req-0132
+50,393,req-0393,bridge,True,69,6,req-0393 FAILED test_checkout_consistency req-0132 req-0116 req-0185
+50,393,req-0393,oracle,True,9,1,req-0393
+50,430,req-0430,user_only,False,0,0,
+50,430,req-0430,naive,True,177,18,req-0349 req-0180 req-0052 req-0219 req-0288 req-0413 req-0129 req-0070 test_checkout_consistency FAILED req-0430 req-0128 req-0215 req-0355 req-0076 req-0447 req-0370 req-0365
+50,430,req-0430,bridge,True,69,6,req-0430 FAILED test_checkout_consistency req-0365 req-0370 req-0447
+50,430,req-0430,oracle,True,9,1,req-0430
+50,101,req-0101,user_only,False,0,0,
+50,101,req-0101,naive,True,177,18,req-0389 req-0205 req-0302 req-0344 req-0332 req-0234 req-0087 req-0413 test_checkout_consistency FAILED req-0101 req-0213 req-0320 req-0163 req-0145 req-0317 req-0084 req-0309
+50,101,req-0101,bridge,True,69,6,req-0101 FAILED test_checkout_consistency req-0309 req-0084 req-0317
+50,101,req-0101,oracle,True,9,1,req-0101
+50,404,req-0404,user_only,False,0,0,
+50,404,req-0404,naive,True,177,18,req-0131 req-0262 req-0328 req-0324 req-0256 req-0097 req-0228 req-0163 test_checkout_consistency FAILED req-0404 req-0159 req-0389 req-0219 req-0234 req-0200 req-0161 req-0436
+50,404,req-0404,bridge,True,69,6,req-0404 FAILED test_checkout_consistency req-0436 req-0161 req-0200
+50,404,req-0404,oracle,True,9,1,req-0404
+50,410,req-0410,user_only,False,0,0,
+50,410,req-0410,naive,True,177,18,req-0366 req-0321 req-0293 req-0337 req-0436 req-0382 req-0054 req-0108 test_checkout_consistency FAILED req-0410 req-0392 req-0227 req-0278 req-0173 req-0378 req-0364 req-0368
+50,410,req-0410,bridge,True,69,6,req-0410 FAILED test_checkout_consistency req-0368 req-0364 req-0378
+50,410,req-0410,oracle,True,9,1,req-0410
+50,282,req-0282,user_only,False,0,0,
+50,282,req-0282,naive,True,177,18,req-0174 req-0070 req-0400 req-0214 req-0245 req-0108 req-0247 req-0181 test_checkout_consistency FAILED req-0282 req-0327 req-0421 req-0194 req-0062 req-0315 req-0445 req-0241
+50,282,req-0282,bridge,True,69,6,req-0282 FAILED test_checkout_consistency req-0241 req-0445 req-0315
+50,282,req-0282,oracle,True,9,1,req-0282
+50,375,req-0375,user_only,False,0,0,
+50,375,req-0375,naive,True,177,18,req-0313 req-0310 req-0278 req-0299 req-0072 req-0201 req-0384 req-0148 test_checkout_consistency FAILED req-0375 req-0214 req-0092 req-0099 req-0135 req-0446 req-0325 req-0323
+50,375,req-0375,bridge,True,69,6,req-0375 FAILED test_checkout_consistency req-0323 req-0325 req-0446
+50,375,req-0375,oracle,True,9,1,req-0375
+50,236,req-0236,user_only,False,0,0,
+50,236,req-0236,naive,True,177,18,req-0053 req-0371 req-0083 req-0157 req-0394 req-0373 req-0447 req-0159 test_checkout_consistency FAILED req-0236 req-0401 req-0268 req-0103 req-0155 req-0326 req-0410 req-0430
+50,236,req-0236,bridge,True,69,6,req-0236 FAILED test_checkout_consistency req-0430 req-0410 req-0326
+50,236,req-0236,oracle,True,9,1,req-0236
+50,133,req-0133,user_only,False,0,0,
+50,133,req-0133,naive,True,177,18,req-0447 req-0273 req-0382 req-0086 req-0433 req-0402 req-0128 req-0062 test_checkout_consistency FAILED req-0133 req-0286 req-0418 req-0220 req-0069 req-0094 req-0087 req-0077
+50,133,req-0133,bridge,True,69,6,req-0133 FAILED test_checkout_consistency req-0077 req-0087 req-0094
+50,133,req-0133,oracle,True,9,1,req-0133
+50,239,req-0239,user_only,False,0,0,
+50,239,req-0239,naive,True,177,18,req-0141 req-0178 req-0336 req-0086 req-0345 req-0166 req-0182 req-0259 test_checkout_consistency FAILED req-0239 req-0249 req-0281 req-0373 req-0258 req-0272 req-0211 req-0058
+50,239,req-0239,bridge,True,69,6,req-0239 FAILED test_checkout_consistency req-0058 req-0211 req-0272
+50,239,req-0239,oracle,True,9,1,req-0239
+50,231,req-0231,user_only,False,0,0,
+50,231,req-0231,naive,True,177,18,req-0250 req-0395 req-0110 req-0324 req-0053 req-0379 req-0419 req-0367 test_checkout_consistency FAILED req-0231 req-0082 req-0438 req-0432 req-0350 req-0073 req-0409 req-0087
+50,231,req-0231,bridge,True,69,6,req-0231 FAILED test_checkout_consistency req-0087 req-0409 req-0073
+50,231,req-0231,oracle,True,9,1,req-0231
+50,157,req-0157,user_only,False,0,0,
+50,157,req-0157,naive,True,177,18,req-0234 req-0308 req-0104 req-0199 req-0402 req-0205 req-0361 req-0094 test_checkout_consistency FAILED req-0157 req-0195 req-0442 req-0275 req-0246 req-0253 req-0389 req-0065
+50,157,req-0157,bridge,True,69,6,req-0157 FAILED test_checkout_consistency req-0065 req-0389 req-0253
+50,157,req-0157,oracle,True,9,1,req-0157
+50,186,req-0186,user_only,False,0,0,
+50,186,req-0186,naive,True,177,18,req-0293 req-0130 req-0324 req-0162 req-0119 req-0433 req-0251 req-0330 test_checkout_consistency FAILED req-0186 req-0202 req-0375 req-0123 req-0203 req-0397 req-0424 req-0382
+50,186,req-0186,bridge,True,69,6,req-0186 FAILED test_checkout_consistency req-0382 req-0424 req-0397
+50,186,req-0186,oracle,True,9,1,req-0186
+50,86,req-0086,user_only,False,0,0,
+50,86,req-0086,naive,True,177,18,req-0242 req-0055 req-0334 req-0335 req-0123 req-0114 req-0071 req-0052 test_checkout_consistency FAILED req-0086 req-0344 req-0356 req-0252 req-0326 req-0331 req-0094 req-0207
+50,86,req-0086,bridge,True,69,6,req-0086 FAILED test_checkout_consistency req-0207 req-0094 req-0331
+50,86,req-0086,oracle,True,9,1,req-0086
+50,361,req-0361,user_only,False,0,0,
+50,361,req-0361,naive,True,177,18,req-0157 req-0434 req-0430 req-0422 req-0226 req-0158 req-0261 req-0381 test_checkout_consistency FAILED req-0361 req-0312 req-0122 req-0132 req-0144 req-0163 req-0366 req-0179
+50,361,req-0361,bridge,True,69,6,req-0361 FAILED test_checkout_consistency req-0179 req-0366 req-0163
+50,361,req-0361,oracle,True,9,1,req-0361
+50,137,req-0137,user_only,False,0,0,
+50,137,req-0137,naive,True,177,18,req-0150 req-0108 req-0143 req-0394 req-0341 req-0077 req-0435 req-0332 test_checkout_consistency FAILED req-0137 req-0287 req-0381 req-0087 req-0199 req-0084 req-0179 req-0100
+50,137,req-0137,bridge,True,69,6,req-0137 FAILED test_checkout_consistency req-0100 req-0179 req-0084
+50,137,req-0137,oracle,True,9,1,req-0137
+50,323,req-0323,user_only,False,0,0,
+50,323,req-0323,naive,True,177,18,req-0151 req-0422 req-0348 req-0299 req-0219 req-0232 req-0115 req-0394 test_checkout_consistency FAILED req-0323 req-0386 req-0170 req-0101 req-0195 req-0368 req-0085 req-0149
+50,323,req-0323,bridge,True,69,6,req-0323 FAILED test_checkout_consistency req-0149 req-0085 req-0368
+50,323,req-0323,oracle,True,9,1,req-0323
+50,445,req-0445,user_only,False,0,0,
+50,445,req-0445,naive,True,177,18,req-0212 req-0298 req-0280 req-0218 req-0365 req-0387 req-0206 req-0405 test_checkout_consistency FAILED req-0445 req-0349 req-0128 req-0339 req-0340 req-0236 req-0211 req-0269
+50,445,req-0445,bridge,True,69,6,req-0445 FAILED test_checkout_consistency req-0269 req-0211 req-0236
+50,445,req-0445,oracle,True,9,1,req-0445
+50,373,req-0373,user_only,False,0,0,
+50,373,req-0373,naive,True,177,18,req-0136 req-0052 req-0210 req-0176 req-0163 req-0415 req-0429 req-0379 test_checkout_consistency FAILED req-0373 req-0273 req-0191 req-0234 req-0118 req-0398 req-0426 req-0219
+50,373,req-0373,bridge,True,69,6,req-0373 FAILED test_checkout_consistency req-0219 req-0426 req-0398
+50,373,req-0373,oracle,True,9,1,req-0373
+50,286,req-0286,user_only,False,0,0,
+50,286,req-0286,naive,True,177,18,req-0296 req-0287 req-0278 req-0233 req-0447 req-0206 req-0300 req-0333 test_checkout_consistency FAILED req-0286 req-0105 req-0139 req-0381 req-0361 req-0091 req-0193 req-0121
+50,286,req-0286,bridge,True,69,6,req-0286 FAILED test_checkout_consistency req-0121 req-0193 req-0091
+50,286,req-0286,oracle,True,9,1,req-0286
+50,378,req-0378,user_only,False,0,0,
+50,378,req-0378,naive,True,177,18,req-0325 req-0150 req-0184 req-0426 req-0370 req-0089 req-0423 req-0088 test_checkout_consistency FAILED req-0378 req-0059 req-0309 req-0373 req-0065 req-0347 req-0346 req-0257
+50,378,req-0378,bridge,True,69,6,req-0378 FAILED test_checkout_consistency req-0257 req-0346 req-0347
+50,378,req-0378,oracle,True,9,1,req-0378
+50,188,req-0188,user_only,False,0,0,
+50,188,req-0188,naive,True,177,18,req-0444 req-0353 req-0158 req-0068 req-0333 req-0183 req-0329 req-0327 test_checkout_consistency FAILED req-0188 req-0292 req-0385 req-0447 req-0126 req-0238 req-0251 req-0164
+50,188,req-0188,bridge,True,69,6,req-0188 FAILED test_checkout_consistency req-0164 req-0251 req-0238
+50,188,req-0188,oracle,True,9,1,req-0188
+50,335,req-0335,user_only,False,0,0,
+50,335,req-0335,naive,True,177,18,req-0446 req-0352 req-0426 req-0198 req-0118 req-0287 req-0306 req-0311 test_checkout_consistency FAILED req-0335 req-0096 req-0253 req-0236 req-0307 req-0055 req-0390 req-0172
+50,335,req-0335,bridge,True,69,6,req-0335 FAILED test_checkout_consistency req-0172 req-0390 req-0055
+50,335,req-0335,oracle,True,9,1,req-0335
+50,419,req-0419,user_only,False,0,0,
+50,419,req-0419,naive,True,177,18,req-0364 req-0400 req-0134 req-0438 req-0313 req-0121 req-0278 req-0131 test_checkout_consistency FAILED req-0419 req-0141 req-0339 req-0387 req-0124 req-0427 req-0425 req-0297
+50,419,req-0419,bridge,True,69,6,req-0419 FAILED test_checkout_consistency req-0297 req-0425 req-0427
+50,419,req-0419,oracle,True,9,1,req-0419
+50,216,req-0216,user_only,False,0,0,
+50,216,req-0216,naive,True,177,18,req-0234 req-0070 req-0162 req-0440 req-0300 req-0168 req-0082 req-0185 test_checkout_consistency FAILED req-0216 req-0240 req-0169 req-0071 req-0393 req-0155 req-0316 req-0235
+50,216,req-0216,bridge,True,69,6,req-0216 FAILED test_checkout_consistency req-0235 req-0316 req-0155
+50,216,req-0216,oracle,True,9,1,req-0216
+50,78,req-0078,user_only,False,0,0,
+50,78,req-0078,naive,True,177,18,req-0249 req-0291 req-0283 req-0073 req-0070 req-0383 req-0216 req-0103 test_checkout_consistency FAILED req-0078 req-0411 req-0317 req-0375 req-0191 req-0430 req-0185 req-0347
+50,78,req-0078,bridge,True,69,6,req-0078 FAILED test_checkout_consistency req-0347 req-0185 req-0430
+50,78,req-0078,oracle,True,9,1,req-0078
+50,167,req-0167,user_only,False,0,0,
+50,167,req-0167,naive,True,177,18,req-0329 req-0342 req-0139 req-0243 req-0385 req-0244 req-0238 req-0351 test_checkout_consistency FAILED req-0167 req-0089 req-0315 req-0179 req-0164 req-0258 req-0231 req-0227
+50,167,req-0167,bridge,True,69,6,req-0167 FAILED test_checkout_consistency req-0227 req-0231 req-0258
+50,167,req-0167,oracle,True,9,1,req-0167
+50,434,req-0434,user_only,False,0,0,
+50,434,req-0434,naive,True,177,18,req-0299 req-0296 req-0359 req-0053 req-0306 req-0121 req-0275 req-0134 test_checkout_consistency FAILED req-0434 req-0167 req-0089 req-0313 req-0379 req-0193 req-0158 req-0126
+50,434,req-0434,bridge,True,69,6,req-0434 FAILED test_checkout_consistency req-0126 req-0158 req-0193
+50,434,req-0434,oracle,True,9,1,req-0434
+50,211,req-0211,user_only,False,0,0,
+50,211,req-0211,naive,True,177,18,req-0145 req-0130 req-0236 req-0359 req-0418 req-0110 req-0389 req-0167 test_checkout_consistency FAILED req-0211 req-0263 req-0220 req-0419 req-0108 req-0297 req-0396 req-0296
+50,211,req-0211,bridge,True,69,6,req-0211 FAILED test_checkout_consistency req-0296 req-0396 req-0297
+50,211,req-0211,oracle,True,9,1,req-0211
+50,255,req-0255,user_only,False,0,0,
+50,255,req-0255,naive,True,177,18,req-0296 req-0157 req-0353 req-0132 req-0382 req-0261 req-0061 req-0174 test_checkout_consistency FAILED req-0255 req-0072 req-0115 req-0344 req-0354 req-0118 req-0373 req-0313
+50,255,req-0255,bridge,True,69,6,req-0255 FAILED test_checkout_consistency req-0313 req-0373 req-0118
+50,255,req-0255,oracle,True,9,1,req-0255
+50,187,req-0187,user_only,False,0,0,
+50,187,req-0187,naive,True,177,18,req-0070 req-0344 req-0125 req-0078 req-0135 req-0182 req-0142 req-0315 test_checkout_consistency FAILED req-0187 req-0258 req-0357 req-0339 req-0377 req-0059 req-0419 req-0423
+50,187,req-0187,bridge,True,69,6,req-0187 FAILED test_checkout_consistency req-0423 req-0419 req-0059
+50,187,req-0187,oracle,True,9,1,req-0187
+100,377,req-0377,user_only,False,0,0,
+100,377,req-0377,naive,True,177,18,req-0389 req-0195 req-0093 req-0160 req-0279 req-0360 req-0291 req-0296 test_checkout_consistency FAILED req-0377 req-0137 req-0162 req-0260 req-0357 req-0123 req-0348 req-0443
+100,377,req-0377,bridge,True,69,6,req-0377 FAILED test_checkout_consistency req-0443 req-0348 req-0123
+100,377,req-0377,oracle,True,9,1,req-0377
+100,107,req-0107,user_only,False,0,0,
+100,107,req-0107,naive,True,177,18,req-0144 req-0370 req-0388 req-0312 req-0186 req-0136 req-0421 req-0402 test_checkout_consistency FAILED req-0107 req-0226 req-0283 req-0356 req-0353 req-0085 req-0168 req-0244
+100,107,req-0107,bridge,True,69,6,req-0107 FAILED test_checkout_consistency req-0244 req-0168 req-0085
+100,107,req-0107,oracle,True,9,1,req-0107
+100,62,req-0062,user_only,True,0,0,
+100,62,req-0062,naive,True,177,18,req-0248 req-0118 req-0106 req-0058 req-0154 req-0318 req-0309 req-0401 test_checkout_consistency FAILED req-0062 req-0265 req-0127 req-0361 req-0100 req-0141 req-0294 req-0365
+100,62,req-0062,bridge,True,69,6,req-0062 FAILED test_checkout_consistency req-0365 req-0294 req-0141
+100,62,req-0062,oracle,True,9,1,req-0062
+100,429,req-0429,user_only,False,0,0,
+100,429,req-0429,naive,True,177,18,req-0357 req-0069 req-0322 req-0307 req-0436 req-0110 req-0097 req-0296 test_checkout_consistency FAILED req-0429 req-0387 req-0116 req-0358 req-0326 req-0050 req-0447 req-0397
+100,429,req-0429,bridge,True,69,6,req-0429 FAILED test_checkout_consistency req-0397 req-0447 req-0050
+100,429,req-0429,oracle,True,9,1,req-0429
+100,190,req-0190,user_only,False,0,0,
+100,190,req-0190,naive,True,177,18,req-0383 req-0271 req-0318 req-0266 req-0240 req-0072 req-0408 req-0322 test_checkout_consistency FAILED req-0190 req-0270 req-0167 req-0297 req-0444 req-0246 req-0230 req-0352
+100,190,req-0190,bridge,True,69,6,req-0190 FAILED test_checkout_consistency req-0352 req-0230 req-0246
+100,190,req-0190,oracle,True,9,1,req-0190
+100,175,req-0175,user_only,False,0,0,
+100,175,req-0175,naive,True,177,18,req-0430 req-0440 req-0407 req-0345 req-0100 req-0268 req-0118 req-0181 test_checkout_consistency FAILED req-0175 req-0295 req-0443 req-0169 req-0092 req-0196 req-0357 req-0329
+100,175,req-0175,bridge,True,69,6,req-0175 FAILED test_checkout_consistency req-0329 req-0357 req-0196
+100,175,req-0175,oracle,True,9,1,req-0175
+100,164,req-0164,user_only,False,0,0,
+100,164,req-0164,naive,True,177,18,req-0260 req-0182 req-0146 req-0052 req-0414 req-0431 req-0053 req-0346 test_checkout_consistency FAILED req-0164 req-0318 req-0110 req-0317 req-0243 req-0386 req-0155 req-0403
+100,164,req-0164,bridge,True,69,6,req-0164 FAILED test_checkout_consistency req-0403 req-0155 req-0386
+100,164,req-0164,oracle,True,9,1,req-0164
+100,121,req-0121,user_only,False,0,0,
+100,121,req-0121,naive,True,177,18,req-0212 req-0260 req-0236 req-0104 req-0130 req-0269 req-0384 req-0350 test_checkout_consistency FAILED req-0121 req-0180 req-0184 req-0325 req-0267 req-0340 req-0238 req-0364
+100,121,req-0121,bridge,True,69,6,req-0121 FAILED test_checkout_consistency req-0364 req-0238 req-0340
+100,121,req-0121,oracle,True,9,1,req-0121
+100,427,req-0427,user_only,False,0,0,
+100,427,req-0427,naive,True,177,18,req-0191 req-0398 req-0253 req-0437 req-0154 req-0261 req-0332 req-0335 test_checkout_consistency FAILED req-0427 req-0297 req-0141 req-0239 req-0336 req-0334 req-0179 req-0207
+100,427,req-0427,bridge,True,69,6,req-0427 FAILED test_checkout_consistency req-0207 req-0179 req-0334
+100,427,req-0427,oracle,True,9,1,req-0427
+100,102,req-0102,user_only,False,0,0,
+100,102,req-0102,naive,True,177,18,req-0346 req-0227 req-0447 req-0412 req-0254 req-0427 req-0121 req-0388 test_checkout_consistency FAILED req-0102 req-0111 req-0433 req-0168 req-0279 req-0409 req-0133 req-0101
+100,102,req-0102,bridge,True,69,6,req-0102 FAILED test_checkout_consistency req-0101 req-0133 req-0409
+100,102,req-0102,oracle,True,9,1,req-0102
+100,396,req-0396,user_only,False,0,0,
+100,396,req-0396,naive,True,177,18,req-0159 req-0310 req-0255 req-0223 req-0331 req-0364 req-0407 req-0401 test_checkout_consistency FAILED req-0396 req-0412 req-0076 req-0132 req-0249 req-0375 req-0052 req-0096
+100,396,req-0396,bridge,True,69,6,req-0396 FAILED test_checkout_consistency req-0096 req-0052 req-0375
+100,396,req-0396,oracle,True,9,1,req-0396
+100,447,req-0447,user_only,False,0,0,
+100,447,req-0447,naive,True,177,18,req-0124 req-0291 req-0357 req-0272 req-0095 req-0082 req-0184 req-0163 test_checkout_consistency FAILED req-0447 req-0239 req-0090 req-0361 req-0069 req-0420 req-0246 req-0255
+100,447,req-0447,bridge,True,69,6,req-0447 FAILED test_checkout_consistency req-0255 req-0246 req-0420
+100,447,req-0447,oracle,True,9,1,req-0447
+100,329,req-0329,user_only,False,0,0,
+100,329,req-0329,naive,True,177,18,req-0365 req-0386 req-0316 req-0196 req-0415 req-0356 req-0079 req-0447 test_checkout_consistency FAILED req-0329 req-0139 req-0378 req-0303 req-0274 req-0055 req-0153 req-0387
+100,329,req-0329,bridge,True,69,6,req-0329 FAILED test_checkout_consistency req-0387 req-0153 req-0055
+100,329,req-0329,oracle,True,9,1,req-0329
+100,94,req-0094,user_only,True,0,0,
+100,94,req-0094,naive,True,177,18,req-0316 req-0197 req-0150 req-0067 req-0357 req-0312 req-0315 req-0408 test_checkout_consistency FAILED req-0094 req-0169 req-0365 req-0137 req-0396 req-0068 req-0235 req-0173
+100,94,req-0094,bridge,True,69,6,req-0094 FAILED test_checkout_consistency req-0173 req-0235 req-0068
+100,94,req-0094,oracle,True,9,1,req-0094
+100,352,req-0352,user_only,False,0,0,
+100,352,req-0352,naive,True,177,18,req-0386 req-0050 req-0130 req-0094 req-0191 req-0450 req-0254 req-0230 test_checkout_consistency FAILED req-0352 req-0393 req-0252 req-0257 req-0350 req-0152 req-0315 req-0057
+100,352,req-0352,bridge,True,69,6,req-0352 FAILED test_checkout_consistency req-0057 req-0315 req-0152
+100,352,req-0352,oracle,True,9,1,req-0352
+100,266,req-0266,user_only,False,0,0,
+100,266,req-0266,naive,True,177,18,req-0428 req-0411 req-0085 req-0096 req-0332 req-0195 req-0422 req-0337 test_checkout_consistency FAILED req-0266 req-0349 req-0228 req-0227 req-0191 req-0165 req-0361 req-0149
+100,266,req-0266,bridge,True,69,6,req-0266 FAILED test_checkout_consistency req-0149 req-0361 req-0165
+100,266,req-0266,oracle,True,9,1,req-0266
+100,66,req-0066,user_only,True,0,0,
+100,66,req-0066,naive,True,177,18,req-0283 req-0257 req-0345 req-0052 req-0184 req-0140 req-0259 req-0310 test_checkout_consistency FAILED req-0066 req-0105 req-0337 req-0088 req-0308 req-0201 req-0225 req-0110
+100,66,req-0066,bridge,True,69,6,req-0066 FAILED test_checkout_consistency req-0110 req-0225 req-0201
+100,66,req-0066,oracle,True,9,1,req-0066
+100,65,req-0065,user_only,True,0,0,
+100,65,req-0065,naive,True,177,18,req-0313 req-0182 req-0326 req-0345 req-0179 req-0406 req-0277 req-0244 test_checkout_consistency FAILED req-0065 req-0339 req-0298 req-0445 req-0175 req-0438 req-0224 req-0448
+100,65,req-0065,bridge,True,69,6,req-0065 FAILED test_checkout_consistency req-0448 req-0224 req-0438
+100,65,req-0065,oracle,True,9,1,req-0065
+100,97,req-0097,user_only,True,0,0,
+100,97,req-0097,naive,True,177,18,req-0285 req-0399 req-0286 req-0351 req-0064 req-0297 req-0110 req-0183 test_checkout_consistency FAILED req-0097 req-0084 req-0246 req-0375 req-0163 req-0397 req-0410 req-0168
+100,97,req-0097,bridge,True,69,6,req-0097 FAILED test_checkout_consistency req-0168 req-0410 req-0397
+100,97,req-0097,oracle,True,9,1,req-0097
+100,161,req-0161,user_only,False,0,0,
+100,161,req-0161,naive,True,177,18,req-0212 req-0262 req-0231 req-0315 req-0325 req-0054 req-0409 req-0185 test_checkout_consistency FAILED req-0161 req-0178 req-0198 req-0097 req-0255 req-0395 req-0434 req-0226
+100,161,req-0161,bridge,True,69,6,req-0161 FAILED test_checkout_consistency req-0226 req-0434 req-0395
+100,161,req-0161,oracle,True,9,1,req-0161
+100,169,req-0169,user_only,False,0,0,
+100,169,req-0169,naive,True,177,18,req-0088 req-0334 req-0141 req-0294 req-0211 req-0232 req-0161 req-0344 test_checkout_consistency FAILED req-0169 req-0188 req-0143 req-0433 req-0400 req-0147 req-0306 req-0428
+100,169,req-0169,bridge,True,69,6,req-0169 FAILED test_checkout_consistency req-0428 req-0306 req-0147
+100,169,req-0169,oracle,True,9,1,req-0169
+100,308,req-0308,user_only,False,0,0,
+100,308,req-0308,naive,True,177,18,req-0152 req-0170 req-0427 req-0173 req-0185 req-0155 req-0167 req-0153 test_checkout_consistency FAILED req-0308 req-0177 req-0367 req-0232 req-0129 req-0449 req-0104 req-0111
+100,308,req-0308,bridge,True,69,6,req-0308 FAILED test_checkout_consistency req-0111 req-0104 req-0449
+100,308,req-0308,oracle,True,9,1,req-0308
+100,358,req-0358,user_only,False,0,0,
+100,358,req-0358,naive,True,177,18,req-0090 req-0397 req-0390 req-0302 req-0365 req-0053 req-0442 req-0327 test_checkout_consistency FAILED req-0358 req-0071 req-0296 req-0240 req-0368 req-0211 req-0344 req-0190
+100,358,req-0358,bridge,True,69,6,req-0358 FAILED test_checkout_consistency req-0190 req-0344 req-0211
+100,358,req-0358,oracle,True,9,1,req-0358
+100,63,req-0063,user_only,True,0,0,
+100,63,req-0063,naive,True,177,18,req-0302 req-0144 req-0442 req-0312 req-0194 req-0254 req-0164 req-0435 test_checkout_consistency FAILED req-0063 req-0346 req-0116 req-0078 req-0320 req-0267 req-0295 req-0327
+100,63,req-0063,bridge,True,69,6,req-0063 FAILED test_checkout_consistency req-0327 req-0295 req-0267
+100,63,req-0063,oracle,True,9,1,req-0063
+100,337,req-0337,user_only,False,0,0,
+100,337,req-0337,naive,True,177,18,req-0066 req-0307 req-0227 req-0251 req-0402 req-0448 req-0139 req-0284 test_checkout_consistency FAILED req-0337 req-0111 req-0408 req-0315 req-0285 req-0211 req-0403 req-0054
+100,337,req-0337,bridge,True,69,6,req-0337 FAILED test_checkout_consistency req-0054 req-0403 req-0211
+100,337,req-0337,oracle,True,9,1,req-0337
+100,151,req-0151,user_only,False,0,0,
+100,151,req-0151,naive,True,177,18,req-0056 req-0396 req-0158 req-0245 req-0348 req-0101 req-0217 req-0236 test_checkout_consistency FAILED req-0151 req-0364 req-0183 req-0145 req-0331 req-0185 req-0172 req-0188
+100,151,req-0151,bridge,True,69,6,req-0151 FAILED test_checkout_consistency req-0188 req-0172 req-0185
+100,151,req-0151,oracle,True,9,1,req-0151
+100,416,req-0416,user_only,False,0,0,
+100,416,req-0416,naive,True,177,18,req-0291 req-0363 req-0225 req-0237 req-0144 req-0305 req-0267 req-0157 test_checkout_consistency FAILED req-0416 req-0264 req-0408 req-0436 req-0240 req-0236 req-0255 req-0193
+100,416,req-0416,bridge,True,69,6,req-0416 FAILED test_checkout_consistency req-0193 req-0255 req-0236
+100,416,req-0416,oracle,True,9,1,req-0416
+100,382,req-0382,user_only,False,0,0,
+100,382,req-0382,naive,True,177,18,req-0280 req-0142 req-0342 req-0117 req-0344 req-0402 req-0167 req-0101 test_checkout_consistency FAILED req-0382 req-0420 req-0188 req-0170 req-0334 req-0271 req-0245 req-0150
+100,382,req-0382,bridge,True,69,6,req-0382 FAILED test_checkout_consistency req-0150 req-0245 req-0271
+100,382,req-0382,oracle,True,9,1,req-0382
+100,409,req-0409,user_only,False,0,0,
+100,409,req-0409,naive,True,177,18,req-0124 req-0429 req-0126 req-0292 req-0054 req-0140 req-0265 req-0305 test_checkout_consistency FAILED req-0409 req-0118 req-0372 req-0314 req-0323 req-0419 req-0211 req-0299
+100,409,req-0409,bridge,True,69,6,req-0409 FAILED test_checkout_consistency req-0299 req-0211 req-0419
+100,409,req-0409,oracle,True,9,1,req-0409
+100,438,req-0438,user_only,False,0,0,
+100,438,req-0438,naive,True,177,18,req-0203 req-0178 req-0337 req-0340 req-0074 req-0253 req-0100 req-0403 test_checkout_consistency FAILED req-0438 req-0133 req-0080 req-0160 req-0180 req-0293 req-0372 req-0099
+100,438,req-0438,bridge,True,69,6,req-0438 FAILED test_checkout_consistency req-0099 req-0372 req-0293
+100,438,req-0438,oracle,True,9,1,req-0438
+100,264,req-0264,user_only,False,0,0,
+100,264,req-0264,naive,True,177,18,req-0281 req-0432 req-0221 req-0183 req-0234 req-0337 req-0336 req-0181 test_checkout_consistency FAILED req-0264 req-0226 req-0060 req-0260 req-0112 req-0229 req-0398 req-0361
+100,264,req-0264,bridge,True,69,6,req-0264 FAILED test_checkout_consistency req-0361 req-0398 req-0229
+100,264,req-0264,oracle,True,9,1,req-0264
+100,162,req-0162,user_only,False,0,0,
+100,162,req-0162,naive,True,177,18,req-0151 req-0346 req-0345 req-0383 req-0326 req-0139 req-0450 req-0196 test_checkout_consistency FAILED req-0162 req-0232 req-0217 req-0395 req-0312 req-0300 req-0447 req-0428
+100,162,req-0162,bridge,True,69,6,req-0162 FAILED test_checkout_consistency req-0428 req-0447 req-0300
+100,162,req-0162,oracle,True,9,1,req-0162
+100,279,req-0279,user_only,False,0,0,
+100,279,req-0279,naive,True,177,18,req-0278 req-0090 req-0245 req-0365 req-0196 req-0288 req-0374 req-0124 test_checkout_consistency FAILED req-0279 req-0135 req-0378 req-0222 req-0265 req-0364 req-0343 req-0257
+100,279,req-0279,bridge,True,69,6,req-0279 FAILED test_checkout_consistency req-0257 req-0343 req-0364
+100,279,req-0279,oracle,True,9,1,req-0279
+100,351,req-0351,user_only,False,0,0,
+100,351,req-0351,naive,True,177,18,req-0086 req-0090 req-0132 req-0225 req-0166 req-0210 req-0212 req-0385 test_checkout_consistency FAILED req-0351 req-0199 req-0414 req-0186 req-0360 req-0381 req-0252 req-0188
+100,351,req-0351,bridge,True,69,6,req-0351 FAILED test_checkout_consistency req-0188 req-0252 req-0381
+100,351,req-0351,oracle,True,9,1,req-0351
+100,192,req-0192,user_only,False,0,0,
+100,192,req-0192,naive,True,177,18,req-0278 req-0450 req-0236 req-0433 req-0351 req-0317 req-0281 req-0262 test_checkout_consistency FAILED req-0192 req-0135 req-0144 req-0061 req-0114 req-0423 req-0170 req-0389
+100,192,req-0192,bridge,True,69,6,req-0192 FAILED test_checkout_consistency req-0389 req-0170 req-0423
+100,192,req-0192,oracle,True,9,1,req-0192
+100,53,req-0053,user_only,True,0,0,
+100,53,req-0053,naive,True,177,18,req-0179 req-0431 req-0409 req-0434 req-0091 req-0158 req-0136 req-0254 test_checkout_consistency FAILED req-0053 req-0103 req-0099 req-0083 req-0293 req-0331 req-0078 req-0064
+100,53,req-0053,bridge,True,69,6,req-0053 FAILED test_checkout_consistency req-0064 req-0078 req-0331
+100,53,req-0053,oracle,True,9,1,req-0053
+100,131,req-0131,user_only,False,0,0,
+100,131,req-0131,naive,True,177,18,req-0445 req-0254 req-0319 req-0442 req-0092 req-0103 req-0185 req-0367 test_checkout_consistency FAILED req-0131 req-0129 req-0093 req-0386 req-0250 req-0209 req-0168 req-0177
+100,131,req-0131,bridge,True,69,6,req-0131 FAILED test_checkout_consistency req-0177 req-0168 req-0209
+100,131,req-0131,oracle,True,9,1,req-0131
+100,407,req-0407,user_only,False,0,0,
+100,407,req-0407,naive,True,177,18,req-0428 req-0195 req-0276 req-0370 req-0114 req-0117 req-0319 req-0137 test_checkout_consistency FAILED req-0407 req-0064 req-0067 req-0389 req-0232 req-0216 req-0293 req-0289
+100,407,req-0407,bridge,True,69,6,req-0407 FAILED test_checkout_consistency req-0289 req-0293 req-0216
+100,407,req-0407,oracle,True,9,1,req-0407
+100,435,req-0435,user_only,False,0,0,
+100,435,req-0435,naive,True,177,18,req-0326 req-0189 req-0330 req-0277 req-0119 req-0407 req-0140 req-0352 test_checkout_consistency FAILED req-0435 req-0355 req-0283 req-0373 req-0433 req-0375 req-0338 req-0272
+100,435,req-0435,bridge,True,69,6,req-0435 FAILED test_checkout_consistency req-0272 req-0338 req-0375
+100,435,req-0435,oracle,True,9,1,req-0435
+100,224,req-0224,user_only,False,0,0,
+100,224,req-0224,naive,True,177,18,req-0319 req-0378 req-0324 req-0208 req-0228 req-0297 req-0327 req-0166 test_checkout_consistency FAILED req-0224 req-0095 req-0277 req-0207 req-0238 req-0262 req-0183 req-0129
+100,224,req-0224,bridge,True,69,6,req-0224 FAILED test_checkout_consistency req-0129 req-0183 req-0262
+100,224,req-0224,oracle,True,9,1,req-0224
+100,424,req-0424,user_only,False,0,0,
+100,424,req-0424,naive,True,177,18,req-0205 req-0055 req-0050 req-0317 req-0439 req-0119 req-0226 req-0196 test_checkout_consistency FAILED req-0424 req-0290 req-0323 req-0054 req-0402 req-0301 req-0437 req-0294
+100,424,req-0424,bridge,True,69,6,req-0424 FAILED test_checkout_consistency req-0294 req-0437 req-0301
+100,424,req-0424,oracle,True,9,1,req-0424
+100,129,req-0129,user_only,False,0,0,
+100,129,req-0129,naive,True,177,18,req-0204 req-0054 req-0443 req-0271 req-0200 req-0356 req-0169 req-0053 test_checkout_consistency FAILED req-0129 req-0331 req-0242 req-0147 req-0261 req-0338 req-0274 req-0253
+100,129,req-0129,bridge,True,69,6,req-0129 FAILED test_checkout_consistency req-0253 req-0274 req-0338
+100,129,req-0129,oracle,True,9,1,req-0129
+100,160,req-0160,user_only,False,0,0,
+100,160,req-0160,naive,True,177,18,req-0178 req-0133 req-0417 req-0428 req-0381 req-0250 req-0244 req-0163 test_checkout_consistency FAILED req-0160 req-0185 req-0090 req-0267 req-0371 req-0173 req-0315 req-0442
+100,160,req-0160,bridge,True,69,6,req-0160 FAILED test_checkout_consistency req-0442 req-0315 req-0173
+100,160,req-0160,oracle,True,9,1,req-0160
+100,222,req-0222,user_only,False,0,0,
+100,222,req-0222,naive,True,177,18,req-0364 req-0406 req-0401 req-0189 req-0195 req-0383 req-0431 req-0323 test_checkout_consistency FAILED req-0222 req-0187 req-0262 req-0146 req-0085 req-0143 req-0119 req-0198
+100,222,req-0222,bridge,True,69,6,req-0222 FAILED test_checkout_consistency req-0198 req-0119 req-0143
+100,222,req-0222,oracle,True,9,1,req-0222
+100,441,req-0441,user_only,False,0,0,
+100,441,req-0441,naive,True,177,18,req-0106 req-0376 req-0283 req-0366 req-0281 req-0189 req-0408 req-0368 test_checkout_consistency FAILED req-0441 req-0301 req-0146 req-0214 req-0059 req-0127 req-0075 req-0323
+100,441,req-0441,bridge,True,69,6,req-0441 FAILED test_checkout_consistency req-0323 req-0075 req-0127
+100,441,req-0441,oracle,True,9,1,req-0441
+100,432,req-0432,user_only,False,0,0,
+100,432,req-0432,naive,True,177,18,req-0061 req-0145 req-0102 req-0194 req-0187 req-0114 req-0416 req-0274 test_checkout_consistency FAILED req-0432 req-0422 req-0054 req-0169 req-0096 req-0127 req-0057 req-0302
+100,432,req-0432,bridge,True,69,6,req-0432 FAILED test_checkout_consistency req-0302 req-0057 req-0127
+100,432,req-0432,oracle,True,9,1,req-0432
+100,244,req-0244,user_only,False,0,0,
+100,244,req-0244,naive,True,177,18,req-0161 req-0225 req-0266 req-0209 req-0306 req-0240 req-0288 req-0407 test_checkout_consistency FAILED req-0244 req-0066 req-0219 req-0091 req-0435 req-0124 req-0078 req-0186
+100,244,req-0244,bridge,True,69,6,req-0244 FAILED test_checkout_consistency req-0186 req-0078 req-0124
+100,244,req-0244,oracle,True,9,1,req-0244
+100,99,req-0099,user_only,True,0,0,
+100,99,req-0099,naive,True,177,18,req-0448 req-0251 req-0086 req-0329 req-0291 req-0143 req-0149 req-0179 test_checkout_consistency FAILED req-0099 req-0246 req-0056 req-0113 req-0444 req-0416 req-0178 req-0248
+100,99,req-0099,bridge,True,69,6,req-0099 FAILED test_checkout_consistency req-0248 req-0178 req-0416
+100,99,req-0099,oracle,True,9,1,req-0099
+100,233,req-0233,user_only,False,0,0,
+100,233,req-0233,naive,True,177,18,req-0445 req-0277 req-0176 req-0428 req-0067 req-0151 req-0286 req-0427 test_checkout_consistency FAILED req-0233 req-0098 req-0317 req-0391 req-0156 req-0293 req-0250 req-0399
+100,233,req-0233,bridge,True,69,6,req-0233 FAILED test_checkout_consistency req-0399 req-0250 req-0293
+100,233,req-0233,oracle,True,9,1,req-0233
+100,226,req-0226,user_only,False,0,0,
+100,226,req-0226,naive,True,177,18,req-0209 req-0215 req-0131 req-0373 req-0423 req-0071 req-0432 req-0332 test_checkout_consistency FAILED req-0226 req-0317 req-0112 req-0179 req-0297 req-0377 req-0202 req-0151
+100,226,req-0226,bridge,True,69,6,req-0226 FAILED test_checkout_consistency req-0151 req-0202 req-0377
+100,226,req-0226,oracle,True,9,1,req-0226
+100,359,req-0359,user_only,False,0,0,
+100,359,req-0359,naive,True,177,18,req-0234 req-0076 req-0392 req-0161 req-0107 req-0170 req-0375 req-0272 test_checkout_consistency FAILED req-0359 req-0216 req-0057 req-0135 req-0191 req-0349 req-0111 req-0252
+100,359,req-0359,bridge,True,69,6,req-0359 FAILED test_checkout_consistency req-0252 req-0111 req-0349
+100,359,req-0359,oracle,True,9,1,req-0359
+100,185,req-0185,user_only,False,0,0,
+100,185,req-0185,naive,True,177,18,req-0174 req-0054 req-0071 req-0348 req-0404 req-0294 req-0403 req-0356 test_checkout_consistency FAILED req-0185 req-0129 req-0241 req-0445 req-0095 req-0177 req-0130 req-0306
+100,185,req-0185,bridge,True,69,6,req-0185 FAILED test_checkout_consistency req-0306 req-0130 req-0177
+100,185,req-0185,oracle,True,9,1,req-0185
+100,72,req-0072,user_only,True,0,0,
+100,72,req-0072,naive,True,177,18,req-0097 req-0402 req-0367 req-0224 req-0439 req-0371 req-0081 req-0233 test_checkout_consistency FAILED req-0072 req-0381 req-0129 req-0410 req-0325 req-0105 req-0115 req-0300
+100,72,req-0072,bridge,True,69,6,req-0072 FAILED test_checkout_consistency req-0300 req-0115 req-0105
+100,72,req-0072,oracle,True,9,1,req-0072
+100,285,req-0285,user_only,False,0,0,
+100,285,req-0285,naive,True,177,18,req-0169 req-0212 req-0336 req-0381 req-0438 req-0227 req-0274 req-0426 test_checkout_consistency FAILED req-0285 req-0148 req-0060 req-0403 req-0243 req-0233 req-0421 req-0118
+100,285,req-0285,bridge,True,69,6,req-0285 FAILED test_checkout_consistency req-0118 req-0421 req-0233
+100,285,req-0285,oracle,True,9,1,req-0285
+100,324,req-0324,user_only,False,0,0,
+100,324,req-0324,naive,True,177,18,req-0178 req-0070 req-0298 req-0412 req-0274 req-0337 req-0200 req-0328 test_checkout_consistency FAILED req-0324 req-0407 req-0300 req-0147 req-0341 req-0145 req-0329 req-0228
+100,324,req-0324,bridge,True,69,6,req-0324 FAILED test_checkout_consistency req-0228 req-0329 req-0145
+100,324,req-0324,oracle,True,9,1,req-0324
+100,113,req-0113,user_only,False,0,0,
+100,113,req-0113,naive,True,177,18,req-0216 req-0425 req-0290 req-0191 req-0357 req-0334 req-0133 req-0085 test_checkout_consistency FAILED req-0113 req-0322 req-0130 req-0281 req-0202 req-0185 req-0328 req-0238
+100,113,req-0113,bridge,True,69,6,req-0113 FAILED test_checkout_consistency req-0238 req-0328 req-0185
+100,113,req-0113,oracle,True,9,1,req-0113
+100,243,req-0243,user_only,False,0,0,
+100,243,req-0243,naive,True,177,18,req-0283 req-0050 req-0448 req-0377 req-0310 req-0245 req-0426 req-0144 test_checkout_consistency FAILED req-0243 req-0059 req-0368 req-0236 req-0172 req-0214 req-0420 req-0082
+100,243,req-0243,bridge,True,69,6,req-0243 FAILED test_checkout_consistency req-0082 req-0420 req-0214
+100,243,req-0243,oracle,True,9,1,req-0243
+100,90,req-0090,user_only,True,0,0,
+100,90,req-0090,naive,True,177,18,req-0388 req-0326 req-0249 req-0148 req-0319 req-0400 req-0305 req-0443 test_checkout_consistency FAILED req-0090 req-0333 req-0129 req-0364 req-0195 req-0216 req-0260 req-0379
+100,90,req-0090,bridge,True,69,6,req-0090 FAILED test_checkout_consistency req-0379 req-0260 req-0216
+100,90,req-0090,oracle,True,9,1,req-0090
+100,332,req-0332,user_only,False,0,0,
+100,332,req-0332,naive,True,177,18,req-0214 req-0106 req-0099 req-0317 req-0388 req-0084 req-0072 req-0116 test_checkout_consistency FAILED req-0332 req-0141 req-0066 req-0153 req-0104 req-0298 req-0148 req-0100
+100,332,req-0332,bridge,True,69,6,req-0332 FAILED test_checkout_consistency req-0100 req-0148 req-0298
+100,332,req-0332,oracle,True,9,1,req-0332
+100,200,req-0200,user_only,False,0,0,
+100,200,req-0200,naive,True,177,18,req-0066 req-0343 req-0379 req-0249 req-0387 req-0301 req-0320 req-0370 test_checkout_consistency FAILED req-0200 req-0410 req-0353 req-0181 req-0075 req-0238 req-0163 req-0361
+100,200,req-0200,bridge,True,69,6,req-0200 FAILED test_checkout_consistency req-0361 req-0163 req-0238
+100,200,req-0200,oracle,True,9,1,req-0200
+100,371,req-0371,user_only,False,0,0,
+100,371,req-0371,naive,True,177,18,req-0418 req-0086 req-0056 req-0156 req-0386 req-0301 req-0090 req-0289 test_checkout_consistency FAILED req-0371 req-0378 req-0081 req-0234 req-0335 req-0431 req-0262 req-0238
+100,371,req-0371,bridge,True,69,6,req-0371 FAILED test_checkout_consistency req-0238 req-0262 req-0431
+100,371,req-0371,oracle,True,9,1,req-0371
+100,366,req-0366,user_only,False,0,0,
+100,366,req-0366,naive,True,177,18,req-0413 req-0079 req-0365 req-0186 req-0320 req-0070 req-0426 req-0086 test_checkout_consistency FAILED req-0366 req-0205 req-0089 req-0160 req-0315 req-0099 req-0101 req-0422
+100,366,req-0366,bridge,True,69,6,req-0366 FAILED test_checkout_consistency req-0422 req-0101 req-0099
+100,366,req-0366,oracle,True,9,1,req-0366
+100,235,req-0235,user_only,False,0,0,
+100,235,req-0235,naive,True,177,18,req-0168 req-0323 req-0248 req-0147 req-0148 req-0320 req-0387 req-0177 test_checkout_consistency FAILED req-0235 req-0342 req-0371 req-0141 req-0336 req-0434 req-0263 req-0433
+100,235,req-0235,bridge,True,69,6,req-0235 FAILED test_checkout_consistency req-0433 req-0263 req-0434
+100,235,req-0235,oracle,True,9,1,req-0235
+100,345,req-0345,user_only,False,0,0,
+100,345,req-0345,naive,True,177,18,req-0104 req-0443 req-0377 req-0346 req-0233 req-0396 req-0284 req-0410 test_checkout_consistency FAILED req-0345 req-0391 req-0268 req-0103 req-0135 req-0142 req-0331 req-0255
+100,345,req-0345,bridge,True,69,6,req-0345 FAILED test_checkout_consistency req-0255 req-0331 req-0142
+100,345,req-0345,oracle,True,9,1,req-0345
+100,148,req-0148,user_only,False,0,0,
+100,148,req-0148,naive,True,177,18,req-0309 req-0223 req-0387 req-0130 req-0324 req-0358 req-0277 req-0231 test_checkout_consistency FAILED req-0148 req-0212 req-0332 req-0217 req-0241 req-0262 req-0442 req-0375
+100,148,req-0148,bridge,True,69,6,req-0148 FAILED test_checkout_consistency req-0375 req-0442 req-0262
+100,148,req-0148,oracle,True,9,1,req-0148
+100,85,req-0085,user_only,True,0,0,
+100,85,req-0085,naive,True,177,18,req-0271 req-0422 req-0216 req-0362 req-0174 req-0339 req-0330 req-0160 test_checkout_consistency FAILED req-0085 req-0243 req-0443 req-0332 req-0432 req-0181 req-0235 req-0282
+100,85,req-0085,bridge,True,69,6,req-0085 FAILED test_checkout_consistency req-0282 req-0235 req-0181
+100,85,req-0085,oracle,True,9,1,req-0085
+100,73,req-0073,user_only,True,0,0,
+100,73,req-0073,naive,True,177,18,req-0280 req-0254 req-0050 req-0422 req-0067 req-0196 req-0356 req-0058 test_checkout_consistency FAILED req-0073 req-0316 req-0120 req-0205 req-0053 req-0204 req-0164 req-0160
+100,73,req-0073,bridge,True,69,6,req-0073 FAILED test_checkout_consistency req-0160 req-0164 req-0204
+100,73,req-0073,oracle,True,9,1,req-0073
+100,166,req-0166,user_only,False,0,0,
+100,166,req-0166,naive,True,177,18,req-0212 req-0061 req-0446 req-0404 req-0192 req-0334 req-0312 req-0335 test_checkout_consistency FAILED req-0166 req-0343 req-0129 req-0098 req-0069 req-0286 req-0233 req-0120
+100,166,req-0166,bridge,True,69,6,req-0166 FAILED test_checkout_consistency req-0120 req-0233 req-0286
+100,166,req-0166,oracle,True,9,1,req-0166
+100,198,req-0198,user_only,False,0,0,
+100,198,req-0198,naive,True,177,18,req-0185 req-0238 req-0349 req-0177 req-0169 req-0181 req-0204 req-0097 test_checkout_consistency FAILED req-0198 req-0343 req-0255 req-0342 req-0161 req-0426 req-0089 req-0421
+100,198,req-0198,bridge,True,69,6,req-0198 FAILED test_checkout_consistency req-0421 req-0089 req-0426
+100,198,req-0198,oracle,True,9,1,req-0198
+100,393,req-0393,user_only,False,0,0,
+100,393,req-0393,naive,True,177,18,req-0216 req-0297 req-0138 req-0299 req-0404 req-0410 req-0345 req-0098 test_checkout_consistency FAILED req-0393 req-0354 req-0378 req-0203 req-0069 req-0425 req-0245 req-0090
+100,393,req-0393,bridge,True,69,6,req-0393 FAILED test_checkout_consistency req-0090 req-0245 req-0425
+100,393,req-0393,oracle,True,9,1,req-0393
+100,430,req-0430,user_only,False,0,0,
+100,430,req-0430,naive,True,177,18,req-0450 req-0078 req-0445 req-0221 req-0228 req-0272 req-0263 req-0111 test_checkout_consistency FAILED req-0430 req-0166 req-0433 req-0384 req-0358 req-0055 req-0374 req-0449
+100,430,req-0430,bridge,True,69,6,req-0430 FAILED test_checkout_consistency req-0449 req-0374 req-0055
+100,430,req-0430,oracle,True,9,1,req-0430
+100,101,req-0101,user_only,False,0,0,
+100,101,req-0101,naive,True,177,18,req-0374 req-0246 req-0077 req-0207 req-0319 req-0071 req-0214 req-0327 test_checkout_consistency FAILED req-0101 req-0340 req-0127 req-0218 req-0308 req-0408 req-0164 req-0129
+100,101,req-0101,bridge,True,69,6,req-0101 FAILED test_checkout_consistency req-0129 req-0164 req-0408
+100,101,req-0101,oracle,True,9,1,req-0101
+100,404,req-0404,user_only,False,0,0,
+100,404,req-0404,naive,True,177,18,req-0075 req-0394 req-0425 req-0251 req-0278 req-0436 req-0354 req-0344 test_checkout_consistency FAILED req-0404 req-0308 req-0096 req-0163 req-0271 req-0198 req-0125 req-0117
+100,404,req-0404,bridge,True,69,6,req-0404 FAILED test_checkout_consistency req-0117 req-0125 req-0198
+100,404,req-0404,oracle,True,9,1,req-0404
+100,410,req-0410,user_only,False,0,0,
+100,410,req-0410,naive,True,177,18,req-0222 req-0092 req-0293 req-0342 req-0432 req-0075 req-0330 req-0254 test_checkout_consistency FAILED req-0410 req-0184 req-0093 req-0306 req-0272 req-0447 req-0407 req-0116
+100,410,req-0410,bridge,True,69,6,req-0410 FAILED test_checkout_consistency req-0116 req-0407 req-0447
+100,410,req-0410,oracle,True,9,1,req-0410
+100,282,req-0282,user_only,False,0,0,
+100,282,req-0282,naive,True,177,18,req-0441 req-0119 req-0297 req-0337 req-0151 req-0300 req-0252 req-0384 test_checkout_consistency FAILED req-0282 req-0343 req-0150 req-0338 req-0366 req-0427 req-0319 req-0176
+100,282,req-0282,bridge,True,69,6,req-0282 FAILED test_checkout_consistency req-0176 req-0319 req-0427
+100,282,req-0282,oracle,True,9,1,req-0282
+100,375,req-0375,user_only,False,0,0,
+100,375,req-0375,naive,True,177,18,req-0174 req-0086 req-0186 req-0448 req-0270 req-0215 req-0401 req-0344 test_checkout_consistency FAILED req-0375 req-0095 req-0107 req-0394 req-0261 req-0266 req-0237 req-0228
+100,375,req-0375,bridge,True,69,6,req-0375 FAILED test_checkout_consistency req-0228 req-0237 req-0266
+100,375,req-0375,oracle,True,9,1,req-0375
+100,236,req-0236,user_only,False,0,0,
+100,236,req-0236,naive,True,177,18,req-0147 req-0214 req-0226 req-0355 req-0386 req-0062 req-0445 req-0206 test_checkout_consistency FAILED req-0236 req-0136 req-0229 req-0366 req-0277 req-0370 req-0124 req-0276
+100,236,req-0236,bridge,True,69,6,req-0236 FAILED test_checkout_consistency req-0276 req-0124 req-0370
+100,236,req-0236,oracle,True,9,1,req-0236
+100,133,req-0133,user_only,False,0,0,
+100,133,req-0133,naive,True,177,18,req-0072 req-0170 req-0153 req-0401 req-0242 req-0129 req-0438 req-0423 test_checkout_consistency FAILED req-0133 req-0093 req-0107 req-0429 req-0077 req-0175 req-0368 req-0125
+100,133,req-0133,bridge,True,69,6,req-0133 FAILED test_checkout_consistency req-0125 req-0368 req-0175
+100,133,req-0133,oracle,True,9,1,req-0133
+100,239,req-0239,user_only,False,0,0,
+100,239,req-0239,naive,True,177,18,req-0197 req-0057 req-0225 req-0406 req-0106 req-0206 req-0281 req-0292 test_checkout_consistency FAILED req-0239 req-0061 req-0219 req-0157 req-0429 req-0326 req-0158 req-0154
+100,239,req-0239,bridge,True,69,6,req-0239 FAILED test_checkout_consistency req-0154 req-0158 req-0326
+100,239,req-0239,oracle,True,9,1,req-0239
+100,231,req-0231,user_only,False,0,0,
+100,231,req-0231,naive,True,177,18,req-0330 req-0318 req-0435 req-0182 req-0331 req-0298 req-0369 req-0424 test_checkout_consistency FAILED req-0231 req-0122 req-0406 req-0408 req-0393 req-0059 req-0243 req-0349
+100,231,req-0231,bridge,True,69,6,req-0231 FAILED test_checkout_consistency req-0349 req-0243 req-0059
+100,231,req-0231,oracle,True,9,1,req-0231
+100,157,req-0157,user_only,False,0,0,
+100,157,req-0157,naive,True,177,18,req-0390 req-0320 req-0072 req-0181 req-0137 req-0080 req-0196 req-0152 test_checkout_consistency FAILED req-0157 req-0407 req-0367 req-0189 req-0077 req-0289 req-0386 req-0054
+100,157,req-0157,bridge,True,69,6,req-0157 FAILED test_checkout_consistency req-0054 req-0386 req-0289
+100,157,req-0157,oracle,True,9,1,req-0157
+100,186,req-0186,user_only,False,0,0,
+100,186,req-0186,naive,True,177,18,req-0084 req-0249 req-0389 req-0189 req-0390 req-0388 req-0235 req-0105 test_checkout_consistency FAILED req-0186 req-0059 req-0200 req-0383 req-0248 req-0168 req-0245 req-0311
+100,186,req-0186,bridge,True,69,6,req-0186 FAILED test_checkout_consistency req-0311 req-0245 req-0168
+100,186,req-0186,oracle,True,9,1,req-0186
+100,86,req-0086,user_only,True,0,0,
+100,86,req-0086,naive,True,177,18,req-0414 req-0101 req-0212 req-0299 req-0356 req-0323 req-0096 req-0146 test_checkout_consistency FAILED req-0086 req-0152 req-0307 req-0285 req-0338 req-0415 req-0061 req-0070
+100,86,req-0086,bridge,True,69,6,req-0086 FAILED test_checkout_consistency req-0070 req-0061 req-0415
+100,86,req-0086,oracle,True,9,1,req-0086
+100,361,req-0361,user_only,False,0,0,
+100,361,req-0361,naive,True,177,18,req-0176 req-0321 req-0206 req-0220 req-0300 req-0251 req-0432 req-0130 test_checkout_consistency FAILED req-0361 req-0059 req-0227 req-0401 req-0230 req-0231 req-0371 req-0204
+100,361,req-0361,bridge,True,69,6,req-0361 FAILED test_checkout_consistency req-0204 req-0371 req-0231
+100,361,req-0361,oracle,True,9,1,req-0361
+100,137,req-0137,user_only,False,0,0,
+100,137,req-0137,naive,True,177,18,req-0171 req-0307 req-0192 req-0081 req-0371 req-0182 req-0249 req-0065 test_checkout_consistency FAILED req-0137 req-0335 req-0194 req-0166 req-0127 req-0225 req-0252 req-0387
+100,137,req-0137,bridge,True,69,6,req-0137 FAILED test_checkout_consistency req-0387 req-0252 req-0225
+100,137,req-0137,oracle,True,9,1,req-0137
+100,323,req-0323,user_only,False,0,0,
+100,323,req-0323,naive,True,177,18,req-0120 req-0094 req-0424 req-0245 req-0316 req-0398 req-0364 req-0371 test_checkout_consistency FAILED req-0323 req-0402 req-0166 req-0263 req-0173 req-0344 req-0128 req-0268
+100,323,req-0323,bridge,True,69,6,req-0323 FAILED test_checkout_consistency req-0268 req-0128 req-0344
+100,323,req-0323,oracle,True,9,1,req-0323
+100,445,req-0445,user_only,False,0,0,
+100,445,req-0445,naive,True,177,18,req-0209 req-0359 req-0218 req-0279 req-0327 req-0117 req-0155 req-0384 test_checkout_consistency FAILED req-0445 req-0120 req-0347 req-0400 req-0153 req-0208 req-0402 req-0411
+100,445,req-0445,bridge,True,69,6,req-0445 FAILED test_checkout_consistency req-0411 req-0402 req-0208
+100,445,req-0445,oracle,True,9,1,req-0445
+100,373,req-0373,user_only,False,0,0,
+100,373,req-0373,naive,True,177,18,req-0318 req-0119 req-0270 req-0445 req-0124 req-0386 req-0339 req-0130 test_checkout_consistency FAILED req-0373 req-0212 req-0084 req-0335 req-0322 req-0419 req-0110 req-0144
+100,373,req-0373,bridge,True,69,6,req-0373 FAILED test_checkout_consistency req-0144 req-0110 req-0419
+100,373,req-0373,oracle,True,9,1,req-0373
+100,286,req-0286,user_only,False,0,0,
+100,286,req-0286,naive,True,177,18,req-0212 req-0124 req-0423 req-0065 req-0442 req-0213 req-0261 req-0260 test_checkout_consistency FAILED req-0286 req-0205 req-0276 req-0432 req-0377 req-0429 req-0190 req-0127
+100,286,req-0286,bridge,True,69,6,req-0286 FAILED test_checkout_consistency req-0127 req-0190 req-0429
+100,286,req-0286,oracle,True,9,1,req-0286
+100,378,req-0378,user_only,False,0,0,
+100,378,req-0378,naive,True,177,18,req-0449 req-0146 req-0104 req-0117 req-0144 req-0063 req-0441 req-0363 test_checkout_consistency FAILED req-0378 req-0365 req-0186 req-0360 req-0340 req-0168 req-0355 req-0402
+100,378,req-0378,bridge,True,69,6,req-0378 FAILED test_checkout_consistency req-0402 req-0355 req-0168
+100,378,req-0378,oracle,True,9,1,req-0378
+100,188,req-0188,user_only,False,0,0,
+100,188,req-0188,naive,True,177,18,req-0063 req-0234 req-0090 req-0403 req-0450 req-0295 req-0118 req-0308 test_checkout_consistency FAILED req-0188 req-0360 req-0291 req-0415 req-0383 req-0242 req-0144 req-0249
+100,188,req-0188,bridge,True,69,6,req-0188 FAILED test_checkout_consistency req-0249 req-0144 req-0242
+100,188,req-0188,oracle,True,9,1,req-0188
+100,335,req-0335,user_only,False,0,0,
+100,335,req-0335,naive,True,177,18,req-0301 req-0292 req-0120 req-0133 req-0148 req-0165 req-0066 req-0259 test_checkout_consistency FAILED req-0335 req-0442 req-0057 req-0188 req-0261 req-0163 req-0431 req-0394
+100,335,req-0335,bridge,True,69,6,req-0335 FAILED test_checkout_consistency req-0394 req-0431 req-0163
+100,335,req-0335,oracle,True,9,1,req-0335
+100,419,req-0419,user_only,False,0,0,
+100,419,req-0419,naive,True,177,18,req-0153 req-0438 req-0154 req-0083 req-0140 req-0274 req-0365 req-0300 test_checkout_consistency FAILED req-0419 req-0402 req-0216 req-0284 req-0176 req-0268 req-0257 req-0448
+100,419,req-0419,bridge,True,69,6,req-0419 FAILED test_checkout_consistency req-0448 req-0257 req-0268
+100,419,req-0419,oracle,True,9,1,req-0419
+100,216,req-0216,user_only,False,0,0,
+100,216,req-0216,naive,True,177,18,req-0071 req-0362 req-0427 req-0245 req-0419 req-0210 req-0252 req-0364 test_checkout_consistency FAILED req-0216 req-0431 req-0343 req-0355 req-0325 req-0319 req-0379 req-0411
+100,216,req-0216,bridge,True,69,6,req-0216 FAILED test_checkout_consistency req-0411 req-0379 req-0319
+100,216,req-0216,oracle,True,9,1,req-0216
+100,78,req-0078,user_only,True,0,0,
+100,78,req-0078,naive,True,177,18,req-0069 req-0317 req-0106 req-0282 req-0284 req-0071 req-0176 req-0316 test_checkout_consistency FAILED req-0078 req-0326 req-0253 req-0427 req-0070 req-0336 req-0249 req-0315
+100,78,req-0078,bridge,True,69,6,req-0078 FAILED test_checkout_consistency req-0315 req-0249 req-0336
+100,78,req-0078,oracle,True,9,1,req-0078
+100,167,req-0167,user_only,False,0,0,
+100,167,req-0167,naive,True,177,18,req-0442 req-0373 req-0075 req-0147 req-0200 req-0276 req-0254 req-0206 test_checkout_consistency FAILED req-0167 req-0447 req-0197 req-0287 req-0135 req-0267 req-0201 req-0364
+100,167,req-0167,bridge,True,69,6,req-0167 FAILED test_checkout_consistency req-0364 req-0201 req-0267
+100,167,req-0167,oracle,True,9,1,req-0167
+100,434,req-0434,user_only,False,0,0,
+100,434,req-0434,naive,True,177,18,req-0077 req-0403 req-0314 req-0122 req-0287 req-0380 req-0281 req-0096 test_checkout_consistency FAILED req-0434 req-0419 req-0306 req-0107 req-0142 req-0449 req-0349 req-0406
+100,434,req-0434,bridge,True,69,6,req-0434 FAILED test_checkout_consistency req-0406 req-0349 req-0449
+100,434,req-0434,oracle,True,9,1,req-0434
+100,211,req-0211,user_only,False,0,0,
+100,211,req-0211,naive,True,177,18,req-0330 req-0119 req-0252 req-0262 req-0216 req-0281 req-0062 req-0141 test_checkout_consistency FAILED req-0211 req-0283 req-0353 req-0415 req-0153 req-0096 req-0178 req-0405
+100,211,req-0211,bridge,True,69,6,req-0211 FAILED test_checkout_consistency req-0405 req-0178 req-0096
+100,211,req-0211,oracle,True,9,1,req-0211
+100,255,req-0255,user_only,False,0,0,
+100,255,req-0255,naive,True,177,18,req-0383 req-0415 req-0133 req-0418 req-0426 req-0113 req-0096 req-0108 test_checkout_consistency FAILED req-0255 req-0412 req-0281 req-0375 req-0235 req-0093 req-0319 req-0413
+100,255,req-0255,bridge,True,69,6,req-0255 FAILED test_checkout_consistency req-0413 req-0319 req-0093
+100,255,req-0255,oracle,True,9,1,req-0255
+100,187,req-0187,user_only,False,0,0,
+100,187,req-0187,naive,True,177,18,req-0247 req-0423 req-0312 req-0364 req-0131 req-0244 req-0332 req-0245 test_checkout_consistency FAILED req-0187 req-0072 req-0444 req-0137 req-0222 req-0340 req-0388 req-0126
+100,187,req-0187,bridge,True,69,6,req-0187 FAILED test_checkout_consistency req-0126 req-0388 req-0340
+100,187,req-0187,oracle,True,9,1,req-0187

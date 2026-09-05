@@ -1,0 +1,828 @@
+{
+  "algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "task_manifest_commit": "c0df5b70",
+  "seed": "headroom-v3-retrieval-controlled-v1",
+  "distractor_count": 600,
+  "interpretation": "conditional_on_retrieval",
+  "tasks": [
+    {
+      "task_id": "H1",
+      "status": "evaluated",
+      "subject": "fix(opencode): keep Claude models off OpenAI provider",
+      "critical_record_count": 27,
+      "bridge_anchor_count": 2,
+      "distractor_count": 600,
+      "target_record_count": 629,
+      "target_tokens_estimate": 12907,
+      "v3_context_enriched": true,
+      "off_plan": {
+        "runs": 43,
+        "keep": 22,
+        "drop": 21
+      },
+      "v3_plan": {
+        "runs": 41,
+        "keep": 21,
+        "drop": 20
+      },
+      "critical_drop_to_keep": 0,
+      "critical_keep_to_keep": 8,
+      "critical_drop_to_drop": 19,
+      "critical_keep_to_drop": 0,
+      "critical_records": [
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 29,
+          "text": "    re.escape(_MCP_MARKER_START) + r\".*?\" + re.escape(_MCP_MARKER_END),",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:29:    re.escape(_MCP_MARKER_START) + r\".*?\" + re.escape(_MCP_MARKER_END),\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 30,
+          "text": "    re.DOTALL,",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:30:    re.DOTALL,\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 31,
+          "text": ")",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:31:)\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 32,
+          "text": "HEADROOM_OPENCODE_PLUGIN = \"headroom-opencode\"",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:32:HEADROOM_OPENCODE_PLUGIN = \"headroom-opencode\"\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 34,
+          "text": "# Models exposed by the injected `headroom` provider. OpenCode only resolves",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:34:# Models exposed by the injected `headroom` provider. OpenCode only resolves\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 35,
+          "text": "# `headroom/<id>` for ids listed in the provider's `models` map, so an empty",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:35:# `headroom/<id>` for ids listed in the provider's `models` map, so an empty\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 36,
+          "text": "# map means every documented `headroom/*` model fails with \"Model not found\".",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:36:# map means every documented `headroom/*` model fails with \"Model not found\".\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 37,
+          "text": "# Keep in sync with DEFAULT_MODELS in plugins/opencode/src/provider.ts and the",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:37:# Keep in sync with DEFAULT_MODELS in plugins/opencode/src/provider.ts and the\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 38,
+          "text": "# table in plugins/opencode/README.md.",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:38:# table in plugins/opencode/README.md.\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 39,
+          "text": "HEADROOM_OPENCODE_MODELS: dict[str, Any] = {",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:39:HEADROOM_OPENCODE_MODELS: dict[str, Any] = {\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 40,
+          "text": "    \"claude-sonnet-4-6\": {",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:40:    \"claude-sonnet-4-6\": {\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 41,
+          "text": "        \"name\": \"Claude Sonnet 4.6\",",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:41:        \"name\": \"Claude Sonnet 4.6\",\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 42,
+          "text": "        \"limit\": {\"context\": 200000, \"output\": 16384},",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:42:        \"limit\": {\"context\": 200000, \"output\": 16384},\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 43,
+          "text": "    },",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:43:    },\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 44,
+          "text": "    \"claude-opus-4-6\": {",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:44:    \"claude-opus-4-6\": {\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 45,
+          "text": "        \"name\": \"Claude Opus 4.6\",",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:45:        \"name\": \"Claude Opus 4.6\",\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 46,
+          "text": "        \"limit\": {\"context\": 200000, \"output\": 16384},",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:46:        \"limit\": {\"context\": 200000, \"output\": 16384},\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 47,
+          "text": "    },",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:47:    },\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 48,
+          "text": "    \"claude-haiku-4-5-20251001\": {",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:48:    \"claude-haiku-4-5-20251001\": {\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 49,
+          "text": "        \"name\": \"Claude Haiku 4.5\",",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:49:        \"name\": \"Claude Haiku 4.5\",\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 50,
+          "text": "        \"limit\": {\"context\": 200000, \"output\": 8192},",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:50:        \"limit\": {\"context\": 200000, \"output\": 8192},\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 51,
+          "text": "    },",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:51:    },\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 52,
+          "text": "    \"gpt-4o\": {",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:52:    \"gpt-4o\": {\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 53,
+          "text": "        \"name\": \"GPT-4o\",",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:53:        \"name\": \"GPT-4o\",\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 54,
+          "text": "        \"limit\": {\"context\": 128000, \"output\": 16384},",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:54:        \"limit\": {\"context\": 128000, \"output\": 16384},\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 55,
+          "text": "    },",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:55:    },\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/providers/opencode/config.py",
+          "line": 56,
+          "text": "    \"gpt-4.1\": {",
+          "kind": "critical",
+          "record": "headroom/providers/opencode/config.py:56:    \"gpt-4.1\": {\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        }
+      ]
+    },
+    {
+      "task_id": "H2",
+      "status": "evaluated",
+      "subject": "fix(wrap): stop the launch cwd from shadowing the installed package in the proxy subprocess (#2843)",
+      "critical_record_count": 10,
+      "bridge_anchor_count": 1,
+      "distractor_count": 600,
+      "target_record_count": 611,
+      "target_tokens_estimate": 12148,
+      "v3_context_enriched": true,
+      "off_plan": {
+        "runs": 29,
+        "keep": 15,
+        "drop": 14
+      },
+      "v3_plan": {
+        "runs": 35,
+        "keep": 18,
+        "drop": 17
+      },
+      "critical_drop_to_keep": 0,
+      "critical_keep_to_keep": 10,
+      "critical_drop_to_drop": 0,
+      "critical_keep_to_drop": 0,
+      "critical_records": [
+        {
+          "path": "headroom/cli/wrap.py",
+          "line": 702,
+          "text": "    # Ensure proxy subprocess uses UTF-8 (Windows defaults to cp1252)",
+          "kind": "critical",
+          "record": "headroom/cli/wrap.py:702:    # Ensure proxy subprocess uses UTF-8 (Windows defaults to cp1252)\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/cli/wrap.py",
+          "line": 703,
+          "text": "    proxy_env = os.environ.copy()",
+          "kind": "critical",
+          "record": "headroom/cli/wrap.py:703:    proxy_env = os.environ.copy()\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/cli/wrap.py",
+          "line": 704,
+          "text": "    _scrub_copilot_proxy_seed_env(proxy_env)",
+          "kind": "critical",
+          "record": "headroom/cli/wrap.py:704:    _scrub_copilot_proxy_seed_env(proxy_env)\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/cli/wrap.py",
+          "line": 705,
+          "text": "    proxy_env[\"PYTHONIOENCODING\"] = \"utf-8\"",
+          "kind": "critical",
+          "record": "headroom/cli/wrap.py:705:    proxy_env[\"PYTHONIOENCODING\"] = \"utf-8\"\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/cli/wrap.py",
+          "line": 706,
+          "text": "    # Vertex AI RST_STREAMs HTTP/2 connections (error_code:2). Force HTTP/1.1",
+          "kind": "critical",
+          "record": "headroom/cli/wrap.py:706:    # Vertex AI RST_STREAMs HTTP/2 connections (error_code:2). Force HTTP/1.1\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/cli/wrap.py",
+          "line": 707,
+          "text": "    # when wrapping a Vertex-mode client so upstream requests succeed.",
+          "kind": "critical",
+          "record": "headroom/cli/wrap.py:707:    # when wrapping a Vertex-mode client so upstream requests succeed.\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/cli/wrap.py",
+          "line": 708,
+          "text": "    if os.environ.get(\"CLAUDE_CODE_USE_VERTEX\") or os.environ.get(\"ANTHROPIC_VERTEX_PROJECT_ID\"):",
+          "kind": "critical",
+          "record": "headroom/cli/wrap.py:708:    if os.environ.get(\"CLAUDE_CODE_USE_VERTEX\") or os.environ.get(\"ANTHROPIC_VERTEX_PROJECT_ID\"):\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/cli/wrap.py",
+          "line": 709,
+          "text": "        proxy_env.setdefault(\"HEADROOM_HTTP2\", \"false\")",
+          "kind": "critical",
+          "record": "headroom/cli/wrap.py:709:        proxy_env.setdefault(\"HEADROOM_HTTP2\", \"false\")\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/cli/wrap.py",
+          "line": 710,
+          "text": "    # Tell the proxy which agent is being wrapped (for traffic learning output)",
+          "kind": "critical",
+          "record": "headroom/cli/wrap.py:710:    # Tell the proxy which agent is being wrapped (for traffic learning output)\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/cli/wrap.py",
+          "line": 711,
+          "text": "    if agent_type != \"unknown\":",
+          "kind": "critical",
+          "record": "headroom/cli/wrap.py:711:    if agent_type != \"unknown\":\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        }
+      ]
+    },
+    {
+      "task_id": "H3",
+      "status": "evaluated",
+      "subject": "fix(install): use --userns=keep-id under Podman so bind-mount writes don't fail (#2846)",
+      "critical_record_count": 21,
+      "bridge_anchor_count": 1,
+      "distractor_count": 600,
+      "target_record_count": 622,
+      "target_tokens_estimate": 12691,
+      "v3_context_enriched": true,
+      "off_plan": {
+        "runs": 43,
+        "keep": 22,
+        "drop": 21
+      },
+      "v3_plan": {
+        "runs": 43,
+        "keep": 22,
+        "drop": 21
+      },
+      "critical_drop_to_keep": 0,
+      "critical_keep_to_keep": 7,
+      "critical_drop_to_drop": 14,
+      "critical_keep_to_drop": 0,
+      "critical_records": [
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 52,
+          "text": ")",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:52:)\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 55,
+          "text": "def _is_windows() -> bool:",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:55:def _is_windows() -> bool:\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 56,
+          "text": "    return sys.platform.startswith(\"win\")",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:56:    return sys.platform.startswith(\"win\")\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 59,
+          "text": "def _deployment_env(manifest: DeploymentManifest) -> dict[str, str]:",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:59:def _deployment_env(manifest: DeploymentManifest) -> dict[str, str]:\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 60,
+          "text": "    return {",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:60:    return {\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 61,
+          "text": "        \"HEADROOM_DEPLOYMENT_PROFILE\": manifest.profile,",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:61:        \"HEADROOM_DEPLOYMENT_PROFILE\": manifest.profile,\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 62,
+          "text": "        \"HEADROOM_DEPLOYMENT_PRESET\": manifest.preset,",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:62:        \"HEADROOM_DEPLOYMENT_PRESET\": manifest.preset,\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 134,
+          "text": "    ]",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:134:    ]\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 135,
+          "text": "    docker_gpus = manifest.base_env.get(\"HEADROOM_DOCKER_GPUS\", \"\").strip()",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:135:    docker_gpus = manifest.base_env.get(\"HEADROOM_DOCKER_GPUS\", \"\").strip()\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 136,
+          "text": "    if docker_gpus:",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:136:    if docker_gpus:\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 137,
+          "text": "        command.extend([\"--gpus\", docker_gpus])",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:137:        command.extend([\"--gpus\", docker_gpus])\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 138,
+          "text": "    if not _is_windows():",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:138:    if not _is_windows():\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 139,
+          "text": "        getuid = getattr(os, \"getuid\", None)",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:139:        getuid = getattr(os, \"getuid\", None)\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 140,
+          "text": "        getgid = getattr(os, \"getgid\", None)",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:140:        getgid = getattr(os, \"getgid\", None)\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 141,
+          "text": "        if callable(getuid) and callable(getgid):",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:141:        if callable(getuid) and callable(getgid):\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 142,
+          "text": "            command.extend([\"--user\", f\"{getuid()}:{getgid()}\"])",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:142:            command.extend([\"--user\", f\"{getuid()}:{getgid()}\"])\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 143,
+          "text": "    runtime_env = {**manifest.base_env, **_deployment_env(manifest)}",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:143:    runtime_env = {**manifest.base_env, **_deployment_env(manifest)}\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 144,
+          "text": "    for name, value in runtime_env.items():",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:144:    for name, value in runtime_env.items():\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 145,
+          "text": "        command.extend([\"--env\", f\"{name}={value}\"])",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:145:        command.extend([\"--env\", f\"{name}={value}\"])\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 146,
+          "text": "    for name in sorted(os.environ):",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:146:    for name in sorted(os.environ):\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        },
+        {
+          "path": "headroom/install/runtime.py",
+          "line": 147,
+          "text": "        # Skip any name the manifest already pinned above: Docker resolves",
+          "kind": "critical",
+          "record": "headroom/install/runtime.py:147:        # Skip any name the manifest already pinned above: Docker resolves\n",
+          "baseline_keep": true,
+          "v3_keep": true
+        }
+      ]
+    },
+    {
+      "task_id": "H4",
+      "status": "evaluated",
+      "subject": "fix(install): stop baking the host memory DB path into a container deployment (#2845)",
+      "critical_record_count": 21,
+      "bridge_anchor_count": 1,
+      "distractor_count": 600,
+      "target_record_count": 622,
+      "target_tokens_estimate": 14385,
+      "v3_context_enriched": true,
+      "off_plan": {
+        "runs": 30,
+        "keep": 15,
+        "drop": 15
+      },
+      "v3_plan": {
+        "runs": 30,
+        "keep": 15,
+        "drop": 15
+      },
+      "critical_drop_to_keep": 0,
+      "critical_keep_to_keep": 0,
+      "critical_drop_to_drop": 21,
+      "critical_keep_to_drop": 0,
+      "critical_records": [
+        {
+          "path": "headroom/install/planner.py",
+          "line": 16,
+          "text": "from .models import (",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:16:from .models import (\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 17,
+          "text": "    ConfigScope,",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:17:    ConfigScope,\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 18,
+          "text": "    DeploymentManifest,",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:18:    DeploymentManifest,\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 19,
+          "text": "    InstallPreset,",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:19:    InstallPreset,\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 20,
+          "text": "    ProviderSelectionMode,",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:20:    ProviderSelectionMode,\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 21,
+          "text": "    SupervisorKind,",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:21:    SupervisorKind,\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 22,
+          "text": "    ToolTarget,",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:22:    ToolTarget,\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 23,
+          "text": ")",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:23:)\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 24,
+          "text": "from .paths import validate_profile_name",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:24:from .paths import validate_profile_name\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 26,
+          "text": "SUPPORTED_TARGETS = [",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:26:SUPPORTED_TARGETS = [\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 225,
+          "text": "        \"--backend\",",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:225:        \"--backend\",\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 226,
+          "text": "        backend,",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:226:        backend,\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 227,
+          "text": "    ]",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:227:    ]\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 228,
+          "text": "    proxy_args.append(\"--telemetry\" if telemetry_enabled else \"--no-telemetry\")",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:228:    proxy_args.append(\"--telemetry\" if telemetry_enabled else \"--no-telemetry\")\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 229,
+          "text": "    if memory_enabled:",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:229:    if memory_enabled:\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 230,
+          "text": "        proxy_args.extend([\"--memory\", \"--memory-db-path\", str(_paths.memory_db_path())])",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:230:        proxy_args.extend([\"--memory\", \"--memory-db-path\", str(_paths.memory_db_path())])\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 231,
+          "text": "    if anyllm_provider:",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:231:    if anyllm_provider:\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 232,
+          "text": "        proxy_args.extend([\"--anyllm-provider\", anyllm_provider])",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:232:        proxy_args.extend([\"--anyllm-provider\", anyllm_provider])\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 233,
+          "text": "    if region:",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:233:    if region:\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 234,
+          "text": "        proxy_args.extend([\"--region\", region])",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:234:        proxy_args.extend([\"--region\", region])\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        },
+        {
+          "path": "headroom/install/planner.py",
+          "line": 235,
+          "text": "    if no_http2:",
+          "kind": "critical",
+          "record": "headroom/install/planner.py:235:    if no_http2:\n",
+          "baseline_keep": false,
+          "v3_keep": false
+        }
+      ]
+    }
+  ]
+}

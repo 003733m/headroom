@@ -1,0 +1,295 @@
+{
+  "analysis_type": "post_hoc_exploratory_natural_transfer_forensics",
+  "exact_natural_v3_replay": false,
+  "exact_natural_v3_replay_reason": "full request message payloads were not persisted",
+  "root": "/home/memoli3322/headroom-natural-transfer-raw-20260904",
+  "tasks": {
+    "F1": {
+      "source_commit": "1f5fefffd3e82c73bddd928cfd53334031e807bc",
+      "off_task_pass": true,
+      "rg_capture_count": 2,
+      "transcript_rg_count": 0,
+      "capture_transcript_pairing_exact": false,
+      "controlled_rescue_record_count": 3,
+      "natural_retrieved_controlled_rescue_records": 1,
+      "natural_visible_controlled_rescue_records": 0,
+      "natural_hidden_controlled_rescue_records": 0,
+      "clean_candidate_occurrences": 0,
+      "occurrences": [
+        {
+          "task": "F1",
+          "capture_index": 2,
+          "path": "headroom/memory/traffic_learner.py",
+          "line": 1258,
+          "text": "        _, count = self._pattern_counts[h]",
+          "raw_retrieved": true,
+          "agent_visible": null,
+          "paired": false,
+          "piped_or_redirected": null,
+          "clean_candidate": false,
+          "reason": "capture has no paired transcript rg segment"
+        }
+      ]
+    },
+    "F2": {
+      "source_commit": "85e869945138f06471501046c5725eac119dea58",
+      "off_task_pass": true,
+      "rg_capture_count": 2,
+      "transcript_rg_count": 0,
+      "capture_transcript_pairing_exact": false,
+      "controlled_rescue_record_count": 8,
+      "natural_retrieved_controlled_rescue_records": 2,
+      "natural_visible_controlled_rescue_records": 0,
+      "natural_hidden_controlled_rescue_records": 0,
+      "clean_candidate_occurrences": 0,
+      "occurrences": [
+        {
+          "task": "F2",
+          "capture_index": 2,
+          "path": "headroom/learn/analyzer.py",
+          "line": 385,
+          "text": "        # Include truncated error output for failures",
+          "raw_retrieved": true,
+          "agent_visible": null,
+          "paired": false,
+          "piped_or_redirected": null,
+          "clean_candidate": false,
+          "reason": "capture has no paired transcript rg segment"
+        },
+        {
+          "task": "F2",
+          "capture_index": 2,
+          "path": "headroom/learn/analyzer.py",
+          "line": 386,
+          "text": "        output_preview = tc.output[:200].replace(\"\\n\", \" \").strip()",
+          "raw_retrieved": true,
+          "agent_visible": null,
+          "paired": false,
+          "piped_or_redirected": null,
+          "clean_candidate": false,
+          "reason": "capture has no paired transcript rg segment"
+        }
+      ]
+    },
+    "F3": {
+      "source_commit": "4e2bbfee3f65e3287ab7693da70f0d7b20dada28",
+      "off_task_pass": true,
+      "rg_capture_count": 4,
+      "transcript_rg_count": 0,
+      "capture_transcript_pairing_exact": false,
+      "controlled_rescue_record_count": 7,
+      "natural_retrieved_controlled_rescue_records": 3,
+      "natural_visible_controlled_rescue_records": 0,
+      "natural_hidden_controlled_rescue_records": 0,
+      "clean_candidate_occurrences": 0,
+      "occurrences": [
+        {
+          "task": "F3",
+          "capture_index": 1,
+          "path": "headroom/providers/opencode/config.py",
+          "line": 75,
+          "text": "def opencode_config_paths() -> tuple[Path, Path]:",
+          "raw_retrieved": true,
+          "agent_visible": null,
+          "paired": false,
+          "piped_or_redirected": null,
+          "clean_candidate": false,
+          "reason": "capture has no paired transcript rg segment"
+        },
+        {
+          "task": "F3",
+          "capture_index": 4,
+          "path": "headroom/providers/opencode/config.py",
+          "line": 75,
+          "text": "def opencode_config_paths() -> tuple[Path, Path]:",
+          "raw_retrieved": true,
+          "agent_visible": null,
+          "paired": false,
+          "piped_or_redirected": null,
+          "clean_candidate": false,
+          "reason": "capture has no paired transcript rg segment"
+        },
+        {
+          "task": "F3",
+          "capture_index": 4,
+          "path": "headroom/providers/opencode/config.py",
+          "line": 77,
+          "text": "    config_file = opencode_config_path()",
+          "raw_retrieved": true,
+          "agent_visible": null,
+          "paired": false,
+          "piped_or_redirected": null,
+          "clean_candidate": false,
+          "reason": "capture has no paired transcript rg segment"
+        },
+        {
+          "task": "F3",
+          "capture_index": 1,
+          "path": "headroom/providers/opencode/config.py",
+          "line": 78,
+          "text": "    backup_file = config_file.with_suffix(\".json.headroom-backup\")",
+          "raw_retrieved": true,
+          "agent_visible": null,
+          "paired": false,
+          "piped_or_redirected": null,
+          "clean_candidate": false,
+          "reason": "capture has no paired transcript rg segment"
+        }
+      ]
+    },
+    "F4": {
+      "source_commit": "0cddac632d8ab4e0bcd752b9c7519d5099aa085e",
+      "off_task_pass": true,
+      "rg_capture_count": 1,
+      "transcript_rg_count": 0,
+      "capture_transcript_pairing_exact": false,
+      "controlled_rescue_record_count": 8,
+      "natural_retrieved_controlled_rescue_records": 1,
+      "natural_visible_controlled_rescue_records": 0,
+      "natural_hidden_controlled_rescue_records": 0,
+      "clean_candidate_occurrences": 0,
+      "occurrences": [
+        {
+          "task": "F4",
+          "capture_index": 1,
+          "path": "headroom/telemetry/reporter.py",
+          "line": 338,
+          "text": "            logger.warning(\"Failed to send usage report\", exc_info=True)",
+          "raw_retrieved": true,
+          "agent_visible": null,
+          "paired": false,
+          "piped_or_redirected": null,
+          "clean_candidate": false,
+          "reason": "capture has no paired transcript rg segment"
+        }
+      ]
+    },
+    "F5": {
+      "source_commit": "cc072f0821b76618659a2dd6c81a1daee49dbaab",
+      "off_task_pass": true,
+      "rg_capture_count": 7,
+      "transcript_rg_count": 0,
+      "capture_transcript_pairing_exact": false,
+      "controlled_rescue_record_count": 1,
+      "natural_retrieved_controlled_rescue_records": 0,
+      "natural_visible_controlled_rescue_records": 0,
+      "natural_hidden_controlled_rescue_records": 0,
+      "clean_candidate_occurrences": 0,
+      "occurrences": []
+    },
+    "F6": {
+      "source_commit": "fa330f3e2bed3f51b7f4d49bcd64ec4aaa17f44f",
+      "off_task_pass": true,
+      "rg_capture_count": 7,
+      "transcript_rg_count": 0,
+      "capture_transcript_pairing_exact": false,
+      "controlled_rescue_record_count": 3,
+      "natural_retrieved_controlled_rescue_records": 1,
+      "natural_visible_controlled_rescue_records": 0,
+      "natural_hidden_controlled_rescue_records": 0,
+      "clean_candidate_occurrences": 0,
+      "occurrences": [
+        {
+          "task": "F6",
+          "capture_index": 2,
+          "path": "headroom/memory/core.py",
+          "line": 582,
+          "text": "        new_memory = await self._store.supersede(old_memory_id, new_memory, supersede_time)",
+          "raw_retrieved": true,
+          "agent_visible": null,
+          "paired": false,
+          "piped_or_redirected": null,
+          "clean_candidate": false,
+          "reason": "capture has no paired transcript rg segment"
+        }
+      ]
+    },
+    "F7": {
+      "source_commit": "c7b5a24b4ffca78bacf1919ace00087b6ab6f7d0",
+      "off_task_pass": true,
+      "rg_capture_count": 3,
+      "transcript_rg_count": 0,
+      "capture_transcript_pairing_exact": false,
+      "controlled_rescue_record_count": 8,
+      "natural_retrieved_controlled_rescue_records": 2,
+      "natural_visible_controlled_rescue_records": 0,
+      "natural_hidden_controlled_rescue_records": 0,
+      "clean_candidate_occurrences": 0,
+      "occurrences": [
+        {
+          "task": "F7",
+          "capture_index": 3,
+          "path": "headroom/learn/_shared.py",
+          "line": 54,
+          "text": "    (re.compile(r\"Traceback \\(most recent|Exception:|Error:\", re.I), ErrorCategory.RUNTIME_ERROR),",
+          "raw_retrieved": true,
+          "agent_visible": null,
+          "paired": false,
+          "piped_or_redirected": null,
+          "clean_candidate": false,
+          "reason": "capture has no paired transcript rg segment"
+        },
+        {
+          "task": "F7",
+          "capture_index": 3,
+          "path": "headroom/learn/_shared.py",
+          "line": 55,
+          "text": "    (re.compile(r\"timed? ?out|TimeoutError|deadline exceeded\", re.I), ErrorCategory.TIMEOUT),",
+          "raw_retrieved": true,
+          "agent_visible": null,
+          "paired": false,
+          "piped_or_redirected": null,
+          "clean_candidate": false,
+          "reason": "capture has no paired transcript rg segment"
+        }
+      ]
+    },
+    "F8": {
+      "source_commit": "d05802b6200b94f198e99319e6c778e78b53db8b",
+      "off_task_pass": true,
+      "rg_capture_count": 3,
+      "transcript_rg_count": 0,
+      "capture_transcript_pairing_exact": false,
+      "controlled_rescue_record_count": 8,
+      "natural_retrieved_controlled_rescue_records": 1,
+      "natural_visible_controlled_rescue_records": 0,
+      "natural_hidden_controlled_rescue_records": 0,
+      "clean_candidate_occurrences": 0,
+      "occurrences": [
+        {
+          "task": "F8",
+          "capture_index": 2,
+          "path": "headroom/proxy/handlers/streaming.py",
+          "line": 699,
+          "text": "                    f\"Unsupported Anthropic content block type for SSE conversion: {block.get('type')!r}\"",
+          "raw_retrieved": true,
+          "agent_visible": null,
+          "paired": false,
+          "piped_or_redirected": null,
+          "clean_candidate": false,
+          "reason": "capture has no paired transcript rg segment"
+        },
+        {
+          "task": "F8",
+          "capture_index": 3,
+          "path": "headroom/proxy/handlers/streaming.py",
+          "line": 699,
+          "text": "                    f\"Unsupported Anthropic content block type for SSE conversion: {block.get('type')!r}\"",
+          "raw_retrieved": true,
+          "agent_visible": null,
+          "paired": false,
+          "piped_or_redirected": null,
+          "clean_candidate": false,
+          "reason": "capture has no paired transcript rg segment"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "tasks": 8,
+    "tasks_with_any_clean_candidate": 0,
+    "clean_candidate_occurrences": 0,
+    "clean_candidates": [],
+    "claim_boundary": "A clean candidate proves natural retrieval and baseline transcript non-visibility for an exact record independently observed as DROP->KEEP in the controlled exhaustive experiment. It does not prove exact natural-trajectory V3 retention."
+  }
+}
