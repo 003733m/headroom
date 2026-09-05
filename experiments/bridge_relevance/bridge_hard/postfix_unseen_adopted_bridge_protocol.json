@@ -1,0 +1,47 @@
+{
+  "status": "locked_before_any_post_fix_unseen_agent_run",
+  "experiment": "postfix_unseen_adopted_bridge_validation",
+  "classification": "prospective validation after production integration correction",
+
+  "production_freeze": "19afd30b4ff72eb7761d983b891098d65980e657",
+
+  "reason": "U01 prospectively exposed a MIXED-routing integration failure in the previously frozen production implementation. The implementation was corrected once, covered by a focused regression test, and is now frozen again before any further unseen agent task.",
+
+  "candidate_source": "second_unseen_adopted_bridge_selection.json",
+  "candidate_order_is_preexisting": true,
+  "exclude": [
+    "U01"
+  ],
+  "ordered_remaining_pool": [
+    "U02", "U03", "U04", "U05", "U06", "U07",
+    "U08", "U09", "U10", "U11", "U12"
+  ],
+
+  "screen": {
+    "condition": "OFF only",
+    "maximum_tasks": 11,
+    "selection": "first naturally applicable valid task",
+    "eligibility": [
+      "valid fresh OFF agent run",
+      "natural rg/grep-producing search output",
+      "output passes actual production Responses search gate",
+      "frozen trajectory builder admits at least one prior bridge",
+      "current natural search query explicitly reuses an admitted bridge identifier"
+    ],
+    "forbidden_for_selection": [
+      "historical-critical overlap",
+      "baseline retention decision",
+      "corrected-treatment retention decision",
+      "whether the adopted floor rescues anything"
+    ]
+  },
+
+  "after_selection": {
+    "ON_conditions": 1,
+    "reruns": 0,
+    "replacement": false,
+    "algorithm_changes": false
+  },
+
+  "stopping_rule": "stop at first eligible task and its single ON condition, or after all 11 valid remaining OFF screens"
+}
