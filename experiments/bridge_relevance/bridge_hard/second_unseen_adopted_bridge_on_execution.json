@@ -1,0 +1,16 @@
+{
+  "status": "locked_before_selected_on_run",
+  "experiment": "second_unseen_adopted_bridge_validation",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "selected_task": "U01",
+  "condition": "ON",
+  "condition_count": 1,
+  "replacement_allowed": false,
+  "rerun_completed_condition": false,
+  "algorithm_changes_allowed": false,
+  "required_after_run": [
+    "verify fresh ON treatment activation",
+    "if activated, replay first exact activating request with adopted floor disabled and enabled",
+    "measure historical-critical retention only after activation is established"
+  ]
+}
