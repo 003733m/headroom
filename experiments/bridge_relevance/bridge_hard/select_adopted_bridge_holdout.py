@@ -5,9 +5,11 @@ import json
 import re
 import shlex
 from collections import deque
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
+import headroom.trajectory_relevance as _trajectory_relevance
 from headroom.trajectory_relevance import (
     DEFAULT_MAX_TOOL_OUTPUTS,
     TARGET_CORROBORATION_KINDS,
@@ -18,6 +20,43 @@ from headroom.trajectory_relevance import (
     extract_prior_tool_outputs,
     rank_bridge_candidates,
 )
+
+
+# ---------------------------------------------------------------------------
+# Selector-only exact memoization.
+#
+# Frozen ranking repeatedly encounters identical large historical outputs and
+# identical (line, token) evidence calculations. These wrappers preserve the
+# production functions' exact outputs while avoiding recomputation. Nothing
+# in headroom's production source is modified.
+# ---------------------------------------------------------------------------
+
+_ORIGINAL_FIND_CANDIDATES = _trajectory_relevance._find_candidates
+_ORIGINAL_CONTEXT_EVIDENCE = _trajectory_relevance._context_evidence
+
+
+@lru_cache(maxsize=32)
+def _memoized_find_candidates(text: str) -> tuple[Any, ...]:
+    return tuple(_ORIGINAL_FIND_CANDIDATES(text))
+
+
+@lru_cache(maxsize=262_144)
+def _memoized_context_evidence(
+    line: str,
+    token: str,
+) -> tuple[int, int]:
+    return _ORIGINAL_CONTEXT_EVIDENCE(line, token)
+
+
+def _cached_find_candidates(text: str) -> list[Any]:
+    # rank_bridge_candidates only iterates the returned hits; returning a new
+    # list prevents accidental mutation of the cached tuple.
+    return list(_memoized_find_candidates(text))
+
+
+_trajectory_relevance._find_candidates = _cached_find_candidates
+_trajectory_relevance._context_evidence = _memoized_context_evidence
+
 
 HERE = Path(__file__).resolve().parent
 SCREEN_MANIFEST = HERE / "historical_difficulty_screen_manifest.json"

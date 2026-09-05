@@ -1,0 +1,18 @@
+{
+  "status": "pre-result computational-equivalence amendment",
+  "experiment": "adopted_bridge_unseen_holdout",
+  "algorithm_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "timing": "after partial selector progress through G08 and inspection of G11 capture sizes, before any complete eligible-task or selected-task list was observed",
+  "observation": "G11 contains a roughly 9.1 MB second rg result that subsequently re-enters several bounded prior-trajectory windows. Profiling by interruption showed repeated work inside frozen _context_evidence.",
+  "change": [
+    "memoize frozen _context_evidence by exact (line, token) arguments",
+    "memoize frozen _find_candidates by exact tool-output text",
+    "install the memoized wrappers only inside the offline holdout selector process",
+    "leave all production scoring, candidate eligibility, target conditioning, top-k competition, exclusions, ordering, and task selection rules unchanged"
+  ],
+  "semantic_argument": "Both wrapped functions are deterministic pure computations over their explicit arguments. Reusing an earlier result for identical arguments changes computational cost but not any bridge candidate or score.",
+  "selection_rule_unchanged": true,
+  "production_algorithm_changed": false,
+  "eligible_task_ids_observed_before_change": false,
+  "selected_task_ids_observed_before_change": false
+}
