@@ -1,0 +1,62 @@
+{
+  "status": "first_eligible_task_locked_before_on_run",
+  "experiment": "second_unseen_adopted_bridge_validation",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "selected_task": "U01",
+  "selection_condition": "U01-OFF",
+  "selection_basis": "first task in prelocked deterministic order satisfying the complete frozen adopted-bridge applicability condition",
+  "off_run_valid": true,
+  "natural_search_count": 3,
+  "first_eligible_event": {
+    "command": "rg -nH -C 4 \"COPILOT_PROVIDER_TYPE|HEADROOM_BACKEND\" headroom/providers",
+    "query_identifiers": [
+      "COPILOT_PROVIDER_TYPE",
+      "HEADROOM_BACKEND"
+    ],
+    "trajectory_bridges": [
+      "BYOK",
+      "build_launch_env",
+      "resolve_provider_type",
+      "HEADROOM_BACKEND",
+      "AUTO",
+      "COPILOT_PROVIDER_TYPE"
+    ],
+    "adopted_bridges": [
+      "COPILOT_PROVIDER_TYPE",
+      "HEADROOM_BACKEND"
+    ],
+    "target_bytes": 5703,
+    "minimum_router_bytes": 512,
+    "byte_eligible": true,
+    "structural_search_eligible": false,
+    "tool_search_eligible": true,
+    "production_path_reachable": true
+  },
+  "forbidden_selection_information_inspected": {
+    "historical_critical_overlap": false,
+    "baseline_keep_drop": false,
+    "adopted_floor_rescue": false,
+    "fix_adjacent_retention": false
+  },
+  "remaining_screen_tasks_consumed": [],
+  "remaining_screen_tasks_not_run": [
+    "U02",
+    "U03",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "U11",
+    "U12"
+  ],
+  "locks": {
+    "protocol": "b622d88b4c7b22b4cfe972b83cc4aff10286188f",
+    "candidate_selection": "4fa1bc4a6d9fe0a69eb22181e3478d6bc20024ee",
+    "execution": "c108610c6824f3f8eef4aabdfb33dcb2763534a2",
+    "snapshots": "1ecd08eb9d8db06b3e587375bb483411a9a4f6cc"
+  },
+  "next_action": "run exactly one U01-ON condition; no task replacement"
+}
