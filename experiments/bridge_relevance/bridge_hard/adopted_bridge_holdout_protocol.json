@@ -1,0 +1,30 @@
+{
+  "status": "locked_before_holdout_selection_results",
+  "experiment": "adopted_bridge_unseen_holdout",
+  "algorithm_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "source_pool": "historical_agent_difficulty_screen OFF-only G01-G24",
+  "excluded_tasks": ["G04", "G07", "G09", "G10", "G19", "G21"],
+  "selection_is_treatment_blind": true,
+  "eligibility": [
+    "task has a completed OFF-only difficulty-screen run",
+    "task was not used in adopted-bridge development",
+    "at least one later rg/grep search reuses a structured identifier that frozen V3 can derive from prior tool outputs"
+  ],
+  "selection_must_not_use": [
+    "historical-fix-adjacent retention",
+    "DROP-to-KEEP outcome",
+    "ON results",
+    "task success under treatment",
+    "token savings under treatment"
+  ],
+  "selection_rule": "sort eligible tasks by task_id ascending and take the first 6; if fewer than 6 are eligible, use all eligible tasks",
+  "primary_holdout_metrics": [
+    "task success OFF vs ON",
+    "adopted-bridge floor activation",
+    "historical-fix-adjacent DROP-to-KEEP rescue",
+    "KEEP-to-DROP regression",
+    "additional retained tokens",
+    "requests and wall time"
+  ],
+  "interpretation": "applicability-conditioned prospective holdout; selection may depend on pre-treatment adopted-bridge opportunity but not treatment outcome"
+}
