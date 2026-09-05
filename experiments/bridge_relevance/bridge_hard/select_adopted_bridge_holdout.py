@@ -107,6 +107,53 @@ def visible_tool_message(text: str) -> dict[str, Any]:
     }
 
 
+
+def _prior_query_identifiers_present(
+    messages: list[dict[str, Any]],
+    query_ids: list[str],
+) -> list[str]:
+    """Necessary-condition filter for adopted-bridge eligibility.
+
+    An adopted bridge must originate in prior trajectory text. If a current
+    structured query identifier never occurs with identifier boundaries in
+    the bounded prior outputs, target-aware V3 cannot turn it into an adopted
+    bridge. This permits skipping expensive target scoring without changing
+    the selection rule.
+    """
+    if not messages or not query_ids:
+        return []
+
+    patterns = {
+        identifier: re.compile(
+            rf"(?<![A-Za-z0-9_]){re.escape(identifier)}(?![A-Za-z0-9_])",
+            re.IGNORECASE,
+        )
+        for identifier in query_ids
+    }
+
+    found: set[str] = set()
+
+    for message in messages:
+        text = message.get("content", "")
+        if not isinstance(text, str) or not text:
+            continue
+
+        for identifier, pattern in patterns.items():
+            if identifier in found:
+                continue
+            if pattern.search(text):
+                found.add(identifier)
+
+        if len(found) == len(patterns):
+            break
+
+    return [
+        identifier
+        for identifier in query_ids
+        if identifier in found
+    ]
+
+
 def analyze_task(task_id: str) -> dict[str, Any]:
     run_root = RAW_ROOT / f"{task_id}-OFF"
     cap_root = run_root / "rg-captures"
@@ -143,9 +190,23 @@ def analyze_task(task_id: str) -> dict[str, Any]:
         target = combined_output(cap)
 
         trajectory_context = ""
+        history = list(prior_messages)
 
-        if prior_messages and target:
-            history = list(prior_messages)
+        prior_query_ids = _prior_query_identifiers_present(
+            history,
+            query_ids,
+        )
+
+        if history and target and prior_query_ids:
+            if len(target.encode("utf-8", errors="replace")) >= 1_000_000:
+                print(
+                    f"    target-aware V3: {task_id} "
+                    f"capture={cap['stem']} "
+                    f"bytes={len(target.encode('utf-8', errors='replace'))} "
+                    f"possible_ids={prior_query_ids}",
+                    flush=True,
+                )
+
             trajectory_context = build_search_relevance_context(
                 history,
                 before_index=len(history),
