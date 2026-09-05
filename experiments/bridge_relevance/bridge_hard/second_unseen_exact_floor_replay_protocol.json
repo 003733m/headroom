@@ -1,0 +1,64 @@
+{
+  "status": "locked_before_second_unseen_exact_floor_replay_results",
+  "experiment": "second_unseen_exact_adopted_floor_replay",
+  "classification": "prospective exact-wire mechanism replay after natural unseen applicability",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+
+  "source_condition": "U01-ON",
+  "source_selection": "first naturally observed ON search output in the locked unseen task with non-empty frozen adopted bridge identifiers and a true production handler search gate",
+
+  "observed_before_lock": {
+    "task_pass": true,
+    "natural_handler_gate": true,
+    "trajectory_context_nonempty": true,
+    "adopted_identifiers": ["COPILOT_PROVIDER_TYPE"],
+    "runtime_relevance_split_units": 0,
+    "runtime_search_relevance_chains": 0,
+    "runtime_treatment_activated": false
+  },
+
+  "primary_question": "Holding the exact captured inbound request, frozen trajectory context, scorer, router configuration, and all other production behavior fixed, does enabling only the adopted-bridge preservation floor change retained evidence?",
+
+  "conditions": {
+    "A": "frozen 89da production handler with trajectory relevance enabled, but _responses_adopted_bridge_identifiers suppressed to empty; all other trajectory context remains unchanged",
+    "D": "unmodified frozen 89da production handler with trajectory relevance enabled"
+  },
+
+  "primary_comparison": [
+    "exact output payload equality",
+    "target search-output equality",
+    "target bytes before and after",
+    "records retained under A",
+    "records retained under D",
+    "historical-fix-adjacent records retained under A",
+    "historical-fix-adjacent records retained under D",
+    "A-DROP to D-KEEP critical rescues",
+    "A-KEEP to D-DROP critical regressions",
+    "newly retained non-critical records",
+    "newly retained non-critical tokens"
+  ],
+
+  "oracle": {
+    "type": "historical-fix-adjacent",
+    "definition": "parent-version production lines within plus/minus 5 lines of the historical source fix hunks",
+    "interpretation": "historical-fix-adjacent evidence, not ground-truth causal relevance"
+  },
+
+  "constraints": [
+    "do not rerun U01-OFF",
+    "do not rerun U01-ON",
+    "do not run U02-U12",
+    "do not modify production algorithm 89da",
+    "do not select another request after seeing replay outcome",
+    "use the already-selected first natural U01-ON adopted event",
+    "condition A may suppress only adopted-floor identifiers; it must preserve the same trajectory context and all other production behavior",
+    "condition D is frozen production unchanged"
+  ],
+
+  "interpretation": {
+    "if_A_equals_D": "natural adoption reproduced, but the frozen production preservation floor had no incremental effect on this exact request",
+    "if_critical_rescue_without_regression": "unseen exact-request mechanism replication of the adopted preservation floor",
+    "if_only_noncritical_retention_changes": "floor activated but no historical-critical rescue was observed",
+    "if_regression": "report the regression without replacement or tuning"
+  }
+}
