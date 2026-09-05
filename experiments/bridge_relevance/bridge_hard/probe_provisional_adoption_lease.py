@@ -76,9 +76,20 @@ spec.loader.exec_module(qh)
 # relative to the production freeze.
 import headroom.trajectory_relevance as tr  # noqa: E402
 
+from headroom.transforms.content_router import ContentRouter  # noqa: E402
 from headroom.transforms.relevance_split import (  # noqa: E402
     plan_relevance_split,
 )
+
+
+# Fresh production-equivalent router configuration for the direct
+# mechanism replay. _get_relevance_scorer() serves BM25 immediately;
+# keep the returned scorer object fixed for the entire deterministic probe.
+_DIRECT_ROUTER = ContentRouter()
+_DIRECT_SCORER = _DIRECT_ROUTER._get_relevance_scorer()
+
+if _DIRECT_SCORER is None:
+    raise SystemExit("Production relevance scorer unavailable")
 
 
 # Probe-only exact memoization.
@@ -1094,8 +1105,18 @@ def direct_plan(
 ) -> dict[str, Any]:
     try:
         raw = plan_relevance_split(
-            content=content,
-            query=query,
+            content,
+            query,
+            _DIRECT_SCORER,
+            threshold=(
+                _DIRECT_ROUTER.config.relevance.relevance_threshold
+            ),
+            adaptive=(
+                _DIRECT_ROUTER.config.relevance_adaptive_threshold
+            ),
+            max_records=(
+                _DIRECT_ROUTER.config.relevance_max_records
+            ),
             force_keep_identifiers=tuple(
                 identifiers
             ),

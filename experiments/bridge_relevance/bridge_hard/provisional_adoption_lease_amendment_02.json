@@ -1,0 +1,17 @@
+{
+  "amendment": 2,
+  "experiment": "provisional_adoption_lease_exploratory_probe",
+  "timing": "after the first completed probe exposed a G11 direct-replay harness TypeError",
+  "observed_before_amendment": [
+    "hard matched-retention summaries",
+    "lease lifecycle summaries",
+    "fresh G11 provisional identifier eligibility",
+    "fresh G11 direct retention conditions all failed before producing retention results"
+  ],
+  "reason": "The direct G11 plan_relevance_split call omitted the required scorer and production relevance configuration.",
+  "change": "Use a fresh ContentRouter to obtain the production BM25 scorer and pass its relevance threshold, adaptive-threshold flag, and max-records setting to plan_relevance_split.",
+  "semantic_effect": "none to the provisional-adoption policy",
+  "production_effect": "none",
+  "benchmark_agent_rerun": false,
+  "classification": "harness correction"
+}
