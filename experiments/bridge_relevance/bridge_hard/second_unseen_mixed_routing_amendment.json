@@ -1,0 +1,42 @@
+{
+  "status": "locked_before_mixed_routing_fix",
+  "experiment": "second_unseen_adopted_bridge_validation",
+  "old_production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "classification": "validation-discovered production integration bug",
+  "observed_case": "U01",
+  "observations": {
+    "off_consumed_once": true,
+    "on_consumed_once": true,
+    "off_task_pass": true,
+    "on_task_pass": true,
+    "on_handler_search_gate": true,
+    "on_trajectory_context_nonempty": true,
+    "on_adopted_identifiers": [
+      "COPILOT_PROVIDER_TYPE"
+    ],
+    "on_target_bytes": 20671,
+    "on_selected_router_strategy": "mixed",
+    "on_relevance_split_units": 0,
+    "on_search_relevance_chains": 0,
+    "on_treatment_activated_metric": false
+  },
+  "diagnosis": [
+    "The OpenAI Responses handler correctly linked the Bash search output, built non-empty trajectory context, and identified an adopted bridge.",
+    "ContentRouter.compress forwards trajectory_search_relevance to the pure-content path but not to the MIXED path.",
+    "_compress_mixed therefore routes its sections without the existing trajectory-search flag, preventing the already-implemented SEARCH relevance override from becoming reachable."
+  ],
+  "fix_scope": [
+    "propagate the existing trajectory_search_relevance flag through MIXED routing",
+    "do not change bridge extraction, bridge ranking, adoption semantics, force-keep semantics, or relevance scorer",
+    "preserve historical call signatures on flag-off paths where practical"
+  ],
+  "epistemic_consequence": [
+    "U01 is not unseen validation evidence for the corrected implementation.",
+    "U01 may be used as a development/regression case for the routing fix.",
+    "Any prospective validation of the corrected implementation must use a previously untouched task beginning with the still-locked U02-U12 pool."
+  ],
+  "no_rerun": [
+    "do not rerun U01-OFF agent",
+    "do not rerun U01-ON agent"
+  ]
+}
