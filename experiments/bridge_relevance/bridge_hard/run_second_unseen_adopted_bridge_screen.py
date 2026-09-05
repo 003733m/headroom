@@ -1,0 +1,386 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import importlib.util
+import json
+import os
+import subprocess
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+CONTROL = Path(
+    subprocess.check_output(
+        ["git", "rev-parse", "--show-toplevel"],
+        text=True,
+    ).strip()
+)
+
+EXEC_REL = (
+    "experiments/bridge_relevance/bridge_hard/"
+    "second_unseen_adopted_bridge_execution.json"
+)
+PROTOCOL_REL = (
+    "experiments/bridge_relevance/bridge_hard/"
+    "second_unseen_adopted_bridge_validation_protocol.json"
+)
+SELECTION_REL = (
+    "experiments/bridge_relevance/bridge_hard/"
+    "second_unseen_adopted_bridge_selection.json"
+)
+SNAP_LOCK_REL = (
+    "experiments/bridge_relevance/bridge_hard/"
+    "second_unseen_adopted_bridge_snapshot_lock.json"
+)
+
+FREEZE = "89da0898a80c313b6a320f47763391dea7c376e2"
+
+ROOT = Path.home() / "headroom-second-unseen-adopted-20260905"
+RUNTIME = Path("/tmp/headroom-second-unseen-adopted-runtime-89da0898")
+SNAPSHOTS = Path("/tmp/headroom-second-unseen-adopted-snapshots-20260905")
+
+spec = importlib.util.spec_from_file_location(
+    "second_unseen_base",
+    HERE / "run_natural_transfer.py",
+)
+if spec is None or spec.loader is None:
+    raise SystemExit("cannot import natural-transfer runner")
+
+base = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(base)
+
+# Reuse the already-tested natural-agent harness, but point every
+# production/runtime path at the frozen final adopted-bridge commit.
+base.FREEZE = FREEZE
+base.ROOT = ROOT
+base.RUNTIME = RUNTIME
+base.SNAPSHOTS = SNAPSHOTS
+base.SNAP_LOCK_REL = SNAP_LOCK_REL
+
+
+def die(msg: str):
+    print(f"ERROR: {msg}")
+    raise SystemExit(1)
+
+
+def git_capture(*args: str) -> str:
+    cp = subprocess.run(
+        ["git", *args],
+        cwd=CONTROL,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+    )
+    if cp.returncode:
+        die(cp.stdout)
+    return cp.stdout
+
+
+def verify_committed_unchanged(rel: str):
+    cp = subprocess.run(
+        ["git", "cat-file", "-e", f"HEAD:{rel}"],
+        cwd=CONTROL,
+    )
+    if cp.returncode:
+        die(f"{rel} is not committed in HEAD")
+
+    status = git_capture(
+        "status", "--porcelain=v1", "--", rel
+    ).strip()
+
+    if status:
+        die(f"{rel} differs from committed HEAD")
+
+
+def lock_commit(rel: str) -> str:
+    return git_capture(
+        "log", "-1", "--format=%H", "--", rel
+    ).strip()
+
+
+def locked_manifest():
+    for rel in (EXEC_REL, PROTOCOL_REL, SELECTION_REL):
+        verify_committed_unchanged(rel)
+
+    d = json.loads((CONTROL / EXEC_REL).read_text())
+
+    if d.get("status") != "locked_before_any_second_unseen_agent_run":
+        die("execution status mismatch")
+
+    if d.get("production_freeze") != FREEZE:
+        die("production freeze mismatch")
+
+    if d.get("task_count") != 12:
+        die("expected exactly 12 tasks")
+
+    expected = [f"U{i:02d}-OFF" for i in range(1, 13)]
+    if d.get("run_order") != expected:
+        die("run order mismatch")
+
+    if any(not x.endswith("-OFF") for x in d["run_order"]):
+        die("screen contains a non-OFF condition")
+
+    return d
+
+
+base.locked_manifest = locked_manifest
+
+
+# Enable exact inbound wire capture locally. These files are NEVER intended
+# for Git; they can contain request/session metadata.
+_original_start_proxy = base.start_proxy
+
+
+def wire_start_proxy(port, out, flag):
+    wire_dir = out / "codex-wire"
+    wire_dir.mkdir(parents=True, exist_ok=True)
+
+    keys = {
+        "HEADROOM_CODEX_WIRE_DEBUG": "1",
+        "HEADROOM_CODEX_WIRE_DEBUG_DIR": str(wire_dir),
+    }
+
+    old = {k: os.environ.get(k) for k in keys}
+
+    try:
+        os.environ.update(keys)
+        return _original_start_proxy(port, out, flag)
+    finally:
+        for k, v in old.items():
+            if v is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
+
+
+base.start_proxy = wire_start_proxy
+
+
+# Relabel metrics only; no scoring/outcome logic changes.
+_original_write_metrics = base.write_metrics
+
+
+def screen_write_metrics(out, task, cond, flag, agent_rc, oracle_rc, wall):
+    _original_write_metrics(
+        out, task, cond, flag, agent_rc, oracle_rc, wall
+    )
+
+    p = out / "metrics.json"
+    d = json.loads(p.read_text())
+
+    d["evaluation_type"] = (
+        "prospective_second_unseen_applicability_screen_off_only"
+    )
+    d["production_freeze"] = FREEZE
+    d["protocol_lock_commit"] = lock_commit(PROTOCOL_REL)
+    d["selection_lock_commit"] = lock_commit(SELECTION_REL)
+    d["execution_lock_commit"] = lock_commit(EXEC_REL)
+
+    p.write_text(json.dumps(d, indent=2) + "\n")
+
+
+base.write_metrics = screen_write_metrics
+
+
+def prepare_snapshots():
+    manifest = locked_manifest()
+
+    base.prepare_runtime()
+    base.prepare_dirs()
+
+    lock_path = CONTROL / SNAP_LOCK_REL
+    if lock_path.exists():
+        die(
+            "snapshot lock already exists; "
+            "do not silently regenerate"
+        )
+
+    rows = []
+
+    for task in manifest["tasks"]:
+        tid = task["task_id"]
+
+        print()
+        print("=" * 72)
+        print("Preparing", tid)
+        print("=" * 72)
+
+        row = base.create_snapshot(task)
+        rows.append(row)
+
+        print(
+            f"{tid}: buggy oracle OK, "
+            f"snapshot={row['snapshot_head'][:12]}"
+        )
+
+    lock = {
+        "status": "prepared_before_any_second_unseen_agent_run",
+        "experiment": "second_unseen_adopted_bridge_validation",
+        "production_freeze": FREEZE,
+        "protocol_lock_commit": lock_commit(PROTOCOL_REL),
+        "selection_lock_commit": lock_commit(SELECTION_REL),
+        "execution_lock_commit": lock_commit(EXEC_REL),
+        "model": base.MODEL,
+        "opencode_version": base.OPENCODE_VERSION,
+        "task_count": len(rows),
+        "tasks": rows,
+    }
+
+    lock_path.write_text(json.dumps(lock, indent=2) + "\n")
+
+    print()
+    print("Snapshot lock written:", lock_path)
+    print("NO benchmark agent was run.")
+
+
+def snapshot_lock():
+    p = CONTROL / SNAP_LOCK_REL
+
+    if not p.exists():
+        die("snapshot lock missing; run --prepare")
+
+    verify_committed_unchanged(SNAP_LOCK_REL)
+
+    d = json.loads(p.read_text())
+
+    if d.get("status") != "prepared_before_any_second_unseen_agent_run":
+        die("snapshot lock status mismatch")
+
+    if d.get("production_freeze") != FREEZE:
+        die("snapshot freeze mismatch")
+
+    return d
+
+
+base.snapshot_lock = snapshot_lock
+
+
+def preflight():
+    locked_manifest()
+    base.prepare_runtime()
+    snapshot_lock()
+    base.verify_snapshots()
+    base.opencode_version()
+
+    print()
+    print("=" * 72)
+    print("SECOND UNSEEN PREFLIGHT PASSED")
+    print("=" * 72)
+    print("freeze :", FREEZE)
+    print("tasks  : 12")
+    print("next   : U01-OFF")
+    print("No benchmark agent was run.")
+
+
+def verify_wire(item: str):
+    out = ROOT / "results" / item
+    wire = out / "codex-wire"
+
+    inbound = list(wire.glob("*_http_inbound_request.json"))
+
+    if not inbound:
+        die(
+            f"{item} completed but has no exact inbound wire capture"
+        )
+
+    metrics = json.loads((out / "metrics.json").read_text())
+    metrics["wire_inbound_request_count"] = len(inbound)
+    metrics["wire_capture_local_only"] = True
+    (out / "metrics.json").write_text(
+        json.dumps(metrics, indent=2) + "\n"
+    )
+
+    print(
+        f"Wire capture: OK "
+        f"(inbound requests={len(inbound)})"
+    )
+
+
+def run_next():
+    manifest = locked_manifest()
+
+    base.prepare_runtime()
+    snapshot_lock()
+    base.verify_snapshots()
+    base.opencode_version()
+
+    for item in manifest["run_order"]:
+        out = ROOT / "results" / item
+
+        if (out / "metrics.json").exists():
+            continue
+
+        if (out / "AGENT_STARTED").exists():
+            die(
+                f"{item} started but did not finish. "
+                "DO NOT rerun automatically."
+            )
+
+        tid, cond = item.split("-", 1)
+        task = base.task_by_id(manifest, tid)
+
+        print()
+        print("=" * 72)
+        print("RUNNING SECOND UNSEEN SCREEN:", item)
+        print("=" * 72)
+
+        base.run_condition(task, cond)
+        verify_wire(item)
+
+        print()
+        print(
+            "Condition consumed. Do not rerun it. "
+            "Run applicability analysis before the next task."
+        )
+        return
+
+    print("All 12 OFF screen conditions already consumed.")
+
+
+def status():
+    manifest = locked_manifest()
+
+    print("===== SECOND UNSEEN SCREEN STATUS =====")
+
+    for item in manifest["run_order"]:
+        out = ROOT / "results" / item
+        m = out / "metrics.json"
+
+        if m.exists():
+            d = json.loads(m.read_text())
+            print(
+                f"{item:8} COMPLETE "
+                f"{'PASS' if d['task_pass'] else 'FAIL':4} "
+                f"rg={d['rg_capture_count']} "
+                f"req={d['requests']} "
+                f"wire={d.get('wire_inbound_request_count', 0)}"
+            )
+        elif (out / "AGENT_STARTED").exists():
+            print(f"{item:8} STARTED-INCOMPLETE")
+        else:
+            print(f"{item:8} PENDING")
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    g = ap.add_mutually_exclusive_group(required=True)
+
+    g.add_argument("--prepare", action="store_true")
+    g.add_argument("--preflight", action="store_true")
+    g.add_argument("--run-next", action="store_true")
+    g.add_argument("--status", action="store_true")
+
+    args = ap.parse_args()
+
+    if args.prepare:
+        prepare_snapshots()
+    elif args.preflight:
+        preflight()
+    elif args.run_next:
+        run_next()
+    else:
+        status()
+
+
+if __name__ == "__main__":
+    main()
