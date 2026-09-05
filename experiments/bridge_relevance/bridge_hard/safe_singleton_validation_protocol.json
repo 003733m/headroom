@@ -1,0 +1,40 @@
+{
+  "status": "locked_before_safe_singleton_selection_results",
+  "experiment": "safe_singleton_adopted_bridge_validation",
+  "algorithm_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "purpose": "Test whether the frozen V3 singleton-corroboration exception for semantically strong identifier kinds produces natural adopted-bridge opportunities without using treatment outcomes for selection.",
+  "source_pool": "historical difficulty-screen OFF-only G01-G24 trajectories",
+  "excluded_tasks": [
+    "G04",
+    "G07",
+    "G09",
+    "G10",
+    "G11",
+    "G19",
+    "G21"
+  ],
+  "safe_singleton_kinds": [
+    "exception",
+    "request_id",
+    "test_name"
+  ],
+  "eligibility": [
+    "task has a completed historical OFF-only difficulty-screen run",
+    "before a later rg search, a structured identifier is present in exactly one bounded prior observable rg output",
+    "the identifier is classified by frozen extraction as exception, request_id, or test_name",
+    "the identifier has no positive local cue in prior evidence, so ordinary V1 eligibility would not admit the singleton",
+    "the later agent rg query explicitly reuses the same identifier",
+    "the frozen target-aware V3 builder admits that identifier for the later search result"
+  ],
+  "selection_must_not_use": [
+    "ON trajectories",
+    "adopted-floor retention outcomes",
+    "historical-fix-adjacent critical retention",
+    "DROP-to-KEEP outcome",
+    "task success under treatment",
+    "token-savings under treatment"
+  ],
+  "selection_rule": "sort eligible task IDs ascending; select first 3, or all eligible tasks if fewer than 3",
+  "evaluation_after_selection": "deterministic matched OFF/ON replay on identical captured requests; no fresh agent reruns required",
+  "interpretation": "treatment-blind mechanism validation, not a fresh-agent success estimate"
+}
