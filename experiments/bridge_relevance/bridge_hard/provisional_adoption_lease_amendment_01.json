@@ -1,0 +1,11 @@
+{
+  "amendment": 1,
+  "experiment": "provisional_adoption_lease_exploratory_probe",
+  "timing": "before any probe result was observed",
+  "reason": "The first execution spent more than 24 minutes at approximately one full CPU core while scanning the multi-megabyte G11 prior output.",
+  "change": "Add exact probe-only memoization for deterministic trajectory candidate extraction and context-evidence scoring.",
+  "semantic_effect": "none",
+  "production_effect": "none",
+  "selection_effect": "none",
+  "benchmark_agent_rerun": false
+}

@@ -7,6 +7,7 @@ import json
 import re
 import subprocess
 from collections import defaultdict
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -78,6 +79,32 @@ import headroom.trajectory_relevance as tr  # noqa: E402
 from headroom.transforms.relevance_split import (  # noqa: E402
     plan_relevance_split,
 )
+
+
+# Probe-only exact memoization.
+#
+# This changes runtime only, not extraction/ranking semantics.
+# The probe repeatedly inspects the same multi-megabyte historical outputs.
+_ORIGINAL_FIND_CANDIDATES = tr._find_candidates
+_ORIGINAL_CONTEXT_EVIDENCE = tr._context_evidence
+
+
+@lru_cache(maxsize=262_144)
+def _cached_find_candidates_tuple(text: str):
+    return tuple(_ORIGINAL_FIND_CANDIDATES(text))
+
+
+def _cached_find_candidates(text: str):
+    return list(_cached_find_candidates_tuple(text))
+
+
+@lru_cache(maxsize=262_144)
+def _cached_context_evidence(line: str, token: str):
+    return _ORIGINAL_CONTEXT_EVIDENCE(line, token)
+
+
+tr._find_candidates = _cached_find_candidates
+tr._context_evidence = _cached_context_evidence
 
 
 def die(msg: str) -> None:
