@@ -58,7 +58,9 @@
       ],
       "failing_nodeids": [
         "tests/test_pricing_litellm_model_resolution.py::test_retired_claude_3_sonnet_aliases_to_sonnet_tier_not_haiku"
-      ]
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_pricing_litellm_model_resolution.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "395dc98a919c90c6c57a9a46c0b61e5ba85ba0937d520d9407f9d75dd26ac7f0"
     }
   ]
 }
