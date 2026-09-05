@@ -1,0 +1,312 @@
+{
+  "status": "selected_before_any_second_unseen_agent_run",
+  "experiment": "second_unseen_adopted_bridge_validation",
+  "selection_version": "second-unseen-adopted-v1",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "protocol_commit": "b622d88b4c7b22b4cfe972b83cc4aff10286188f",
+  "candidate_source": "/home/memoli3322/projects/headroom/experiments/bridge_relevance/bridge_hard/exhaustive_discovery_results.json",
+  "candidate_count_before_previous_agent_exclusion": 105,
+  "previously_used_source_commit_count": 36,
+  "unused_validated_candidate_count": 70,
+  "maximum_screen_tasks": 12,
+  "ordering": "ascending sha256('second-unseen-adopted-v1:' + source_commit)",
+  "selection_fields_used": [
+    "status",
+    "source_commit",
+    "subject",
+    "production_files",
+    "test_files",
+    "failing_nodeids",
+    "prompt"
+  ],
+  "selection_fields_explicitly_not_used": [
+    "baseline_opportunity",
+    "rescue_task",
+    "regression_task",
+    "critical_record_count",
+    "critical_summary",
+    "critical_decisions",
+    "off_plan",
+    "v3_plan"
+  ],
+  "prior_agent_manifest_sources": {
+    "/home/memoli3322/projects/headroom/experiments/bridge_relevance/results/v3/prospective_task_manifest.json": [
+      "07d89a751d603f5cf73b8fd7af0c766a08e65da8",
+      "36cc800162eae83aceffce705cc4ecba05f6ec02",
+      "7e83b8da3cdefd5c0820017ff60e48eb489044fd",
+      "9ca5a16bde81f515454f9bc6ad022caa15e118b8"
+    ],
+    "/home/memoli3322/projects/headroom/experiments/bridge_relevance/bridge_hard/natural_transfer_manifest.json": [
+      "0cddac632d8ab4e0bcd752b9c7519d5099aa085e",
+      "1f5fefffd3e82c73bddd928cfd53334031e807bc",
+      "4e2bbfee3f65e3287ab7693da70f0d7b20dada28",
+      "85e869945138f06471501046c5725eac119dea58",
+      "c7b5a24b4ffca78bacf1919ace00087b6ab6f7d0",
+      "cc072f0821b76618659a2dd6c81a1daee49dbaab",
+      "d05802b6200b94f198e99319e6c778e78b53db8b",
+      "fa330f3e2bed3f51b7f4d49bcd64ec4aaa17f44f"
+    ],
+    "/home/memoli3322/projects/headroom/experiments/bridge_relevance/bridge_hard/historical_difficulty_screen_manifest.json": [
+      "045f3dfe6fd9f4e39e4cdd8c0c529a815d925c7e",
+      "1725cd1f8376828849c0e48fd9008afa25d24fff",
+      "18e5680be33d6881bfa3fdd9e0fdd32324ec8af7",
+      "1de35e775f2f19e51258fecddcabc2b88775f7d8",
+      "5279c33b192402faa7c4cbb7b1f6bae36ccda9c7",
+      "5e14b8c0f293df78f2576a9fc7eb90189e604cb5",
+      "6137967083936467c570e8c7f20e94f43ccc13aa",
+      "63f74aa3e6477db9ac2049007a71ec5a3522649c",
+      "65b0e8c58dbbc0b77e4b7159b279287979767c4c",
+      "6ea6e31f09845b2ad5c8bae73bcf353f3b629188",
+      "842d7e1ad1869b147ec94903ac87cf1414d86cdb",
+      "8d6c175d605b88d1c5a7f5e7671778a0e54fb09e",
+      "a70e5ff78dc9486e63a6563f122d392469ceef38",
+      "ae10d6c99d7b187a92a9bcef3e7aabfe8b43a97f",
+      "b0afee85b3a94f829c4743fce2bbf75c494e6312",
+      "be51008c701f18e6856efc65d46401dbd2c9856f",
+      "c24b1fa46f5b99d3988ca824cc5366c625222f1f",
+      "c811007f813becac3dbe885a832dede8daaa7693",
+      "cb6c8284575b70d754f5fc83158d8ef38777526b",
+      "d6e07102283745a44aece2222f84c1599eabf90a",
+      "e0232df9b42b326358addacb8980aa1dd207ee01",
+      "ec12e18186852118204ec9ac8fdd33e068c0dcad",
+      "eecb81e8478dbe4337a48dcdc2ace6537df0784f",
+      "eed80dd4baa6a9d8be0ed36a575d0169f6b5eb3c"
+    ],
+    "/home/memoli3322/projects/headroom/experiments/bridge_relevance/bridge_hard/adopted_bridge_holdout_selection.json": [
+      "045f3dfe6fd9f4e39e4cdd8c0c529a815d925c7e",
+      "1725cd1f8376828849c0e48fd9008afa25d24fff",
+      "18e5680be33d6881bfa3fdd9e0fdd32324ec8af7",
+      "1de35e775f2f19e51258fecddcabc2b88775f7d8",
+      "5e14b8c0f293df78f2576a9fc7eb90189e604cb5",
+      "6137967083936467c570e8c7f20e94f43ccc13aa",
+      "63f74aa3e6477db9ac2049007a71ec5a3522649c",
+      "65b0e8c58dbbc0b77e4b7159b279287979767c4c",
+      "6ea6e31f09845b2ad5c8bae73bcf353f3b629188",
+      "842d7e1ad1869b147ec94903ac87cf1414d86cdb",
+      "b0afee85b3a94f829c4743fce2bbf75c494e6312",
+      "c24b1fa46f5b99d3988ca824cc5366c625222f1f",
+      "c811007f813becac3dbe885a832dede8daaa7693",
+      "d6e07102283745a44aece2222f84c1599eabf90a",
+      "e0232df9b42b326358addacb8980aa1dd207ee01",
+      "ec12e18186852118204ec9ac8fdd33e068c0dcad",
+      "eecb81e8478dbe4337a48dcdc2ace6537df0784f",
+      "eed80dd4baa6a9d8be0ed36a575d0169f6b5eb3c"
+    ]
+  },
+  "tasks": [
+    {
+      "task_id": "U01",
+      "source_commit": "24cf256e50fbd0df8ac67fefa90982cd20807274",
+      "rank_sha256": "0068fcb95627b8589d8915be28c43209d16a55c55fa8ab582f7addf99e368d47",
+      "subject": "fix: respect COPILOT_PROVIDER_TYPE env var when provider_type is auto (#549)",
+      "production_files": [
+        "headroom/providers/copilot/wrap.py"
+      ],
+      "test_files": [
+        "tests/test_provider_copilot_wrap.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_provider_copilot_wrap.py::test_resolve_provider_type_prefers_explicit_and_env"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_provider_copilot_wrap.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "0ee8e25f4f8d193274527dc84e3a545f54869dd1754a71562c0f8c63e67ce571"
+    },
+    {
+      "task_id": "U02",
+      "source_commit": "3e85eb1880af5663cf083492f1dc1415a354bd99",
+      "rank_sha256": "062e03d02aa44f712fd77831b14c488e5af5d2aa6c020b477d64b2995fd876f5",
+      "subject": "fix(memory): resolve Trae cwd metadata from user reminders (#1737) (#1887)",
+      "production_files": [
+        "headroom/memory/storage_router.py"
+      ],
+      "test_files": [
+        "tests/test_memory_storage_router.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_memory_storage_router.py::test_extract_system_prompt_user_reminder_with_cwd_reaches_resolver"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_memory_storage_router.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "2719d5d209634bfe896a0193cf81b0eb42162152277390957395948f5e304ce2"
+    },
+    {
+      "task_id": "U03",
+      "source_commit": "6ecbdd6b527312ce61a1e8890f0d6d1d63ae4f48",
+      "rank_sha256": "07d036d474797a4d7379be3428140fdd2541dad5d83c971b5f88137dfbd42886",
+      "subject": "fix(proxy/savings): don't bill fallback rate for free (0-priced) models (#2024)",
+      "production_files": [
+        "headroom/proxy/savings_tracker.py"
+      ],
+      "test_files": [
+        "tests/test_savings_tracker_zero_price.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_savings_tracker_zero_price.py::test_compression_savings_zero_for_free_model",
+        "tests/test_savings_tracker_zero_price.py::test_input_cost_zero_for_free_model"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_savings_tracker_zero_price.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "9ca3f3c52580091471c0395359c1e6f6dd5d0e3bc2c25ab60497e3295c15d356"
+    },
+    {
+      "task_id": "U04",
+      "source_commit": "1612f06a4c19c53b6d8b02b02cd30d14a1858d28",
+      "rank_sha256": "0823f56d52811bb62c7241b22f3046bb67cc0f70a833a4c42e14c4a14f635590",
+      "subject": "fix(ccr): don't crash tool-call detection on a null function/functionCall (#2269)",
+      "production_files": [
+        "headroom/ccr/tool_calls.py",
+        "headroom/ccr/tool_injection.py"
+      ],
+      "test_files": [
+        "tests/test_ccr_tool_calls.py",
+        "tests/test_ccr_tool_injection.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_ccr_tool_calls.py::test_ccr_detection_survives_null_function_tool_call",
+        "tests/test_ccr_tool_injection.py::TestParseToolCall::test_parse_null_function_returns_none_without_crashing"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_ccr_tool_calls.py, tests/test_ccr_tool_injection.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "cacedcc34c0b30bda7e6e2534d72283badd458f8ade09a92505e1e1eb5a5ead1"
+    },
+    {
+      "task_id": "U05",
+      "source_commit": "58f28dc7a6b6ce5bbf0f88524bd78cbe3f3ffa4b",
+      "rank_sha256": "09b3561b6bbb372eac477145aa0a9b4413627f2c9118ac791ffa81fa613586b8",
+      "subject": "fix(install): honor HEADROOM_PORT in install apply and deploy (#3085)",
+      "production_files": [
+        "headroom/cli/install.py"
+      ],
+      "test_files": [
+        "tests/test_cli/test_install_cli.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_cli/test_install_cli.py::test_install_apply_honors_headroom_port_env",
+        "tests/test_cli/test_install_cli.py::test_deploy_honors_headroom_port_env"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_cli/test_install_cli.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "5ef3e548a52c8c2bd5d655707b48da5ac1a4190f08b668554d1794a20a7fc1cc"
+    },
+    {
+      "task_id": "U06",
+      "source_commit": "12149f74466c08b69be8d5fe751425be63c2fda4",
+      "rank_sha256": "0c17bacdc48947b6561134b40aa8a969ac592d57f535cd1b35c199b532c817e9",
+      "subject": "fix(proxy): include tool_search_deferral savings in the savings ledger",
+      "production_files": [
+        "headroom/proxy/prometheus_metrics.py"
+      ],
+      "test_files": [
+        "tests/test_savings_ledger_before_forwarded.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_savings_ledger_before_forwarded.py::test_record_savings_event_includes_tool_search_deferral",
+        "tests/test_savings_ledger_before_forwarded.py::test_record_savings_event_written_for_deferral_only_turn"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_savings_ledger_before_forwarded.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "3103c8418475659f02417ba4bbd7e12e4716a76e3810a4dab939096ab85b1ad7"
+    },
+    {
+      "task_id": "U07",
+      "source_commit": "0805e8e410543d75c7ddd3b83dde5eda3bc13144",
+      "rank_sha256": "11e8772688be18ee3a3c1e7c8e4ff8ecd1a1ad6443c14ad20c20d2e5257bf2a2",
+      "subject": "fix(providers/openai): bound tiktoken vocab loads with the guarded loader (#2554)",
+      "production_files": [
+        "headroom/providers/openai.py"
+      ],
+      "test_files": [
+        "tests/test_providers/test_openai.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_providers/test_openai.py::TestGuardedEncodingLoad::test_get_encoding_routes_through_bounded_loader",
+        "tests/test_providers/test_openai.py::TestGuardedEncodingLoad::test_get_token_counter_falls_back_to_estimation"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_providers/test_openai.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "dd496dee9c5e270e74ad5e45afe3bfcaf8279a97bac9f260cf9dfff8062ecc3e"
+    },
+    {
+      "task_id": "U08",
+      "source_commit": "3e976712e717a53ab6aea73120ae6ffacea74250",
+      "rank_sha256": "122c3430ca0ead9a9ce45678d6c0b1b2ecb388efa4370b947e2cfa537758507f",
+      "subject": "fix(proxy/output-shaping): tolerate a non-string system block text in steering (#2435)",
+      "production_files": [
+        "headroom/proxy/output_steering.py"
+      ],
+      "test_files": [
+        "tests/test_output_steering.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_output_steering.py::test_anthropic_steering_tolerates_non_string_system_block_text"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_output_steering.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "d1d0453a711981db53ff58fff0f9721d1424f8a20272f49a59f1d771b0dccb6d"
+    },
+    {
+      "task_id": "U09",
+      "source_commit": "84f66da36f0bcd0929ad6d864d745b7685147718",
+      "rank_sha256": "13461a285883f18dfa9285070810bbc1d9a640c8f4dbbd82ea600d51c73a407d",
+      "subject": "fix(init/codex): merge into hooks.json instead of overwriting it (#2173)",
+      "production_files": [
+        "headroom/cli/init.py"
+      ],
+      "test_files": [
+        "tests/test_cli/test_init_cli.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_cli/test_init_cli.py::test_ensure_codex_hooks_preserves_user_hooks"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_cli/test_init_cli.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "a356b9052fa5c655fa586f0a5f910796b2992406503410491dd2c7b861d2fc40"
+    },
+    {
+      "task_id": "U10",
+      "source_commit": "2f4d001c9ffd7f856c8dab3e31a8240a1c676f04",
+      "rank_sha256": "1672821bf09700f934f2e94716e41efd300f1c0bf81945c877a90bb8bd129f5f",
+      "subject": "fix(proxy): keep prefixed core tools resident (#3046)",
+      "production_files": [
+        "headroom/proxy/helpers.py"
+      ],
+      "test_files": [
+        "tests/test_issue_746_tool_search.py",
+        "tests/test_openai_tool_search_deferral.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_issue_746_tool_search.py::test_core_tools_match_leading_underscore_namespace",
+        "tests/test_openai_tool_search_deferral.py::test_prefixed_core_and_terminal_names_stay_resident"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_issue_746_tool_search.py, tests/test_openai_tool_search_deferral.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "e54c1acda8cc23346bf70a812a0aabc3b870f2179fdc581b6a7cced4195cc14f"
+    },
+    {
+      "task_id": "U11",
+      "source_commit": "8b7e797ed41ea9a37ef8711e102b355f9194c571",
+      "rank_sha256": "18edca3a50cf035979fddd55c8a0d196ff52e6a3eef3261c27b3396f592f501a",
+      "subject": "fix(proxy/memory): don't crash memory tool-call detection on a null function (#2272)",
+      "production_files": [
+        "headroom/proxy/memory_handler.py"
+      ],
+      "test_files": [
+        "tests/test_memory_handler_null_function.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_memory_handler_null_function.py::test_has_memory_tool_calls_survives_null_function",
+        "tests/test_memory_handler_null_function.py::test_has_memory_tool_calls_all_null_functions_is_false"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_memory_handler_null_function.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "2f34edf267e95daea0b194c96f4f9b7ab0e137908f8a2757cc1ee37d761c16e5"
+    },
+    {
+      "task_id": "U12",
+      "source_commit": "def2f9a7286a271a36402bc564867b53a3c11b70",
+      "rank_sha256": "1abd461c566f3012c643ed4c770b086dc90a030aaa43b70dd52d72f6158bf5fb",
+      "subject": "fix(learn): don't desync verbosity pairing on empty assistant turns (#2123)",
+      "production_files": [
+        "headroom/learn/verbosity.py"
+      ],
+      "test_files": [
+        "tests/test_verbosity_learn.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_verbosity_learn.py::TestSignalExtraction::test_empty_assistant_message_does_not_desync_fast_skip"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_verbosity_learn.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "1f2a22a80cc3b8e133fb58f74fc25bd1ecac95620043ae0b7e012619dde73123"
+    }
+  ]
+}
