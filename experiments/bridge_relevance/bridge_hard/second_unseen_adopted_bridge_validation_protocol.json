@@ -1,0 +1,82 @@
+{
+  "status": "locked_before_any_second_unseen_agent_run",
+  "experiment": "second_unseen_adopted_bridge_validation",
+  "classification": "prospective applicability-conditioned unseen validation",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+
+  "motivation": "The post-hoc adopted-bridge preservation floor improved historical-critical retention on the development replay, but the first unseen holdout (G11) did not activate the frozen production treatment. This second validation tests the already-frozen production rule on new natural trajectories without selecting tasks based on retention outcome.",
+
+  "primary_question": "When the frozen adopted-bridge mechanism is naturally applicable on a previously unused task, does it change retention of historical-fix-adjacent evidence relative to an otherwise identical baseline replay?",
+
+  "candidate_pool": {
+    "source": "validated reverse-patch tasks already present in experiments/bridge_relevance/bridge_hard/exhaustive_discovery_results.json",
+    "must_be_previously_unused_by_agent_benchmarks": true,
+    "exclude_all_previous_development_confirmatory_and_holdout_tasks": true
+  },
+
+  "ordering": {
+    "method": "ascending SHA256('second-unseen-adopted-v1:' + source_commit)",
+    "outcome_independent": true
+  },
+
+  "screen": {
+    "condition": "OFF only",
+    "maximum_new_agent_tasks": 12,
+    "run_sequentially": true,
+    "eligibility": [
+      "valid fresh OFF agent run",
+      "at least one natural shell rg/grep search output",
+      "before that search output the frozen 89da trajectory builder admits at least one bridge identifier from prior tool outputs",
+      "the current natural search query explicitly reuses at least one of those admitted bridge identifiers",
+      "the corresponding output reaches the production search relevance path"
+    ],
+    "selection": "first eligible task in the frozen deterministic ordering",
+    "forbidden_during_selection": [
+      "historical-critical retention outcome",
+      "whether the preservation floor would rescue a record",
+      "fix-adjacent oracle overlap inside the target search output",
+      "comparison of baseline and treatment retention",
+      "task replacement because of an undesirable valid result"
+    ]
+  },
+
+  "treatment": {
+    "after_first_eligible_off_task": "run exactly one ON condition on the same locked reverse-patch snapshot",
+    "algorithm_changes_after_lock": false,
+    "task_replacement": false,
+    "rerun_completed_conditions": false
+  },
+
+  "primary_mechanism_evaluation": {
+    "only_if_fresh_on_treatment_activates": true,
+    "data": "first exact captured inbound search request/output on which adopted-bridge preservation activates",
+    "conditions": {
+      "A": "identical frozen production scoring and trajectory context, adopted preservation identifiers disabled",
+      "D": "identical frozen production scoring and trajectory context, frozen adopted preservation identifiers enabled"
+    },
+    "primary_metrics": [
+      "historical-fix-adjacent records scorable",
+      "critical records kept by A",
+      "critical records kept by D",
+      "A-drop to D-keep rescues",
+      "A-keep to D-drop regressions",
+      "additional non-critical records",
+      "additional non-critical tokens"
+    ]
+  },
+
+  "stopping_rules": [
+    "stop after the first eligible OFF task and its single ON condition",
+    "stop after 12 valid OFF screens if none is eligible",
+    "if ON does not reproduce treatment activation, stop and report inactive treatment",
+    "do not search for a replacement after observing ON outcome",
+    "do not alter production algorithm 89da based on this validation"
+  ],
+
+  "allowed_claims": {
+    "if_rescue_observed": "unseen natural mechanism replication of the frozen adopted-bridge preservation rule",
+    "if_activation_without_rescue": "unseen natural activation without observed critical-retention improvement",
+    "if_on_inactive": "historical/OFF applicability did not reproduce under the fresh treatment trajectory",
+    "if_no_eligible_task": "natural applicability remained sparse in a capped second unseen screen"
+  }
+}
