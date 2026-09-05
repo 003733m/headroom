@@ -4,10 +4,12 @@ from __future__ import annotations
 import json
 import re
 import shlex
+from collections import deque
 from pathlib import Path
 from typing import Any
 
 from headroom.trajectory_relevance import (
+    DEFAULT_MAX_TOOL_OUTPUTS,
     _responses_query_identifiers,
     _responses_search_pattern,
     _trajectory_context_bridge_identifiers,
@@ -128,7 +130,9 @@ def analyze_task(task_id: str) -> dict[str, Any]:
         )
     )
 
-    prior_messages: list[dict[str, Any]] = []
+    prior_messages: deque[dict[str, Any]] = deque(
+        maxlen=DEFAULT_MAX_TOOL_OUTPUTS
+    )
     opportunities: list[dict[str, Any]] = []
 
     for index, cap in enumerate(captures):
@@ -141,9 +145,10 @@ def analyze_task(task_id: str) -> dict[str, Any]:
         trajectory_context = ""
 
         if prior_messages and target:
+            history = list(prior_messages)
             trajectory_context = build_search_relevance_context(
-                prior_messages,
-                before_index=len(prior_messages),
+                history,
+                before_index=len(history),
                 user_context="",
                 target_content=target,
                 novelty_context="",
@@ -234,6 +239,14 @@ for task in tasks:
     row["failing_nodeids"] = task["failing_nodeids"]
 
     analysis.append(row)
+
+    print(
+        f"scanned {task_id}: "
+        f"captures={row.get('capture_count', 0)} "
+        f"opportunities={row.get('opportunity_count', 0)} "
+        f"eligible={bool(row.get('eligible'))}",
+        flush=True,
+    )
 
 eligible_ids = sorted(
     row["task_id"]

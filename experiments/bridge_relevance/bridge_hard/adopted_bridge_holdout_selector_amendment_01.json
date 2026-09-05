@@ -1,0 +1,19 @@
+{
+  "status": "pre-result performance/conformance amendment",
+  "experiment": "adopted_bridge_unseen_holdout",
+  "algorithm_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "selector_freeze_before_amendment": "e18794ef",
+  "timing": "after selector execution began but before any eligible or selected task list was observed",
+  "problem": "The first selector implementation accumulated all prior rg outputs and repeatedly passed the growing history to the frozen V3 builder. Production V3 is bounded by DEFAULT_MAX_TOOL_OUTPUTS=8, making the selector unnecessarily quadratic and less faithful to production.",
+  "change": [
+    "retain only the most recent 8 observable prior rg outputs in the selector",
+    "use the same frozen V3 candidate/ranking logic",
+    "do not change eligibility, exclusion, ordering, or task selection rules",
+    "add progress printing only"
+  ],
+  "selection_rule_unchanged": true,
+  "outcome_information_observed_before_change": false,
+  "eligible_task_ids_observed_before_change": false,
+  "selected_task_ids_observed_before_change": false,
+  "scope_note": "The selector intentionally remains an rg-observable under-approximation of production tool-output opportunities."
+}
