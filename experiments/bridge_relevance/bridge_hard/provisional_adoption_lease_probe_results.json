@@ -1,0 +1,474 @@
+{
+  "evaluation_type": "post_hoc_exploratory_mechanism",
+  "experiment": "provisional_adoption_lease_probe",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "policy": {
+    "raw_candidate": "no preservation",
+    "provisional": "bounded prior exact structured occurrence AND explicit current-query reuse; one retrieval-result lease",
+    "corroborated": "existing frozen V3 bridge AND explicit current-query reuse",
+    "renewal": "requires explicit reuse in the next retrieval query",
+    "expiry": "automatic when explicit retrieval-query reuse stops"
+  },
+  "hard_matched_retention": {
+    "strict": {
+      "stratum": "strict_hash_valid",
+      "units": 10,
+      "units_matched_to_natural_rg_capture": 1,
+      "critical_total": 9,
+      "baseline_critical_kept": 5,
+      "conditions": {
+        "B": {
+          "units_with_floor_ids": 0,
+          "critical_kept": 5,
+          "critical_DROP_to_KEEP": 0,
+          "critical_KEEP_to_DROP": 0,
+          "newly_kept_records": 0,
+          "newly_kept_critical": 0,
+          "newly_kept_nonfix": 0,
+          "additional_critical_tokens": 0,
+          "additional_nonfix_tokens": 0,
+          "additional_total_tokens": 0,
+          "critical_recall": 0.5555555555555556
+        },
+        "D": {
+          "units_with_floor_ids": 3,
+          "critical_kept": 6,
+          "critical_DROP_to_KEEP": 1,
+          "critical_KEEP_to_DROP": 0,
+          "newly_kept_records": 21,
+          "newly_kept_critical": 1,
+          "newly_kept_nonfix": 20,
+          "additional_critical_tokens": 36,
+          "additional_nonfix_tokens": 504,
+          "additional_total_tokens": 540,
+          "critical_recall": 0.6666666666666666
+        },
+        "P": {
+          "units_with_floor_ids": 0,
+          "critical_kept": 5,
+          "critical_DROP_to_KEEP": 0,
+          "critical_KEEP_to_DROP": 0,
+          "newly_kept_records": 0,
+          "newly_kept_critical": 0,
+          "newly_kept_nonfix": 0,
+          "additional_critical_tokens": 0,
+          "additional_nonfix_tokens": 0,
+          "additional_total_tokens": 0,
+          "critical_recall": 0.5555555555555556
+        },
+        "Q": {
+          "units_with_floor_ids": 8,
+          "critical_kept": 6,
+          "critical_DROP_to_KEEP": 1,
+          "critical_KEEP_to_DROP": 0,
+          "newly_kept_records": 117,
+          "newly_kept_critical": 1,
+          "newly_kept_nonfix": 116,
+          "additional_critical_tokens": 36,
+          "additional_nonfix_tokens": 3249,
+          "additional_total_tokens": 3285,
+          "critical_recall": 0.6666666666666666
+        }
+      },
+      "persistent_stale_counterfactual": {
+        "units_with_stale_ids": 0,
+        "baseline_dropped_records_matching_stale_ids": 0,
+        "baseline_dropped_nonfix_records_matching_stale_ids": 0,
+        "additional_record_tokens_if_persisted": 0
+      },
+      "details": [],
+      "P_vs_Q": {
+        "nonfix_token_reduction": 1.0,
+        "critical_recall_equal": false
+      },
+      "P_vs_D": {
+        "critical_rescue_delta": -1,
+        "additional_nonfix_token_delta": -504
+      }
+    },
+    "content_valid": {
+      "stratum": "content_valid",
+      "units": 9,
+      "units_matched_to_natural_rg_capture": 1,
+      "critical_total": 9,
+      "baseline_critical_kept": 5,
+      "conditions": {
+        "B": {
+          "units_with_floor_ids": 0,
+          "critical_kept": 5,
+          "critical_DROP_to_KEEP": 0,
+          "critical_KEEP_to_DROP": 0,
+          "newly_kept_records": 0,
+          "newly_kept_critical": 0,
+          "newly_kept_nonfix": 0,
+          "additional_critical_tokens": 0,
+          "additional_nonfix_tokens": 0,
+          "additional_total_tokens": 0,
+          "critical_recall": 0.5555555555555556
+        },
+        "D": {
+          "units_with_floor_ids": 3,
+          "critical_kept": 6,
+          "critical_DROP_to_KEEP": 1,
+          "critical_KEEP_to_DROP": 0,
+          "newly_kept_records": 21,
+          "newly_kept_critical": 1,
+          "newly_kept_nonfix": 20,
+          "additional_critical_tokens": 36,
+          "additional_nonfix_tokens": 504,
+          "additional_total_tokens": 540,
+          "critical_recall": 0.6666666666666666
+        },
+        "P": {
+          "units_with_floor_ids": 0,
+          "critical_kept": 5,
+          "critical_DROP_to_KEEP": 0,
+          "critical_KEEP_to_DROP": 0,
+          "newly_kept_records": 0,
+          "newly_kept_critical": 0,
+          "newly_kept_nonfix": 0,
+          "additional_critical_tokens": 0,
+          "additional_nonfix_tokens": 0,
+          "additional_total_tokens": 0,
+          "critical_recall": 0.5555555555555556
+        },
+        "Q": {
+          "units_with_floor_ids": 7,
+          "critical_kept": 6,
+          "critical_DROP_to_KEEP": 1,
+          "critical_KEEP_to_DROP": 0,
+          "newly_kept_records": 117,
+          "newly_kept_critical": 1,
+          "newly_kept_nonfix": 116,
+          "additional_critical_tokens": 36,
+          "additional_nonfix_tokens": 3249,
+          "additional_total_tokens": 3285,
+          "critical_recall": 0.6666666666666666
+        }
+      },
+      "persistent_stale_counterfactual": {
+        "units_with_stale_ids": 0,
+        "baseline_dropped_records_matching_stale_ids": 0,
+        "baseline_dropped_nonfix_records_matching_stale_ids": 0,
+        "additional_record_tokens_if_persisted": 0
+      },
+      "details": [],
+      "P_vs_Q": {
+        "nonfix_token_reduction": 1.0,
+        "critical_recall_equal": false
+      },
+      "P_vs_D": {
+        "critical_rescue_delta": -1,
+        "additional_nonfix_token_delta": -504
+      }
+    },
+    "all": {
+      "stratum": "all_existing_replay_units",
+      "units": 14,
+      "units_matched_to_natural_rg_capture": 2,
+      "critical_total": 13,
+      "baseline_critical_kept": 9,
+      "conditions": {
+        "B": {
+          "units_with_floor_ids": 0,
+          "critical_kept": 9,
+          "critical_DROP_to_KEEP": 0,
+          "critical_KEEP_to_DROP": 0,
+          "newly_kept_records": 0,
+          "newly_kept_critical": 0,
+          "newly_kept_nonfix": 0,
+          "additional_critical_tokens": 0,
+          "additional_nonfix_tokens": 0,
+          "additional_total_tokens": 0,
+          "critical_recall": 0.6923076923076923
+        },
+        "D": {
+          "units_with_floor_ids": 6,
+          "critical_kept": 10,
+          "critical_DROP_to_KEEP": 1,
+          "critical_KEEP_to_DROP": 0,
+          "newly_kept_records": 21,
+          "newly_kept_critical": 1,
+          "newly_kept_nonfix": 20,
+          "additional_critical_tokens": 36,
+          "additional_nonfix_tokens": 504,
+          "additional_total_tokens": 540,
+          "critical_recall": 0.7692307692307693
+        },
+        "P": {
+          "units_with_floor_ids": 1,
+          "critical_kept": 9,
+          "critical_DROP_to_KEEP": 0,
+          "critical_KEEP_to_DROP": 0,
+          "newly_kept_records": 0,
+          "newly_kept_critical": 0,
+          "newly_kept_nonfix": 0,
+          "additional_critical_tokens": 0,
+          "additional_nonfix_tokens": 0,
+          "additional_total_tokens": 0,
+          "critical_recall": 0.6923076923076923
+        },
+        "Q": {
+          "units_with_floor_ids": 11,
+          "critical_kept": 10,
+          "critical_DROP_to_KEEP": 1,
+          "critical_KEEP_to_DROP": 0,
+          "newly_kept_records": 117,
+          "newly_kept_critical": 1,
+          "newly_kept_nonfix": 116,
+          "additional_critical_tokens": 36,
+          "additional_nonfix_tokens": 3249,
+          "additional_total_tokens": 3285,
+          "critical_recall": 0.7692307692307693
+        }
+      },
+      "persistent_stale_counterfactual": {
+        "units_with_stale_ids": 0,
+        "baseline_dropped_records_matching_stale_ids": 0,
+        "baseline_dropped_nonfix_records_matching_stale_ids": 0,
+        "additional_record_tokens_if_persisted": 0
+      },
+      "details": [
+        {
+          "task": "G09",
+          "request_id": "hr_1788519637_000009",
+          "call_id": "call_wWadbNV80rpLySm5yekOgdyt",
+          "command": "rg -nH \"def publish|skip_compression_recommended|strategy_hint\" headroom tests -g '*.py'",
+          "matched_event_index": 1,
+          "adopted_D": [
+            "publish"
+          ],
+          "behavioral_lease_P": [
+            "publish"
+          ],
+          "query_floor_Q": [
+            "publish",
+            "skip_compression_recommended",
+            "strategy_hint"
+          ],
+          "stale_if_persistent": [],
+          "newly_kept_P": []
+        }
+      ],
+      "P_vs_Q": {
+        "nonfix_token_reduction": 1.0,
+        "critical_recall_equal": false
+      },
+      "P_vs_D": {
+        "critical_rescue_delta": -1,
+        "additional_nonfix_token_delta": -504
+      }
+    }
+  },
+  "hard_natural_lifecycle": {
+    "search_events": 19,
+    "events_with_behavioral_adoption": 5,
+    "fresh_lease_activations": 7,
+    "lease_renewals": 0,
+    "lease_expirations": 4,
+    "events_with_stale_persistent_state": 4,
+    "tasks": {
+      "G10": {
+        "search_events": 4,
+        "events_with_behavioral_adoption": 0,
+        "fresh_lease_activations": 0,
+        "lease_renewals": 0,
+        "lease_expirations": 0,
+        "events_with_stale_persistent_state": 0
+      },
+      "G09": {
+        "search_events": 4,
+        "events_with_behavioral_adoption": 1,
+        "fresh_lease_activations": 1,
+        "lease_renewals": 0,
+        "lease_expirations": 1,
+        "events_with_stale_persistent_state": 2
+      },
+      "G07": {
+        "search_events": 4,
+        "events_with_behavioral_adoption": 2,
+        "fresh_lease_activations": 3,
+        "lease_renewals": 0,
+        "lease_expirations": 1,
+        "events_with_stale_persistent_state": 1
+      },
+      "G19": {
+        "search_events": 2,
+        "events_with_behavioral_adoption": 0,
+        "fresh_lease_activations": 0,
+        "lease_renewals": 0,
+        "lease_expirations": 0,
+        "events_with_stale_persistent_state": 0
+      },
+      "G04": {
+        "search_events": 1,
+        "events_with_behavioral_adoption": 0,
+        "fresh_lease_activations": 0,
+        "lease_renewals": 0,
+        "lease_expirations": 0,
+        "events_with_stale_persistent_state": 0
+      },
+      "G21": {
+        "search_events": 4,
+        "events_with_behavioral_adoption": 2,
+        "fresh_lease_activations": 3,
+        "lease_renewals": 0,
+        "lease_expirations": 2,
+        "events_with_stale_persistent_state": 1
+      }
+    }
+  },
+  "fresh_G11_ON": {
+    "event_count": 2,
+    "primary_event_index": 1,
+    "primary_identifier_expected": "resolve_litellm_model_name",
+    "production_v3": {
+      "bridges": [
+        "headroom/providers/anthropic.py",
+        "for",
+        "return",
+        "get"
+      ],
+      "adopted": []
+    },
+    "provisional_identifiers": [
+      "pricing_lookup_candidates",
+      "resolve_litellm_model_name"
+    ],
+    "query_identifiers": [
+      "MODEL_ALIASES",
+      "pricing_lookup_candidates",
+      "resolution_candidates",
+      "resolve_litellm_model_name"
+    ],
+    "conditions": {
+      "B": {
+        "identifiers": [],
+        "runs": 3,
+        "kept_runs": 1,
+        "dropped_runs": 2,
+        "kept_bytes": 855,
+        "dropped_bytes": 1158,
+        "parsed_records": 19,
+        "records_kept": 8,
+        "critical_total": 0,
+        "critical_kept": 0
+      },
+      "D": {
+        "identifiers": [],
+        "runs": 3,
+        "kept_runs": 1,
+        "dropped_runs": 2,
+        "kept_bytes": 855,
+        "dropped_bytes": 1158,
+        "parsed_records": 19,
+        "records_kept": 8,
+        "critical_total": 0,
+        "critical_kept": 0,
+        "critical_delta_vs_B": 0
+      },
+      "P": {
+        "identifiers": [
+          "pricing_lookup_candidates",
+          "resolve_litellm_model_name"
+        ],
+        "runs": 3,
+        "kept_runs": 1,
+        "dropped_runs": 2,
+        "kept_bytes": 855,
+        "dropped_bytes": 1158,
+        "parsed_records": 19,
+        "records_kept": 8,
+        "critical_total": 0,
+        "critical_kept": 0,
+        "critical_delta_vs_B": 0
+      },
+      "Q": {
+        "identifiers": [
+          "MODEL_ALIASES",
+          "pricing_lookup_candidates",
+          "resolution_candidates",
+          "resolve_litellm_model_name"
+        ],
+        "runs": 1,
+        "kept_runs": 1,
+        "dropped_runs": 0,
+        "kept_bytes": 2013,
+        "dropped_bytes": 0,
+        "parsed_records": 19,
+        "records_kept": 19,
+        "critical_total": 0,
+        "critical_kept": 0,
+        "critical_delta_vs_B": 0
+      }
+    },
+    "events": [
+      {
+        "event_index": 0,
+        "argv": "-nH litellm\\|model.resolution\\|model_resolution\\|resolve.\\*model tests/test_pricing_litellm_model_resolution.py . --glob \\!\\*.lock ",
+        "pattern": "litellm|model.resolution|model_resolution|resolve.*model",
+        "query_identifiers": [
+          "model_resolution"
+        ],
+        "prior_seen_query_identifiers": [],
+        "prior_evidence": {},
+        "lease_fresh": [],
+        "lease_renewed": [],
+        "lease_expired": [],
+        "stale_if_persistent": [],
+        "target_bytes": 9086961
+      },
+      {
+        "event_index": 1,
+        "argv": "-nH MODEL_ALIASES\\|claude-3-sonnet-20240229\\|def\\ \\(resolution_candidates\\|pricing_lookup_candidates\\|resolve_litellm_model_name\\) . --glob \\*.py ",
+        "pattern": "MODEL_ALIASES|claude-3-sonnet-20240229|def (resolution_candidates|pricing_lookup_candidates|resolve_litellm_model_name)",
+        "query_identifiers": [
+          "MODEL_ALIASES",
+          "pricing_lookup_candidates",
+          "resolution_candidates",
+          "resolve_litellm_model_name"
+        ],
+        "prior_seen_query_identifiers": [
+          "pricing_lookup_candidates",
+          "resolve_litellm_model_name"
+        ],
+        "prior_evidence": {
+          "pricing_lookup_candidates": {
+            "prior_event_indices": [
+              0
+            ],
+            "distinct_prior_outputs": 1,
+            "matching_lines": 1,
+            "kinds": [
+              "function_name"
+            ]
+          },
+          "resolve_litellm_model_name": {
+            "prior_event_indices": [
+              0
+            ],
+            "distinct_prior_outputs": 1,
+            "matching_lines": 12,
+            "kinds": [
+              "function_name"
+            ]
+          }
+        },
+        "lease_fresh": [
+          "pricing_lookup_candidates",
+          "resolve_litellm_model_name"
+        ],
+        "lease_renewed": [],
+        "lease_expired": [],
+        "stale_if_persistent": [],
+        "target_bytes": 2013
+      }
+    ]
+  },
+  "important_limitations": [
+    "Designed after observing the G11 early-adoption failure; not unseen validation.",
+    "Hard retention outcomes reuse existing normalized matched-replay baseline decisions.",
+    "Persistent-stale numbers are a counterfactual indefinite-adoption burden, not a claim about current production V3 persistence.",
+    "Fresh G11 direct relevance-split analysis is a mechanism probe, not a fresh agent treatment-effect estimate."
+  ]
+}
