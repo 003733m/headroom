@@ -1,0 +1,30 @@
+{
+  "status": "locked_before_exact_retention_replay",
+  "experiment": "second_unseen_adopted_bridge_validation",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "selected_task": "U01",
+  "selection_reason": "first task in the precommitted deterministic screen with frozen adopted-bridge natural applicability",
+  "off": {
+    "task_pass": true,
+    "natural_applicability": true,
+    "historical_critical_or_retention_outcome_inspected_during_selection": false,
+    "adopted_identifiers": [
+      "COPILOT_PROVIDER_TYPE",
+      "HEADROOM_BACKEND"
+    ]
+  },
+  "on": {
+    "task_pass": true,
+    "agent_condition_consumed_once": true,
+    "handler_search_gate": true,
+    "trajectory_context_nonempty": true,
+    "adopted_identifiers": [
+      "COPILOT_PROVIDER_TYPE"
+    ],
+    "runtime_relevance_split_units": 0,
+    "runtime_search_relevance_chains": 0,
+    "runtime_treatment_activated_metric": false
+  },
+  "interpretation_before_retention_replay": "Fresh unseen natural activation of the frozen adopted-bridge admission mechanism reproduced. No claim about incremental retention or critical rescue has yet been made.",
+  "next_predeclared_step": "deterministic exact captured A/D retention replay with only the adopted preservation floor toggled"
+}
