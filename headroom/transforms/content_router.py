@@ -2271,7 +2271,21 @@ class ContentRouter(Transform):
                 )
 
             if strategy == CompressionStrategy.MIXED:
-                result = self._compress_mixed(content, context, question, bias=bias)
+                if trajectory_search_relevance:
+                    result = self._compress_mixed(
+                        content,
+                        context,
+                        question,
+                        bias=bias,
+                        trajectory_search_relevance=True,
+                    )
+                else:
+                    result = self._compress_mixed(
+                        content,
+                        context,
+                        question,
+                        bias=bias,
+                    )
             else:
                 result = self._compress_pure(
                     content,
@@ -2466,6 +2480,7 @@ class ContentRouter(Transform):
         context: str,
         question: str | None = None,
         bias: float = 1.0,
+        trajectory_search_relevance: bool = False,
     ) -> RouterCompressionResult:
         """Compress mixed content by splitting and routing sections.
 
@@ -2548,14 +2563,29 @@ class ContentRouter(Transform):
 
             # Compress section
             original_tokens = _estimate_tokens(section.content)
-            compressed_content, compressed_tokens, _section_chain = self._apply_strategy_to_content(
-                section.content,
-                strategy,
-                context,
-                section.language,
-                question,
-                bias=bias,
-            )
+            if trajectory_search_relevance:
+                compressed_content, compressed_tokens, _section_chain = (
+                    self._apply_strategy_to_content(
+                        section.content,
+                        strategy,
+                        context,
+                        section.language,
+                        question,
+                        bias=bias,
+                        trajectory_search_relevance=True,
+                    )
+                )
+            else:
+                compressed_content, compressed_tokens, _section_chain = (
+                    self._apply_strategy_to_content(
+                        section.content,
+                        strategy,
+                        context,
+                        section.language,
+                        question,
+                        bias=bias,
+                    )
+                )
 
             # Preserve code fence markers
             if section.is_code_fence and section.language:

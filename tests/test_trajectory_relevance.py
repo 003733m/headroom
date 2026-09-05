@@ -1320,3 +1320,84 @@ def test_v3_responses_native_local_shell_rg_has_search_intent():
     )
 
     assert search_call_ids == {"call-shell-search"}
+
+
+def test_mixed_content_forwards_trajectory_search_relevance_to_sections(
+    monkeypatch,
+):
+    import headroom.transforms.content_router as content_router_module
+
+    from headroom.transforms.content_router import (
+        CompressionStrategy,
+        ContentRouter,
+    )
+
+    router = ContentRouter()
+    router.config.relevance_split = True
+    router._lossless_then_lossy = False
+
+    # Force this regression test through the exact top-level branch that
+    # failed on the naturally observed U01 Responses search output.
+    monkeypatch.setattr(
+        content_router_module,
+        "is_mixed_content",
+        lambda _content: True,
+    )
+    monkeypatch.setattr(
+        router,
+        "_determine_strategy",
+        lambda _content, *, mixed, detection: CompressionStrategy.MIXED,
+    )
+
+    # Model a section whose structure is independently recognized as a
+    # search result. The existing trajectory override is intentionally
+    # conditional on this lossless structural signal.
+    monkeypatch.setattr(
+        router,
+        "_lossless_first",
+        lambda content, strategy: (
+            content,
+            "lossless_search",
+        ),
+    )
+
+    calls: list[tuple[str, str]] = []
+
+    def fake_relevance_split(
+        content: str,
+        kind: str,
+        context: str,
+    ):
+        calls.append((kind, context))
+        return "relevance selected"
+
+    monkeypatch.setattr(
+        router,
+        "_relevance_split_compress",
+        fake_relevance_split,
+    )
+
+    context = (
+        "Trajectory bridge identifiers: COPILOT_PROVIDER_TYPE\n"
+        "Adopted bridge identifiers: COPILOT_PROVIDER_TYPE"
+    )
+
+    off = router.compress(
+        "search section one\n\nsearch section two",
+        context=context,
+        trajectory_search_relevance=False,
+    )
+
+    assert off.strategy_used is CompressionStrategy.MIXED
+    assert calls == []
+
+    on = router.compress(
+        "search section one\n\nsearch section two",
+        context=context,
+        trajectory_search_relevance=True,
+    )
+
+    assert on.strategy_used is CompressionStrategy.MIXED
+    assert calls
+    assert all(kind == "search" for kind, _ in calls)
+    assert all(context in ctx for _, ctx in calls)
