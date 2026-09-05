@@ -21,6 +21,7 @@ reconstruct the original bytes exactly.
 
 from __future__ import annotations
 
+import re
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -141,6 +142,7 @@ def plan_relevance_split(
     window: int = 8,
     max_chars: int = 1200,
     max_records: int | None = None,
+    force_keep_identifiers: tuple[str, ...] = (),
 ) -> list[tuple[bool, str]]:
     """Split ``content`` into ordered ``(keep, text)`` runs by relevance to ``query``.
 
@@ -167,6 +169,15 @@ def plan_relevance_split(
     runs: list[tuple[bool, str]] = []
     for seg, sc in zip(segs, scores):
         keep = sc.score >= cut
+        if not keep and force_keep_identifiers:
+            keep = any(
+                re.search(
+                    rf"(?<![A-Za-z0-9_]){re.escape(identifier)}(?![A-Za-z0-9_])",
+                    seg,
+                )
+                is not None
+                for identifier in force_keep_identifiers
+            )
         if runs and runs[-1][0] == keep:
             runs[-1] = (keep, runs[-1][1] + seg)
         else:

@@ -14,8 +14,10 @@ Important invariants:
 from __future__ import annotations
 
 import bisect
+import json
 import math
 import re
+import shlex
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from typing import Any
@@ -1230,6 +1232,267 @@ def _latest_bridge_user_context(
 
     return ""
 
+
+_RESPONSES_SEARCH_COMMAND_RE = re.compile(
+    r"(^|(?:&&|;|\|)\s*|\s)(?:rg|grep)\s",
+    re.IGNORECASE,
+)
+
+_RESPONSES_QUERY_IDENTIFIER_RE = re.compile(
+    r"[A-Za-z_][A-Za-z0-9_]*"
+)
+
+_RESPONSES_SEARCH_OPTS_WITH_VALUE = frozenset(
+    {
+        "-g",
+        "--glob",
+        "-C",
+        "--context",
+        "-A",
+        "--after-context",
+        "-B",
+        "--before-context",
+        "-m",
+        "--max-count",
+        "-e",
+        "--regexp",
+        "-f",
+        "--file",
+        "-t",
+        "--type",
+        "-T",
+        "--type-not",
+        "--encoding",
+        "--engine",
+        "--ignore-file",
+        "--sort",
+        "--sortr",
+    }
+)
+
+
+def _responses_collect_strings(value: Any) -> list[str]:
+    """Collect string leaves from a Responses tool-call payload."""
+    result: list[str] = []
+
+    if isinstance(value, str):
+        result.append(value)
+        try:
+            decoded = json.loads(value)
+        except Exception:
+            decoded = None
+        if decoded is not None and decoded != value:
+            result.extend(_responses_collect_strings(decoded))
+        return result
+
+    if isinstance(value, dict):
+        for item in value.values():
+            result.extend(_responses_collect_strings(item))
+        return result
+
+    if isinstance(value, list):
+        for item in value:
+            result.extend(_responses_collect_strings(item))
+
+    return result
+
+
+def _responses_producing_search_command(
+    items: list[Any],
+    *,
+    before_index: int,
+) -> str:
+    """Return the rg/grep command that produced one Responses tool output."""
+    if not 0 <= before_index < len(items):
+        return ""
+
+    output = items[before_index]
+    if not isinstance(output, dict):
+        return ""
+
+    call_id = output.get("call_id")
+    if not isinstance(call_id, str) or not call_id:
+        return ""
+
+    call_types = {
+        "function_call",
+        "custom_tool_call",
+        "local_shell_call",
+    }
+
+    for index in range(before_index - 1, -1, -1):
+        item = items[index]
+        if not isinstance(item, dict):
+            continue
+        if item.get("call_id") != call_id:
+            continue
+        if item.get("type") not in call_types:
+            continue
+
+        strings: list[str] = []
+        for key in ("arguments", "input", "action", "command", "cmd"):
+            if key in item:
+                strings.extend(_responses_collect_strings(item[key]))
+
+        for candidate in strings:
+            if _RESPONSES_SEARCH_COMMAND_RE.search(candidate):
+                return candidate
+
+        combined = "\n".join(strings)
+        if _RESPONSES_SEARCH_COMMAND_RE.search(combined):
+            return combined
+
+        return ""
+
+    return ""
+
+
+def _responses_search_pattern(command: str) -> str:
+    """Extract the retrieval pattern, excluding search scopes and globs."""
+    try:
+        args = shlex.split(command)
+    except Exception:
+        return ""
+
+    start: int | None = None
+    for index, arg in enumerate(args):
+        if arg in {"rg", "grep"}:
+            start = index + 1
+            break
+
+    if start is None:
+        return ""
+
+    explicit: list[str] = []
+    index = start
+
+    while index < len(args):
+        arg = args[index]
+
+        if arg in {"-e", "--regexp"}:
+            if index + 1 < len(args):
+                explicit.append(args[index + 1])
+                index += 2
+                continue
+
+        if arg.startswith("--regexp="):
+            explicit.append(arg.split("=", 1)[1])
+            index += 1
+            continue
+
+        index += 1
+
+    if explicit:
+        return "|".join(explicit)
+
+    index = start
+
+    while index < len(args):
+        arg = args[index]
+
+        if arg == "--":
+            return args[index + 1] if index + 1 < len(args) else ""
+
+        if arg in _RESPONSES_SEARCH_OPTS_WITH_VALUE:
+            index += 2
+            continue
+
+        if arg.startswith("--") and "=" in arg:
+            index += 1
+            continue
+
+        if arg.startswith("-"):
+            index += 1
+            continue
+
+        return arg
+
+    return ""
+
+
+def _responses_query_identifiers(pattern: str) -> tuple[str, ...]:
+    """Extract conservative structured identifiers from current search intent."""
+    selected: set[str] = set()
+
+    # Plain identifiers are accepted when the search explicitly asks for
+    # their definition, e.g. ``def publish``.
+    for match in re.finditer(
+        r"\b(?:def|class)\s+([A-Za-z_][A-Za-z0-9_]*)",
+        pattern,
+    ):
+        selected.add(match.group(1))
+
+    for token in _RESPONSES_QUERY_IDENTIFIER_RE.findall(pattern):
+        if len(token) < 3:
+            continue
+
+        camel_case = (
+            token[:1].isalpha()
+            and any(char.islower() for char in token)
+            and any(char.isupper() for char in token)
+        )
+
+        if "_" in token or token.startswith("_") or camel_case:
+            selected.add(token)
+
+    return tuple(sorted(selected, key=lambda value: value.casefold()))
+
+
+def _trajectory_context_bridge_identifiers(context: str) -> tuple[str, ...]:
+    """Read frozen V3 bridge tokens from its textual relevance context."""
+    marker = "Trajectory bridge identifiers:"
+    result: list[str] = []
+
+    for line in context.splitlines():
+        stripped = line.strip()
+        if not stripped.startswith(marker):
+            continue
+        result.extend(stripped[len(marker) :].strip().split())
+
+    return tuple(result)
+
+
+def _responses_adopted_bridge_identifiers(
+    items: list[Any],
+    *,
+    before_index: int,
+    trajectory_context: str,
+) -> tuple[str, ...]:
+    """Return prior V3 bridges explicitly reused by the current search."""
+    bridges = _trajectory_context_bridge_identifiers(trajectory_context)
+    if not bridges:
+        return ()
+
+    command = _responses_producing_search_command(
+        items,
+        before_index=before_index,
+    )
+    if not command:
+        return ()
+
+    pattern = _responses_search_pattern(command)
+    if not pattern:
+        return ()
+
+    query_ids = _responses_query_identifiers(pattern)
+    if not query_ids:
+        return ()
+
+    bridge_by_casefold = {
+        token.casefold(): token
+        for token in bridges
+    }
+
+    adopted: list[str] = []
+    for token in query_ids:
+        matched = bridge_by_casefold.get(token.casefold())
+        if matched is not None:
+            adopted.append(matched)
+
+    return tuple(dict.fromkeys(adopted))
+
+
+
 def build_responses_search_relevance_context(
     items: list[Any],
     *,
@@ -1251,7 +1514,7 @@ def build_responses_search_relevance_context(
     # particular, an empty baseline context remains empty when no reliable
     # bridge exists; enabling this feature must not independently introduce
     # the user query and confound OFF/ON comparisons.
-    return build_search_relevance_context(
+    context = build_search_relevance_context(
         messages,
         before_index=len(messages),
         user_context=user_context,
@@ -1259,3 +1522,15 @@ def build_responses_search_relevance_context(
         novelty_context=_latest_bridge_user_context(messages),
         scoring=scoring,
     )
+
+    adopted = _responses_adopted_bridge_identifiers(
+        items,
+        before_index=before_index,
+        trajectory_context=context,
+    )
+
+    if not adopted:
+        return context
+
+    marker = "Adopted bridge identifiers: " + " ".join(adopted)
+    return f"{context}\n{marker}" if context else marker

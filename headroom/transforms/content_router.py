@@ -4133,14 +4133,39 @@ class ContentRouter(Transform):
             return None
         from .lossless_compaction import compact_lossless
 
+        adopted_marker = "Adopted bridge identifiers:"
+        adopted_identifiers: tuple[str, ...] = ()
+        scoring_query = query
+
+        query_lines = query.splitlines()
+        kept_query_lines: list[str] = []
+
+        for line in query_lines:
+            stripped = line.strip()
+            if stripped.startswith(adopted_marker):
+                adopted_identifiers = tuple(
+                    dict.fromkeys(
+                        stripped[len(adopted_marker) :].strip().split()
+                    )
+                )
+                continue
+            kept_query_lines.append(line)
+
+        if adopted_identifiers:
+            # The marker controls only the monotonic preservation floor.
+            # Do not double-weight adopted identifiers in relevance scoring;
+            # they are already present in the frozen trajectory context.
+            scoring_query = "\n".join(kept_query_lines)
+
         try:
             runs = plan_relevance_split(
                 content,
-                query,
+                scoring_query,
                 scorer,
                 threshold=self.config.relevance.relevance_threshold,
                 adaptive=self.config.relevance_adaptive_threshold,
                 max_records=self.config.relevance_max_records,
+                force_keep_identifiers=adopted_identifiers,
             )
         except Exception as exc:  # noqa: BLE001
             logger.debug("relevance split failed (%s); falling back", exc)
@@ -4156,7 +4181,7 @@ class ContentRouter(Transform):
                 out_parts.append(compact_lossless(text, kind))
                 continue
             try:
-                compressed, _ = self._try_ml_compressor(text, query)
+                compressed, _ = self._try_ml_compressor(text, scoring_query)
             except Exception as exc:  # noqa: BLE001
                 logger.debug("kompress tail failed (%s); keeping verbatim", exc)
                 compressed = compact_lossless(text, kind)
