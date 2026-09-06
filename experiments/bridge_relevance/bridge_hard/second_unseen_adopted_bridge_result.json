@@ -1,204 +1,44 @@
 {
   "experiment": "second_unseen_adopted_bridge_validation",
-  "classification": "prospective applicability-conditioned unseen validation",
+  "status": "complete_stopped_after_locked_u01_on",
   "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
   "task": "U01",
-  "conditions": {
-    "OFF": {
-      "condition": "U01-OFF",
-      "run_valid": true,
-      "task_pass": true,
-      "agent_exit": 0,
-      "oracle_exit": 0,
-      "requests": 7,
-      "rg_capture_count": 4,
-      "relevance_split_units": 0,
-      "search_relevance_chains": 0,
-      "treatment_activated": false,
-      "natural_search_outputs": 3,
-      "complete_applicability_events": 1,
-      "first_complete_applicability_event": {
-        "request_index": 7,
-        "command": "rg -nH -C 4 \"COPILOT_PROVIDER_TYPE|HEADROOM_BACKEND\" headroom/providers",
-        "pattern": "COPILOT_PROVIDER_TYPE|HEADROOM_BACKEND",
-        "target_bytes": 5703,
-        "minimum_bytes": 512,
-        "byte_eligible": true,
-        "structural_search_eligible": false,
-        "bash_search_linked": true,
-        "handler_search_gate": true,
-        "context_nonempty": true,
-        "trajectory_bridges": [
-          "BYOK",
-          "build_launch_env",
-          "resolve_provider_type",
-          "HEADROOM_BACKEND",
-          "AUTO",
-          "COPILOT_PROVIDER_TYPE"
-        ],
-        "adopted_bridges": [
-          "COPILOT_PROVIDER_TYPE",
-          "HEADROOM_BACKEND"
-        ],
-        "complete_applicability": true
-      },
-      "events": [
-        {
-          "request_index": 6,
-          "command": "rg -nH \"copilot|Copilot|wrap\" . --glob '!*.pyc' --glob '!*.lock'",
-          "pattern": "copilot|Copilot|wrap",
-          "target_bytes": 141,
-          "minimum_bytes": 512,
-          "byte_eligible": false,
-          "structural_search_eligible": false,
-          "bash_search_linked": true,
-          "handler_search_gate": true,
-          "context_nonempty": false,
-          "trajectory_bridges": [],
-          "adopted_bridges": [],
-          "complete_applicability": false
-        },
-        {
-          "request_index": 7,
-          "command": "rg -nH -C 8 \"def resolve_provider_type|resolve_provider_type\\(\" headroom tests",
-          "pattern": "def resolve_provider_type|resolve_provider_type\\(",
-          "target_bytes": 6391,
-          "minimum_bytes": 512,
-          "byte_eligible": true,
-          "structural_search_eligible": false,
-          "bash_search_linked": true,
-          "handler_search_gate": true,
-          "context_nonempty": true,
-          "trajectory_bridges": [
-            "test_resolve_provider_type_prefers_explicit_and_env",
-            "test_validate_configuration_accepts_supported_combinations",
-            "test_validate_configuration_rejects_invalid_combinations",
-            "tests/test_provider_copilot_wrap.py",
-            "AUTO"
-          ],
-          "adopted_bridges": [],
-          "complete_applicability": false
-        },
-        {
-          "request_index": 7,
-          "command": "rg -nH -C 4 \"COPILOT_PROVIDER_TYPE|HEADROOM_BACKEND\" headroom/providers",
-          "pattern": "COPILOT_PROVIDER_TYPE|HEADROOM_BACKEND",
-          "target_bytes": 5703,
-          "minimum_bytes": 512,
-          "byte_eligible": true,
-          "structural_search_eligible": false,
-          "bash_search_linked": true,
-          "handler_search_gate": true,
-          "context_nonempty": true,
-          "trajectory_bridges": [
-            "BYOK",
-            "build_launch_env",
-            "resolve_provider_type",
-            "HEADROOM_BACKEND",
-            "AUTO",
-            "COPILOT_PROVIDER_TYPE"
-          ],
-          "adopted_bridges": [
-            "COPILOT_PROVIDER_TYPE",
-            "HEADROOM_BACKEND"
-          ],
-          "complete_applicability": true
-        }
+  "off": {
+    "task_pass": true,
+    "requests": 7,
+    "rg_captures": 4,
+    "natural_adopted_identifiers_observed": [
+      "COPILOT_PROVIDER_TYPE",
+      "HEADROOM_BACKEND"
+    ]
+  },
+  "on": {
+    "task_pass": true,
+    "requests": 10,
+    "rg_captures": 2,
+    "live_gate_audit": {
+      "target_bytes": 20671,
+      "structural_search_eligible": false,
+      "bash_search_call_id": true,
+      "handler_search_gate": true,
+      "trajectory_context_nonempty": true,
+      "adopted_identifiers": [
+        "COPILOT_PROVIDER_TYPE"
       ]
     },
-    "ON": {
-      "condition": "U01-ON",
-      "run_valid": true,
-      "task_pass": true,
-      "agent_exit": 0,
-      "oracle_exit": 0,
-      "requests": 10,
-      "rg_capture_count": 2,
-      "relevance_split_units": 0,
-      "search_relevance_chains": 0,
-      "treatment_activated": false,
-      "natural_search_outputs": 2,
-      "complete_applicability_events": 1,
-      "first_complete_applicability_event": {
-        "request_index": 9,
-        "command": "rg -nH -C 5 \"COPILOT_PROVIDER_TYPE|HEADROOM_BACKEND\" headroom/providers/c copilot headroom 2>/dev/null",
-        "pattern": "COPILOT_PROVIDER_TYPE|HEADROOM_BACKEND",
-        "target_bytes": 20671,
-        "minimum_bytes": 512,
-        "byte_eligible": true,
-        "structural_search_eligible": false,
-        "bash_search_linked": true,
-        "handler_search_gate": true,
-        "context_nonempty": true,
-        "trajectory_bridges": [
-          "BYOK",
-          "ClickException",
-          "build_launch_env",
-          "resolve_provider_type",
-          "AUTO",
-          "COPILOT_PROVIDER_TYPE"
-        ],
-        "adopted_bridges": [
-          "COPILOT_PROVIDER_TYPE"
-        ],
-        "complete_applicability": true
-      },
-      "events": [
-        {
-          "request_index": 9,
-          "command": "rg -nH -C 10 \"def resolve_provider_type|resolve_provider_type\\(\" headroom tests",
-          "pattern": "def resolve_provider_type|resolve_provider_type\\(",
-          "target_bytes": 7557,
-          "minimum_bytes": 512,
-          "byte_eligible": true,
-          "structural_search_eligible": false,
-          "bash_search_linked": true,
-          "handler_search_gate": true,
-          "context_nonempty": true,
-          "trajectory_bridges": [
-            "test_resolve_provider_type_prefers_explicit_and_env",
-            "ClickException",
-            "tests/test_provider_copilot_wrap.py",
-            "test_validate_configuration_accepts_supported_combinations",
-            "test_validate_configuration_rejects_invalid_combinations",
-            "AUTO"
-          ],
-          "adopted_bridges": [],
-          "complete_applicability": false
-        },
-        {
-          "request_index": 9,
-          "command": "rg -nH -C 5 \"COPILOT_PROVIDER_TYPE|HEADROOM_BACKEND\" headroom/providers/c copilot headroom 2>/dev/null",
-          "pattern": "COPILOT_PROVIDER_TYPE|HEADROOM_BACKEND",
-          "target_bytes": 20671,
-          "minimum_bytes": 512,
-          "byte_eligible": true,
-          "structural_search_eligible": false,
-          "bash_search_linked": true,
-          "handler_search_gate": true,
-          "context_nonempty": true,
-          "trajectory_bridges": [
-            "BYOK",
-            "ClickException",
-            "build_launch_env",
-            "resolve_provider_type",
-            "AUTO",
-            "COPILOT_PROVIDER_TYPE"
-          ],
-          "adopted_bridges": [
-            "COPILOT_PROVIDER_TYPE"
-          ],
-          "complete_applicability": true
-        }
-      ]
-    }
+    "relevance_split_units": 0,
+    "search_relevance_chains": 0,
+    "treatment_activated": false
   },
-  "primary_outcome": {
-    "off_complete_applicability": true,
-    "on_complete_applicability": true,
-    "on_treatment_activated": false,
-    "causal_retention_estimate_available": false
+  "interpretation": {
+    "behavioral_adoption_reproduced": true,
+    "frozen_bridge_admission_reproduced": true,
+    "provider_search_provenance_reproduced": true,
+    "adopted_context_constructed": true,
+    "preservation_floor_executed": false,
+    "causal_retention_estimate_available": false,
+    "finding": "The unseen run exposed a downstream routing bottleneck: bash-search provenance allowed trajectory/adoption context to be constructed, but the output did not satisfy the structural search condition required for relevance_split, so the adopted preservation floor was never reached."
   },
-  "interpretation": "The frozen adopted-bridge applicability mechanism reproduced on the unseen natural trajectory, including handler-level search eligibility, non-empty trajectory context, and explicit adopted identifiers. However, the fresh ON run recorded no final relevance_split treatment activation, so the preservation floor did not provide an unseen causal retention estimate.",
-  "raw_wire_committed": false
+  "stopping_rule": "No replacement task and no rerun after the locked U01-ON condition.",
+  "production_changed_after_result": false
 }
