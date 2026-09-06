@@ -1,23 +1,12 @@
 {
-  "status": "post_result_methodological_clarification_no_rerun",
   "experiment": "second_unseen_adopted_bridge_validation",
+  "classification": "post-run diagnostic amendment",
   "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
-  "observation": "The pre-run applicability analyzer treated a recognized producing search command plus admitted adopted bridge as structural reachability. U01-ON showed that this is insufficient for preservation-floor activation.",
-  "corrected_pipeline_model": [
-    "producing search command is recognized",
-    "handler allows trajectory enrichment",
-    "trajectory context contains an adopted bridge",
-    "ContentRouter must route the target through relevance_split",
-    "only then can force_keep_identifiers execute"
-  ],
-  "u01_observed_path": {
-    "search_command_recognized": true,
-    "handler_search_gate": true,
-    "trajectory_context_nonempty": true,
-    "adopted_bridge_present": true,
-    "router_strategy": "mixed",
-    "relevance_split_reached": false,
-    "preservation_floor_executed": false
-  },
-  "effect_on_protocol": "No task was replaced or rerun and the production algorithm was not changed. The experiment stopped according to the predeclared inactive-treatment stopping rule."
+  "task": "U01",
+  "issue": "An intermediate reachability diagnostic incorrectly treated the structural SEARCH detector as the only production eligibility path.",
+  "production_behavior": "The OpenAI Responses handler enriches a candidate when either the output is structurally SEARCH-like OR its call_id belongs to a recognized Bash rg/grep search call.",
+  "correction": "U01 search output is production-handler eligible because its producing call is a Bash rg search, despite structural_search_eligible=false.",
+  "effect_on_benchmark": "No agent condition was rerun, replaced, or modified. U01-OFF and U01-ON remain the only consumed second-unseen task conditions.",
+  "effect_on_algorithm": "None. Production freeze remains unchanged.",
+  "outcome_interpretation": "Handler-level applicability reproduced, but the final relevance_split preservation treatment did not activate in U01-ON."
 }

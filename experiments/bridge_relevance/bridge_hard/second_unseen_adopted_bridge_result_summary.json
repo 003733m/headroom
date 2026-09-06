@@ -1,0 +1,39 @@
+{
+  "experiment": "second_unseen_adopted_bridge_validation",
+  "classification": "prospective applicability-conditioned unseen validation",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "selected_task": "U01",
+  "selection_rule": "first eligible task in the precommitted deterministic ordering",
+  "off": {
+    "task_pass": true,
+    "requests": 7,
+    "rg_captures": 4,
+    "wire_inbound_requests": 10,
+    "natural_adopted_bridges": [
+      "COPILOT_PROVIDER_TYPE",
+      "HEADROOM_BACKEND"
+    ],
+    "adoption_query": "rg -nH -C 4 \"COPILOT_PROVIDER_TYPE|HEADROOM_BACKEND\" headroom/providers",
+    "note": "Applicability analysis inspected no historical-critical or retention outcome."
+  },
+  "on": {
+    "task_pass": true,
+    "requests": 10,
+    "rg_captures": 2,
+    "wire_inbound_requests": 13,
+    "live_gate_adopted_bridges": [
+      "COPILOT_PROVIDER_TYPE"
+    ],
+    "bash_search_call_id": true,
+    "handler_search_gate": true,
+    "trajectory_context_nonempty": true,
+    "relevance_split_units": 0,
+    "search_relevance_chains": 0,
+    "treatment_activated": false
+  },
+  "interpretation": {
+    "supported": "Natural identifier adoption and the production Responses search gate reproduced on an unseen task.",
+    "not_supported": "The adopted-bridge preservation floor did not activate, so this run provides no unseen causal retention or rescue estimate.",
+    "replacement_or_rerun": false
+  }
+}

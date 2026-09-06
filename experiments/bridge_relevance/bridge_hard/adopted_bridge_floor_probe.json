@@ -1,0 +1,909 @@
+{
+  "evaluation_type": "post_hoc_exploratory_mechanism",
+  "algorithm": "adopted_bridge_preservation_floor_v1",
+  "summaries": {
+    "strict": {
+      "stratum": "strict_hash_valid",
+      "units": 10,
+      "units_with_adopted_bridge": 3,
+      "units_with_new_retention": 3,
+      "critical_total": 9,
+      "baseline_critical_kept": 5,
+      "floor_critical_kept": 6,
+      "critical_rescue": 1,
+      "critical_regression": 0,
+      "newly_kept_records": 21,
+      "newly_kept_critical": 1,
+      "newly_kept_nonfix": 20,
+      "additional_critical_tokens": 36,
+      "additional_nonfix_tokens": 504,
+      "additional_total_tokens": 540,
+      "details": [
+        {
+          "task": "G07",
+          "request_id": "hr_1788520052_000010",
+          "call_id": "call_eylD8qVrBmp1nSeTKiZc6qwv",
+          "command": "rg -nH -g '*.py' \"def count_messages|image_url|type.*image|_count_serialized\" headroom",
+          "current_query_identifiers": [
+            "_count_serialized",
+            "count_messages",
+            "image_url"
+          ],
+          "frozen_v3_bridges": [
+            "OpenAI",
+            "_count_serialized",
+            "count_messages"
+          ],
+          "adopted_bridge_identifiers": [
+            "_count_serialized",
+            "count_messages"
+          ],
+          "newly_kept": [
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 155,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 28,
+              "text": "    # Oversized-blob token estimation (see _count_serialized). Serializing a blob"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 267,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 19,
+              "text": "                        total += self._count_serialized(content)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 270,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 24,
+              "text": "                    total += self._count_serialized(part.get(\"input\", {}))"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 278,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 25,
+              "text": "                    total += self._count_serialized(tool_use.get(\"input\", {}))"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 289,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 20,
+              "text": "                        total += self._count_serialized(tr_content)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 333,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 19,
+              "text": "                    total += self._count_serialized(part)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 339,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 24,
+              "text": "    def _count_serialized(self, obj: Any) -> int:"
+            }
+          ]
+        },
+        {
+          "task": "G19",
+          "request_id": "hr_1788521016_000009",
+          "call_id": "call_3WNuyRvs1DlC6tQgRw8XDrfk",
+          "command": "rg -nH \"def discover_projects|discover_projects|flush_to_file\" headroom tests/test_memory/test_traffic_learner.py",
+          "current_query_identifiers": [
+            "discover_projects",
+            "flush_to_file"
+          ],
+          "frozen_v3_bridges": [
+            "test_discover_projects_does_not_block_the_event_loop",
+            "warning",
+            "create_task",
+            "test_discover_projects_failure_is_swallowed",
+            "flush_to_file",
+            "tests/test_memory/test_traffic_learner.py"
+          ],
+          "adopted_bridge_identifiers": [
+            "flush_to_file"
+          ],
+          "newly_kept": [
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 859,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 27,
+              "text": "        \"\"\"Rapid dirty flags should not cause rapid flush_to_file calls.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 883,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 29,
+              "text": "        # flush_to_file once (final flush). We want evidence the worker did"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1131,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 30,
+              "text": "    \"\"\"Stub out headroom.learn.registry so flush_to_file uses our fake.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1170,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 25,
+              "text": "        # the DB where flush_to_file reads them."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1222,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 27,
+              "text": "        await learner.stop()  # triggers a final flush_to_file"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1240,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 26,
+              "text": "        await learner.flush_to_file()  # returns without raising"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1354,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 26,
+              "text": "        await learner.flush_to_file()  # must not raise"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 42,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 25,
+              "text": "# Minimum seconds between successive flush_to_file calls when driven by the"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 512,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 24,
+              "text": "        # Populated lazily in flush_to_file."
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 576,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 29,
+              "text": "        \"\"\"Background worker: call flush_to_file when dirty, rate-limited.\"\"\""
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 594,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 24,
+              "text": "    async def flush_to_file(self) -> None:"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 735,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 29,
+              "text": "        does not consult persisted rows. Use flush_to_file() for full data."
+            }
+          ]
+        },
+        {
+          "task": "G21",
+          "request_id": "hr_1788522159_000011",
+          "call_id": "call_LBrGwbEGPDrZabIxR3QNYslw",
+          "command": "rg -nH -C 8 \"_background_dedup|DEDUP_AUTO_THRESHOLD\" headroom tests --glob '*.py'",
+          "current_query_identifiers": [
+            "_background_dedup",
+            "DEDUP_AUTO_THRESHOLD"
+          ],
+          "frozen_v3_bridges": [
+            "LocalBackend",
+            "MemoryConfig",
+            "__init__",
+            "_init_backend_locked",
+            "DEDUP_HINT_THRESHOLD",
+            "DEDUP_AUTO_THRESHOLD"
+          ],
+          "adopted_bridge_identifiers": [
+            "DEDUP_AUTO_THRESHOLD"
+          ],
+          "newly_kept": [
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 181,
+              "fix_adjacent": true,
+              "matched_identifiers": [
+                "DEDUP_AUTO_THRESHOLD"
+              ],
+              "tokens": 36,
+              "text": "    DEDUP_AUTO_THRESHOLD = 0.92  # Auto-supersede (same fact, different wording)"
+            },
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 1327,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "DEDUP_AUTO_THRESHOLD"
+              ],
+              "tokens": 24,
+              "text": "                if result.score < self.DEDUP_AUTO_THRESHOLD:"
+            }
+          ]
+        }
+      ],
+      "baseline_critical_recall": 0.5555555555555556,
+      "floor_critical_recall": 0.6666666666666666,
+      "critical_recall_delta": 0.11111111111111105,
+      "critical_fraction_of_newly_kept": 0.047619047619047616
+    },
+    "content_valid": {
+      "stratum": "content_valid",
+      "units": 9,
+      "units_with_adopted_bridge": 3,
+      "units_with_new_retention": 3,
+      "critical_total": 9,
+      "baseline_critical_kept": 5,
+      "floor_critical_kept": 6,
+      "critical_rescue": 1,
+      "critical_regression": 0,
+      "newly_kept_records": 21,
+      "newly_kept_critical": 1,
+      "newly_kept_nonfix": 20,
+      "additional_critical_tokens": 36,
+      "additional_nonfix_tokens": 504,
+      "additional_total_tokens": 540,
+      "details": [
+        {
+          "task": "G07",
+          "request_id": "hr_1788520052_000010",
+          "call_id": "call_eylD8qVrBmp1nSeTKiZc6qwv",
+          "command": "rg -nH -g '*.py' \"def count_messages|image_url|type.*image|_count_serialized\" headroom",
+          "current_query_identifiers": [
+            "_count_serialized",
+            "count_messages",
+            "image_url"
+          ],
+          "frozen_v3_bridges": [
+            "OpenAI",
+            "_count_serialized",
+            "count_messages"
+          ],
+          "adopted_bridge_identifiers": [
+            "_count_serialized",
+            "count_messages"
+          ],
+          "newly_kept": [
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 155,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 28,
+              "text": "    # Oversized-blob token estimation (see _count_serialized). Serializing a blob"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 267,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 19,
+              "text": "                        total += self._count_serialized(content)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 270,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 24,
+              "text": "                    total += self._count_serialized(part.get(\"input\", {}))"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 278,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 25,
+              "text": "                    total += self._count_serialized(tool_use.get(\"input\", {}))"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 289,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 20,
+              "text": "                        total += self._count_serialized(tr_content)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 333,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 19,
+              "text": "                    total += self._count_serialized(part)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 339,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 24,
+              "text": "    def _count_serialized(self, obj: Any) -> int:"
+            }
+          ]
+        },
+        {
+          "task": "G19",
+          "request_id": "hr_1788521016_000009",
+          "call_id": "call_3WNuyRvs1DlC6tQgRw8XDrfk",
+          "command": "rg -nH \"def discover_projects|discover_projects|flush_to_file\" headroom tests/test_memory/test_traffic_learner.py",
+          "current_query_identifiers": [
+            "discover_projects",
+            "flush_to_file"
+          ],
+          "frozen_v3_bridges": [
+            "test_discover_projects_does_not_block_the_event_loop",
+            "warning",
+            "create_task",
+            "test_discover_projects_failure_is_swallowed",
+            "flush_to_file",
+            "tests/test_memory/test_traffic_learner.py"
+          ],
+          "adopted_bridge_identifiers": [
+            "flush_to_file"
+          ],
+          "newly_kept": [
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 859,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 27,
+              "text": "        \"\"\"Rapid dirty flags should not cause rapid flush_to_file calls.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 883,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 29,
+              "text": "        # flush_to_file once (final flush). We want evidence the worker did"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1131,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 30,
+              "text": "    \"\"\"Stub out headroom.learn.registry so flush_to_file uses our fake.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1170,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 25,
+              "text": "        # the DB where flush_to_file reads them."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1222,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 27,
+              "text": "        await learner.stop()  # triggers a final flush_to_file"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1240,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 26,
+              "text": "        await learner.flush_to_file()  # returns without raising"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1354,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 26,
+              "text": "        await learner.flush_to_file()  # must not raise"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 42,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 25,
+              "text": "# Minimum seconds between successive flush_to_file calls when driven by the"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 512,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 24,
+              "text": "        # Populated lazily in flush_to_file."
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 576,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 29,
+              "text": "        \"\"\"Background worker: call flush_to_file when dirty, rate-limited.\"\"\""
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 594,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 24,
+              "text": "    async def flush_to_file(self) -> None:"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 735,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 29,
+              "text": "        does not consult persisted rows. Use flush_to_file() for full data."
+            }
+          ]
+        },
+        {
+          "task": "G21",
+          "request_id": "hr_1788522159_000011",
+          "call_id": "call_LBrGwbEGPDrZabIxR3QNYslw",
+          "command": "rg -nH -C 8 \"_background_dedup|DEDUP_AUTO_THRESHOLD\" headroom tests --glob '*.py'",
+          "current_query_identifiers": [
+            "_background_dedup",
+            "DEDUP_AUTO_THRESHOLD"
+          ],
+          "frozen_v3_bridges": [
+            "LocalBackend",
+            "MemoryConfig",
+            "__init__",
+            "_init_backend_locked",
+            "DEDUP_HINT_THRESHOLD",
+            "DEDUP_AUTO_THRESHOLD"
+          ],
+          "adopted_bridge_identifiers": [
+            "DEDUP_AUTO_THRESHOLD"
+          ],
+          "newly_kept": [
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 181,
+              "fix_adjacent": true,
+              "matched_identifiers": [
+                "DEDUP_AUTO_THRESHOLD"
+              ],
+              "tokens": 36,
+              "text": "    DEDUP_AUTO_THRESHOLD = 0.92  # Auto-supersede (same fact, different wording)"
+            },
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 1327,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "DEDUP_AUTO_THRESHOLD"
+              ],
+              "tokens": 24,
+              "text": "                if result.score < self.DEDUP_AUTO_THRESHOLD:"
+            }
+          ]
+        }
+      ],
+      "baseline_critical_recall": 0.5555555555555556,
+      "floor_critical_recall": 0.6666666666666666,
+      "critical_recall_delta": 0.11111111111111105,
+      "critical_fraction_of_newly_kept": 0.047619047619047616
+    },
+    "all": {
+      "stratum": "all_existing_replay_units",
+      "units": 14,
+      "units_with_adopted_bridge": 6,
+      "units_with_new_retention": 3,
+      "critical_total": 13,
+      "baseline_critical_kept": 9,
+      "floor_critical_kept": 10,
+      "critical_rescue": 1,
+      "critical_regression": 0,
+      "newly_kept_records": 21,
+      "newly_kept_critical": 1,
+      "newly_kept_nonfix": 20,
+      "additional_critical_tokens": 36,
+      "additional_nonfix_tokens": 504,
+      "additional_total_tokens": 540,
+      "details": [
+        {
+          "task": "G07",
+          "request_id": "hr_1788520052_000010",
+          "call_id": "call_eylD8qVrBmp1nSeTKiZc6qwv",
+          "command": "rg -nH -g '*.py' \"def count_messages|image_url|type.*image|_count_serialized\" headroom",
+          "current_query_identifiers": [
+            "_count_serialized",
+            "count_messages",
+            "image_url"
+          ],
+          "frozen_v3_bridges": [
+            "OpenAI",
+            "_count_serialized",
+            "count_messages"
+          ],
+          "adopted_bridge_identifiers": [
+            "_count_serialized",
+            "count_messages"
+          ],
+          "newly_kept": [
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 155,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 28,
+              "text": "    # Oversized-blob token estimation (see _count_serialized). Serializing a blob"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 267,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 19,
+              "text": "                        total += self._count_serialized(content)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 270,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 24,
+              "text": "                    total += self._count_serialized(part.get(\"input\", {}))"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 278,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 25,
+              "text": "                    total += self._count_serialized(tool_use.get(\"input\", {}))"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 289,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 20,
+              "text": "                        total += self._count_serialized(tr_content)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 333,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 19,
+              "text": "                    total += self._count_serialized(part)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 339,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "tokens": 24,
+              "text": "    def _count_serialized(self, obj: Any) -> int:"
+            }
+          ]
+        },
+        {
+          "task": "G19",
+          "request_id": "hr_1788521016_000009",
+          "call_id": "call_3WNuyRvs1DlC6tQgRw8XDrfk",
+          "command": "rg -nH \"def discover_projects|discover_projects|flush_to_file\" headroom tests/test_memory/test_traffic_learner.py",
+          "current_query_identifiers": [
+            "discover_projects",
+            "flush_to_file"
+          ],
+          "frozen_v3_bridges": [
+            "test_discover_projects_does_not_block_the_event_loop",
+            "warning",
+            "create_task",
+            "test_discover_projects_failure_is_swallowed",
+            "flush_to_file",
+            "tests/test_memory/test_traffic_learner.py"
+          ],
+          "adopted_bridge_identifiers": [
+            "flush_to_file"
+          ],
+          "newly_kept": [
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 859,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 27,
+              "text": "        \"\"\"Rapid dirty flags should not cause rapid flush_to_file calls.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 883,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 29,
+              "text": "        # flush_to_file once (final flush). We want evidence the worker did"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1131,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 30,
+              "text": "    \"\"\"Stub out headroom.learn.registry so flush_to_file uses our fake.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1170,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 25,
+              "text": "        # the DB where flush_to_file reads them."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1222,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 27,
+              "text": "        await learner.stop()  # triggers a final flush_to_file"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1240,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 26,
+              "text": "        await learner.flush_to_file()  # returns without raising"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1354,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 26,
+              "text": "        await learner.flush_to_file()  # must not raise"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 42,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 25,
+              "text": "# Minimum seconds between successive flush_to_file calls when driven by the"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 512,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 24,
+              "text": "        # Populated lazily in flush_to_file."
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 576,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 29,
+              "text": "        \"\"\"Background worker: call flush_to_file when dirty, rate-limited.\"\"\""
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 594,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 24,
+              "text": "    async def flush_to_file(self) -> None:"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 735,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "tokens": 29,
+              "text": "        does not consult persisted rows. Use flush_to_file() for full data."
+            }
+          ]
+        },
+        {
+          "task": "G21",
+          "request_id": "hr_1788522159_000011",
+          "call_id": "call_LBrGwbEGPDrZabIxR3QNYslw",
+          "command": "rg -nH -C 8 \"_background_dedup|DEDUP_AUTO_THRESHOLD\" headroom tests --glob '*.py'",
+          "current_query_identifiers": [
+            "_background_dedup",
+            "DEDUP_AUTO_THRESHOLD"
+          ],
+          "frozen_v3_bridges": [
+            "LocalBackend",
+            "MemoryConfig",
+            "__init__",
+            "_init_backend_locked",
+            "DEDUP_HINT_THRESHOLD",
+            "DEDUP_AUTO_THRESHOLD"
+          ],
+          "adopted_bridge_identifiers": [
+            "DEDUP_AUTO_THRESHOLD"
+          ],
+          "newly_kept": [
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 181,
+              "fix_adjacent": true,
+              "matched_identifiers": [
+                "DEDUP_AUTO_THRESHOLD"
+              ],
+              "tokens": 36,
+              "text": "    DEDUP_AUTO_THRESHOLD = 0.92  # Auto-supersede (same fact, different wording)"
+            },
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 1327,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "DEDUP_AUTO_THRESHOLD"
+              ],
+              "tokens": 24,
+              "text": "                if result.score < self.DEDUP_AUTO_THRESHOLD:"
+            }
+          ]
+        }
+      ],
+      "baseline_critical_recall": 0.6923076923076923,
+      "floor_critical_recall": 0.7692307692307693,
+      "critical_recall_delta": 0.07692307692307698,
+      "critical_fraction_of_newly_kept": 0.047619047619047616
+    }
+  }
+}

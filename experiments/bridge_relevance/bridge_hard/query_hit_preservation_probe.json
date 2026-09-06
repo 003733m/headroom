@@ -1,0 +1,3830 @@
+{
+  "evaluation_type": "post_hoc_exploratory_mechanism",
+  "algorithm": "query_hit_preservation_floor_v1",
+  "base_algorithm_freeze": "7c4fe80c19b3a9537f395f515a64432e41ee1d43",
+  "input_measurement": "/home/memoli3322/headroom-hard-confirmatory-20260904/normalized_retention_measurement.json",
+  "summaries": {
+    "strict": {
+      "stratum": "strict_hash_valid",
+      "units": 10,
+      "units_with_structured_query_identifier": 8,
+      "units_with_baseline_dropped_query_hit": 6,
+      "scorable_record_exposures": 605,
+      "historical_fix_adjacent_scorable": 9,
+      "baseline_critical_kept": 5,
+      "floor_critical_kept": 6,
+      "critical_DROP_to_KEEP": 1,
+      "critical_KEEP_to_DROP": 0,
+      "newly_kept_records": 117,
+      "newly_kept_fix_adjacent_records": 1,
+      "newly_kept_nonfix_records": 116,
+      "additional_fix_adjacent_record_tokens": 36,
+      "additional_nonfix_record_tokens": 3249,
+      "additional_total_record_tokens": 3285,
+      "baseline_critical_recall": 0.5555555555555556,
+      "floor_critical_recall": 0.6666666666666666,
+      "critical_recall_delta": 0.11111111111111105,
+      "fix_adjacent_fraction_of_newly_kept": 0.008547008547008548,
+      "details": [
+        {
+          "task": "G07",
+          "request_id": "hr_1788520052_000010",
+          "call_id": "call_eylD8qVrBmp1nSeTKiZc6qwv",
+          "command": "rg -nH -g '*.py' \"def count_messages|image_url|type.*image|_count_serialized\" headroom",
+          "pattern": "def count_messages|image_url|type.*image|_count_serialized",
+          "structured_query_identifiers": [
+            "_count_serialized",
+            "count_messages",
+            "image_url"
+          ],
+          "newly_kept": [
+            {
+              "path": "headroom/evals/memory/runner.py",
+              "line": 417,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 18,
+              "text": "                    if dialogue.image_url:"
+            },
+            {
+              "path": "headroom/evals/prompt_comparison.py",
+              "line": 510,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 24,
+              "text": "                        elif item.get(\"type\") == \"image_url\":"
+            },
+            {
+              "path": "headroom/cache/openai.py",
+              "line": 581,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 21,
+              "text": "                        elif block.get(\"type\") == \"image_url\":"
+            },
+            {
+              "path": "headroom/tokenizers/tiktoken_counter.py",
+              "line": 308,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 24,
+              "text": "                                elif part.get(\"type\") == \"image_url\":"
+            },
+            {
+              "path": "headroom/tokenizers/tiktoken_counter.py",
+              "line": 310,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 29,
+              "text": "                                    detail = part.get(\"image_url\", {}).get(\"detail\", \"auto\")"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 155,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 28,
+              "text": "    # Oversized-blob token estimation (see _count_serialized). Serializing a blob"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 244,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 25,
+              "text": "                elif part_type in (\"image_url\", \"image\", \"input_image\"):"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 267,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 19,
+              "text": "                        total += self._count_serialized(content)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 270,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 24,
+              "text": "                    total += self._count_serialized(part.get(\"input\", {}))"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 278,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 25,
+              "text": "                    total += self._count_serialized(tool_use.get(\"input\", {}))"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 289,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 20,
+              "text": "                        total += self._count_serialized(tr_content)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 333,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 19,
+              "text": "                    total += self._count_serialized(part)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 339,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 24,
+              "text": "    def _count_serialized(self, obj: Any) -> int:"
+            },
+            {
+              "path": "headroom/proxy/request_log_redaction_policy.py",
+              "line": 13,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 33,
+              "text": "# ``image_url.url`` as a ``data:image/...;base64,<payload>`` URL."
+            },
+            {
+              "path": "headroom/proxy/request_log_redaction_policy.py",
+              "line": 34,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 39,
+              "text": "        # OpenAI vision shape: ``{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/...\"}}``."
+            },
+            {
+              "path": "headroom/proxy/request_log_redaction_policy.py",
+              "line": 36,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 34,
+              "text": "        # OpenAI Responses input_image: ``{\"type\":\"input_image\",\"image_url\":\"...\"}``"
+            },
+            {
+              "path": "headroom/image/compressor.py",
+              "line": 265,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 34,
+              "text": "                # OpenAI format: {\"type\": \"image_url\", \"image_url\": {\"url\": \"data:...\"}}"
+            },
+            {
+              "path": "headroom/image/compressor.py",
+              "line": 587,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 28,
+              "text": "                    if item.get(\"type\") == \"image_url\" and provider == \"openai\":"
+            },
+            {
+              "path": "headroom/proxy/handlers/openai.py",
+              "line": 9613,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 30,
+              "text": "        ``image_url``; everything else falls through with NO else branch, so an"
+            },
+            {
+              "path": "headroom/backends/anyllm.py",
+              "line": 163,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 33,
+              "text": "                            \"image_url\": {\"url\": f\"data:{media_type};base64,{data}\"},"
+            },
+            {
+              "path": "headroom/backends/anyllm.py",
+              "line": 168,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 34,
+              "text": "                        {\"type\": \"image_url\", \"image_url\": {\"url\": source.get(\"url\", \"\")}}"
+            }
+          ]
+        },
+        {
+          "task": "G19",
+          "request_id": "hr_1788521004_000007",
+          "call_id": "call_TOlQiGIky2lLpXrRiKymiS8S",
+          "command": "rg -nH \"TrafficLearner|traffic learner|traffic_learner\" .",
+          "pattern": "TrafficLearner|traffic learner|traffic_learner",
+          "structured_query_identifiers": [
+            "traffic_learner",
+            "TrafficLearner"
+          ],
+          "newly_kept": [
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 2284,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 30,
+              "text": "        \"\"\"Expose the backend for external components (e.g., TrafficLearner).\"\"\""
+            },
+            {
+              "path": "CHANGELOG.md",
+              "line": 509,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 85,
+              "text": "* **memory:** bound the TrafficLearner pending-pattern accumulator (memory leak) ([#2579](https://github.com/headroomlabs-ai/headroom/issues/2579)) ([1f5feff](https://github.com/headroomlabs-ai/headroom/commit/1f5fefffd3e82c73bddd928cfd53334031e807bc))"
+            },
+            {
+              "path": "CHANGELOG.md",
+              "line": 2125,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 22,
+              "text": "  `TrafficLearner` now writes to agent-native context files continuously"
+            },
+            {
+              "path": "headroom/proxy/handlers/openai.py",
+              "line": 1152,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 26,
+              "text": "    \"\"\"Normalize Responses input for ``TrafficLearner``."
+            },
+            {
+              "path": "headroom/proxy/handlers/openai.py",
+              "line": 1893,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 31,
+              "text": "            tool_results = traffic_learner.extract_tool_results_from_openai_messages(messages)"
+            },
+            {
+              "path": "headroom/proxy/handlers/openai.py",
+              "line": 1901,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 24,
+              "text": "            await traffic_learner.on_messages(messages)"
+            },
+            {
+              "path": "headroom/proxy/handlers/anthropic.py",
+              "line": 2513,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 24,
+              "text": "            if self.traffic_learner:"
+            },
+            {
+              "path": "headroom/proxy/handlers/anthropic.py",
+              "line": 2517,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 26,
+              "text": "                        self.traffic_learner._backend is None"
+            },
+            {
+              "path": "headroom/proxy/handlers/anthropic.py",
+              "line": 2525,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 31,
+              "text": "                    tool_results = self.traffic_learner.extract_tool_results_from_messages("
+            },
+            {
+              "path": "headroom/proxy/handlers/anthropic.py",
+              "line": 2529,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 27,
+              "text": "                        await self.traffic_learner.on_tool_result("
+            },
+            {
+              "path": "headroom/proxy/handlers/anthropic.py",
+              "line": 2537,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 29,
+              "text": "                    await self.traffic_learner.on_messages(optimized_messages)"
+            },
+            {
+              "path": "headroom/proxy/server.py",
+              "line": 1356,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner",
+                "TrafficLearner"
+              ],
+              "record_tokens": 26,
+              "text": "        self.traffic_learner: TrafficLearner | None = None"
+            },
+            {
+              "path": "headroom/proxy/server.py",
+              "line": 1361,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner",
+                "TrafficLearner"
+              ],
+              "record_tokens": 23,
+              "text": "            self.traffic_learner = TrafficLearner("
+            },
+            {
+              "path": "headroom/proxy/server.py",
+              "line": 2873,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 21,
+              "text": "                    await proxy.traffic_learner.start()"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 11,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 23,
+              "text": "    learner = TrafficLearner(memory_backend)"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 1320,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 35,
+              "text": "        \"\"\"Load existing traffic_learner rows into _saved_hashes / _persisted_ids."
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 1639,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 33,
+              "text": "    \"\"\"Read traffic_learner rows from memory.db, dedupe, return patterns."
+            },
+            {
+              "path": "tests/test_openai_responses_traffic_learner.py",
+              "line": 36,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 29,
+              "text": "        self._extractor = TrafficLearner(backend=None)"
+            },
+            {
+              "path": "tests/test_openai_responses_traffic_learner.py",
+              "line": 77,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 26,
+              "text": "    learner = TrafficLearner(backend=None)"
+            },
+            {
+              "path": "tests/test_openai_responses_traffic_learner.py",
+              "line": 129,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 25,
+              "text": "    proxy.traffic_learner = learner"
+            },
+            {
+              "path": "tests/test_memory/test_learn_flag.py",
+              "line": 103,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 24,
+              "text": "        assert proxy.traffic_learner._backend is None"
+            },
+            {
+              "path": "tests/test_memory/test_learn_flag.py",
+              "line": 117,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 28,
+              "text": "        \"\"\"A custom min_evidence flows from ProxyConfig into TrafficLearner.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 314,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 30,
+              "text": "    async def test_preference_extraction(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 326,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 31,
+              "text": "    async def test_preference_from_content_blocks(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 398,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 36,
+              "text": "        learner = TrafficLearner(backend=None, min_evidence=3, max_pending_patterns=100)"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 416,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 29,
+              "text": "    async def test_dedup(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 439,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 31,
+              "text": "    async def test_extract_tool_results_from_messages(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 471,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 32,
+              "text": "    def test_extract_tool_results_from_openai_messages(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 541,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 34,
+              "text": "    def test_extract_openai_tool_results_empty_without_tool_messages(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 548,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 30,
+              "text": "    async def test_tool_history_bounded(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 561,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 31,
+              "text": "    async def test_no_pattern_from_success_only(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 783,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 34,
+              "text": "                    \"metadata\": {\"source\": \"traffic_learner\", \"category\": \"bogus\"},"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 860,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 27,
+              "text": "        from headroom.memory import traffic_learner as tl_mod"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 897,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 30,
+              "text": "    Provides just enough surface area for TrafficLearner: `_config.db_path`"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 970,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 38,
+              "text": "async def _wait_for_saved(learner: TrafficLearner, count: int, db_path) -> None:"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 971,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 33,
+              "text": "    \"\"\"Wait until at least `count` traffic_learner rows exist in the DB.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 990,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 31,
+              "text": "        learner = TrafficLearner(backend=backend, min_evidence=3)"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1162,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 38,
+              "text": "        learner = TrafficLearner(backend=backend, agent_type=\"claude\", min_evidence=2)"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1211,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 37,
+              "text": "        learner = TrafficLearner(backend=None, agent_type=\"claude\", min_evidence=5)"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1228,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 36,
+              "text": "        learner = TrafficLearner(backend=None, agent_type=\"unknown\", min_evidence=1)"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1395,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 32,
+              "text": "        # Seed DB with a traffic_learner row at evidence_count=3."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2066,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 30,
+              "text": "        # Seed a traffic_learner row with no last_seen_at."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2261,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 28,
+              "text": "        assert TrafficLearner._strip_system_reminders(\"\") == \"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2262,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 34,
+              "text": "        assert TrafficLearner._strip_system_reminders(\"hello world\") == \"hello world\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2266,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 41,
+              "text": "            TrafficLearner._strip_system_reminders(\"a<system-reminder>X</system-reminder>b\") == \"ab\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2271,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 40,
+              "text": "            TrafficLearner._strip_system_reminders(\"a<System-Reminder>X</system-reminder>b\") == \"ab\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2276,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 31,
+              "text": "        assert TrafficLearner._strip_system_reminders(text) == \"abc\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2280,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 38,
+              "text": "        assert TrafficLearner._strip_system_reminders(\"hello <system-reminder>oops\") == \"hello \""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2290,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 36,
+              "text": "        assert TrafficLearner._strip_system_reminders(text) == \"What is 2+2?\""
+            }
+          ]
+        },
+        {
+          "task": "G19",
+          "request_id": "hr_1788521016_000009",
+          "call_id": "call_3WNuyRvs1DlC6tQgRw8XDrfk",
+          "command": "rg -nH \"def discover_projects|discover_projects|flush_to_file\" headroom tests/test_memory/test_traffic_learner.py",
+          "pattern": "def discover_projects|discover_projects|flush_to_file",
+          "structured_query_identifiers": [
+            "discover_projects",
+            "flush_to_file"
+          ],
+          "newly_kept": [
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 859,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 27,
+              "text": "        \"\"\"Rapid dirty flags should not cause rapid flush_to_file calls.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 883,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 29,
+              "text": "        # flush_to_file once (final flush). We want evidence the worker did"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1131,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 30,
+              "text": "    \"\"\"Stub out headroom.learn.registry so flush_to_file uses our fake.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1170,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 25,
+              "text": "        # the DB where flush_to_file reads them."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1222,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 27,
+              "text": "        await learner.stop()  # triggers a final flush_to_file"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1240,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 26,
+              "text": "        await learner.flush_to_file()  # returns without raising"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1255,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 28,
+              "text": "        \"\"\"If plugin.discover_projects raises, flush logs and returns.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1275,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 27,
+              "text": "        \"\"\"A slow discover_projects must not stall other loop work."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1277,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 28,
+              "text": "        discover_projects walks the filesystem; on a large home tree it takes"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1306,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 26,
+              "text": "        # The loop stays responsive while discover_projects is stuck."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1354,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 26,
+              "text": "        await learner.flush_to_file()  # must not raise"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 42,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 25,
+              "text": "# Minimum seconds between successive flush_to_file calls when driven by the"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 512,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 24,
+              "text": "        # Populated lazily in flush_to_file."
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 576,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 29,
+              "text": "        \"\"\"Background worker: call flush_to_file when dirty, rate-limited.\"\"\""
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 594,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 24,
+              "text": "    async def flush_to_file(self) -> None:"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 644,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 26,
+              "text": "                self._project_roots_cache = plugin.discover_projects()"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 646,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 26,
+              "text": "                logger.warning(\"discover_projects failed: %s\", e)"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 735,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 29,
+              "text": "        does not consult persisted rows. Use flush_to_file() for full data."
+            }
+          ]
+        },
+        {
+          "task": "G04",
+          "request_id": "hr_1788521289_000008",
+          "call_id": "call_5YSrqhcMndBAJw88l82lAXJS",
+          "command": "rg -nH \"maybe_reset_contribution|resets_at|contribution\" headroom tests/test_subscription_tracker.py",
+          "pattern": "maybe_reset_contribution|resets_at|contribution",
+          "structured_query_identifiers": [
+            "maybe_reset_contribution",
+            "resets_at"
+          ],
+          "newly_kept": [
+            {
+              "path": "tests/test_subscription_tracker.py",
+              "line": 37,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 15,
+              "text": "                if resets_at is not None"
+            },
+            {
+              "path": "tests/test_subscription_tracker.py",
+              "line": 117,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 25,
+              "text": "    \"\"\"Regression: the usage API reports ``resets_at`` with second-level jitter"
+            },
+            {
+              "path": "tests/test_subscription_tracker.py",
+              "line": 139,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 27,
+              "text": "    \"\"\"A real rollover advances ``resets_at`` by ~5 hours and still resets.\"\"\""
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 300,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 27,
+              "text": "        \"\"\"Read transcripts to count tokens spent strictly after ``window.resets_at``."
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 307,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 23,
+              "text": "        if window is None or window.resets_at is None:"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 310,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 19,
+              "text": "        if now < window.resets_at:"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 438,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 23,
+              "text": "        prev_resets_at = prev.five_hour.resets_at"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 439,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 23,
+              "text": "        curr_resets_at = snapshot.five_hour.resets_at"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 513,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 17,
+              "text": "        if resets_at is None:"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 516,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 22,
+              "text": "        start_ts = resets_at.timestamp() - window_duration_s"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 517,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 18,
+              "text": "        end_ts = resets_at.timestamp()"
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 122,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 30,
+              "text": "    If ``now`` is past ``window.resets_at``, the cached snapshot is stale: we"
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 126,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 25,
+              "text": "    must never report >100%), and whose ``resets_at`` advances by"
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 137,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 24,
+              "text": "            ``window.resets_at`` (None if we couldn't compute it)."
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 162,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 18,
+              "text": "    if window.resets_at is None:"
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 168,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 19,
+              "text": "        if current_now < window.resets_at:"
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 192,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 17,
+              "text": "        next_reset = window.resets_at"
+            },
+            {
+              "path": "headroom/subscription/codex_rate_limits.py",
+              "line": 101,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 24,
+              "text": "            \"resets_at\": self.resets_at,"
+            },
+            {
+              "path": "headroom/subscription/codex_rate_limits.py",
+              "line": 190,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 30,
+              "text": "        resets_at=_parse_int(headers, f\"{prefix}-{which}-reset-at\"),"
+            },
+            {
+              "path": "headroom/subscription/codex_rate_limits.py",
+              "line": 258,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 23,
+              "text": "    resets_at = win.get(\"reset_at\")"
+            },
+            {
+              "path": "headroom/subscription/codex_rate_limits.py",
+              "line": 259,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 35,
+              "text": "    resets_at = int(resets_at) if isinstance(resets_at, (int, float)) else None"
+            },
+            {
+              "path": "headroom/subscription/codex_rate_limits.py",
+              "line": 264,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 20,
+              "text": "        resets_at=resets_at,"
+            },
+            {
+              "path": "headroom/proxy/server.py",
+              "line": 4815,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 23,
+              "text": "           token counts when ``now >= window.resets_at``."
+            }
+          ]
+        },
+        {
+          "task": "G21",
+          "request_id": "hr_1788522140_000009",
+          "call_id": "call_jS75JMlVF18hlMuWVSyWubqa",
+          "command": "rg -nH \"_execute_save\" headroom tests",
+          "pattern": "_execute_save",
+          "structured_query_identifiers": [
+            "_execute_save"
+          ],
+          "newly_kept": [
+            {
+              "path": "tests/test_proxy_memory_integration.py",
+              "line": 627,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_execute_save"
+              ],
+              "record_tokens": 27,
+              "text": "          - The proxy's ``_execute_save`` returns a ``note`` containing the"
+            },
+            {
+              "path": "tests/test_proxy_memory_integration.py",
+              "line": 684,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_execute_save"
+              ],
+              "record_tokens": 25,
+              "text": "        # The proxy's _execute_save must have returned a dedup hint"
+            }
+          ]
+        },
+        {
+          "task": "G21",
+          "request_id": "hr_1788522159_000011",
+          "call_id": "call_LBrGwbEGPDrZabIxR3QNYslw",
+          "command": "rg -nH -C 8 \"_background_dedup|DEDUP_AUTO_THRESHOLD\" headroom tests --glob '*.py'",
+          "pattern": "_background_dedup|DEDUP_AUTO_THRESHOLD",
+          "structured_query_identifiers": [
+            "_background_dedup",
+            "DEDUP_AUTO_THRESHOLD"
+          ],
+          "newly_kept": [
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 181,
+              "fix_adjacent": true,
+              "matched_identifiers": [
+                "DEDUP_AUTO_THRESHOLD"
+              ],
+              "record_tokens": 36,
+              "text": "    DEDUP_AUTO_THRESHOLD = 0.92  # Auto-supersede (same fact, different wording)"
+            },
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 1290,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_background_dedup"
+              ],
+              "record_tokens": 32,
+              "text": "                self._background_dedup(memory.id, similar_memories, effective_user_id, backend)"
+            },
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 1304,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_background_dedup"
+              ],
+              "record_tokens": 21,
+              "text": "    async def _background_dedup("
+            },
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 1327,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "DEDUP_AUTO_THRESHOLD"
+              ],
+              "record_tokens": 24,
+              "text": "                if result.score < self.DEDUP_AUTO_THRESHOLD:"
+            }
+          ]
+        }
+      ]
+    },
+    "content_valid": {
+      "stratum": "content_valid",
+      "units": 9,
+      "units_with_structured_query_identifier": 7,
+      "units_with_baseline_dropped_query_hit": 6,
+      "scorable_record_exposures": 605,
+      "historical_fix_adjacent_scorable": 9,
+      "baseline_critical_kept": 5,
+      "floor_critical_kept": 6,
+      "critical_DROP_to_KEEP": 1,
+      "critical_KEEP_to_DROP": 0,
+      "newly_kept_records": 117,
+      "newly_kept_fix_adjacent_records": 1,
+      "newly_kept_nonfix_records": 116,
+      "additional_fix_adjacent_record_tokens": 36,
+      "additional_nonfix_record_tokens": 3249,
+      "additional_total_record_tokens": 3285,
+      "baseline_critical_recall": 0.5555555555555556,
+      "floor_critical_recall": 0.6666666666666666,
+      "critical_recall_delta": 0.11111111111111105,
+      "fix_adjacent_fraction_of_newly_kept": 0.008547008547008548,
+      "details": [
+        {
+          "task": "G07",
+          "request_id": "hr_1788520052_000010",
+          "call_id": "call_eylD8qVrBmp1nSeTKiZc6qwv",
+          "command": "rg -nH -g '*.py' \"def count_messages|image_url|type.*image|_count_serialized\" headroom",
+          "pattern": "def count_messages|image_url|type.*image|_count_serialized",
+          "structured_query_identifiers": [
+            "_count_serialized",
+            "count_messages",
+            "image_url"
+          ],
+          "newly_kept": [
+            {
+              "path": "headroom/evals/memory/runner.py",
+              "line": 417,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 18,
+              "text": "                    if dialogue.image_url:"
+            },
+            {
+              "path": "headroom/evals/prompt_comparison.py",
+              "line": 510,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 24,
+              "text": "                        elif item.get(\"type\") == \"image_url\":"
+            },
+            {
+              "path": "headroom/cache/openai.py",
+              "line": 581,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 21,
+              "text": "                        elif block.get(\"type\") == \"image_url\":"
+            },
+            {
+              "path": "headroom/tokenizers/tiktoken_counter.py",
+              "line": 308,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 24,
+              "text": "                                elif part.get(\"type\") == \"image_url\":"
+            },
+            {
+              "path": "headroom/tokenizers/tiktoken_counter.py",
+              "line": 310,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 29,
+              "text": "                                    detail = part.get(\"image_url\", {}).get(\"detail\", \"auto\")"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 155,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 28,
+              "text": "    # Oversized-blob token estimation (see _count_serialized). Serializing a blob"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 244,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 25,
+              "text": "                elif part_type in (\"image_url\", \"image\", \"input_image\"):"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 267,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 19,
+              "text": "                        total += self._count_serialized(content)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 270,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 24,
+              "text": "                    total += self._count_serialized(part.get(\"input\", {}))"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 278,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 25,
+              "text": "                    total += self._count_serialized(tool_use.get(\"input\", {}))"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 289,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 20,
+              "text": "                        total += self._count_serialized(tr_content)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 333,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 19,
+              "text": "                    total += self._count_serialized(part)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 339,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 24,
+              "text": "    def _count_serialized(self, obj: Any) -> int:"
+            },
+            {
+              "path": "headroom/proxy/request_log_redaction_policy.py",
+              "line": 13,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 33,
+              "text": "# ``image_url.url`` as a ``data:image/...;base64,<payload>`` URL."
+            },
+            {
+              "path": "headroom/proxy/request_log_redaction_policy.py",
+              "line": 34,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 39,
+              "text": "        # OpenAI vision shape: ``{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/...\"}}``."
+            },
+            {
+              "path": "headroom/proxy/request_log_redaction_policy.py",
+              "line": 36,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 34,
+              "text": "        # OpenAI Responses input_image: ``{\"type\":\"input_image\",\"image_url\":\"...\"}``"
+            },
+            {
+              "path": "headroom/image/compressor.py",
+              "line": 265,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 34,
+              "text": "                # OpenAI format: {\"type\": \"image_url\", \"image_url\": {\"url\": \"data:...\"}}"
+            },
+            {
+              "path": "headroom/image/compressor.py",
+              "line": 587,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 28,
+              "text": "                    if item.get(\"type\") == \"image_url\" and provider == \"openai\":"
+            },
+            {
+              "path": "headroom/proxy/handlers/openai.py",
+              "line": 9613,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 30,
+              "text": "        ``image_url``; everything else falls through with NO else branch, so an"
+            },
+            {
+              "path": "headroom/backends/anyllm.py",
+              "line": 163,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 33,
+              "text": "                            \"image_url\": {\"url\": f\"data:{media_type};base64,{data}\"},"
+            },
+            {
+              "path": "headroom/backends/anyllm.py",
+              "line": 168,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 34,
+              "text": "                        {\"type\": \"image_url\", \"image_url\": {\"url\": source.get(\"url\", \"\")}}"
+            }
+          ]
+        },
+        {
+          "task": "G19",
+          "request_id": "hr_1788521004_000007",
+          "call_id": "call_TOlQiGIky2lLpXrRiKymiS8S",
+          "command": "rg -nH \"TrafficLearner|traffic learner|traffic_learner\" .",
+          "pattern": "TrafficLearner|traffic learner|traffic_learner",
+          "structured_query_identifiers": [
+            "traffic_learner",
+            "TrafficLearner"
+          ],
+          "newly_kept": [
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 2284,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 30,
+              "text": "        \"\"\"Expose the backend for external components (e.g., TrafficLearner).\"\"\""
+            },
+            {
+              "path": "CHANGELOG.md",
+              "line": 509,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 85,
+              "text": "* **memory:** bound the TrafficLearner pending-pattern accumulator (memory leak) ([#2579](https://github.com/headroomlabs-ai/headroom/issues/2579)) ([1f5feff](https://github.com/headroomlabs-ai/headroom/commit/1f5fefffd3e82c73bddd928cfd53334031e807bc))"
+            },
+            {
+              "path": "CHANGELOG.md",
+              "line": 2125,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 22,
+              "text": "  `TrafficLearner` now writes to agent-native context files continuously"
+            },
+            {
+              "path": "headroom/proxy/handlers/openai.py",
+              "line": 1152,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 26,
+              "text": "    \"\"\"Normalize Responses input for ``TrafficLearner``."
+            },
+            {
+              "path": "headroom/proxy/handlers/openai.py",
+              "line": 1893,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 31,
+              "text": "            tool_results = traffic_learner.extract_tool_results_from_openai_messages(messages)"
+            },
+            {
+              "path": "headroom/proxy/handlers/openai.py",
+              "line": 1901,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 24,
+              "text": "            await traffic_learner.on_messages(messages)"
+            },
+            {
+              "path": "headroom/proxy/handlers/anthropic.py",
+              "line": 2513,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 24,
+              "text": "            if self.traffic_learner:"
+            },
+            {
+              "path": "headroom/proxy/handlers/anthropic.py",
+              "line": 2517,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 26,
+              "text": "                        self.traffic_learner._backend is None"
+            },
+            {
+              "path": "headroom/proxy/handlers/anthropic.py",
+              "line": 2525,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 31,
+              "text": "                    tool_results = self.traffic_learner.extract_tool_results_from_messages("
+            },
+            {
+              "path": "headroom/proxy/handlers/anthropic.py",
+              "line": 2529,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 27,
+              "text": "                        await self.traffic_learner.on_tool_result("
+            },
+            {
+              "path": "headroom/proxy/handlers/anthropic.py",
+              "line": 2537,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 29,
+              "text": "                    await self.traffic_learner.on_messages(optimized_messages)"
+            },
+            {
+              "path": "headroom/proxy/server.py",
+              "line": 1356,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner",
+                "TrafficLearner"
+              ],
+              "record_tokens": 26,
+              "text": "        self.traffic_learner: TrafficLearner | None = None"
+            },
+            {
+              "path": "headroom/proxy/server.py",
+              "line": 1361,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner",
+                "TrafficLearner"
+              ],
+              "record_tokens": 23,
+              "text": "            self.traffic_learner = TrafficLearner("
+            },
+            {
+              "path": "headroom/proxy/server.py",
+              "line": 2873,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 21,
+              "text": "                    await proxy.traffic_learner.start()"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 11,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 23,
+              "text": "    learner = TrafficLearner(memory_backend)"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 1320,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 35,
+              "text": "        \"\"\"Load existing traffic_learner rows into _saved_hashes / _persisted_ids."
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 1639,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 33,
+              "text": "    \"\"\"Read traffic_learner rows from memory.db, dedupe, return patterns."
+            },
+            {
+              "path": "tests/test_openai_responses_traffic_learner.py",
+              "line": 36,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 29,
+              "text": "        self._extractor = TrafficLearner(backend=None)"
+            },
+            {
+              "path": "tests/test_openai_responses_traffic_learner.py",
+              "line": 77,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 26,
+              "text": "    learner = TrafficLearner(backend=None)"
+            },
+            {
+              "path": "tests/test_openai_responses_traffic_learner.py",
+              "line": 129,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 25,
+              "text": "    proxy.traffic_learner = learner"
+            },
+            {
+              "path": "tests/test_memory/test_learn_flag.py",
+              "line": 103,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 24,
+              "text": "        assert proxy.traffic_learner._backend is None"
+            },
+            {
+              "path": "tests/test_memory/test_learn_flag.py",
+              "line": 117,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 28,
+              "text": "        \"\"\"A custom min_evidence flows from ProxyConfig into TrafficLearner.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 314,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 30,
+              "text": "    async def test_preference_extraction(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 326,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 31,
+              "text": "    async def test_preference_from_content_blocks(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 398,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 36,
+              "text": "        learner = TrafficLearner(backend=None, min_evidence=3, max_pending_patterns=100)"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 416,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 29,
+              "text": "    async def test_dedup(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 439,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 31,
+              "text": "    async def test_extract_tool_results_from_messages(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 471,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 32,
+              "text": "    def test_extract_tool_results_from_openai_messages(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 541,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 34,
+              "text": "    def test_extract_openai_tool_results_empty_without_tool_messages(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 548,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 30,
+              "text": "    async def test_tool_history_bounded(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 561,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 31,
+              "text": "    async def test_no_pattern_from_success_only(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 783,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 34,
+              "text": "                    \"metadata\": {\"source\": \"traffic_learner\", \"category\": \"bogus\"},"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 860,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 27,
+              "text": "        from headroom.memory import traffic_learner as tl_mod"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 897,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 30,
+              "text": "    Provides just enough surface area for TrafficLearner: `_config.db_path`"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 970,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 38,
+              "text": "async def _wait_for_saved(learner: TrafficLearner, count: int, db_path) -> None:"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 971,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 33,
+              "text": "    \"\"\"Wait until at least `count` traffic_learner rows exist in the DB.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 990,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 31,
+              "text": "        learner = TrafficLearner(backend=backend, min_evidence=3)"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1162,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 38,
+              "text": "        learner = TrafficLearner(backend=backend, agent_type=\"claude\", min_evidence=2)"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1211,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 37,
+              "text": "        learner = TrafficLearner(backend=None, agent_type=\"claude\", min_evidence=5)"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1228,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 36,
+              "text": "        learner = TrafficLearner(backend=None, agent_type=\"unknown\", min_evidence=1)"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1395,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 32,
+              "text": "        # Seed DB with a traffic_learner row at evidence_count=3."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2066,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 30,
+              "text": "        # Seed a traffic_learner row with no last_seen_at."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2261,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 28,
+              "text": "        assert TrafficLearner._strip_system_reminders(\"\") == \"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2262,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 34,
+              "text": "        assert TrafficLearner._strip_system_reminders(\"hello world\") == \"hello world\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2266,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 41,
+              "text": "            TrafficLearner._strip_system_reminders(\"a<system-reminder>X</system-reminder>b\") == \"ab\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2271,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 40,
+              "text": "            TrafficLearner._strip_system_reminders(\"a<System-Reminder>X</system-reminder>b\") == \"ab\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2276,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 31,
+              "text": "        assert TrafficLearner._strip_system_reminders(text) == \"abc\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2280,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 38,
+              "text": "        assert TrafficLearner._strip_system_reminders(\"hello <system-reminder>oops\") == \"hello \""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2290,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 36,
+              "text": "        assert TrafficLearner._strip_system_reminders(text) == \"What is 2+2?\""
+            }
+          ]
+        },
+        {
+          "task": "G19",
+          "request_id": "hr_1788521016_000009",
+          "call_id": "call_3WNuyRvs1DlC6tQgRw8XDrfk",
+          "command": "rg -nH \"def discover_projects|discover_projects|flush_to_file\" headroom tests/test_memory/test_traffic_learner.py",
+          "pattern": "def discover_projects|discover_projects|flush_to_file",
+          "structured_query_identifiers": [
+            "discover_projects",
+            "flush_to_file"
+          ],
+          "newly_kept": [
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 859,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 27,
+              "text": "        \"\"\"Rapid dirty flags should not cause rapid flush_to_file calls.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 883,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 29,
+              "text": "        # flush_to_file once (final flush). We want evidence the worker did"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1131,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 30,
+              "text": "    \"\"\"Stub out headroom.learn.registry so flush_to_file uses our fake.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1170,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 25,
+              "text": "        # the DB where flush_to_file reads them."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1222,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 27,
+              "text": "        await learner.stop()  # triggers a final flush_to_file"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1240,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 26,
+              "text": "        await learner.flush_to_file()  # returns without raising"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1255,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 28,
+              "text": "        \"\"\"If plugin.discover_projects raises, flush logs and returns.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1275,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 27,
+              "text": "        \"\"\"A slow discover_projects must not stall other loop work."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1277,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 28,
+              "text": "        discover_projects walks the filesystem; on a large home tree it takes"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1306,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 26,
+              "text": "        # The loop stays responsive while discover_projects is stuck."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1354,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 26,
+              "text": "        await learner.flush_to_file()  # must not raise"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 42,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 25,
+              "text": "# Minimum seconds between successive flush_to_file calls when driven by the"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 512,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 24,
+              "text": "        # Populated lazily in flush_to_file."
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 576,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 29,
+              "text": "        \"\"\"Background worker: call flush_to_file when dirty, rate-limited.\"\"\""
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 594,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 24,
+              "text": "    async def flush_to_file(self) -> None:"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 644,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 26,
+              "text": "                self._project_roots_cache = plugin.discover_projects()"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 646,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 26,
+              "text": "                logger.warning(\"discover_projects failed: %s\", e)"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 735,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 29,
+              "text": "        does not consult persisted rows. Use flush_to_file() for full data."
+            }
+          ]
+        },
+        {
+          "task": "G04",
+          "request_id": "hr_1788521289_000008",
+          "call_id": "call_5YSrqhcMndBAJw88l82lAXJS",
+          "command": "rg -nH \"maybe_reset_contribution|resets_at|contribution\" headroom tests/test_subscription_tracker.py",
+          "pattern": "maybe_reset_contribution|resets_at|contribution",
+          "structured_query_identifiers": [
+            "maybe_reset_contribution",
+            "resets_at"
+          ],
+          "newly_kept": [
+            {
+              "path": "tests/test_subscription_tracker.py",
+              "line": 37,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 15,
+              "text": "                if resets_at is not None"
+            },
+            {
+              "path": "tests/test_subscription_tracker.py",
+              "line": 117,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 25,
+              "text": "    \"\"\"Regression: the usage API reports ``resets_at`` with second-level jitter"
+            },
+            {
+              "path": "tests/test_subscription_tracker.py",
+              "line": 139,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 27,
+              "text": "    \"\"\"A real rollover advances ``resets_at`` by ~5 hours and still resets.\"\"\""
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 300,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 27,
+              "text": "        \"\"\"Read transcripts to count tokens spent strictly after ``window.resets_at``."
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 307,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 23,
+              "text": "        if window is None or window.resets_at is None:"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 310,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 19,
+              "text": "        if now < window.resets_at:"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 438,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 23,
+              "text": "        prev_resets_at = prev.five_hour.resets_at"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 439,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 23,
+              "text": "        curr_resets_at = snapshot.five_hour.resets_at"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 513,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 17,
+              "text": "        if resets_at is None:"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 516,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 22,
+              "text": "        start_ts = resets_at.timestamp() - window_duration_s"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 517,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 18,
+              "text": "        end_ts = resets_at.timestamp()"
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 122,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 30,
+              "text": "    If ``now`` is past ``window.resets_at``, the cached snapshot is stale: we"
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 126,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 25,
+              "text": "    must never report >100%), and whose ``resets_at`` advances by"
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 137,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 24,
+              "text": "            ``window.resets_at`` (None if we couldn't compute it)."
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 162,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 18,
+              "text": "    if window.resets_at is None:"
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 168,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 19,
+              "text": "        if current_now < window.resets_at:"
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 192,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 17,
+              "text": "        next_reset = window.resets_at"
+            },
+            {
+              "path": "headroom/subscription/codex_rate_limits.py",
+              "line": 101,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 24,
+              "text": "            \"resets_at\": self.resets_at,"
+            },
+            {
+              "path": "headroom/subscription/codex_rate_limits.py",
+              "line": 190,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 30,
+              "text": "        resets_at=_parse_int(headers, f\"{prefix}-{which}-reset-at\"),"
+            },
+            {
+              "path": "headroom/subscription/codex_rate_limits.py",
+              "line": 258,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 23,
+              "text": "    resets_at = win.get(\"reset_at\")"
+            },
+            {
+              "path": "headroom/subscription/codex_rate_limits.py",
+              "line": 259,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 35,
+              "text": "    resets_at = int(resets_at) if isinstance(resets_at, (int, float)) else None"
+            },
+            {
+              "path": "headroom/subscription/codex_rate_limits.py",
+              "line": 264,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 20,
+              "text": "        resets_at=resets_at,"
+            },
+            {
+              "path": "headroom/proxy/server.py",
+              "line": 4815,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 23,
+              "text": "           token counts when ``now >= window.resets_at``."
+            }
+          ]
+        },
+        {
+          "task": "G21",
+          "request_id": "hr_1788522140_000009",
+          "call_id": "call_jS75JMlVF18hlMuWVSyWubqa",
+          "command": "rg -nH \"_execute_save\" headroom tests",
+          "pattern": "_execute_save",
+          "structured_query_identifiers": [
+            "_execute_save"
+          ],
+          "newly_kept": [
+            {
+              "path": "tests/test_proxy_memory_integration.py",
+              "line": 627,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_execute_save"
+              ],
+              "record_tokens": 27,
+              "text": "          - The proxy's ``_execute_save`` returns a ``note`` containing the"
+            },
+            {
+              "path": "tests/test_proxy_memory_integration.py",
+              "line": 684,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_execute_save"
+              ],
+              "record_tokens": 25,
+              "text": "        # The proxy's _execute_save must have returned a dedup hint"
+            }
+          ]
+        },
+        {
+          "task": "G21",
+          "request_id": "hr_1788522159_000011",
+          "call_id": "call_LBrGwbEGPDrZabIxR3QNYslw",
+          "command": "rg -nH -C 8 \"_background_dedup|DEDUP_AUTO_THRESHOLD\" headroom tests --glob '*.py'",
+          "pattern": "_background_dedup|DEDUP_AUTO_THRESHOLD",
+          "structured_query_identifiers": [
+            "_background_dedup",
+            "DEDUP_AUTO_THRESHOLD"
+          ],
+          "newly_kept": [
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 181,
+              "fix_adjacent": true,
+              "matched_identifiers": [
+                "DEDUP_AUTO_THRESHOLD"
+              ],
+              "record_tokens": 36,
+              "text": "    DEDUP_AUTO_THRESHOLD = 0.92  # Auto-supersede (same fact, different wording)"
+            },
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 1290,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_background_dedup"
+              ],
+              "record_tokens": 32,
+              "text": "                self._background_dedup(memory.id, similar_memories, effective_user_id, backend)"
+            },
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 1304,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_background_dedup"
+              ],
+              "record_tokens": 21,
+              "text": "    async def _background_dedup("
+            },
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 1327,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "DEDUP_AUTO_THRESHOLD"
+              ],
+              "record_tokens": 24,
+              "text": "                if result.score < self.DEDUP_AUTO_THRESHOLD:"
+            }
+          ]
+        }
+      ]
+    },
+    "all": {
+      "stratum": "all_existing_replay_units",
+      "units": 14,
+      "units_with_structured_query_identifier": 11,
+      "units_with_baseline_dropped_query_hit": 6,
+      "scorable_record_exposures": 702,
+      "historical_fix_adjacent_scorable": 13,
+      "baseline_critical_kept": 9,
+      "floor_critical_kept": 10,
+      "critical_DROP_to_KEEP": 1,
+      "critical_KEEP_to_DROP": 0,
+      "newly_kept_records": 117,
+      "newly_kept_fix_adjacent_records": 1,
+      "newly_kept_nonfix_records": 116,
+      "additional_fix_adjacent_record_tokens": 36,
+      "additional_nonfix_record_tokens": 3249,
+      "additional_total_record_tokens": 3285,
+      "baseline_critical_recall": 0.6923076923076923,
+      "floor_critical_recall": 0.7692307692307693,
+      "critical_recall_delta": 0.07692307692307698,
+      "fix_adjacent_fraction_of_newly_kept": 0.008547008547008548,
+      "details": [
+        {
+          "task": "G07",
+          "request_id": "hr_1788520052_000010",
+          "call_id": "call_eylD8qVrBmp1nSeTKiZc6qwv",
+          "command": "rg -nH -g '*.py' \"def count_messages|image_url|type.*image|_count_serialized\" headroom",
+          "pattern": "def count_messages|image_url|type.*image|_count_serialized",
+          "structured_query_identifiers": [
+            "_count_serialized",
+            "count_messages",
+            "image_url"
+          ],
+          "newly_kept": [
+            {
+              "path": "headroom/evals/memory/runner.py",
+              "line": 417,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 18,
+              "text": "                    if dialogue.image_url:"
+            },
+            {
+              "path": "headroom/evals/prompt_comparison.py",
+              "line": 510,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 24,
+              "text": "                        elif item.get(\"type\") == \"image_url\":"
+            },
+            {
+              "path": "headroom/cache/openai.py",
+              "line": 581,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 21,
+              "text": "                        elif block.get(\"type\") == \"image_url\":"
+            },
+            {
+              "path": "headroom/tokenizers/tiktoken_counter.py",
+              "line": 308,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 24,
+              "text": "                                elif part.get(\"type\") == \"image_url\":"
+            },
+            {
+              "path": "headroom/tokenizers/tiktoken_counter.py",
+              "line": 310,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 29,
+              "text": "                                    detail = part.get(\"image_url\", {}).get(\"detail\", \"auto\")"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 155,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 28,
+              "text": "    # Oversized-blob token estimation (see _count_serialized). Serializing a blob"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 244,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 25,
+              "text": "                elif part_type in (\"image_url\", \"image\", \"input_image\"):"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 267,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 19,
+              "text": "                        total += self._count_serialized(content)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 270,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 24,
+              "text": "                    total += self._count_serialized(part.get(\"input\", {}))"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 278,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 25,
+              "text": "                    total += self._count_serialized(tool_use.get(\"input\", {}))"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 289,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 20,
+              "text": "                        total += self._count_serialized(tr_content)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 333,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 19,
+              "text": "                    total += self._count_serialized(part)"
+            },
+            {
+              "path": "headroom/tokenizers/base.py",
+              "line": 339,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_count_serialized"
+              ],
+              "record_tokens": 24,
+              "text": "    def _count_serialized(self, obj: Any) -> int:"
+            },
+            {
+              "path": "headroom/proxy/request_log_redaction_policy.py",
+              "line": 13,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 33,
+              "text": "# ``image_url.url`` as a ``data:image/...;base64,<payload>`` URL."
+            },
+            {
+              "path": "headroom/proxy/request_log_redaction_policy.py",
+              "line": 34,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 39,
+              "text": "        # OpenAI vision shape: ``{\"type\":\"image_url\",\"image_url\":{\"url\":\"data:image/...\"}}``."
+            },
+            {
+              "path": "headroom/proxy/request_log_redaction_policy.py",
+              "line": 36,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 34,
+              "text": "        # OpenAI Responses input_image: ``{\"type\":\"input_image\",\"image_url\":\"...\"}``"
+            },
+            {
+              "path": "headroom/image/compressor.py",
+              "line": 265,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 34,
+              "text": "                # OpenAI format: {\"type\": \"image_url\", \"image_url\": {\"url\": \"data:...\"}}"
+            },
+            {
+              "path": "headroom/image/compressor.py",
+              "line": 587,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 28,
+              "text": "                    if item.get(\"type\") == \"image_url\" and provider == \"openai\":"
+            },
+            {
+              "path": "headroom/proxy/handlers/openai.py",
+              "line": 9613,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 30,
+              "text": "        ``image_url``; everything else falls through with NO else branch, so an"
+            },
+            {
+              "path": "headroom/backends/anyllm.py",
+              "line": 163,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 33,
+              "text": "                            \"image_url\": {\"url\": f\"data:{media_type};base64,{data}\"},"
+            },
+            {
+              "path": "headroom/backends/anyllm.py",
+              "line": 168,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "image_url"
+              ],
+              "record_tokens": 34,
+              "text": "                        {\"type\": \"image_url\", \"image_url\": {\"url\": source.get(\"url\", \"\")}}"
+            }
+          ]
+        },
+        {
+          "task": "G19",
+          "request_id": "hr_1788521004_000007",
+          "call_id": "call_TOlQiGIky2lLpXrRiKymiS8S",
+          "command": "rg -nH \"TrafficLearner|traffic learner|traffic_learner\" .",
+          "pattern": "TrafficLearner|traffic learner|traffic_learner",
+          "structured_query_identifiers": [
+            "traffic_learner",
+            "TrafficLearner"
+          ],
+          "newly_kept": [
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 2284,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 30,
+              "text": "        \"\"\"Expose the backend for external components (e.g., TrafficLearner).\"\"\""
+            },
+            {
+              "path": "CHANGELOG.md",
+              "line": 509,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 85,
+              "text": "* **memory:** bound the TrafficLearner pending-pattern accumulator (memory leak) ([#2579](https://github.com/headroomlabs-ai/headroom/issues/2579)) ([1f5feff](https://github.com/headroomlabs-ai/headroom/commit/1f5fefffd3e82c73bddd928cfd53334031e807bc))"
+            },
+            {
+              "path": "CHANGELOG.md",
+              "line": 2125,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 22,
+              "text": "  `TrafficLearner` now writes to agent-native context files continuously"
+            },
+            {
+              "path": "headroom/proxy/handlers/openai.py",
+              "line": 1152,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 26,
+              "text": "    \"\"\"Normalize Responses input for ``TrafficLearner``."
+            },
+            {
+              "path": "headroom/proxy/handlers/openai.py",
+              "line": 1893,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 31,
+              "text": "            tool_results = traffic_learner.extract_tool_results_from_openai_messages(messages)"
+            },
+            {
+              "path": "headroom/proxy/handlers/openai.py",
+              "line": 1901,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 24,
+              "text": "            await traffic_learner.on_messages(messages)"
+            },
+            {
+              "path": "headroom/proxy/handlers/anthropic.py",
+              "line": 2513,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 24,
+              "text": "            if self.traffic_learner:"
+            },
+            {
+              "path": "headroom/proxy/handlers/anthropic.py",
+              "line": 2517,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 26,
+              "text": "                        self.traffic_learner._backend is None"
+            },
+            {
+              "path": "headroom/proxy/handlers/anthropic.py",
+              "line": 2525,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 31,
+              "text": "                    tool_results = self.traffic_learner.extract_tool_results_from_messages("
+            },
+            {
+              "path": "headroom/proxy/handlers/anthropic.py",
+              "line": 2529,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 27,
+              "text": "                        await self.traffic_learner.on_tool_result("
+            },
+            {
+              "path": "headroom/proxy/handlers/anthropic.py",
+              "line": 2537,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 29,
+              "text": "                    await self.traffic_learner.on_messages(optimized_messages)"
+            },
+            {
+              "path": "headroom/proxy/server.py",
+              "line": 1356,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner",
+                "TrafficLearner"
+              ],
+              "record_tokens": 26,
+              "text": "        self.traffic_learner: TrafficLearner | None = None"
+            },
+            {
+              "path": "headroom/proxy/server.py",
+              "line": 1361,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner",
+                "TrafficLearner"
+              ],
+              "record_tokens": 23,
+              "text": "            self.traffic_learner = TrafficLearner("
+            },
+            {
+              "path": "headroom/proxy/server.py",
+              "line": 2873,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 21,
+              "text": "                    await proxy.traffic_learner.start()"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 11,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 23,
+              "text": "    learner = TrafficLearner(memory_backend)"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 1320,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 35,
+              "text": "        \"\"\"Load existing traffic_learner rows into _saved_hashes / _persisted_ids."
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 1639,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 33,
+              "text": "    \"\"\"Read traffic_learner rows from memory.db, dedupe, return patterns."
+            },
+            {
+              "path": "tests/test_openai_responses_traffic_learner.py",
+              "line": 36,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 29,
+              "text": "        self._extractor = TrafficLearner(backend=None)"
+            },
+            {
+              "path": "tests/test_openai_responses_traffic_learner.py",
+              "line": 77,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 26,
+              "text": "    learner = TrafficLearner(backend=None)"
+            },
+            {
+              "path": "tests/test_openai_responses_traffic_learner.py",
+              "line": 129,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 25,
+              "text": "    proxy.traffic_learner = learner"
+            },
+            {
+              "path": "tests/test_memory/test_learn_flag.py",
+              "line": 103,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 24,
+              "text": "        assert proxy.traffic_learner._backend is None"
+            },
+            {
+              "path": "tests/test_memory/test_learn_flag.py",
+              "line": 117,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 28,
+              "text": "        \"\"\"A custom min_evidence flows from ProxyConfig into TrafficLearner.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 314,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 30,
+              "text": "    async def test_preference_extraction(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 326,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 31,
+              "text": "    async def test_preference_from_content_blocks(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 398,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 36,
+              "text": "        learner = TrafficLearner(backend=None, min_evidence=3, max_pending_patterns=100)"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 416,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 29,
+              "text": "    async def test_dedup(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 439,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 31,
+              "text": "    async def test_extract_tool_results_from_messages(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 471,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 32,
+              "text": "    def test_extract_tool_results_from_openai_messages(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 541,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 34,
+              "text": "    def test_extract_openai_tool_results_empty_without_tool_messages(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 548,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 30,
+              "text": "    async def test_tool_history_bounded(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 561,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 31,
+              "text": "    async def test_no_pattern_from_success_only(self, learner: TrafficLearner):"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 783,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 34,
+              "text": "                    \"metadata\": {\"source\": \"traffic_learner\", \"category\": \"bogus\"},"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 860,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 27,
+              "text": "        from headroom.memory import traffic_learner as tl_mod"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 897,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 30,
+              "text": "    Provides just enough surface area for TrafficLearner: `_config.db_path`"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 970,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 38,
+              "text": "async def _wait_for_saved(learner: TrafficLearner, count: int, db_path) -> None:"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 971,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 33,
+              "text": "    \"\"\"Wait until at least `count` traffic_learner rows exist in the DB.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 990,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 31,
+              "text": "        learner = TrafficLearner(backend=backend, min_evidence=3)"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1162,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 38,
+              "text": "        learner = TrafficLearner(backend=backend, agent_type=\"claude\", min_evidence=2)"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1211,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 37,
+              "text": "        learner = TrafficLearner(backend=None, agent_type=\"claude\", min_evidence=5)"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1228,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 36,
+              "text": "        learner = TrafficLearner(backend=None, agent_type=\"unknown\", min_evidence=1)"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1395,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 32,
+              "text": "        # Seed DB with a traffic_learner row at evidence_count=3."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2066,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "traffic_learner"
+              ],
+              "record_tokens": 30,
+              "text": "        # Seed a traffic_learner row with no last_seen_at."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2261,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 28,
+              "text": "        assert TrafficLearner._strip_system_reminders(\"\") == \"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2262,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 34,
+              "text": "        assert TrafficLearner._strip_system_reminders(\"hello world\") == \"hello world\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2266,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 41,
+              "text": "            TrafficLearner._strip_system_reminders(\"a<system-reminder>X</system-reminder>b\") == \"ab\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2271,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 40,
+              "text": "            TrafficLearner._strip_system_reminders(\"a<System-Reminder>X</system-reminder>b\") == \"ab\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2276,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 31,
+              "text": "        assert TrafficLearner._strip_system_reminders(text) == \"abc\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2280,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 38,
+              "text": "        assert TrafficLearner._strip_system_reminders(\"hello <system-reminder>oops\") == \"hello \""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 2290,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "TrafficLearner"
+              ],
+              "record_tokens": 36,
+              "text": "        assert TrafficLearner._strip_system_reminders(text) == \"What is 2+2?\""
+            }
+          ]
+        },
+        {
+          "task": "G19",
+          "request_id": "hr_1788521016_000009",
+          "call_id": "call_3WNuyRvs1DlC6tQgRw8XDrfk",
+          "command": "rg -nH \"def discover_projects|discover_projects|flush_to_file\" headroom tests/test_memory/test_traffic_learner.py",
+          "pattern": "def discover_projects|discover_projects|flush_to_file",
+          "structured_query_identifiers": [
+            "discover_projects",
+            "flush_to_file"
+          ],
+          "newly_kept": [
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 859,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 27,
+              "text": "        \"\"\"Rapid dirty flags should not cause rapid flush_to_file calls.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 883,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 29,
+              "text": "        # flush_to_file once (final flush). We want evidence the worker did"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1131,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 30,
+              "text": "    \"\"\"Stub out headroom.learn.registry so flush_to_file uses our fake.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1170,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 25,
+              "text": "        # the DB where flush_to_file reads them."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1222,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 27,
+              "text": "        await learner.stop()  # triggers a final flush_to_file"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1240,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 26,
+              "text": "        await learner.flush_to_file()  # returns without raising"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1255,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 28,
+              "text": "        \"\"\"If plugin.discover_projects raises, flush logs and returns.\"\"\""
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1275,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 27,
+              "text": "        \"\"\"A slow discover_projects must not stall other loop work."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1277,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 28,
+              "text": "        discover_projects walks the filesystem; on a large home tree it takes"
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1306,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 26,
+              "text": "        # The loop stays responsive while discover_projects is stuck."
+            },
+            {
+              "path": "tests/test_memory/test_traffic_learner.py",
+              "line": 1354,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 26,
+              "text": "        await learner.flush_to_file()  # must not raise"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 42,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 25,
+              "text": "# Minimum seconds between successive flush_to_file calls when driven by the"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 512,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 24,
+              "text": "        # Populated lazily in flush_to_file."
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 576,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 29,
+              "text": "        \"\"\"Background worker: call flush_to_file when dirty, rate-limited.\"\"\""
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 594,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 24,
+              "text": "    async def flush_to_file(self) -> None:"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 644,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 26,
+              "text": "                self._project_roots_cache = plugin.discover_projects()"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 646,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "discover_projects"
+              ],
+              "record_tokens": 26,
+              "text": "                logger.warning(\"discover_projects failed: %s\", e)"
+            },
+            {
+              "path": "headroom/memory/traffic_learner.py",
+              "line": 735,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "flush_to_file"
+              ],
+              "record_tokens": 29,
+              "text": "        does not consult persisted rows. Use flush_to_file() for full data."
+            }
+          ]
+        },
+        {
+          "task": "G04",
+          "request_id": "hr_1788521289_000008",
+          "call_id": "call_5YSrqhcMndBAJw88l82lAXJS",
+          "command": "rg -nH \"maybe_reset_contribution|resets_at|contribution\" headroom tests/test_subscription_tracker.py",
+          "pattern": "maybe_reset_contribution|resets_at|contribution",
+          "structured_query_identifiers": [
+            "maybe_reset_contribution",
+            "resets_at"
+          ],
+          "newly_kept": [
+            {
+              "path": "tests/test_subscription_tracker.py",
+              "line": 37,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 15,
+              "text": "                if resets_at is not None"
+            },
+            {
+              "path": "tests/test_subscription_tracker.py",
+              "line": 117,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 25,
+              "text": "    \"\"\"Regression: the usage API reports ``resets_at`` with second-level jitter"
+            },
+            {
+              "path": "tests/test_subscription_tracker.py",
+              "line": 139,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 27,
+              "text": "    \"\"\"A real rollover advances ``resets_at`` by ~5 hours and still resets.\"\"\""
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 300,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 27,
+              "text": "        \"\"\"Read transcripts to count tokens spent strictly after ``window.resets_at``."
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 307,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 23,
+              "text": "        if window is None or window.resets_at is None:"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 310,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 19,
+              "text": "        if now < window.resets_at:"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 438,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 23,
+              "text": "        prev_resets_at = prev.five_hour.resets_at"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 439,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 23,
+              "text": "        curr_resets_at = snapshot.five_hour.resets_at"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 513,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 17,
+              "text": "        if resets_at is None:"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 516,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 22,
+              "text": "        start_ts = resets_at.timestamp() - window_duration_s"
+            },
+            {
+              "path": "headroom/subscription/tracker.py",
+              "line": 517,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 18,
+              "text": "        end_ts = resets_at.timestamp()"
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 122,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 30,
+              "text": "    If ``now`` is past ``window.resets_at``, the cached snapshot is stale: we"
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 126,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 25,
+              "text": "    must never report >100%), and whose ``resets_at`` advances by"
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 137,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 24,
+              "text": "            ``window.resets_at`` (None if we couldn't compute it)."
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 162,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 18,
+              "text": "    if window.resets_at is None:"
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 168,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 19,
+              "text": "        if current_now < window.resets_at:"
+            },
+            {
+              "path": "headroom/subscription/models.py",
+              "line": 192,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 17,
+              "text": "        next_reset = window.resets_at"
+            },
+            {
+              "path": "headroom/subscription/codex_rate_limits.py",
+              "line": 101,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 24,
+              "text": "            \"resets_at\": self.resets_at,"
+            },
+            {
+              "path": "headroom/subscription/codex_rate_limits.py",
+              "line": 190,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 30,
+              "text": "        resets_at=_parse_int(headers, f\"{prefix}-{which}-reset-at\"),"
+            },
+            {
+              "path": "headroom/subscription/codex_rate_limits.py",
+              "line": 258,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 23,
+              "text": "    resets_at = win.get(\"reset_at\")"
+            },
+            {
+              "path": "headroom/subscription/codex_rate_limits.py",
+              "line": 259,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 35,
+              "text": "    resets_at = int(resets_at) if isinstance(resets_at, (int, float)) else None"
+            },
+            {
+              "path": "headroom/subscription/codex_rate_limits.py",
+              "line": 264,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 20,
+              "text": "        resets_at=resets_at,"
+            },
+            {
+              "path": "headroom/proxy/server.py",
+              "line": 4815,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "resets_at"
+              ],
+              "record_tokens": 23,
+              "text": "           token counts when ``now >= window.resets_at``."
+            }
+          ]
+        },
+        {
+          "task": "G21",
+          "request_id": "hr_1788522140_000009",
+          "call_id": "call_jS75JMlVF18hlMuWVSyWubqa",
+          "command": "rg -nH \"_execute_save\" headroom tests",
+          "pattern": "_execute_save",
+          "structured_query_identifiers": [
+            "_execute_save"
+          ],
+          "newly_kept": [
+            {
+              "path": "tests/test_proxy_memory_integration.py",
+              "line": 627,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_execute_save"
+              ],
+              "record_tokens": 27,
+              "text": "          - The proxy's ``_execute_save`` returns a ``note`` containing the"
+            },
+            {
+              "path": "tests/test_proxy_memory_integration.py",
+              "line": 684,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_execute_save"
+              ],
+              "record_tokens": 25,
+              "text": "        # The proxy's _execute_save must have returned a dedup hint"
+            }
+          ]
+        },
+        {
+          "task": "G21",
+          "request_id": "hr_1788522159_000011",
+          "call_id": "call_LBrGwbEGPDrZabIxR3QNYslw",
+          "command": "rg -nH -C 8 \"_background_dedup|DEDUP_AUTO_THRESHOLD\" headroom tests --glob '*.py'",
+          "pattern": "_background_dedup|DEDUP_AUTO_THRESHOLD",
+          "structured_query_identifiers": [
+            "_background_dedup",
+            "DEDUP_AUTO_THRESHOLD"
+          ],
+          "newly_kept": [
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 181,
+              "fix_adjacent": true,
+              "matched_identifiers": [
+                "DEDUP_AUTO_THRESHOLD"
+              ],
+              "record_tokens": 36,
+              "text": "    DEDUP_AUTO_THRESHOLD = 0.92  # Auto-supersede (same fact, different wording)"
+            },
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 1290,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_background_dedup"
+              ],
+              "record_tokens": 32,
+              "text": "                self._background_dedup(memory.id, similar_memories, effective_user_id, backend)"
+            },
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 1304,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "_background_dedup"
+              ],
+              "record_tokens": 21,
+              "text": "    async def _background_dedup("
+            },
+            {
+              "path": "headroom/proxy/memory_handler.py",
+              "line": 1327,
+              "fix_adjacent": false,
+              "matched_identifiers": [
+                "DEDUP_AUTO_THRESHOLD"
+              ],
+              "record_tokens": 24,
+              "text": "                if result.score < self.DEDUP_AUTO_THRESHOLD:"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
