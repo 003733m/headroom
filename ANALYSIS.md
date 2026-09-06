@@ -10,6 +10,10 @@ The experiments also exposed a selectivity problem. Global trajectory context so
 
 I do **not** claim a general coding-agent success improvement. The contribution is a characterized state-loss failure mode, a production integration, a selective preservation invariant, and an evaluation that separates controlled mechanism effects, natural activation, post-hoc refinement, and negative unseen validation.
 
+### Headroom functionality exercised
+
+Before extending relevance, I exercised Headroom's existing search-output compression and coding-agent/OpenAI Responses path, including content routing, relevance splitting, tool-call/output association, and the query-local relevance behavior that forms the baseline for this work. I then exercised the same paths through controlled compression probes, fresh coding-agent sessions, captured-request replay, and historical reverse-patch tasks. This made it possible to distinguish failures of the proposed relevance signal from routing, measurement, and ordinary query-local compression behavior.
+
 ## 1. Gap: relevance changes during a trajectory
 
 The existing Headroom path already uses the current user request and triggering tool-call arguments as relevance context. My extension is not "use the search query"; Headroom already does that. The missing signal is **task-local state learned on the way to the current retrieval**.
@@ -32,6 +36,8 @@ When the ordinary relevance scorer would DROP a segment containing an exact-boun
 
 Initial adopted-floor production freeze: `89da0898a80c313b6a320f47763391dea7c376e2`. After U01 exposed a downstream routing-reachability boundary, I made a routing-only refinement without changing bridge extraction, adoption semantics, or preservation scoring. The final routing-refined production freeze is `8fa4d92529f47174101e4d6fb288c0fde32e8f7c`.
 
+Specifically, U01 showed that a Bash search could already have established producing-call provenance and a non-empty adopted-bridge marker yet still be blocked by a redundant downstream output-shape check. The final refinement treats that established search provenance plus the adopted marker as sufficient to attempt `relevance_split` directly. If the split planner abstains, the previous routing fallback is preserved. The change therefore affects reachability only; it does not broaden bridge admission or alter the preservation score.
+
 Focused adopted-floor tests are in [`tests/test_adopted_bridge_preservation.py`](tests/test_adopted_bridge_preservation.py).
 
 ## 3. Evaluation design and evidence hierarchy
@@ -48,7 +54,7 @@ I used several evaluation layers because "does the compression mechanism retain 
 | Post-hoc refinement | Adopted-bridge strict replay | 5/9 → 6/9; +504 non-critical tokens | Selective preservation |
 | Post-hoc comparator | Naive query-hit floor | 5/9 → 6/9; +3,249 non-critical tokens | Simpler rule is much broader |
 | First unseen applicability holdout | G11 | behavior adopted, bridge not admitted | Conservative bridge gate can lag adoption |
-| Second unseen validation | U01 | live bridge adoption reached handler gate, but no `relevance_split` treatment activation | Unseen natural applicability, but no retention-effect estimate |
+| Pre-refinement unseen diagnostic | U01 | live bridge adoption reached handler gate, but no `relevance_split` treatment activation | Natural applicability; became development evidence after motivating the routing refinement |
 | Post-routing-refinement unseen validation | U03 | first prospectively eligible task; fresh ON passed but `relevance_split_units=0` and `treatment_activated=False` | Final 8fa freeze still produced no unseen retention-effect estimate |
 
 The distinction between prospective, confirmatory, and post-hoc evidence is deliberate. I froze algorithms and manifests before prospective runs, did not replace completed conditions, and recorded harness corrections separately rather than silently regenerating favorable results.
@@ -135,8 +141,8 @@ The production implementation is in [`headroom/trajectory_relevance.py`](headroo
 
 The main experiment code and protocols are under [`experiments/bridge_relevance/`](experiments/bridge_relevance/) and [`experiments/bridge_relevance/bridge_hard/`](experiments/bridge_relevance/bridge_hard/). Historical replay is implemented in [`run_exhaustive_discovery.py`](experiments/bridge_relevance/bridge_hard/run_exhaustive_discovery.py); exact-wire replay is in [`run_exact_wire_v3_replay.py`](experiments/bridge_relevance/bridge_hard/run_exact_wire_v3_replay.py).
 
-The second unseen validation is documented by [`second_unseen_adopted_bridge_validation_protocol.json`](experiments/bridge_relevance/bridge_hard/second_unseen_adopted_bridge_validation_protocol.json), [`second_unseen_adopted_bridge_selection.json`](experiments/bridge_relevance/bridge_hard/second_unseen_adopted_bridge_selection.json), [`run_second_unseen_adopted_bridge_screen.py`](experiments/bridge_relevance/bridge_hard/run_second_unseen_adopted_bridge_screen.py), and the locked execution/snapshot files in the same directory.
+The pre-refinement U01 unseen diagnostic is documented by [`second_unseen_adopted_bridge_validation_protocol.json`](experiments/bridge_relevance/bridge_hard/second_unseen_adopted_bridge_validation_protocol.json), [`second_unseen_adopted_bridge_selection.json`](experiments/bridge_relevance/bridge_hard/second_unseen_adopted_bridge_selection.json), [`run_second_unseen_adopted_bridge_screen.py`](experiments/bridge_relevance/bridge_hard/run_second_unseen_adopted_bridge_screen.py), [`second_unseen_adopted_bridge_u01_on_gate_audit.json`](experiments/bridge_relevance/bridge_hard/second_unseen_adopted_bridge_u01_on_gate_audit.json), and [`second_unseen_adopted_bridge_result.json`](experiments/bridge_relevance/bridge_hard/second_unseen_adopted_bridge_result.json).
 
 The post-U01 routing-refined validation is documented by [`routing_refined_unseen_protocol.json`](experiments/bridge_relevance/bridge_hard/routing_refined_unseen_protocol.json), [`routing_refined_unseen_validation_protocol.json`](experiments/bridge_relevance/bridge_hard/routing_refined_unseen_validation_protocol.json), [`routing_refined_unseen_u03_lock.json`](experiments/bridge_relevance/bridge_hard/routing_refined_unseen_u03_lock.json), and [`routing_refined_unseen_u03_result.json`](experiments/bridge_relevance/bridge_hard/routing_refined_unseen_u03_result.json).
 
-Focused trajectory/relevance tests passed. A prior full-suite run completed with **11,796 passed, 597 skipped, and one failure that did not reproduce when rerun in isolation**.
+The focused trajectory/relevance suite completed with **38/38 tests passing**. A prior full-suite run completed with **11,796 passed, 597 skipped, and one failure that did not reproduce when rerun in isolation**.
