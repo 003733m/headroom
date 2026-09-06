@@ -30,7 +30,7 @@ The final production refinement is the adopted-bridge floor. Let `B` be the froz
 
 When the ordinary relevance scorer would DROP a segment containing an exact-boundary match to an adopted identifier, the segment is forced to KEEP. Existing KEEP decisions are unchanged. This makes the refinement monotonic: it can only preserve additional evidence, not remove evidence the baseline already retained.
 
-Production algorithm freeze: `89da0898a80c313b6a320f47763391dea7c376e2`.
+Initial adopted-floor production freeze: `89da0898a80c313b6a320f47763391dea7c376e2`. After U01 exposed a downstream routing-reachability boundary, I made a routing-only refinement without changing bridge extraction, adoption semantics, or preservation scoring. The final routing-refined production freeze is `8fa4d92529f47174101e4d6fb288c0fde32e8f7c`.
 
 Focused adopted-floor tests are in [`tests/test_adopted_bridge_preservation.py`](tests/test_adopted_bridge_preservation.py).
 
@@ -49,6 +49,7 @@ I used several evaluation layers because "does the compression mechanism retain 
 | Post-hoc comparator | Naive query-hit floor | 5/9 → 6/9; +3,249 non-critical tokens | Simpler rule is much broader |
 | First unseen applicability holdout | G11 | behavior adopted, bridge not admitted | Conservative bridge gate can lag adoption |
 | Second unseen validation | U01 | live bridge adoption reached handler gate, but no `relevance_split` treatment activation | Unseen natural applicability, but no retention-effect estimate |
+| Post-routing-refinement unseen validation | U03 | first prospectively eligible task; fresh ON passed but `relevance_split_units=0` and `treatment_activated=False` | Final 8fa freeze still produced no unseen retention-effect estimate |
 
 The distinction between prospective, confirmatory, and post-hoc evidence is deliberate. I froze algorithms and manifests before prospective runs, did not replace completed conditions, and recorded harness corrections separately rather than silently regenerating favorable results.
 
@@ -92,7 +93,7 @@ The concrete rescue occurred for `DEDUP_AUTO_THRESHOLD`: it had been admitted fr
 
 This is a real algorithmic refinement, but it is **post-hoc development evidence** because the rule was designed after observing the harder replay behavior. I therefore required unseen validation before making any generalization claim.
 
-## 6. Unseen validation: two negative but informative outcomes
+## 6. Unseen validation and routing refinement
 
 The first treatment-blind holdout screen selected G11. In a fresh run, the agent naturally reused `resolve_litellm_model_name`, but only after one supporting prior output. The frozen bridge gate did not admit the singleton function name, so the preservation treatment never activated. Both OFF and ON passed. This exposed an **early-adoption lag** in the conservative bridge-admission rule.
 
@@ -108,13 +109,21 @@ This is an important limitation rather than a result to hide. The full path is:
 
 G11 stopped at bridge admission. U01 advanced further, through natural adoption and handler-level trajectory context, but still did not reach the final preservation stage. The remaining bottleneck is therefore not only candidate quality; end-to-end routing determines whether the preservation invariant can act at all.
 
+Because U01 had already been consumed under the `89da` production freeze, I treated that observation as development evidence rather than using it to validate the subsequent routing change. I froze the routing-only refinement at `8fa4d92529f47174101e4d6fb288c0fde32e8f7c` and preserved the previously locked U02-U12 candidate order.
+
+Under that final freeze, U02 was not applicable and U03 became the first prospectively eligible task. Eligibility was locked before retention inspection: the natural search reused `_estimate_input_cost_usd` and `_estimate_output_savings_usd`, both identifiers were admitted as adopted bridges, and the handler-search and byte gates were satisfied. No historical-critical KEEP/DROP or rescue outcome was inspected before U03 was locked.
+
+The subsequent fresh U03-ON run passed the coding task, as did U03-OFF. However, U03-ON again recorded **0 relevance-split units, 0 search-relevance chains, and `treatment_activated=False`**. Thus the final routing-refined freeze did not yield a prospective causal retention estimate either. Per the locked protocol, I did not replace U03 with another task or rerun the ON condition after observing this negative result.
+
+This distinction is important: the U03 selection screen demonstrated a naturally occurring applicability opportunity under the frozen rule, but applicability in one trajectory does not guarantee that an independent stochastic ON trajectory will reproduce the same downstream execution path. The final unseen evidence therefore remains negative with respect to preservation-floor activation and does not support a critical-record rescue or coding-agent success claim.
+
 ## 7. Conclusion
 
 The study supports a narrower claim than "trajectory relevance improves coding-agent success."
 
 First, prior tool outputs contain task-local state that is not always captured by the original request or current query alone. Second, a bounded trajectory signal can strongly improve evidence fidelity in controlled cases and occasionally rescue naturally retrieved historical-critical records. Third, global trajectory context is not sufficiently selective by itself. Intersecting prior bridge support with explicit agent reuse produced a much more selective monotonic preservation rule: in development replay, it achieved the same observed rescue as a naive query floor with 84.5% less added non-critical burden.
 
-However, end-to-end agent benchmarks showed a ceiling effect, and two unseen validation attempts did not produce a causal retention estimate for the final preservation rule. G11 failed at conservative bridge admission; U01 reproduced bridge admission, agent reuse, and the handler-level context gate but did not reach final relevance-split activation.
+However, end-to-end agent benchmarks showed a ceiling effect, and no prospective unseen run produced a causal retention estimate for the final preservation rule. G11 failed at conservative bridge admission. U01 reproduced bridge admission, agent reuse, and the handler-level context gate but did not reach final relevance-split activation; because that observation motivated a routing change, U01 became development evidence for the refinement rather than validation evidence. Under the final `8fa4d925` production freeze, U03 was then selected by a pre-treatment applicability screen, but its fresh ON trajectory again recorded zero relevance-split units and no treatment activation. I therefore make no unseen retention-rescue or coding-agent success claim for the final rule.
 
 The strongest current conclusion is therefore:
 
@@ -127,5 +136,7 @@ The production implementation is in [`headroom/trajectory_relevance.py`](headroo
 The main experiment code and protocols are under [`experiments/bridge_relevance/`](experiments/bridge_relevance/) and [`experiments/bridge_relevance/bridge_hard/`](experiments/bridge_relevance/bridge_hard/). Historical replay is implemented in [`run_exhaustive_discovery.py`](experiments/bridge_relevance/bridge_hard/run_exhaustive_discovery.py); exact-wire replay is in [`run_exact_wire_v3_replay.py`](experiments/bridge_relevance/bridge_hard/run_exact_wire_v3_replay.py).
 
 The second unseen validation is documented by [`second_unseen_adopted_bridge_validation_protocol.json`](experiments/bridge_relevance/bridge_hard/second_unseen_adopted_bridge_validation_protocol.json), [`second_unseen_adopted_bridge_selection.json`](experiments/bridge_relevance/bridge_hard/second_unseen_adopted_bridge_selection.json), [`run_second_unseen_adopted_bridge_screen.py`](experiments/bridge_relevance/bridge_hard/run_second_unseen_adopted_bridge_screen.py), and the locked execution/snapshot files in the same directory.
+
+The post-U01 routing-refined validation is documented by [`routing_refined_unseen_protocol.json`](experiments/bridge_relevance/bridge_hard/routing_refined_unseen_protocol.json), [`routing_refined_unseen_validation_protocol.json`](experiments/bridge_relevance/bridge_hard/routing_refined_unseen_validation_protocol.json), [`routing_refined_unseen_u03_lock.json`](experiments/bridge_relevance/bridge_hard/routing_refined_unseen_u03_lock.json), and [`routing_refined_unseen_u03_result.json`](experiments/bridge_relevance/bridge_hard/routing_refined_unseen_u03_result.json).
 
 Focused trajectory/relevance tests passed. A prior full-suite run completed with **11,796 passed, 597 skipped, and one failure that did not reproduce when rerun in isolation**.

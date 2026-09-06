@@ -1,0 +1,49 @@
+{
+  "experiment": "routing_refined_unseen_adopted_bridge_validation",
+  "status": "complete_stop_rule_reached",
+  "classification": "prospective unseen validation after post-U01 routing-only refinement",
+  "production_freeze": "8fa4d92529f47174101e4d6fb288c0fde32e8f7c",
+  "selected_task": "U03",
+  "selection": {
+    "first_routing_refined_eligible_task": true,
+    "replacement": false,
+    "rerun": false,
+    "selection_outcome_blind": true,
+    "first_eligible_command": "rg -nH \"_estimate_compression_savings_usd|_estimate_input_cost_usd|_estimate_output_savings_usd\" . --glob '!tests/test_savings_tracker_zero_price.py'",
+    "adopted_bridges": [
+      "_estimate_input_cost_usd",
+      "_estimate_output_savings_usd"
+    ],
+    "handler_search_gate": true,
+    "byte_gate": true,
+    "retention_outcome_inspected_before_lock": false
+  },
+  "off": {
+    "task_pass": true,
+    "requests": 13,
+    "derived_tokens_saved": 13928,
+    "rg_capture_count": 3,
+    "relevance_split_units": 0,
+    "search_relevance_chains": 0,
+    "treatment_activated": false
+  },
+  "on": {
+    "task_pass": true,
+    "requests": 13,
+    "derived_tokens_saved": 36143,
+    "rg_capture_count": 4,
+    "relevance_split_units": 0,
+    "search_relevance_chains": 0,
+    "treatment_activated": false
+  },
+  "primary_result": "U03 was locked prospectively from pre-treatment applicability evidence under the final routing-refined production freeze. The fresh U03-ON task passed, but runtime recorded zero relevance_split units and treatment_activated=false. Therefore the adopted-bridge preservation floor did not naturally activate in the selected unseen ON trajectory.",
+  "causal_retention_estimate": null,
+  "interpretation": {
+    "routing_refined_candidate_applicability_observed": true,
+    "fresh_on_task_passed": true,
+    "fresh_on_final_preservation_treatment_activated": false,
+    "unseen_retention_effect_estimate_available": false,
+    "reason": "The selected task satisfied the frozen pre-treatment applicability rule, but the independent fresh ON trajectory did not produce a downstream relevance_split unit. Per protocol, no replacement task or rerun was used."
+  },
+  "claim_limit": "Do not claim unseen critical-record rescue, causal retention improvement, or coding-agent task-success improvement from U03."
+}
