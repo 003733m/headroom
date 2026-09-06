@@ -1,44 +1,55 @@
 {
   "experiment": "second_unseen_adopted_bridge_validation",
-  "status": "complete_stopped_after_locked_u01_on",
+  "status": "complete",
   "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
-  "task": "U01",
+  "selected_task": "U01",
+  "selection_rule": "first eligible task in the precommitted deterministic unseen ordering",
+  "replacement": false,
+  "rerun": false,
+
   "off": {
     "task_pass": true,
     "requests": 7,
-    "rg_captures": 4,
-    "natural_adopted_identifiers_observed": [
+    "natural_rg_searches": 4,
+    "first_applicable_search": "rg -nH -C 4 \"COPILOT_PROVIDER_TYPE|HEADROOM_BACKEND\" headroom/providers",
+    "trajectory_bridges": [
+      "BYOK",
+      "build_launch_env",
+      "resolve_provider_type",
+      "HEADROOM_BACKEND",
+      "AUTO",
+      "COPILOT_PROVIDER_TYPE"
+    ],
+    "adopted_bridges": [
       "COPILOT_PROVIDER_TYPE",
       "HEADROOM_BACKEND"
     ]
   },
+
   "on": {
     "task_pass": true,
     "requests": 10,
-    "rg_captures": 2,
-    "live_gate_audit": {
-      "target_bytes": 20671,
-      "structural_search_eligible": false,
-      "bash_search_call_id": true,
-      "handler_search_gate": true,
-      "trajectory_context_nonempty": true,
-      "adopted_identifiers": [
-        "COPILOT_PROVIDER_TYPE"
-      ]
-    },
+    "natural_rg_searches": 2,
+    "audited_search_output_bytes": 20671,
+    "structural_search_eligible": false,
+    "producing_call_is_bash_search": true,
+    "handler_search_gate": true,
+    "trajectory_context_nonempty": true,
+    "adopted_bridges": [
+      "COPILOT_PROVIDER_TYPE"
+    ],
     "relevance_split_units": 0,
     "search_relevance_chains": 0,
     "treatment_activated": false
   },
-  "interpretation": {
-    "behavioral_adoption_reproduced": true,
-    "frozen_bridge_admission_reproduced": true,
-    "provider_search_provenance_reproduced": true,
-    "adopted_context_constructed": true,
-    "preservation_floor_executed": false,
-    "causal_retention_estimate_available": false,
-    "finding": "The unseen run exposed a downstream routing bottleneck: bash-search provenance allowed trajectory/adoption context to be constructed, but the output did not satisfy the structural search condition required for relevance_split, so the adopted preservation floor was never reached."
-  },
-  "stopping_rule": "No replacement task and no rerun after the locked U01-ON condition.",
-  "production_changed_after_result": false
+
+  "primary_result": "Natural frozen bridge admission and explicit agent re-adoption reproduced on an unseen task, but the downstream adopted-bridge preservation treatment did not activate.",
+
+  "causal_retention_estimate": null,
+
+  "reason_no_causal_retention_estimate": "The frozen handler constructed non-empty trajectory context with an adopted bridge, but the run produced zero relevance_split units, so the preservation floor was never exercised.",
+
+  "allowed_claim": "Unseen natural applicability replicated at the bridge/adoption and handler-gating stages.",
+
+  "disallowed_claim": "The unseen run demonstrated critical-record rescue or end-to-end improvement from the adopted-bridge preservation floor."
 }
