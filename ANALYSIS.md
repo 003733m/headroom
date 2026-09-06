@@ -2,165 +2,130 @@
 
 ## Summary
 
-Headroom already conditions tool-output compression on the user request and the current tool call. I investigated a narrower failure mode: a coding agent's information state evolves during a trajectory. It can learn task-local identifiers from earlier tool outputs and rely on them several steps later even when they are absent from the original request or only weakly represented by the current retrieval query.
+Headroom already conditions tool-output compression on the user request and the current tool call. I investigated a narrower failure mode: a coding agent's information state changes during a trajectory. It may learn a test name, exception, configuration key, function, class, request ID, or other task-local identifier from an earlier tool output and rely on that identifier several steps later. The current retrieval query is therefore a strong local relevance signal, but it is not always a complete representation of what the agent has learned.
 
-I implemented a bounded, target-conditioned cross-tool trajectory signal and integrated it into the OpenAI Responses/search compression path. Controlled evaluation showed that this signal can recover evidence that baseline relevance drops: exact evidence fidelity increased from **6/20 (30%) to 20/20 (100%)**, at a cost of **6.34 percentage points less compression**. Frozen prospective agent runs did **not** show an end-to-end task-success improvement: all OFF and ON conditions passed. Subsequent replays showed why the problem is harder than simply adding more context: trajectory state can preserve useful evidence, but it can also retain noise, and retrieval/routing can prevent a useful preservation rule from executing at all.
+I implemented a bounded, target-conditioned cross-tool trajectory signal and integrated it into Headroom's OpenAI Responses/search compression path. In a controlled 20-case evidence-retention probe, trajectory context increased exact evidence fidelity from **6/20 (30%) to 20/20 (100%)**, while average compression reduction moved from **25.46% to 19.13%** (a 6.34 percentage-point compression cost). Frozen prospective agent runs showed no end-to-end task-success improvement: all OFF and ON tasks passed. Natural and historical replays nevertheless showed that the mechanism can change which evidence survives compression.
 
-This led to a conservative production refinement: an **adopted-bridge preservation floor**. A search record is protected only when an identifier is both supported by prior trajectory state and explicitly reused by the agent in its current `rg`/`grep` query. In a post-hoc strict matched replay, this raised historical-critical retention from **5/9 to 6/9** while adding **504 non-critical tokens**. A naive policy that protected all structured current-query identifiers achieved the same 6/9 retention but added **3,249 non-critical tokens**. The adopted rule therefore obtained the same observed rescue with **84.5% less added non-critical burden** than the naive query-hit floor.
+The experiments also exposed a selectivity problem. Global trajectory context sometimes preserved extra non-critical material without improving critical recall. I therefore implemented a conservative **adopted-bridge preservation floor**: an identifier can force an otherwise-dropped search segment to remain verbatim only when it is both (1) admitted as a prior trajectory bridge and (2) explicitly reused by the agent in its current `rg`/`grep` query. On a post-hoc strict matched replay, this raised historical-critical retention from **5/9 to 6/9** while adding **504 non-critical tokens**. A naive current-query preservation floor achieved the same 6/9 retention but added **3,249 non-critical tokens**. The adopted rule therefore produced the same observed rescue with **84.5% less added non-critical burden** than the naive query floor.
 
-I do not claim a general coding-agent success improvement. The contribution is a characterized state-loss failure mode, a production implementation, a selective monotonic preservation invariant, and an evaluation that separates controlled mechanism effects, naturalistic transfer, post-hoc refinement, and negative unseen validation.
+I do **not** claim a general coding-agent success improvement. The contribution is a characterized state-loss failure mode, a production integration, a selective preservation invariant, and an evaluation that separates controlled mechanism effects, natural activation, post-hoc refinement, and negative unseen validation.
 
-## 1. Gap: relevance is trajectory-dependent
+## 1. Gap: relevance changes during a trajectory
 
-The baseline already has two useful signals:
+The existing Headroom path already uses the current user request and triggering tool-call arguments as relevance context. My extension is not "use the search query"; Headroom already does that. The missing signal is **task-local state learned on the way to the current retrieval**.
 
-1. the global user/task request; and
-2. the current tool-call arguments, including the current search query.
+A useful analogy is a join key. Suppose an earlier test output exposes `DEDUP_AUTO_THRESHOLD`, `resolve_provider_type`, or a specific failing test name. The agent may later search for that identifier, or for a related subsystem, even though the original user request never contained it. Re-sending the full prior trajectory would undermine compression, so the goal is to preserve only a bounded set of high-signal identifiers.
 
-The missing signal is **task-local state learned on the way to the current tool call**.
+The implementation is centered in [`headroom/trajectory_relevance.py`](headroom/trajectory_relevance.py), with routing integration in [`headroom/transforms/content_router.py`](headroom/transforms/content_router.py) and the preservation floor in [`headroom/transforms/relevance_split.py`](headroom/transforms/relevance_split.py).
 
-An agent may discover a test name, exception, request ID, configuration key, class, or function in one tool output and later use that identifier to navigate the repository. Such identifiers behave like join keys between trajectory steps. Re-sending the complete history would defeat compression, so the goal is to retain only a bounded summary of the strongest learned identifiers.
+## 2. Implementation
 
-The main implementation is in [`headroom/trajectory_relevance.py`](headroom/trajectory_relevance.py), with routing integration in [`headroom/transforms/content_router.py`](headroom/transforms/content_router.py) and the final preservation floor in [`headroom/transforms/relevance_split.py`](headroom/transforms/relevance_split.py).
+The trajectory extractor considers only bounded prior tool outputs and recognizes structured candidates including file paths, request IDs, test names, exceptions, configuration keys, functions, and classes. Candidates are ranked using causal evidence, cross-tool corroboration, repeated occurrence, recency, specificity, and speculation penalties. The target output is excluded from its own evidence, preventing self-leakage.
 
-The extractor considers only bounded prior tool outputs. It recognizes structured candidate kinds such as file paths, request IDs, test names, exceptions, configuration keys, function names, and class names. Candidates are ranked using causal/positive evidence, cross-output support, occurrence, recency, and specificity. The current target is never allowed to self-source a bridge candidate.
+For OpenAI Responses, I added adapter logic that reconstructs prior tool-output state and associates shell search calls with their outputs by `call_id`. Search outputs can receive trajectory relevance when they are structurally recognized as search or when their producing call is a recognized Bash `rg`/`grep` search. This was necessary because source-code-looking `path:line:content` can otherwise be classified as code even when it is semantically a search result.
 
-For OpenAI Responses, producing search calls and outputs are correlated by `call_id`. Search outputs can receive trajectory context only when they pass the production search-reachability path. This matters because a source-code-looking `rg` result may not be classified as SEARCH by the primary classifier but can still be recognized through the structural detector or the linked Bash-search call.
+The final production refinement is the adopted-bridge floor. Let `B` be the frozen trajectory bridge set and `Q` be conservative structured identifiers explicitly present in the current search pattern. The preservation set is:
 
-## 2. Final production rule: adopted bridges
+`Adopted = B ∩ Q`
 
-Global trajectory relevance was useful but not sufficiently selective on harder natural replays. I therefore added a monotonic preservation rule.
+When the ordinary relevance scorer would DROP a segment containing an exact-boundary match to an adopted identifier, the segment is forced to KEEP. Existing KEEP decisions are unchanged. This makes the refinement monotonic: it can only preserve additional evidence, not remove evidence the baseline already retained.
 
-Let:
+Production algorithm freeze: `89da0898a80c313b6a320f47763391dea7c376e2`.
 
-- `B` = identifiers admitted by the frozen trajectory bridge builder; and
-- `Q` = conservative structured identifiers explicitly reused in the current `rg`/`grep` pattern.
+Focused adopted-floor tests are in [`tests/test_adopted_bridge_preservation.py`](tests/test_adopted_bridge_preservation.py).
 
-The adopted set is:
+## 3. Evaluation design and evidence hierarchy
 
-`A = B ∩ Q`.
+I used several evaluation layers because "does the compression mechanism retain the intended evidence?" and "does the coding agent solve more tasks?" are different questions.
 
-If ordinary relevance scoring would DROP a record containing an exact-boundary occurrence of an identifier in `A`, that record is forced to KEEP. Existing KEEP decisions are unchanged.
-
-This is intentionally not a new relevance model. It is a narrow preservation invariant: **prior trajectory support must be followed by explicit current behavioral adoption**.
-
-Production freeze: `89da0898a80c313b6a320f47763391dea7c376e2`.
-
-Focused tests are in [`tests/test_adopted_bridge_preservation.py`](tests/test_adopted_bridge_preservation.py).
-
-## 3. Evidence hierarchy
-
-I separate results by when the hypothesis/policy was fixed.
-
-| Status | Evaluation | Result | What it supports |
+| Status | Evaluation | Main result | What it supports |
 |---|---|---:|---|
-| Controlled development | Multi-target evidence fidelity | 6/20 → 20/20 | Clean mechanism capability |
-| Prospective / frozen | N5–N8 paired agent runs | OFF 4/4, ON 4/4; ON activated 3/4 | Natural reachability, no task-success lift |
-| Confirmatory harder tasks | Six paired hard tasks | OFF 6/6, ON 6/6 | Ceiling effect; no end-to-end lift |
-| Secondary natural replay | Exact captured requests | 1/18 baseline drops rescued, 0 regression | Small natural retention transfer |
-| Exploratory historical replay | Reverse-patch scan | 60/1,326 drops rescued, 3 regressions | Conditional larger-sample mechanism evidence |
-| Post-hoc refinement | Adopted-bridge floor | critical 5/9 → 6/9; +504 non-critical tokens | Selective preservation on development replay |
-| Post-hoc comparator | Naive query-hit floor | critical 5/9 → 6/9; +3,249 non-critical tokens | Same rescue, much broader retention |
-| Unseen validation | G11 + second unseen U01 | final preservation treatment did not activate | No unseen causal retention estimate |
+| Controlled development | 20-case multi-target fidelity probe | 30% → 100% fidelity | Clean mechanism capability |
+| Prospective / frozen | N5–N8 paired agent runs | OFF 4/4, ON 4/4; ON activated 3/4 | Natural activation, no success lift |
+| Secondary natural replay | Exact captured inbound requests | 1/18 baseline drops rescued; 0 regression | Direct transfer to real requests |
+| Exploratory historical replay | Reverse-patch historical scan | 60/1,326 drops rescued; 3 regressions | Larger conditional opportunity sample |
+| Confirmatory hard agent runs | Six hard paired tasks | OFF 6/6, ON 6/6 | Ceiling effect; no end-to-end lift |
+| Post-hoc refinement | Adopted-bridge strict replay | 5/9 → 6/9; +504 non-critical tokens | Selective preservation |
+| Post-hoc comparator | Naive query-hit floor | 5/9 → 6/9; +3,249 non-critical tokens | Simpler rule is much broader |
+| First unseen applicability holdout | G11 | behavior adopted, bridge not admitted | Conservative bridge gate can lag adoption |
+| Second unseen validation | U01 | live bridge adoption reached handler gate, but no `relevance_split` treatment activation | Unseen natural applicability, but no retention-effect estimate |
 
-### Controlled fidelity
+The distinction between prospective, confirmatory, and post-hoc evidence is deliberate. I froze algorithms and manifests before prospective runs, did not replace completed conditions, and recorded harness corrections separately rather than silently regenerating favorable results.
 
-In a 20-case controlled probe, the bridge signal increased exact evidence retention from 30% to 100%. Average compression reduction changed from 25.46% to 19.13%, a 6.34 percentage-point cost. This is the cleanest positive result: trajectory state can preserve evidence that the baseline relevance signal loses.
+A further design choice was to keep retrieval behavior as natural as possible while constraining the interface enough to make measurements reproducible. Agent prompts required shell `rg -nH` rather than the dedicated Grep tool, but did not prescribe the query content. This let the agent choose what to search while allowing the harness to capture producing commands and outputs consistently. Where exact-wire replay was used, I replayed the captured inbound request rather than reconstructing a hypothetical trajectory.
 
-The controlled result is recorded in [`evidence_fidelity_multitarget_summary_pre_freeze.json`](experiments/bridge_relevance/results/v3/evidence_fidelity_multitarget_summary_pre_freeze.json) with per-case data in [`evidence_fidelity_multitarget_pre_freeze.csv`](experiments/bridge_relevance/results/v3/evidence_fidelity_multitarget_pre_freeze.csv).
+I also separated algorithm changes from measurement corrections. For example, when a replay matcher failed on folded search-output formatting, I corrected the normalization logic and withdrew the earlier measurement instead of treating the first number as evidence. Similarly, harness fixes were committed independently from production changes. This matters here because several apparent failures were actually reachability or measurement issues rather than failures of the bridge-ranking idea itself.
 
-### Frozen prospective agent runs
+## 4. Results
 
-For N5–N8, the mechanism and task manifest were frozen before execution, completed conditions were never rerun, and tasks were not replaced after observing outcomes. The treatment activated in 3/4 ON tasks. All four tasks passed in both OFF and ON conditions.
+### Controlled evidence fidelity
 
-Therefore these runs show that trajectory relevance can reach real agent trajectories, but they do **not** show an end-to-end success improvement. Aggregate token savings differed descriptively, but I do not interpret that difference causally because enabling compression can change the agent's subsequent retrieval behavior.
+In the controlled 20-case probe, the trajectory signal raised exact evidence retention from 6/20 to 20/20. Average compression reduction changed from 25.46% to 19.13%. This is the cleanest positive result: the additional state can preserve evidence that query-local relevance loses, but preserving that evidence costs compression.
 
-The locked manifest and runner are [`prospective_task_manifest.json`](experiments/bridge_relevance/results/v3/prospective_task_manifest.json) and [`run_v3_prospective.sh`](experiments/bridge_relevance/agent_benchmarks/v3/run_v3_prospective.sh).
+### Prospective natural agent runs
 
-## 4. Naturalistic and historical replay
+The V3 mechanism was frozen before N5–N8. All eight OFF/ON conditions were completed without replacement or rerun. The ON mechanism activated in 3/4 tasks, but all tasks passed in both conditions. Therefore these runs show **natural reachability and activation**, not a task-success improvement.
 
-To create more retention opportunities without repeatedly sampling an agent, I mined historical bug-fix commits under a fixed validation protocol. Production patches were reversed, pristine tests were checked, and only snapshots reproducing the expected historical failures were retained. Parent-version lines around the historical source fix were used as a **historical-fix-adjacent oracle**.
+### Historical and exact-wire replay
 
-This oracle is useful but limited: adjacency to a historical fix is not proof that a record was causally necessary for a new agent.
+To create more retention opportunities, I mined historical bug-fix commits under a fixed reverse-patch protocol. A production fix was reversed, the pristine snapshot was verified to pass, the reversed snapshot had to produce the expected failing tests, and parent-version lines around the source fix were used as a **historical-fix-adjacent oracle**. This oracle is useful for replay, but it is not claimed to be causal ground truth.
 
-Across 92 tasks where baseline DROP created an opportunity, trajectory relevance rescued 10 tasks. At record level, it rescued **60/1,326 (4.52%)** baseline-dropped fix-adjacent records, with 3 regressions. This result is exploratory and conditional on retrieval and the historical oracle.
+Across 92 baseline-opportunity tasks, trajectory relevance rescued 10 tasks. At record level, it rescued **60/1,326 baseline-dropped fix-adjacent records (4.52%)**, with 3 regressions. Because this analysis is historical and conditional on retrieval and oracle construction, I treat it as exploratory evidence.
 
-I also replayed exact inbound requests captured from natural agent trajectories. At first exposure, baseline retained 1/19 scorable historical-critical records. A frozen production-wrapper OFF replay reproduced all 19 baseline KEEP/DROP decisions. V3 retained 2/19, rescuing **1/18 baseline drops with no regression**. However, the three predeclared controlled D→K candidates were not rescued (0/3), limiting a stronger transfer claim.
+I also replayed exact captured inbound requests from natural agent trajectories. On 19 naturally retrieved historical-critical records at first exposure, baseline retained 1/19. A frozen production-wrapper OFF replay reproduced all 19 baseline KEEP/DROP decisions. V3 retained 2/19, rescuing **1/18 baseline drops with no regression**. The three predeclared controlled D→K candidates were not rescued (0/3), which limits any stronger transfer claim.
 
-The historical scan is implemented by [`run_exhaustive_discovery.py`](experiments/bridge_relevance/bridge_hard/run_exhaustive_discovery.py) with results in [`exhaustive_discovery_results.json`](experiments/bridge_relevance/bridge_hard/exhaustive_discovery_results.json). Exact-wire replay is implemented by [`run_exact_wire_v3_replay.py`](experiments/bridge_relevance/bridge_hard/run_exact_wire_v3_replay.py) with results in [`exact_wire_v3_replay_results.json`](experiments/bridge_relevance/bridge_hard/exact_wire_v3_replay_results.json). Corrected matched-retention measurement is implemented by [`measure_normalized_retention.py`](experiments/bridge_relevance/bridge_hard/measure_normalized_retention.py).
+### Hard paired runs and the selectivity problem
 
-## 5. Selectivity: why the adopted floor was added
+A 24-task OFF-only difficulty screen produced no agent failures, so I selected six harder tasks under a predeclared effort rule and ran paired OFF/ON conditions. All six passed in both conditions. In the final relevance-split stage, the ON treatment did not activate on these runs, so task success could not estimate the preservation rule.
 
-On the strict matched hard replay, query-only baseline and global V3 trajectory context both retained **5/9** scorable historical-critical records. V3 retained more non-critical material without improving critical recall. A retrieval-anchored variant reduced much of that extra material but still did not increase critical recall.
+Natural-search analysis nevertheless showed that agents do reuse identifiers learned from prior outputs. Across the hard trajectories, many later queries contained structured identifiers that had appeared earlier, confirming that cross-tool state is a real information channel.
 
-I then tested a naive query-hit floor: preserve any dropped record containing a structured identifier from the current search query. It increased critical retention from 5/9 to 6/9, but added 117 records and 3,249 non-critical tokens.
+A corrected strict matched replay then showed the main weakness of global trajectory context: baseline/query-only and V3 both retained **5/9** scorable historical-critical records, while V3 retained more non-critical context. This result motivated a more selective rule rather than a stronger global context injection.
 
-The adopted-bridge floor used the intersection of prior trajectory support and explicit query reuse. On the same post-hoc replay, it also increased critical retention from 5/9 to 6/9, but added only 21 records and 504 non-critical tokens.
+## 5. Adopted-bridge preservation
 
-Thus, for the single observed rescue:
+I first tested a naive query-hit floor: preserve any otherwise-dropped record containing a structured identifier from the current search query. It raised critical retention from 5/9 to 6/9, but added 117 records and 3,249 non-critical tokens.
 
-- naive query floor: +3,249 non-critical tokens;
-- adopted bridge floor: +504 non-critical tokens;
-- reduction in added non-critical burden: **84.5%**.
+The adopted-bridge floor intersects two independent signals: prior trajectory support and explicit current agent reuse. On the same strict development replay it also raised 5/9 to 6/9, but added only 21 records and **504 non-critical tokens**. Relative to the naive query floor, this is **84.5% less added non-critical token burden for the same observed single critical rescue**.
 
-This comparison motivated keeping the adopted rule in production. It is still development evidence because the rule was designed after inspecting the hard replay; it is not an unseen generalization result.
+The concrete rescue occurred for `DEDUP_AUTO_THRESHOLD`: it had been admitted from prior trajectory state and was explicitly reused in the current search. The preservation floor changed the matching historical-critical segment from DROP to KEEP.
 
-The relevant probes are [`probe_query_hit_preservation.py`](experiments/bridge_relevance/bridge_hard/probe_query_hit_preservation.py) / [`query_hit_preservation_probe.json`](experiments/bridge_relevance/bridge_hard/query_hit_preservation_probe.json) and [`probe_adopted_bridge_floor.py`](experiments/bridge_relevance/bridge_hard/probe_adopted_bridge_floor.py) / [`adopted_bridge_floor_probe.json`](experiments/bridge_relevance/bridge_hard/adopted_bridge_floor_probe.json).
+This is a real algorithmic refinement, but it is **post-hoc development evidence** because the rule was designed after observing the harder replay behavior. I therefore required unseen validation before making any generalization claim.
 
-## 6. Unseen validation: applicability remained the bottleneck
+## 6. Unseen validation: two negative but informative outcomes
 
-I performed two attempts to validate the frozen final rule on unseen natural trajectories.
+The first treatment-blind holdout screen selected G11. In a fresh run, the agent naturally reused `resolve_litellm_model_name`, but only after one supporting prior output. The frozen bridge gate did not admit the singleton function name, so the preservation treatment never activated. Both OFF and ON passed. This exposed an **early-adoption lag** in the conservative bridge-admission rule.
 
-### G11
+I then locked a second unseen validation protocol before running new tasks: deterministic candidate ordering, maximum 12 fresh OFF screens, first eligible task only, no replacement, and no retention/fix-oracle inspection during selection.
 
-A treatment-blind historical applicability screen selected G11. In the fresh run, the agent naturally reused `resolve_litellm_model_name`, but it did so after only one supporting prior output. The frozen bridge admission rule did not admit the singleton `function_name`, so the preservation treatment never activated. Both OFF and ON passed. This produced no causal retention estimate.
+U01, the first screened task, naturally produced a later search for `COPILOT_PROVIDER_TYPE|HEADROOM_BACKEND`. The frozen builder admitted both identifiers as bridges and the query explicitly reused them. In the fresh U01-ON run, the agent again passed the task. A live gate audit showed that the relevant 20,671-byte output was attached to a recognized Bash search call, so the actual handler search gate was true even though the structural detector alone returned false. The trajectory context was non-empty and `COPILOT_PROVIDER_TYPE` was adopted.
 
-A separate treatment-blind screen of 17 historical trajectories found no natural opportunity for the frozen safe-singleton kinds (`exception`, `request_id`, `test_name`).
+However, runtime metrics still reported **0 relevance-split units, 0 search-relevance chains, and `treatment_activated=False`**. The unseen run therefore demonstrates that bridge admission, behavioral reuse, and the provider-level search/context gate can all occur naturally, but it does **not** provide an unseen retention-effect estimate for the preservation floor.
 
-### Second unseen screen: U01
+This is an important limitation rather than a result to hide. The full path is:
 
-I then locked a second unseen protocol, deterministically ordered previously unused validated reverse-patch tasks, capped the screen at 12 OFF runs, and committed all 12 snapshots before any new agent execution.
+**retrieval → search identification → trajectory context → relevance-split routing → preservation**
 
-The first task, U01, produced a natural trajectory in which the frozen builder admitted `COPILOT_PROVIDER_TYPE` and `HEADROOM_BACKEND`, and a later `rg` query explicitly reused both. In the single fresh ON run, a live production-gate audit confirmed:
+G11 stopped at bridge admission. U01 advanced further, through natural adoption and handler-level trajectory context, but still did not reach the final preservation stage. The remaining bottleneck is therefore not only candidate quality; end-to-end routing determines whether the preservation invariant can act at all.
 
-- the target was a call-id-linked Bash search;
-- the handler search gate was true;
-- trajectory context was non-empty; and
-- `COPILOT_PROVIDER_TYPE` was adopted.
+## 7. Conclusion
 
-However, runtime metrics still reported:
+The study supports a narrower claim than "trajectory relevance improves coding-agent success."
 
-- `relevance_split_units = 0`;
-- `search_relevance_chains = 0`;
-- `treatment_activated = false`.
+First, prior tool outputs contain task-local state that is not always captured by the original request or current query alone. Second, a bounded trajectory signal can strongly improve evidence fidelity in controlled cases and occasionally rescue naturally retrieved historical-critical records. Third, global trajectory context is not sufficiently selective by itself. Intersecting prior bridge support with explicit agent reuse produced a much more selective monotonic preservation rule: in development replay, it achieved the same observed rescue as a naive query floor with 84.5% less added non-critical burden.
 
-Therefore the final preservation floor itself did **not** execute on a relevance-split unit. The upstream bridge/adoption signal reproduced naturally, but the experiment again yielded no unseen causal estimate of retention improvement. The available measurements do not justify attributing the downstream non-activation to a more specific gate.
+However, end-to-end agent benchmarks showed a ceiling effect, and two unseen validation attempts did not produce a causal retention estimate for the final preservation rule. G11 failed at conservative bridge admission; U01 reproduced bridge admission, agent reuse, and the handler-level context gate but did not reach final relevance-split activation.
 
-This negative result is important: in the observed natural trajectories, **reachability through the complete compression pipeline is a larger limitation than the local preservation rule itself**.
+The strongest current conclusion is therefore:
 
-The second-unseen protocol is [`second_unseen_adopted_bridge_validation_protocol.json`](experiments/bridge_relevance/bridge_hard/second_unseen_adopted_bridge_validation_protocol.json); the deterministic selection, execution lock, snapshot lock, and final safe summary are in the same directory, including [`second_unseen_adopted_bridge_summary.json`](experiments/bridge_relevance/bridge_hard/second_unseen_adopted_bridge_summary.json).
+> **Global task intent, current retrieval intent, and evolving trajectory-local state are distinct relevance signals. Cross-tool state is real and useful, but its value depends on reliable end-to-end routing and selective preservation rather than simply injecting more history.**
 
-## 7. Validation and limitations
+## Reproducibility
 
-Focused adopted-bridge tests passed 7/7; the combined trajectory/relevance-split focused suite passed 54/54. A full repository test run produced 11,796 passes, 597 skips, and one failure; that single failure passed when rerun in isolation, so I report it as a full-suite failure that did not reproduce rather than silently treating the suite as fully green.
+The production implementation is in [`headroom/trajectory_relevance.py`](headroom/trajectory_relevance.py), [`headroom/transforms/content_router.py`](headroom/transforms/content_router.py), and [`headroom/transforms/relevance_split.py`](headroom/transforms/relevance_split.py).
 
-Main limitations are:
+The main experiment code and protocols are under [`experiments/bridge_relevance/`](experiments/bridge_relevance/) and [`experiments/bridge_relevance/bridge_hard/`](experiments/bridge_relevance/bridge_hard/). Historical replay is implemented in [`run_exhaustive_discovery.py`](experiments/bridge_relevance/bridge_hard/run_exhaustive_discovery.py); exact-wire replay is in [`run_exact_wire_v3_replay.py`](experiments/bridge_relevance/bridge_hard/run_exact_wire_v3_replay.py).
 
-- natural end-to-end tasks had a strong success ceiling;
-- naturally applicable final-treatment events were sparse;
-- the historical oracle is fix-adjacent, not causal ground truth;
-- the final adopted-floor result is post-hoc development evidence;
-- agent trajectories are stochastic, so token/runtime comparisons are descriptive unless replayed on identical captured inputs;
-- the unseen U01 run reproduced upstream adoption but not final relevance-split treatment activation.
+The second unseen validation is documented by [`second_unseen_adopted_bridge_validation_protocol.json`](experiments/bridge_relevance/bridge_hard/second_unseen_adopted_bridge_validation_protocol.json), [`second_unseen_adopted_bridge_selection.json`](experiments/bridge_relevance/bridge_hard/second_unseen_adopted_bridge_selection.json), [`run_second_unseen_adopted_bridge_screen.py`](experiments/bridge_relevance/bridge_hard/run_second_unseen_adopted_bridge_screen.py), and the locked execution/snapshot files in the same directory.
 
-A post-hoc provisional one-search lease was also explored after G11 to separate confidence from lifetime. It detected earlier behavioral adoption but did not change retention in the fresh G11 search result; I therefore leave it as future work rather than production code.
-
-## Conclusion
-
-The study supports a narrower claim than “trajectory relevance makes coding agents solve more tasks.”
-
-**Cross-tool trajectory state is a real information channel beyond the current retrieval query.** It can recover evidence lost by baseline compression, but adding it globally can also retain noise. Requiring both prior trajectory support and explicit current agent reuse yields a selective monotonic preservation invariant that, on the development replay, obtained the same observed critical rescue as a naive current-query policy with substantially lower context cost.
-
-The unseen evaluations did not establish a causal natural retention improvement because the final preservation treatment did not activate end-to-end. That negative result changes the engineering conclusion: further gains likely require improving the full retrieval → search-reachability → routing → relevance-split chain, not simply making bridge extraction more permissive.
-
-I therefore keep the adopted-bridge floor as a conservative production safeguard, while treating its observed 5/9 → 6/9 result as post-hoc mechanism evidence rather than a general benchmark win.
+Focused trajectory/relevance tests passed. A prior full-suite run completed with **11,796 passed, 597 skipped, and one failure that did not reproduce when rerun in isolation**.
