@@ -1,0 +1,57 @@
+{
+  "experiment": "second_unseen_adopted_bridge_validation",
+  "status": "complete_stopped_after_inactive_treatment",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "selected_task": "U01",
+
+  "off": {
+    "task_pass": true,
+    "requests": 7,
+    "rg_captures": 4,
+    "wire_inbound_requests": 10,
+    "natural_applicability_probe": {
+      "unique_search_outputs": 3,
+      "bridge_query_intersection_observed": true,
+      "first_observed_adopted_identifiers": [
+        "COPILOT_PROVIDER_TYPE",
+        "HEADROOM_BACKEND"
+      ]
+    }
+  },
+
+  "on": {
+    "task_pass": true,
+    "requests": 10,
+    "rg_captures": 2,
+    "wire_inbound_requests": 13,
+    "handler_gate_audit": {
+      "target_bytes": 20671,
+      "structural_search_eligible": false,
+      "bash_search_call_id": true,
+      "handler_search_gate": true,
+      "trajectory_context_nonempty": true,
+      "adopted_identifiers": [
+        "COPILOT_PROVIDER_TYPE"
+      ]
+    },
+    "downstream_routing_audit": {
+      "detected_content_type": "PLAIN_TEXT",
+      "mixed": true,
+      "primary_strategy": "MIXED",
+      "lossless_search_label": null,
+      "relevance_split_entered": false
+    },
+    "runtime": {
+      "relevance_split_units": 0,
+      "search_relevance_chains": 0,
+      "treatment_activated": false
+    }
+  },
+
+  "causal_retention_estimate_available": false,
+  "unseen_retention_rescue_observed": false,
+
+  "conclusion": "The unseen task reproduced natural cross-tool identifier adoption and upstream trajectory-context construction, but the frozen adopted-bridge preservation floor did not activate because downstream routing classified the target as MIXED rather than entering relevance_split. No unseen causal retention estimate was obtained.",
+
+  "stopping_rule_applied": "stop after inactive ON treatment; no replacement task and no further agent runs"
+}

@@ -1,0 +1,59 @@
+{
+  "experiment": "second_unseen_adopted_bridge_exact_replay",
+  "classification": "deterministic post-run mechanism replay on prospectively selected unseen trajectory",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "task": "U01",
+  "source_condition": "U01-ON",
+  "comparison": {
+    "A": "frozen 89da trajectory relevance with adopted preservation disabled only",
+    "D": "exact frozen 89da trajectory relevance with adopted preservation enabled"
+  },
+  "original_target_bytes": 20671,
+  "original_target_sha256": "85aefed6d73d330b638b844444516e939b0d023de67e5d544b5ae9c1f721ff42",
+  "A": {
+    "modified": true,
+    "tokens_saved": 639,
+    "transforms": [
+      "openai:responses:tool_schema_compaction",
+      "router:openai:responses:function_call_output:mixed",
+      "mixed",
+      "router:openai:responses:function_call_output:code_aware",
+      "code_aware",
+      "router:responses_cross_turn_dedup"
+    ],
+    "reason": null,
+    "input_bytes": 79932,
+    "output_bytes": 78147,
+    "attempted_input_tokens": 12613,
+    "target_present": true,
+    "target_bytes": 19460,
+    "target_sha256": "758cc16b61bb381286684862d3be427d92980b9fa418c4a52044b8d9204f9e3a",
+    "contains_COPILOT_PROVIDER_TYPE": true,
+    "contains_HEADROOM_BACKEND": true
+  },
+  "D": {
+    "modified": true,
+    "tokens_saved": 639,
+    "transforms": [
+      "openai:responses:tool_schema_compaction",
+      "router:openai:responses:function_call_output:mixed",
+      "mixed",
+      "router:openai:responses:function_call_output:code_aware",
+      "code_aware",
+      "router:responses_cross_turn_dedup"
+    ],
+    "reason": null,
+    "input_bytes": 79932,
+    "output_bytes": 78147,
+    "attempted_input_tokens": 12613,
+    "target_present": true,
+    "target_bytes": 19460,
+    "target_sha256": "758cc16b61bb381286684862d3be427d92980b9fa418c4a52044b8d9204f9e3a",
+    "contains_COPILOT_PROVIDER_TYPE": true,
+    "contains_HEADROOM_BACKEND": true
+  },
+  "A_D_target_equal": true,
+  "A_D_output_bytes_delta": 0,
+  "A_D_tokens_saved_delta": 0,
+  "raw_wire_committed": false
+}
