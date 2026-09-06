@@ -1,0 +1,230 @@
+{
+  "status": "locked_before_any_routing_refined_unseen_agent_run",
+  "experiment": "routing_refined_adopted_bridge_unseen_validation",
+  "classification": "prospective unseen validation",
+  "production_freeze": "8fa4d92529f47174101e4d6fb288c0fde32e8f7c",
+  "protocol_lock_commit": "5b0b3c73b43e84587546d1147c5446295bcd9d3d",
+  "original_selection_lock_commit": "4fa1bc4a6d9fe0a69eb22181e3478d6bc20024ee",
+  "development_case_excluded": "U01",
+  "candidate_count": 11,
+  "task_count": 11,
+  "run_order": [
+    "U02-OFF",
+    "U03-OFF",
+    "U04-OFF",
+    "U05-OFF",
+    "U06-OFF",
+    "U07-OFF",
+    "U08-OFF",
+    "U09-OFF",
+    "U10-OFF",
+    "U11-OFF",
+    "U12-OFF"
+  ],
+  "selection_rule": "first naturally applicable OFF task in the pre-existing locked U02-U12 order",
+  "tasks": [
+    {
+      "task_id": "U02",
+      "source_commit": "3e85eb1880af5663cf083492f1dc1415a354bd99",
+      "rank_sha256": "062e03d02aa44f712fd77831b14c488e5af5d2aa6c020b477d64b2995fd876f5",
+      "subject": "fix(memory): resolve Trae cwd metadata from user reminders (#1737) (#1887)",
+      "production_files": [
+        "headroom/memory/storage_router.py"
+      ],
+      "test_files": [
+        "tests/test_memory_storage_router.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_memory_storage_router.py::test_extract_system_prompt_user_reminder_with_cwd_reaches_resolver"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_memory_storage_router.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "2719d5d209634bfe896a0193cf81b0eb42162152277390957395948f5e304ce2"
+    },
+    {
+      "task_id": "U03",
+      "source_commit": "6ecbdd6b527312ce61a1e8890f0d6d1d63ae4f48",
+      "rank_sha256": "07d036d474797a4d7379be3428140fdd2541dad5d83c971b5f88137dfbd42886",
+      "subject": "fix(proxy/savings): don't bill fallback rate for free (0-priced) models (#2024)",
+      "production_files": [
+        "headroom/proxy/savings_tracker.py"
+      ],
+      "test_files": [
+        "tests/test_savings_tracker_zero_price.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_savings_tracker_zero_price.py::test_compression_savings_zero_for_free_model",
+        "tests/test_savings_tracker_zero_price.py::test_input_cost_zero_for_free_model"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_savings_tracker_zero_price.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "9ca3f3c52580091471c0395359c1e6f6dd5d0e3bc2c25ab60497e3295c15d356"
+    },
+    {
+      "task_id": "U04",
+      "source_commit": "1612f06a4c19c53b6d8b02b02cd30d14a1858d28",
+      "rank_sha256": "0823f56d52811bb62c7241b22f3046bb67cc0f70a833a4c42e14c4a14f635590",
+      "subject": "fix(ccr): don't crash tool-call detection on a null function/functionCall (#2269)",
+      "production_files": [
+        "headroom/ccr/tool_calls.py",
+        "headroom/ccr/tool_injection.py"
+      ],
+      "test_files": [
+        "tests/test_ccr_tool_calls.py",
+        "tests/test_ccr_tool_injection.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_ccr_tool_calls.py::test_ccr_detection_survives_null_function_tool_call",
+        "tests/test_ccr_tool_injection.py::TestParseToolCall::test_parse_null_function_returns_none_without_crashing"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_ccr_tool_calls.py, tests/test_ccr_tool_injection.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "cacedcc34c0b30bda7e6e2534d72283badd458f8ade09a92505e1e1eb5a5ead1"
+    },
+    {
+      "task_id": "U05",
+      "source_commit": "58f28dc7a6b6ce5bbf0f88524bd78cbe3f3ffa4b",
+      "rank_sha256": "09b3561b6bbb372eac477145aa0a9b4413627f2c9118ac791ffa81fa613586b8",
+      "subject": "fix(install): honor HEADROOM_PORT in install apply and deploy (#3085)",
+      "production_files": [
+        "headroom/cli/install.py"
+      ],
+      "test_files": [
+        "tests/test_cli/test_install_cli.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_cli/test_install_cli.py::test_install_apply_honors_headroom_port_env",
+        "tests/test_cli/test_install_cli.py::test_deploy_honors_headroom_port_env"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_cli/test_install_cli.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "5ef3e548a52c8c2bd5d655707b48da5ac1a4190f08b668554d1794a20a7fc1cc"
+    },
+    {
+      "task_id": "U06",
+      "source_commit": "12149f74466c08b69be8d5fe751425be63c2fda4",
+      "rank_sha256": "0c17bacdc48947b6561134b40aa8a969ac592d57f535cd1b35c199b532c817e9",
+      "subject": "fix(proxy): include tool_search_deferral savings in the savings ledger",
+      "production_files": [
+        "headroom/proxy/prometheus_metrics.py"
+      ],
+      "test_files": [
+        "tests/test_savings_ledger_before_forwarded.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_savings_ledger_before_forwarded.py::test_record_savings_event_includes_tool_search_deferral",
+        "tests/test_savings_ledger_before_forwarded.py::test_record_savings_event_written_for_deferral_only_turn"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_savings_ledger_before_forwarded.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "3103c8418475659f02417ba4bbd7e12e4716a76e3810a4dab939096ab85b1ad7"
+    },
+    {
+      "task_id": "U07",
+      "source_commit": "0805e8e410543d75c7ddd3b83dde5eda3bc13144",
+      "rank_sha256": "11e8772688be18ee3a3c1e7c8e4ff8ecd1a1ad6443c14ad20c20d2e5257bf2a2",
+      "subject": "fix(providers/openai): bound tiktoken vocab loads with the guarded loader (#2554)",
+      "production_files": [
+        "headroom/providers/openai.py"
+      ],
+      "test_files": [
+        "tests/test_providers/test_openai.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_providers/test_openai.py::TestGuardedEncodingLoad::test_get_encoding_routes_through_bounded_loader",
+        "tests/test_providers/test_openai.py::TestGuardedEncodingLoad::test_get_token_counter_falls_back_to_estimation"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_providers/test_openai.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "dd496dee9c5e270e74ad5e45afe3bfcaf8279a97bac9f260cf9dfff8062ecc3e"
+    },
+    {
+      "task_id": "U08",
+      "source_commit": "3e976712e717a53ab6aea73120ae6ffacea74250",
+      "rank_sha256": "122c3430ca0ead9a9ce45678d6c0b1b2ecb388efa4370b947e2cfa537758507f",
+      "subject": "fix(proxy/output-shaping): tolerate a non-string system block text in steering (#2435)",
+      "production_files": [
+        "headroom/proxy/output_steering.py"
+      ],
+      "test_files": [
+        "tests/test_output_steering.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_output_steering.py::test_anthropic_steering_tolerates_non_string_system_block_text"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_output_steering.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "d1d0453a711981db53ff58fff0f9721d1424f8a20272f49a59f1d771b0dccb6d"
+    },
+    {
+      "task_id": "U09",
+      "source_commit": "84f66da36f0bcd0929ad6d864d745b7685147718",
+      "rank_sha256": "13461a285883f18dfa9285070810bbc1d9a640c8f4dbbd82ea600d51c73a407d",
+      "subject": "fix(init/codex): merge into hooks.json instead of overwriting it (#2173)",
+      "production_files": [
+        "headroom/cli/init.py"
+      ],
+      "test_files": [
+        "tests/test_cli/test_init_cli.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_cli/test_init_cli.py::test_ensure_codex_hooks_preserves_user_hooks"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_cli/test_init_cli.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "a356b9052fa5c655fa586f0a5f910796b2992406503410491dd2c7b861d2fc40"
+    },
+    {
+      "task_id": "U10",
+      "source_commit": "2f4d001c9ffd7f856c8dab3e31a8240a1c676f04",
+      "rank_sha256": "1672821bf09700f934f2e94716e41efd300f1c0bf81945c877a90bb8bd129f5f",
+      "subject": "fix(proxy): keep prefixed core tools resident (#3046)",
+      "production_files": [
+        "headroom/proxy/helpers.py"
+      ],
+      "test_files": [
+        "tests/test_issue_746_tool_search.py",
+        "tests/test_openai_tool_search_deferral.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_issue_746_tool_search.py::test_core_tools_match_leading_underscore_namespace",
+        "tests/test_openai_tool_search_deferral.py::test_prefixed_core_and_terminal_names_stay_resident"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_issue_746_tool_search.py, tests/test_openai_tool_search_deferral.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "e54c1acda8cc23346bf70a812a0aabc3b870f2179fdc581b6a7cced4195cc14f"
+    },
+    {
+      "task_id": "U11",
+      "source_commit": "8b7e797ed41ea9a37ef8711e102b355f9194c571",
+      "rank_sha256": "18edca3a50cf035979fddd55c8a0d196ff52e6a3eef3261c27b3396f592f501a",
+      "subject": "fix(proxy/memory): don't crash memory tool-call detection on a null function (#2272)",
+      "production_files": [
+        "headroom/proxy/memory_handler.py"
+      ],
+      "test_files": [
+        "tests/test_memory_handler_null_function.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_memory_handler_null_function.py::test_has_memory_tool_calls_survives_null_function",
+        "tests/test_memory_handler_null_function.py::test_has_memory_tool_calls_all_null_functions_is_false"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_memory_handler_null_function.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "2f34edf267e95daea0b194c96f4f9b7ab0e137908f8a2757cc1ee37d761c16e5"
+    },
+    {
+      "task_id": "U12",
+      "source_commit": "def2f9a7286a271a36402bc564867b53a3c11b70",
+      "rank_sha256": "1abd461c566f3012c643ed4c770b086dc90a030aaa43b70dd52d72f6158bf5fb",
+      "subject": "fix(learn): don't desync verbosity pairing on empty assistant turns (#2123)",
+      "production_files": [
+        "headroom/learn/verbosity.py"
+      ],
+      "test_files": [
+        "tests/test_verbosity_learn.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_verbosity_learn.py::TestSignalExtraction::test_empty_assistant_message_does_not_desync_fast_skip"
+      ],
+      "prompt": "Fix the regression covered by the tests in: tests/test_verbosity_learn.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+      "prompt_sha256": "1f2a22a80cc3b8e133fb58f74fc25bd1ecac95620043ae0b7e012619dde73123"
+    }
+  ],
+  "forbidden_before_first_eligible_selection": [
+    "historical-critical overlap",
+    "baseline KEEP/DROP",
+    "adopted-floor rescue outcome",
+    "fix-adjacent oracle overlap"
+  ]
+}
