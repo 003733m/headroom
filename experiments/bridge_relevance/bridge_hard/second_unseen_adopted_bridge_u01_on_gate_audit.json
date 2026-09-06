@@ -1,0 +1,27 @@
+{
+  "experiment": "second_unseen_adopted_bridge_validation",
+  "condition": "U01-ON",
+  "status": "completed_once_do_not_rerun",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "task_pass": true,
+  "live_gate_audit": {
+    "wire": "1788632717627022589_hr_1788632717_000009_http_inbound_request.json",
+    "call_id": "call_NM0wmbNuSl4zUdOh8rhqsUR0",
+    "tool_name": "bash",
+    "target_bytes": 20671,
+    "structural_search_eligible": false,
+    "bash_search_call_id": true,
+    "handler_search_gate": true,
+    "trajectory_context_nonempty": true,
+    "adopted_bridges": [
+      "COPILOT_PROVIDER_TYPE"
+    ]
+  },
+  "runtime_metrics": {
+    "relevance_split_units": 0,
+    "search_relevance_chains": 0,
+    "treatment_activated": false
+  },
+  "interpretation": "The fresh unseen ON trajectory naturally reproduced an adopted bridge and passed the production handler search gate. However, no relevance_split unit was ultimately applied, so the adopted-bridge preservation treatment did not activate and this run provides no causal retention-effect estimate.",
+  "claim_limit": "Do not claim unseen retention rescue or end-to-end task-success improvement from this run."
+}
