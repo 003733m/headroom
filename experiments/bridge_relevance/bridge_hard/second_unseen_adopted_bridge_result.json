@@ -1,56 +1,58 @@
 {
-  "status": "completed_stopped_per_locked_protocol",
   "experiment": "second_unseen_adopted_bridge_validation",
+  "status": "stopped_after_single_on_per_locked_stopping_rule",
   "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+
   "selected_task": "U01",
-  "selection": {
-    "method": "first eligible task in precommitted deterministic ordering",
-    "replacement": false,
-    "later_tasks_run": false
-  },
-  "off_condition": {
+
+  "off_run": {
+    "valid": true,
     "task_pass": true,
-    "natural_searches": 3,
-    "applicability_detected": true,
-    "first_adopted_identifiers": [
+    "natural_rg_searches": 4,
+    "natural_adopted_identifiers_observed": [
       "COPILOT_PROVIDER_TYPE",
       "HEADROOM_BACKEND"
     ]
   },
-  "on_condition": {
+
+  "on_run": {
+    "valid": true,
     "task_pass": true,
-    "natural_searches": 2,
-    "applicability_detected": true,
-    "adopted_identifiers": [
-      "COPILOT_PROVIDER_TYPE"
-    ],
-    "handler_search_gate": true,
-    "trajectory_context_nonempty": true,
-    "relevance_split_units": 0,
-    "search_relevance_chains": 0,
-    "treatment_activated": false
+    "run_count": 1,
+    "natural_rg_searches": 2,
+
+    "adopted_identifier": "COPILOT_PROVIDER_TYPE",
+
+    "handler_gate": {
+      "bash_search_call_id": true,
+      "search_gate": true,
+      "trajectory_context_nonempty": true
+    },
+
+    "downstream_routing": {
+      "detected_content_type": "PLAIN_TEXT",
+      "primary_strategy": "text",
+      "lossless_search_label": null,
+      "would_redirect_relevance_to_search": false
+    },
+
+    "runtime": {
+      "relevance_split_units": 0,
+      "search_relevance_chains": 0,
+      "treatment_activated": false
+    }
   },
-  "exact_replay": {
-    "target_bytes": 20671,
-    "router_strategy": "mixed",
-    "baseline_output_bytes": 20607,
-    "adopted_floor_output_bytes": 20607,
-    "outputs_equal": true,
-    "incremental_bytes": 0
+
+  "protocol_note": {
+    "initial_off_applicability_analysis": "identified natural bridge admission plus explicit query reuse",
+    "later_full_path_audit": "showed that handler-level trajectory admission did not imply downstream relevance_split reachability",
+    "on_condition_was_consumed_before_this_downstream distinction_was fully verified": true,
+    "response": "record the deviation transparently, do not rerun U01, do not replace it, and stop according to the original inactive-treatment stopping rule"
   },
-  "interpretation": {
-    "bridge_admission_reproduced": true,
-    "natural_agent_adoption_reproduced": true,
-    "handler_search_enrichment_gate_reached": true,
-    "downstream_relevance_split_reached": false,
-    "preservation_floor_executed": false,
-    "unseen_retention_effect_estimate_available": false
-  },
-  "conclusion": "The second unseen validation reproduced natural bridge adoption, but the target was routed as mixed rather than through relevance_split. The frozen adopted-bridge preservation floor therefore never executed. Exact A/D replay was byte-identical, so no unseen retention improvement can be claimed.",
-  "constraints": {
-    "u01_rerun": false,
-    "replacement_task": false,
-    "algorithm_changed_after_result": false,
-    "raw_wire_committed": false
-  }
+
+  "retention_counterfactual_executed": false,
+
+  "conclusion": "The unseen run reproduced natural bridge admission and explicit agent adoption, and the handler generated non-empty trajectory context. However, the corresponding Bash search output remained on the downstream PLAIN_TEXT path instead of being redirected to SEARCH relevance_split, so the adopted-bridge preservation floor never executed. No unseen causal retention estimate was obtained.",
+
+  "architectural_finding": "Trajectory admission and downstream retention reachability are distinct gates. For this natural Bash search, the provider adapter accepted the search by producing call_id while ContentRouter did not classify or redirect the output into the SEARCH relevance_split path."
 }
