@@ -2655,10 +2655,37 @@ class ContentRouter(Transform):
         """
         original_tokens = _estimate_tokens(content)
 
+        # Post-hoc U01 integration refinement:
+        #
+        # The Responses adapter can establish search provenance from the
+        # producing bash/rg call even when the output shape itself is not
+        # recognized as structural SEARCH. If that provenance has already
+        # produced an adopted-bridge marker, do not require a second
+        # output-shape gate before attempting relevance preservation.
+        #
+        # This does not change bridge/adoption semantics. If relevance_split
+        # abstains, the historical routing path below remains unchanged.
+        trajectory_selected = None
+        if (
+            trajectory_search_relevance
+            and "Adopted bridge identifiers:" in context
+            and getattr(self.config, "relevance_split", False)
+        ):
+            trajectory_selected = self._relevance_split_compress(
+                content,
+                "search",
+                context,
+            )
+
+        if trajectory_selected is not None:
+            compressed = trajectory_selected
+            compressed_tokens = _estimate_tokens(compressed)
+            strategy_chain = ["search", "relevance_split"]
+
         # Preserve the historical call signature when trajectory relevance is
         # disabled. Some downstream subclasses/tests monkeypatch this private
         # seam with the pre-extension signature.
-        if trajectory_search_relevance:
+        elif trajectory_search_relevance:
             compressed, compressed_tokens, strategy_chain = self._apply_strategy_to_content(
                 content,
                 strategy,

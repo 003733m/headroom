@@ -209,3 +209,59 @@ def test_relevance_split_floor_is_monotonic() -> None:
         for piece in baseline_kept.splitlines()
         if piece
     )
+
+
+def test_adopted_bridge_provenance_reaches_relevance_without_structural_search(
+    monkeypatch,
+):
+    """Adopted search provenance must not depend on output-shape detection."""
+    from headroom.transforms.content_router import (
+        CompressionStrategy,
+        ContentRouter,
+    )
+
+    router = ContentRouter()
+    router.config.relevance_split = True
+
+    calls = []
+
+    def fake_relevance_split(content, kind, context):
+        calls.append((content, kind, context))
+        return "selected adopted evidence"
+
+    monkeypatch.setattr(
+        router,
+        "_relevance_split_compress",
+        fake_relevance_split,
+    )
+
+    def forbidden_fallback(*args, **kwargs):
+        raise AssertionError(
+            "adopted search provenance incorrectly fell through "
+            "to the structural routing seam"
+        )
+
+    monkeypatch.setattr(
+        router,
+        "_apply_strategy_to_content",
+        forbidden_fallback,
+    )
+
+    context = (
+        "Trajectory bridge identifiers: COPILOT_PROVIDER_TYPE\n"
+        "Adopted bridge identifiers: COPILOT_PROVIDER_TYPE"
+    )
+
+    result = router._compress_pure(
+        "output whose formatting is not structurally recognized as search",
+        CompressionStrategy.CODE_AWARE,
+        context,
+        trajectory_search_relevance=True,
+    )
+
+    assert result.compressed == "selected adopted evidence"
+    assert result.strategy_chain == ["search", "relevance_split"]
+
+    assert len(calls) == 1
+    assert calls[0][1] == "search"
+    assert calls[0][2] == context
