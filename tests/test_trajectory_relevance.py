@@ -1326,7 +1326,6 @@ def test_mixed_content_forwards_trajectory_search_relevance_to_sections(
     monkeypatch,
 ):
     import headroom.transforms.content_router as content_router_module
-
     from headroom.transforms.content_router import (
         CompressionStrategy,
         ContentRouter,
