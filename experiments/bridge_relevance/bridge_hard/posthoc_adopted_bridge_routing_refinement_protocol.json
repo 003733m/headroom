@@ -1,0 +1,34 @@
+{
+  "status": "locked_before_posthoc_refinement_result",
+  "experiment": "posthoc_adopted_bridge_routing_refinement",
+  "classification": "post_hoc integration refinement motivated by prospective U01",
+  "parent_production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+
+  "observed_failure": "U01-ON naturally produced an adopted bridge and passed the provider-side bash-search gate, but relevance_split enforcement remained unreachable downstream.",
+
+  "refinement": "When trajectory_search_relevance is already enabled and the trajectory context contains an Adopted bridge identifiers marker, treat the established search provenance as sufficient to attempt search relevance_split directly. If relevance_split abstains, preserve the existing routing fallback.",
+
+  "rationale": "The adopted marker can only arise after a producing search command has been associated with the current output and a current-query identifier has intersected the frozen prior trajectory bridge set. Requiring output-shape search detection again is therefore a redundant downstream gate.",
+
+  "constraints": [
+    "do not rerun U01 or any benchmark agent",
+    "do not alter the frozen 89da result",
+    "use only already-captured U01-ON exact inbound requests",
+    "make no change to bridge extraction, ranking, adoption semantics, or preservation scoring",
+    "change only integration/routing reachability",
+    "if direct relevance_split abstains, retain prior fallback behavior",
+    "classify all resulting evidence as post-hoc mechanism evidence, not unseen validation"
+  ],
+
+  "offline_evaluation": {
+    "source": "already-captured U01-ON exact inbound trajectory",
+    "baseline": "production freeze 89da",
+    "refined": "post-hoc routing refinement",
+    "primary_metric": "whether the same adopted-bridge unit reaches search > relevance_split",
+    "secondary_metrics": [
+      "adopted-hit record retention",
+      "output token/byte burden",
+      "historical-fix-adjacent retention where scorable"
+    ]
+  }
+}

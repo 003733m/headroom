@@ -1,0 +1,44 @@
+{
+  "experiment": "second_unseen_adopted_bridge_validation",
+  "task": "U01",
+  "classification": "prospective unseen validation result of frozen production algorithm",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+
+  "off": {
+    "task_pass": true,
+    "agent_exit": 0,
+    "oracle_exit": 0,
+    "requests": 7,
+    "rg_capture_count": 4,
+    "tokens_saved": 4135
+  },
+
+  "on": {
+    "task_pass": true,
+    "agent_exit": 0,
+    "oracle_exit": 0,
+    "requests": 10,
+    "rg_capture_count": 2,
+    "tokens_saved": 5199,
+    "relevance_split_units": 0,
+    "search_relevance_chains": 0,
+    "treatment_activated": false
+  },
+
+  "fresh_on_live_gate_audit": {
+    "target_bytes": 20671,
+    "structural_search_eligible": false,
+    "bash_search_call_id": true,
+    "handler_search_gate": true,
+    "trajectory_context_nonempty": true,
+    "adopted_bridges": [
+      "COPILOT_PROVIDER_TYPE"
+    ]
+  },
+
+  "result": "unseen adoption reproduced, but frozen enforcement did not reach relevance_split",
+
+  "forensic_interpretation": "The provider adapter recognized the natural bash search by call provenance and constructed non-empty trajectory/adoption context, but downstream routing did not exercise the relevance_split preservation path for this output shape.",
+
+  "claim_boundary": "This is the final prospective result for production freeze 89da and will not be retroactively relabeled after later fixes."
+}
