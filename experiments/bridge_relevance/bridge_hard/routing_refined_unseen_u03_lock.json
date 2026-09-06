@@ -1,0 +1,48 @@
+{
+  "status": "locked_before_u03_on_or_retention_analysis",
+  "experiment": "routing_refined_unseen_adopted_bridge_validation",
+  "classification": "post-U01 routing refinement; prospective retention test conditional on first natural applicability",
+  "production_freeze": "8fa4d92529f47174101e4d6fb288c0fde32e8f7c",
+  "selected_task": {
+    "task_id": "U03",
+    "source_commit": "6ecbdd6b527312ce61a1e8890f0d6d1d63ae4f48",
+    "rank_sha256": "07d036d474797a4d7379be3428140fdd2541dad5d83c971b5f88137dfbd42886",
+    "subject": "fix(proxy/savings): don't bill fallback rate for free (0-priced) models (#2024)",
+    "production_files": [
+      "headroom/proxy/savings_tracker.py"
+    ],
+    "test_files": [
+      "tests/test_savings_tracker_zero_price.py"
+    ],
+    "failing_nodeids": [
+      "tests/test_savings_tracker_zero_price.py::test_compression_savings_zero_for_free_model",
+      "tests/test_savings_tracker_zero_price.py::test_input_cost_zero_for_free_model"
+    ],
+    "prompt": "Fix the regression covered by the tests in: tests/test_savings_tracker_zero_price.py. Run the relevant tests, diagnose the root cause, implement the smallest production fix, and verify it. Use shell `rg -nH` instead of the dedicated Grep tool for repository text searches. Otherwise debug normally. Do not inspect git history or historical commits.",
+    "prompt_sha256": "9ca3f3c52580091471c0395359c1e6f6dd5d0e3bc2c25ab60497e3295c15d356"
+  },
+  "selection_reason": {
+    "first_routing_refined_eligible_task": true,
+    "prior_tasks": {
+      "U01": "not eligible under refined rule",
+      "U02": "not eligible",
+      "U03": "eligible"
+    },
+    "first_eligible_command": "rg -nH \"_estimate_compression_savings_usd|_estimate_input_cost_usd|_estimate_output_savings_usd\" . --glob '!tests/test_savings_tracker_zero_price.py'",
+    "adopted_bridges": [
+      "_estimate_input_cost_usd",
+      "_estimate_output_savings_usd"
+    ],
+    "handler_search_gate": true,
+    "byte_gate": true
+  },
+  "forbidden_before_lock": [
+    "historical-fix-adjacent overlap in selected target",
+    "baseline KEEP/DROP outcome",
+    "adopted-floor KEEP/DROP outcome",
+    "whether any critical record is rescued"
+  ],
+  "next_step": "run exactly one U03-ON condition",
+  "no_replacement_after_on": true,
+  "no_rerun": true
+}
