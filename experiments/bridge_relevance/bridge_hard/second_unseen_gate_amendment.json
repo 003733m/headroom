@@ -1,0 +1,16 @@
+{
+  "experiment": "second_unseen_adopted_bridge_validation",
+  "classification": "post-selection harness correction",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "issue": "The initial OFF applicability analyzer treated a function-call-linked rg/grep output as production-search-reachable without explicitly reproducing the handler's two-arm search gate.",
+  "production_gate": "structural search eligibility OR producing call_id recognized as a Bash search call",
+  "effect_on_algorithm": "none",
+  "effect_on_agent_runs": "none",
+  "reruns": "none",
+  "selection_policy_changed": false,
+  "required_check": "Re-audit U01-OFF using the complete frozen production gate. If the Bash-search arm is true, U01 remains the first eligible task.",
+  "on_result_observed": {
+    "agent_run_consumed": true,
+    "interpretation_rule": "Do not replace U01 or continue screening. Report the correction transparently."
+  }
+}
