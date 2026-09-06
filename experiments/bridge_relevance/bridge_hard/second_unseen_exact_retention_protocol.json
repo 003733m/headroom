@@ -1,0 +1,45 @@
+{
+  "experiment": "second_unseen_adopted_bridge_exact_retention",
+  "classification": "prospective-post-run deterministic mechanism replay",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "selected_task": "U01",
+  "agent_runs": {
+    "off": "consumed exactly once",
+    "on": "consumed exactly once",
+    "reruns_allowed": false
+  },
+  "observed_before_protocol": {
+    "off_full_handler_gate_reachable": true,
+    "on_full_handler_gate_reachable": true,
+    "on_trajectory_context_nonempty": true,
+    "on_adopted_identifier": ["COPILOT_PROVIDER_TYPE"],
+    "on_live_relevance_split_units": 0,
+    "on_live_treatment_activated": false
+  },
+  "primary_question": "On the exact first captured U01-ON search output carrying a frozen adopted bridge, would the adopted preservation floor change historical-fix-adjacent retention if the same output is deterministically evaluated through the relevance-split scorer?",
+  "conditions": {
+    "A": "same frozen production scorer and relevance query, force_keep_identifiers empty",
+    "D": "same frozen production scorer and relevance query, force_keep_identifiers set to the naturally adopted identifier(s)"
+  },
+  "oracle": "parent-version production lines around the historical U01 source fix hunk; historical-fix-adjacent only, not claimed causal ground truth",
+  "metrics": [
+    "scorable historical-fix-adjacent records",
+    "A critical kept",
+    "D critical kept",
+    "A-drop to D-keep rescues",
+    "A-keep to D-drop regressions",
+    "newly retained non-critical records",
+    "newly retained non-critical tokens"
+  ],
+  "interpretation": {
+    "if_rescue": "deterministic unseen mechanism rescue exists, but live pipeline did not activate the preservation path",
+    "if_no_rescue": "natural unseen adoption reproduced, but no retention benefit was present on this target",
+    "if_no_scorable_critical": "natural unseen adoption reproduced, but this target cannot estimate historical-critical retention"
+  },
+  "constraints": [
+    "no new agent runs",
+    "no production algorithm changes",
+    "no task replacement",
+    "do not interpret historical-fix-adjacent oracle as causal relevance"
+  ]
+}
