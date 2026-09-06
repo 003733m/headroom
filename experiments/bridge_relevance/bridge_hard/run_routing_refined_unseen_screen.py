@@ -104,7 +104,7 @@ def locked_manifest():
 
     d = json.loads((CONTROL / EXEC_REL).read_text())
 
-    if d.get("status") != "locked_before_any_second_unseen_agent_run":
+    if d.get("status") != "locked_before_any_routing_refined_unseen_agent_run":
         die("execution status mismatch")
 
     if d.get("production_freeze") != FREEZE:
