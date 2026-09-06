@@ -1,21 +1,48 @@
 {
   "experiment": "second_unseen_adopted_bridge_validation",
   "amendment": 1,
-  "classification": "procedural reachability clarification",
+  "classification": "measurement correction discovered after U01-OFF selection and U01-ON execution",
   "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
-  "facts": [
-    "The initial U01 applicability analysis found a frozen trajectory bridge intersecting the natural current search query.",
-    "A subsequent structural-only reachability check returned false.",
-    "The frozen production handler uses structural search eligibility OR producing-tool bash-search eligibility.",
-    "Post-run verification of the already-captured U01-OFF trajectory showed that the selected output call_id is in the frozen production bash_search_call_ids set.",
-    "U01-ON had already been consumed exactly once before this reachability clarification was completed.",
-    "No historical-critical oracle, baseline retention decision, preservation rescue result, or fix-adjacent overlap was inspected before U01-ON."
-  ],
-  "consequences": [
-    "U01 remains the first task in the pre-locked ordering satisfying the complete frozen applicability condition.",
-    "No task is replaced.",
-    "No completed agent condition is rerun.",
-    "The production algorithm remains unchanged.",
-    "The clarification affects reachability accounting only and does not modify the treatment."
-  ]
+  "issue": "The locked OFF applicability analyzer treated a call-id-linked natural rg/grep output with an admitted bridge and explicit query reuse as production-search reachable. This established upstream search association and bridge adoption, but did not verify that ContentRouter would route the enriched unit into relevance_split, where adopted-bridge force-KEEP is implemented.",
+  "discovery": {
+    "u01_on_handler_search_gate": true,
+    "u01_on_context_nonempty": true,
+    "u01_on_adopted_identifiers": [
+      "COPILOT_PROVIDER_TYPE"
+    ],
+    "u01_on_detected_content_type": "PLAIN_TEXT",
+    "u01_on_mixed": true,
+    "u01_on_primary_strategy": "MIXED",
+    "u01_on_lossless_search_label": null,
+    "u01_on_relevance_split_units": 0,
+    "u01_on_search_relevance_chains": 0,
+    "u01_on_treatment_activated": false
+  },
+  "interpretation": "U01 reproduced upstream natural bridge admission and explicit behavioral adoption, but the frozen preservation treatment was unreachable downstream because the target unit remained on the MIXED routing path rather than relevance_split.",
+  "protocol_effect": "The frozen 89da validation stops at U01. No replacement task is selected and no completed condition is rerun.",
+  "benchmark_rerun": false,
+  "frozen_validation_result": {
+    "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+    "u01_on_handler_search_gate": true,
+    "u01_on_context_nonempty": true,
+    "u01_on_adopted_identifiers": [
+      "COPILOT_PROVIDER_TYPE"
+    ],
+    "u01_on_primary_strategy": "MIXED",
+    "u01_on_relevance_split_units": 0,
+    "u01_on_search_relevance_chains": 0,
+    "u01_on_treatment_activated": false,
+    "interpretation": "U01 reproduced natural bridge admission and explicit behavioral adoption upstream, but the frozen preservation floor was unreachable downstream because the enriched unit remained on the MIXED routing path rather than relevance_split."
+  },
+  "measurement_correction": "The initial applicability procedure established search-call association, bridge admission, and query reuse, but treated that upstream reachability as sufficient. The live U01-ON audit showed that complete preservation applicability also requires the enriched unit to reach relevance_split.",
+  "algorithm_change_within_frozen_validation": false,
+  "subsequent_post_hoc_refinement": {
+    "performed": true,
+    "not_part_of_u01_unseen_validation": true,
+    "commits": [
+      "19afd30b4ff72eb7761d983b891098d65980e657",
+      "8fa4d92529f47174101e4d6fb288c0fde32e8f7c"
+    ],
+    "motivation": "Repair the routing boundary exposed by U01 so established search provenance and adopted trajectory relevance can reach the preservation path even when the primary content strategy is MIXED."
+  }
 }
