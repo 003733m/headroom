@@ -1,0 +1,80 @@
+{
+  "status": "locked_before_any_routing_refined_unseen_agent_run",
+  "experiment": "routing_refined_unseen_validation",
+  "classification": "prospective post-U01 routing-refinement validation",
+
+  "development_lineage": {
+    "previous_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+    "development_task": "U01",
+    "reason_excluded": [
+      "U01 was consumed under the previous production freeze",
+      "U01 exposed that natural adopted bridges could exist behind established Bash-search provenance while the final relevance-split treatment remained inactive",
+      "the routing implementation was changed after observing U01",
+      "therefore U01 is development evidence and cannot validate the refined algorithm"
+    ]
+  },
+
+  "production_freeze": "8fa4d92529f47174101e4d6fb288c0fde32e8f7c",
+
+  "candidate_pool": {
+    "source": "previously locked second unseen candidate ordering",
+    "tasks": [
+      "U02", "U03", "U04", "U05", "U06", "U07",
+      "U08", "U09", "U10", "U11", "U12"
+    ],
+    "reselection_after_U01": false,
+    "previous_agent_exposure": false
+  },
+
+  "screen": {
+    "type": "ON-only natural production-activation screen",
+    "ordering": "U02 through U12 in the already-locked order",
+    "maximum_conditions": 11,
+    "selection": "first task whose frozen production ON run reports actual adopted-bridge treatment activation",
+    "activation_evidence": [
+      "trajectory relevance enabled",
+      "natural search output admitted through the frozen production search gate",
+      "non-empty trajectory relevance context",
+      "at least one adopted bridge identifier",
+      "relevance-split/adopted preservation treatment actually reaches the downstream production path"
+    ],
+    "selection_must_not_inspect": [
+      "historical-fix-adjacent critical retention",
+      "baseline DROP versus treatment KEEP",
+      "whether the adopted floor rescues a historical-critical record",
+      "non-critical retention cost"
+    ]
+  },
+
+  "after_first_activation": {
+    "stop_screen_immediately": true,
+    "lock_selected_task_before_retention_analysis": true,
+    "run_exactly_one_OFF_condition_for_same_task": true,
+    "run_replacement_task_if_result_is_negative": false
+  },
+
+  "primary_mechanism_evaluation": {
+    "data": "first exact captured inbound natural search request on which the frozen refined production treatment activates",
+    "comparison": {
+      "A": "same captured request and same frozen scoring/context with adopted preservation disabled",
+      "D": "same captured request and same frozen scoring/context with adopted preservation enabled"
+    },
+    "metrics": [
+      "scorable historical-fix-adjacent records",
+      "critical records retained by A",
+      "critical records retained by D",
+      "A DROP to D KEEP rescues",
+      "A KEEP to D DROP regressions",
+      "additional non-critical records",
+      "additional non-critical tokens"
+    ]
+  },
+
+  "stopping_rules": [
+    "do not change production algorithm after this protocol",
+    "do not rerun a condition after AGENT_STARTED",
+    "stop at first genuine production treatment activation",
+    "if no activation occurs in U02-U12, stop and report zero of eleven natural activations",
+    "do not search for a positive rescue after the selected task has been locked"
+  ]
+}
