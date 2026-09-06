@@ -1,0 +1,78 @@
+{
+  "status": "locked_before_any_post_routing_refinement_unseen_agent_run",
+  "experiment": "routing_refined_adopted_bridge_unseen_validation",
+  "classification": "prospective unseen validation after post-hoc integration refinement",
+  "production_freeze": "8fa4d92529f47174101e4d6fb288c0fde32e8f7c",
+
+  "history": {
+    "development_case": "U01",
+    "development_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+    "finding": "U01 naturally formed an adopted bridge under real bash-search provenance, but the downstream router re-gated the output by structural shape and never reached relevance_split.",
+    "refinement": "8fa4d925 routes an already provenance-qualified adopted search through relevance_split without requiring a second structural-search shape gate.",
+    "u01_may_not_be_used_as_validation": true,
+    "u01_may_not_be_rerun": true
+  },
+
+  "candidate_pool": {
+    "source": "the already-locked second_unseen_adopted_bridge_selection.json",
+    "eligible_task_ids": [
+      "U02", "U03", "U04", "U05", "U06", "U07",
+      "U08", "U09", "U10", "U11", "U12"
+    ],
+    "ordering": "preserve the pre-U01 locked order exactly",
+    "selection_was_fixed_before_routing_refinement": true
+  },
+
+  "screen": {
+    "condition": "OFF only",
+    "maximum_new_agent_tasks": 11,
+    "selection": "first naturally applicable task in locked U02-U12 order",
+    "applicability": [
+      "fresh OFF run is valid",
+      "natural rg/grep output exists",
+      "frozen 8fa4 trajectory builder admits at least one bridge from prior outputs",
+      "the natural current search explicitly reuses at least one admitted bridge identifier",
+      "producing call has frozen production search provenance or structural SEARCH eligibility",
+      "target exceeds production minimum-byte threshold"
+    ],
+    "forbidden_during_selection": [
+      "historical-critical overlap",
+      "baseline KEEP/DROP outcome",
+      "whether adopted preservation rescues a record",
+      "fix-adjacent oracle overlap",
+      "replacement after observing an undesirable valid result"
+    ]
+  },
+
+  "treatment": {
+    "after_first_eligible_off_task": "run exactly one ON condition for that locked task",
+    "no_algorithm_changes_after_lock": true,
+    "no_task_replacement": true,
+    "no_rerun_of_completed_conditions": true
+  },
+
+  "primary_evaluation": {
+    "only_if_on_naturally_activates_adopted_relevance_split": true,
+    "comparison": {
+      "A": "same exact captured request with adopted preservation disabled",
+      "D": "same exact captured request with frozen 8fa4 adopted preservation enabled"
+    },
+    "metrics": [
+      "critical records scorable",
+      "critical records kept by A",
+      "critical records kept by D",
+      "A-drop to D-keep rescues",
+      "A-keep to D-drop regressions",
+      "added non-critical records",
+      "added non-critical tokens"
+    ]
+  },
+
+  "stopping_rules": [
+    "stop at first eligible OFF task",
+    "run exactly one ON condition for it",
+    "stop regardless of ON outcome",
+    "if no eligible task appears by U12, report zero natural applicability",
+    "do not alter 8fa4 based on this validation"
+  ]
+}
