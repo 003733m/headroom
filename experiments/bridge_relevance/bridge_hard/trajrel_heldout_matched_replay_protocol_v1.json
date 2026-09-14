@@ -1,0 +1,52 @@
+{
+  "status": "locked_before_any_heldout_replay_result",
+  "experiment": "trajrel_heldout_pilot_v1_matched_replay",
+  "classification": "held-out offline mechanism evaluation",
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "source_condition": "ten frozen OFF-only natural trajectories",
+  "tasks": [
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "U11",
+    "U12",
+    "P10"
+  ],
+  "raw_artifact_lock_commit": "1af4eea6",
+  "raw_artifact_manifest_sha256": "0408d440ca320d8a0ca4a1c370a5d747bea9332bf651e42c7c365d9f8ffbf50a",
+  "unit_rule": {
+    "tool": "rg_or_grep_search",
+    "minimum_raw_output_bytes": 512,
+    "deduplication": "first unique call_id plus target_sha256 exposure"
+  },
+  "critical_label": {
+    "name": "historical_fix_adjacent",
+    "source": "source_commit production diff against source_commit parent",
+    "window": "changed parent hunk lines plus or minus 5 lines",
+    "match": "normalized path and exact non-empty source text",
+    "line_shift_fallback": "same exact text within plus or minus 3 lines"
+  },
+  "base_reconstruction": {
+    "runtime": "/tmp/headroom-trajrel-heldout-pilot-runtime-89da0898",
+    "trajectory_relevance": false,
+    "savings_profile": "coding",
+    "source_request": "captured exact http_inbound_request",
+    "captured_reference": "paired http_stream_upstream_request"
+  },
+  "validity_gate": {
+    "primary": "for every parsed record, reconstructed OFF KEEP/DROP vector equals captured OFF KEEP/DROP vector",
+    "secondary": "also report full target-output SHA256 equality",
+    "invalid_units": "excluded from counterfactual retention claims"
+  },
+  "analysis_constraints": [
+    "do not modify task membership after replay results",
+    "do not modify critical labeling after replay results",
+    "do not modify base reconstruction after replay results",
+    "do not modify frozen TrajRel B-intersect-Q primary policy after replay results",
+    "report zero-opportunity and zero-rescue outcomes unchanged if observed"
+  ]
+}

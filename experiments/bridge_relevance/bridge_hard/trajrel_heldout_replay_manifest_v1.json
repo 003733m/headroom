@@ -1,0 +1,101 @@
+{
+  "status": "locked_before_heldout_matched_replay",
+  "experiment": "trajrel_heldout_pilot_v1",
+  "algorithm_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "model": "openai/gpt-5.6-terra",
+  "task_order": [
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10",
+    "U11",
+    "U12",
+    "P10"
+  ],
+  "tasks": [
+    {
+      "task_id": "U04",
+      "source_commit": "1612f06a4c19c53b6d8b02b02cd30d14a1858d28",
+      "subject": "fix(ccr): don't crash tool-call detection on a null function/functionCall (#2269)",
+      "production_files": [
+        "headroom/ccr/tool_calls.py",
+        "headroom/ccr/tool_injection.py"
+      ]
+    },
+    {
+      "task_id": "U05",
+      "source_commit": "58f28dc7a6b6ce5bbf0f88524bd78cbe3f3ffa4b",
+      "subject": "fix(install): honor HEADROOM_PORT in install apply and deploy (#3085)",
+      "production_files": [
+        "headroom/cli/install.py"
+      ]
+    },
+    {
+      "task_id": "U06",
+      "source_commit": "12149f74466c08b69be8d5fe751425be63c2fda4",
+      "subject": "fix(proxy): include tool_search_deferral savings in the savings ledger",
+      "production_files": [
+        "headroom/proxy/prometheus_metrics.py"
+      ]
+    },
+    {
+      "task_id": "U07",
+      "source_commit": "0805e8e410543d75c7ddd3b83dde5eda3bc13144",
+      "subject": "fix(providers/openai): bound tiktoken vocab loads with the guarded loader (#2554)",
+      "production_files": [
+        "headroom/providers/openai.py"
+      ]
+    },
+    {
+      "task_id": "U08",
+      "source_commit": "3e976712e717a53ab6aea73120ae6ffacea74250",
+      "subject": "fix(proxy/output-shaping): tolerate a non-string system block text in steering (#2435)",
+      "production_files": [
+        "headroom/proxy/output_steering.py"
+      ]
+    },
+    {
+      "task_id": "U09",
+      "source_commit": "84f66da36f0bcd0929ad6d864d745b7685147718",
+      "subject": "fix(init/codex): merge into hooks.json instead of overwriting it (#2173)",
+      "production_files": [
+        "headroom/cli/init.py"
+      ]
+    },
+    {
+      "task_id": "U10",
+      "source_commit": "2f4d001c9ffd7f856c8dab3e31a8240a1c676f04",
+      "subject": "fix(proxy): keep prefixed core tools resident (#3046)",
+      "production_files": [
+        "headroom/proxy/helpers.py"
+      ]
+    },
+    {
+      "task_id": "U11",
+      "source_commit": "8b7e797ed41ea9a37ef8711e102b355f9194c571",
+      "subject": "fix(proxy/memory): don't crash memory tool-call detection on a null function (#2272)",
+      "production_files": [
+        "headroom/proxy/memory_handler.py"
+      ]
+    },
+    {
+      "task_id": "U12",
+      "source_commit": "def2f9a7286a271a36402bc564867b53a3c11b70",
+      "subject": "fix(learn): don't desync verbosity pairing on empty assistant turns (#2123)",
+      "production_files": [
+        "headroom/learn/verbosity.py"
+      ]
+    },
+    {
+      "task_id": "P10",
+      "source_commit": "bec47a1898883919ad8c5ea41e3a7443a6890e7f",
+      "subject": "fix(memory): singleflight LocalBackend init to stop cold-start races (#1691)",
+      "production_files": [
+        "headroom/memory/backends/local.py"
+      ]
+    }
+  ]
+}
