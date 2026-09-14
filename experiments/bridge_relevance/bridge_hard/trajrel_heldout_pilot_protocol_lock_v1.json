@@ -1,0 +1,37 @@
+{
+  "status": "locked_before_any_trajrel_heldout_pilot_run",
+  "pilot_version": 1,
+  "production_freeze": "89da0898a80c313b6a320f47763391dea7c376e2",
+  "model": "openai/gpt-5.6-terra",
+  "opencode_version": "1.18.25",
+  "condition": "OFF_only",
+  "run_order": [
+    "U04-OFF",
+    "U05-OFF",
+    "U06-OFF",
+    "U07-OFF",
+    "U08-OFF",
+    "U09-OFF",
+    "U10-OFF",
+    "U11-OFF",
+    "U12-OFF",
+    "P10-OFF"
+  ],
+  "trajrel_protocol_commit": "6f9d665b955e7219ccf1288ff5370beb4fc4d8ea",
+  "trajrel_protocol_sha256": "26cc4441ab507f00a7a3c66a43f02db41159bc9e696edff3d842fb28c4b17544",
+  "trajrel_method_freeze": {
+    "files": {
+      "benchmarks/heldout/protocol_v1.json": "26cc4441ab507f00a7a3c66a43f02db41159bc9e696edff3d842fb28c4b17544",
+      "src/trajrel/adoption.py": "ce1095fc0ddeed62070803fcce8efb771ddb97952ed1541e5d3a587730b10cbb",
+      "src/trajrel/evaluation/batch.py": "7fcf4366366ef4211aff3177fa850ac376cddb02442a673944731adad2cb2360",
+      "src/trajrel/query_signals.py": "79598422ec096e01b63947ed89d05432d862059916cfead06255beae817e7f53",
+      "src/trajrel/scorers/headroom_reference.py": "6086ab38e55c044f06e74ebff6f89bdafd6c89e41a5441b64eb6660a86e386cf",
+      "src/trajrel/selectors/headroom_reference.py": "7287f7755fa80f91b081f6f83bae1c82ad94f74e2bd582d7f17fc7a5fa01325a"
+    },
+    "freeze_version": 1,
+    "git_branch": "main",
+    "git_commit": "6f9d665b955e7219ccf1288ff5370beb4fc4d8ea"
+  },
+  "analysis_blinding": "Run all ten OFF conditions before held-out TrajRel outcome analysis.",
+  "stopping_rule": "Consume all ten prelocked conditions. Do not stop based on task success, activation, base KEEP/DROP, or rescue."
+}

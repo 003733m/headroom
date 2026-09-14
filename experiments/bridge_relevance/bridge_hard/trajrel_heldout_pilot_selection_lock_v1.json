@@ -1,0 +1,160 @@
+{
+  "status": "locked_before_any_trajrel_heldout_pilot_run",
+  "pilot_version": 1,
+  "source_manifest": "trajrel/benchmarks/heldout/pilot_v1_manifest.json",
+  "source_manifest_sha256": "8a980613f73e25a5fdc7106a82b48f4ebe92976a5396bc6efcc6e706b4090dfb",
+  "source_manifest_commit": "db8dc6c",
+  "task_count": 10,
+  "tasks": [
+    {
+      "task_id": "U04",
+      "source_commit": "1612f06a4c19c53b6d8b02b02cd30d14a1858d28",
+      "subject": "fix(ccr): don't crash tool-call detection on a null function/functionCall (#2269)",
+      "production_files": [
+        "headroom/ccr/tool_calls.py",
+        "headroom/ccr/tool_injection.py"
+      ],
+      "test_files": [
+        "tests/test_ccr_tool_calls.py",
+        "tests/test_ccr_tool_injection.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_ccr_tool_calls.py::test_ccr_detection_survives_null_function_tool_call",
+        "tests/test_ccr_tool_injection.py::TestParseToolCall::test_parse_null_function_returns_none_without_crashing"
+      ]
+    },
+    {
+      "task_id": "U05",
+      "source_commit": "58f28dc7a6b6ce5bbf0f88524bd78cbe3f3ffa4b",
+      "subject": "fix(install): honor HEADROOM_PORT in install apply and deploy (#3085)",
+      "production_files": [
+        "headroom/cli/install.py"
+      ],
+      "test_files": [
+        "tests/test_cli/test_install_cli.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_cli/test_install_cli.py::test_install_apply_honors_headroom_port_env",
+        "tests/test_cli/test_install_cli.py::test_deploy_honors_headroom_port_env"
+      ]
+    },
+    {
+      "task_id": "U06",
+      "source_commit": "12149f74466c08b69be8d5fe751425be63c2fda4",
+      "subject": "fix(proxy): include tool_search_deferral savings in the savings ledger",
+      "production_files": [
+        "headroom/proxy/prometheus_metrics.py"
+      ],
+      "test_files": [
+        "tests/test_savings_ledger_before_forwarded.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_savings_ledger_before_forwarded.py::test_record_savings_event_includes_tool_search_deferral",
+        "tests/test_savings_ledger_before_forwarded.py::test_record_savings_event_written_for_deferral_only_turn"
+      ]
+    },
+    {
+      "task_id": "U07",
+      "source_commit": "0805e8e410543d75c7ddd3b83dde5eda3bc13144",
+      "subject": "fix(providers/openai): bound tiktoken vocab loads with the guarded loader (#2554)",
+      "production_files": [
+        "headroom/providers/openai.py"
+      ],
+      "test_files": [
+        "tests/test_providers/test_openai.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_providers/test_openai.py::TestGuardedEncodingLoad::test_get_encoding_routes_through_bounded_loader",
+        "tests/test_providers/test_openai.py::TestGuardedEncodingLoad::test_get_token_counter_falls_back_to_estimation"
+      ]
+    },
+    {
+      "task_id": "U08",
+      "source_commit": "3e976712e717a53ab6aea73120ae6ffacea74250",
+      "subject": "fix(proxy/output-shaping): tolerate a non-string system block text in steering (#2435)",
+      "production_files": [
+        "headroom/proxy/output_steering.py"
+      ],
+      "test_files": [
+        "tests/test_output_steering.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_output_steering.py::test_anthropic_steering_tolerates_non_string_system_block_text"
+      ]
+    },
+    {
+      "task_id": "U09",
+      "source_commit": "84f66da36f0bcd0929ad6d864d745b7685147718",
+      "subject": "fix(init/codex): merge into hooks.json instead of overwriting it (#2173)",
+      "production_files": [
+        "headroom/cli/init.py"
+      ],
+      "test_files": [
+        "tests/test_cli/test_init_cli.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_cli/test_init_cli.py::test_ensure_codex_hooks_preserves_user_hooks"
+      ]
+    },
+    {
+      "task_id": "U10",
+      "source_commit": "2f4d001c9ffd7f856c8dab3e31a8240a1c676f04",
+      "subject": "fix(proxy): keep prefixed core tools resident (#3046)",
+      "production_files": [
+        "headroom/proxy/helpers.py"
+      ],
+      "test_files": [
+        "tests/test_issue_746_tool_search.py",
+        "tests/test_openai_tool_search_deferral.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_issue_746_tool_search.py::test_core_tools_match_leading_underscore_namespace",
+        "tests/test_openai_tool_search_deferral.py::test_prefixed_core_and_terminal_names_stay_resident"
+      ]
+    },
+    {
+      "task_id": "U11",
+      "source_commit": "8b7e797ed41ea9a37ef8711e102b355f9194c571",
+      "subject": "fix(proxy/memory): don't crash memory tool-call detection on a null function (#2272)",
+      "production_files": [
+        "headroom/proxy/memory_handler.py"
+      ],
+      "test_files": [
+        "tests/test_memory_handler_null_function.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_memory_handler_null_function.py::test_has_memory_tool_calls_survives_null_function",
+        "tests/test_memory_handler_null_function.py::test_has_memory_tool_calls_all_null_functions_is_false"
+      ]
+    },
+    {
+      "task_id": "U12",
+      "source_commit": "def2f9a7286a271a36402bc564867b53a3c11b70",
+      "subject": "fix(learn): don't desync verbosity pairing on empty assistant turns (#2123)",
+      "production_files": [
+        "headroom/learn/verbosity.py"
+      ],
+      "test_files": [
+        "tests/test_verbosity_learn.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_verbosity_learn.py::TestSignalExtraction::test_empty_assistant_message_does_not_desync_fast_skip"
+      ]
+    },
+    {
+      "task_id": "P10",
+      "source_commit": "bec47a1898883919ad8c5ea41e3a7443a6890e7f",
+      "subject": "fix(memory): singleflight LocalBackend init to stop cold-start races (#1691)",
+      "production_files": [
+        "headroom/memory/backends/local.py"
+      ],
+      "test_files": [
+        "tests/test_local_backend_init_race.py"
+      ],
+      "failing_nodeids": [
+        "tests/test_local_backend_init_race.py::test_concurrent_ensure_initialized_runs_init_once"
+      ]
+    }
+  ],
+  "replacement_rule": "No outcome-conditioned replacement. Only objectively non-runnable tasks may use the preregistered fallback order."
+}
